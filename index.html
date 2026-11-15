@@ -64,8 +64,8 @@ section{padding-top:104px}.menu a.on{color:#fff}.menu .mo{display:none}.fade{ani
 </head>
 <body>
 <header><div class="w"><a class="logo" href="#top">Gavio Cloud</a>
-<nav class="menu" id="menu"><a href="#products">Products</a><a href="#why">Features</a><a href="#pricing">Pricing</a><a href="#compare">Compare</a><a href="#locations">Locations</a><a href="#faq">FAQ</a><a class="mo" href="#" data-p="/login">Login</a><a class="mo" href="#client">Client area</a></nav>
-<a class="btn g s hd" href="#" data-p="/login">Login</a><a class="btn s hd" href="#pricing">Order a VPS</a><button class="burger" id="bg" aria-label="Menu">Menu</button></div></header>
+<nav class="menu" id="menu"><a href="#products">Products</a><a href="#why">Features</a><a href="#pricing">Pricing</a><a href="#compare">Compare</a><a href="#locations">Locations</a><a href="#faq">FAQ</a><a class="mo" href="#" id="openLoginMobile">Login</a><a class="mo" href="#client">Client area</a></nav>
+<a class="btn g s hd" href="#" id="openLoginHeader">Login</a><a class="btn s hd" href="#pricing">Order a VPS</a><button class="burger" id="bg" aria-label="Menu">Menu</button></div></header>
 
 <main id="top">
 <div class="hero"><div class="w"><div>
@@ -105,7 +105,7 @@ section{padding-top:104px}.menu a.on{color:#fff}.menu .mo{display:none}.fade{ani
 
 <section id="client"><div class="sh"><h2>Client area</h2><p>Sign in to your account, or open the admin area if you are on the team.</p></div>
  <div class="grid g2">
-  <div class="card prod"><h3>Customers</h3><p>See your services, invoices and support tickets in one place, and update your account details.</p><ul><li>Your VPS services</li><li>Invoices and billing</li><li>Support tickets</li></ul><div class="row"><a class="btn" href="#" id="openLogin">Login</a><a class="btn g" href="#" data-p="/register">Create account</a></div></div>
+  <div class="card prod"><h3>Customers</h3><p>See your services, invoices and support tickets in one place, and update your account details.</p><ul><li>Your VPS services</li><li>Invoices and billing</li><li>Support tickets</li></ul><div class="row"><a class="btn" href="#" id="openLogin">Login</a><a class="btn g" href="#" id="openRegister">Create account</a></div></div>
   <div class="card prod"><h3>Admin area</h3><p>For Gavio Cloud staff. Manage the business and keep an eye on the infrastructure.</p><ul><li>Users, services and invoices</li><li>Plans, nodes and live server stats</li><li>Support tickets and site settings</li></ul><div class="row"><a class="btn g" href="#" id="openAdminLogin">Admin login</a></div></div>
  </div></section>
 
@@ -131,7 +131,7 @@ section{padding-top:104px}.menu a.on{color:#fff}.menu .mo{display:none}.fade{ani
 <footer><div class="w"><div class="cols"><div><b style="font:700 1.15rem Sora">Gavio Cloud</b><p style="margin-top:8px;max-width:280px">NVMe VPS hosting in India, the USA and Singapore.</p></div>
 <div><b>Products</b><a href="#products">VPS overview</a><a href="#pricing">Pricing</a><a href="#locations">Locations</a></div>
 <div><b>Company</b><a href="#why">Features</a><a href="#faq">FAQ</a><a href="#" data-d>Discord</a></div>
-<div><b>Account</b><a href="#" data-p="/login">Client login</a><a href="#" data-p="/register">Create account</a><a href="#" data-p="/admin">Admin login</a></div>
+<div><b>Account</b><a href="#" id="openLoginFooter">Client login</a><a href="#" id="openRegisterFooter">Create account</a><a href="#" id="openAdminLoginFooter">Admin login</a></div>
 <div><b>Legal</b><a href="#terms">Terms of Service</a><a href="#privacy">Privacy Policy</a><a href="#refund">Refund Policy</a></div></div>
 <p class="copy">© 2026 Gavio Cloud. All rights reserved.</p></div></footer>
 <a id="up" href="#top" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></a>
@@ -168,13 +168,11 @@ section{padding-top:104px}.menu a.on{color:#fff}.menu .mo{display:none}.fade{ani
 // ===== EDIT THESE =====
 const DISCORD = "https://discord.gg/u6jWENUZtV";
 const ORDER_URL = DISCORD;
-const PANEL = "https://www.gavio.cloud"; // your Gavio panel (login + admin)
 // ======================
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const specs=[["Starter",12,2,120],["Standard",16,4,160],["Advanced",24,4,250],["Performance",32,4,320],["Enterprise",48,6,480],["Ultimate",64,8,640]];
 const price={p:[600,800,1000,1200,1400,1600],b:[400,550,720,800,1000,1200]};
 const sub={p:"Premium: 1 Gbps network in India.",b:"Budget: 200 Mbps to 1 Gbps network in India, USA and Singapore."};
-$$("[data-p]").forEach(a=>{a.href=PANEL+a.dataset.p});
 $$("[data-d]").forEach(a=>{a.href=DISCORD;a.target="_blank";a.rel="noreferrer"});
 function plans(t){const g=$("#pg");g.classList.remove("fade");void g.offsetWidth;g.classList.add("fade");$$(".tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));$("#sub").textContent=sub[t];
 $("#pg").innerHTML=specs.map((s,i)=>`<div class="card plan${i==1?" pop":""}">${i==1?'<span class="tag">Popular</span>':""}<h3>${s[0]}</h3><div class="price">₹${price[t][i]}<small> / month</small></div><ul><li><b>${s[1]} GB</b> RAM</li><li><b>${s[2]}</b> CPU cores</li><li><b>${s[3]} GB</b> NVMe storage</li><li>DDoS protection</li><li>Full root access</li></ul><a class="btn" href="${ORDER_URL}" target="_blank" rel="noreferrer">Order ${s[0]}</a></div>`).join("")}
@@ -208,8 +206,12 @@ function leg(){$$(".leg").forEach(e=>e.classList.toggle("on","#"+e.id===location
 const ACCOUNTS={admin:{pass:"Gv!o9xT2qLr",role:"admin"}};
 let loginMode="customer";
 function openLogin(mode){loginMode=mode;$("#loginTitle").textContent=mode==="admin"?"Admin sign in":"Sign in";$("#loginErr").style.display="none";$("#loginForm").reset();location.hash="loginModal"}
-$("#openLogin").onclick=e=>{e.preventDefault();openLogin("customer")};
-$("#openAdminLogin").onclick=e=>{e.preventDefault();openLogin("admin")};
+["openLogin","openLoginMobile","openLoginHeader","openLoginFooter","openRegister","openRegisterFooter"].forEach(id=>{
+ const el=$("#"+id); if(el) el.onclick=e=>{e.preventDefault();openLogin("customer")};
+});
+["openAdminLogin","openAdminLoginFooter"].forEach(id=>{
+ const el=$("#"+id); if(el) el.onclick=e=>{e.preventDefault();openLogin("admin")};
+});
 $("#loginForm").onsubmit=e=>{
  e.preventDefault();
  const u=$("#loginUser").value.trim(),p=$("#loginPass").value;
