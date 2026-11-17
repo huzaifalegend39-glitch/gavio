@@ -21,9 +21,8 @@ header .w{display:flex;align-items:center;gap:30px;height:66px}.logo{font:700 1.
 .btn{display:inline-block;background:#fff;color:#000!important;border:1px solid #fff;border-radius:8px;padding:11px 20px;font:500 .93rem Inter;cursor:pointer;transition:background .15s,border-color .15s}
 .btn:hover{background:#e3e6ee}.btn.g{background:transparent;color:#fff!important;border-color:#30333d}.btn.g:hover{border-color:#5a5f6e;background:#0d0e13}.btn.s{padding:8px 15px;font-size:.88rem}
 .hero{padding:88px 0 80px;border-bottom:1px solid var(--bd);background:radial-gradient(700px 360px at 85% 0,rgba(111,155,255,.12),transparent)}
-.hero .w{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero .w{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative;z-index:1}
 h1{font-size:clamp(2.1rem,4.8vw,3.7rem);font-weight:700}.hero p{color:var(--mu);font-size:1.12rem;max-width:520px;margin:20px 0 30px}.row{display:flex;gap:12px;flex-wrap:wrap}
-.hero svg{width:100%;max-width:380px;justify-self:end}
 .strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--bd)}.strip div{padding:26px 24px;border-right:1px solid var(--bd)}.strip div:last-child{border:0}.strip b{display:block;font:600 1.05rem Sora}.strip span{color:var(--mu);font-size:.9rem}
 section{padding:92px 0 0}.sh{margin-bottom:34px;max-width:620px}.sh h2{font-size:clamp(1.7rem,3vw,2.2rem)}.sh p{color:var(--mu);margin-top:10px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
@@ -43,7 +42,7 @@ section{padding:92px 0 0}.sh{margin-bottom:34px;max-width:620px}.sh h2{font-size
 footer{margin-top:92px;border-top:1px solid var(--bd);padding:48px 0 30px;color:var(--mu);font-size:.9rem}footer .cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}footer a{display:block;margin:8px 0;transition:color .15s}footer a:hover{color:#fff}footer b{color:#fff;font-weight:500}.copy{border-top:1px solid var(--bd);margin-top:36px;padding-top:22px}
 .leg{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.97);overflow:auto;padding:92px 24px 60px;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s;overscroll-behavior:contain}
 .leg.on{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease}
-.leg .bar{position:fixed;top:0;left:0;right:0;height:62px;background:rgba(0,0,0,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 24px;font:700 1.15rem Sora,sans-serif}
+.leg .bar{position:fixed;top:0;left:0;right:0;height:62px;background:rgba(0,0,0,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 24px;font:700 1.15rem Sora,sans-serif;z-index:2}
 .leg .x{position:fixed;top:13px;right:18px;z-index:3}
 .pin{max-width:720px;margin:auto;counter-reset:p}.pin h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:6px}.pin .lu{color:var(--mu);font-size:.9rem;margin-bottom:26px}
 .pin h3{counter-increment:p;margin:30px 0 8px;font-size:1.08rem}.pin h3:before{content:counter(p) ". ";color:var(--a)}.pin p{color:var(--mu)}
@@ -57,7 +56,7 @@ footer{margin-top:92px;border-top:1px solid var(--bd);padding:48px 0 30px;color:
 .trust{display:flex;gap:10px 26px;flex-wrap:wrap;margin-top:30px;color:var(--mu);font-size:.92rem}.trust span:before{content:"\2713";color:var(--a);margin-right:8px}
 .con{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.5);justify-self:end;width:100%;max-width:380px}
 .ch{display:flex;align-items:center;gap:10px;font:600 1rem Sora;margin-bottom:16px}.ch .mu{margin-left:auto;font:400 .85rem Inter}.dot{width:9px;height:9px;border-radius:50%;background:#3ddc84}
-.cr{display:grid;grid-template-columns:44px 1fr 40px;align-items:center;gap:12px;margin:12px 0;font-size:.85rem;color:var(--mu)}.cr i{height:7px;background:#16181f;border-radius:6px;overflow:hidden}.cr u{display:block;height:100%;background:var(--a);border-radius:6px}.cr em{font-style:normal;text-align:right}
+.cr{display:grid;grid-template-columns:44px 1fr 40px;align-items:center;gap:12px;margin:12px 0;font-size:.85rem;color:var(--mu)}.cr i{height:7px;background:#16181f;border-radius:6px;overflow:hidden}.cr u{display:block;height:100%;background:var(--a);border-radius:6px;transition:width .35s ease}.cr em{font-style:normal;text-align:right}
 .cf{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--bd);font-size:.9rem}.cf span{color:var(--mu)}.cf b{font-weight:500}
 header .w{padding-left:max(24px,env(safe-area-inset-left));padding-right:max(24px,env(safe-area-inset-right))}
 @media(max-width:900px){.con{justify-self:stretch;max-width:none}}
@@ -69,192 +68,939 @@ section{padding-top:104px}.menu a.on{color:#fff}.menu .mo{display:none}.fade{ani
 @media(max-width:600px){section{padding-top:72px}}@media(prefers-reduced-motion:reduce){.fade{animation:none}html{scroll-behavior:auto}}
 .ann{background:#fff;color:#000;text-align:center;padding:9px 16px;font-size:.88rem;font-weight:500}.ann[hidden]{display:none}
 .ann{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:4px}.ann.warn{background:#f5b84a}.ann.ok{background:#4ade80}.ann a{text-decoration:underline;margin-left:10px;font-weight:600}.ann button{background:none;border:0;color:inherit;font-size:1.3rem;cursor:pointer;margin-left:14px;line-height:1}
-.hero{position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 900 520%22 fill=%22none%22%3E%3Crect x=%2245%22 y=%2220%22 width=%22250%22 height=%22486%22 rx=%2212%22 fill=%22%2306070b%22 stroke=%22%232a3a66%22 stroke-width=%221.6%22/%3E%3Crect x=%2257%22 y=%2236%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%2269%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M75 52h12M75 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%2299%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M105 52h12M105 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22129%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M135 52h12M135 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22159%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M165 52h12M165 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M195 50h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 57h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 64h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 71h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 78h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22267%22 cy=%2250%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22267%22 cy=%2263%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%2257%22 y=%2298%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%2269%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M75 114h12M75 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%2299%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M105 114h12M105 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22129%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M135 114h12M135 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22159%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M165 114h12M165 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M195 112h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 119h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 126h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 133h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 140h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22267%22 cy=%22112%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22267%22 cy=%22125%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%2257%22 y=%22160%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%2269%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M75 176h12M75 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%2299%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M105 176h12M105 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22129%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M135 176h12M135 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22159%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M165 176h12M165 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M195 174h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 181h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 188h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 195h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 202h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22267%22 cy=%22174%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22267%22 cy=%22187%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%2257%22 y=%22222%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%2269%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M75 238h12M75 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%2299%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M105 238h12M105 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22129%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M135 238h12M135 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22159%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M165 238h12M165 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M195 236h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 243h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 250h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 257h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 264h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22267%22 cy=%22236%22 r=%223%22 fill=%22%23f5b84a%22 opacity=%22.85%22/%3E%3Ccircle cx=%22267%22 cy=%22249%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%2257%22 y=%22284%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%2269%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M75 300h12M75 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%2299%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M105 300h12M105 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22129%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M135 300h12M135 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22159%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M165 300h12M165 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M195 298h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 305h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 312h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 319h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 326h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22267%22 cy=%22298%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22267%22 cy=%22311%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%2257%22 y=%22346%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%2269%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M75 362h12M75 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%2299%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M105 362h12M105 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22129%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M135 362h12M135 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22159%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M165 362h12M165 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M195 360h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 367h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 374h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 381h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 388h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22267%22 cy=%22360%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22267%22 cy=%22373%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%2257%22 y=%22408%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%2269%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M75 424h12M75 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%2299%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M105 424h12M105 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22129%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M135 424h12M135 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22159%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M165 424h12M165 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M195 422h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 429h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 436h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 443h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 450h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22267%22 cy=%22422%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22267%22 cy=%22435%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Cpath d=%22M75 506v8M265 506v8%22 stroke=%22%232a3a66%22 stroke-width=%223%22 stroke-linecap=%22round%22/%3E%3Crect x=%22325%22 y=%2220%22 width=%22250%22 height=%22486%22 rx=%2212%22 fill=%22%2306070b%22 stroke=%22%232a3a66%22 stroke-width=%221.6%22/%3E%3Crect x=%22337%22 y=%2236%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22349%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M355 52h12M355 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22379%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M385 52h12M385 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22409%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M415 52h12M415 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22439%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M445 52h12M445 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M475 50h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 57h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 64h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 71h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 78h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22547%22 cy=%2250%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22547%22 cy=%2263%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22337%22 y=%2298%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22349%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M355 114h12M355 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22379%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M385 114h12M385 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22409%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M415 114h12M415 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22439%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M445 114h12M445 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M475 112h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 119h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 126h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 133h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 140h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22547%22 cy=%22112%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22547%22 cy=%22125%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22337%22 y=%22160%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22349%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M355 176h12M355 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22379%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M385 176h12M385 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22409%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M415 176h12M415 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22439%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M445 176h12M445 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M475 174h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 181h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 188h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 195h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 202h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22547%22 cy=%22174%22 r=%223%22 fill=%22%23f5b84a%22 opacity=%22.85%22/%3E%3Ccircle cx=%22547%22 cy=%22187%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22337%22 y=%22222%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22349%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M355 238h12M355 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22379%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M385 238h12M385 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22409%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M415 238h12M415 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22439%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M445 238h12M445 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M475 236h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 243h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 250h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 257h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 264h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22547%22 cy=%22236%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22547%22 cy=%22249%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22337%22 y=%22284%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22349%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M355 300h12M355 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22379%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M385 300h12M385 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22409%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M415 300h12M415 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22439%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M445 300h12M445 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M475 298h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 305h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 312h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 319h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 326h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22547%22 cy=%22298%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22547%22 cy=%22311%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22337%22 y=%22346%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22349%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M355 362h12M355 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22379%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M385 362h12M385 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22409%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M415 362h12M415 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22439%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M445 362h12M445 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M475 360h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 367h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 374h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 381h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 388h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22547%22 cy=%22360%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22547%22 cy=%22373%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22337%22 y=%22408%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22349%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M355 424h12M355 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22379%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M385 424h12M385 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22409%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M415 424h12M415 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22439%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M445 424h12M445 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M475 422h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 429h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 436h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 443h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M475 450h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22547%22 cy=%22422%22 r=%223%22 fill=%22%23f5b84a%22 opacity=%22.85%22/%3E%3Ccircle cx=%22547%22 cy=%22435%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Cpath d=%22M355 506v8M545 506v8%22 stroke=%22%232a3a66%22 stroke-width=%223%22 stroke-linecap=%22round%22/%3E%3Crect x=%22605%22 y=%2220%22 width=%22250%22 height=%22486%22 rx=%2212%22 fill=%22%2306070b%22 stroke=%22%232a3a66%22 stroke-width=%221.6%22/%3E%3Crect x=%22617%22 y=%2236%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22629%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M635 52h12M635 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22659%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M665 52h12M665 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22689%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M695 52h12M695 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22719%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M725 52h12M725 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M755 50h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 57h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 64h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 71h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 78h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22827%22 cy=%2250%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22827%22 cy=%2263%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22617%22 y=%2298%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22629%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M635 114h12M635 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22659%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M665 114h12M665 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22689%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M695 114h12M695 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22719%22 y=%22106%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M725 114h12M725 120h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M755 112h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 119h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 126h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 133h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 140h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22827%22 cy=%22112%22 r=%223%22 fill=%22%23f5b84a%22 opacity=%22.85%22/%3E%3Ccircle cx=%22827%22 cy=%22125%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22617%22 y=%22160%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22629%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M635 176h12M635 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22659%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M665 176h12M665 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22689%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M695 176h12M695 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22719%22 y=%22168%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M725 176h12M725 182h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M755 174h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 181h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 188h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 195h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 202h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22827%22 cy=%22174%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22827%22 cy=%22187%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22617%22 y=%22222%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22629%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M635 238h12M635 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22659%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M665 238h12M665 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22689%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M695 238h12M695 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22719%22 y=%22230%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M725 238h12M725 244h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M755 236h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 243h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 250h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 257h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 264h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22827%22 cy=%22236%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Ccircle cx=%22827%22 cy=%22249%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22617%22 y=%22284%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22629%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M635 300h12M635 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22659%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M665 300h12M665 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22689%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M695 300h12M695 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22719%22 y=%22292%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M725 300h12M725 306h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M755 298h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 305h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 312h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 319h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 326h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22827%22 cy=%22298%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22827%22 cy=%22311%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22617%22 y=%22346%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22629%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M635 362h12M635 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22659%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M665 362h12M665 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22689%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M695 362h12M695 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22719%22 y=%22354%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M725 362h12M725 368h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M755 360h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 367h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 374h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 381h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 388h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22827%22 cy=%22360%22 r=%223%22 fill=%22%23f5b84a%22 opacity=%22.85%22/%3E%3Ccircle cx=%22827%22 cy=%22373%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%22617%22 y=%22408%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%22629%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M635 424h12M635 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22659%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M665 424h12M665 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22689%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M695 424h12M695 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22719%22 y=%22416%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M725 424h12M725 430h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M755 422h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 429h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 436h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 443h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M755 450h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22827%22 cy=%22422%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22827%22 cy=%22435%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Cpath d=%22M635 506v8M825 506v8%22 stroke=%22%232a3a66%22 stroke-width=%223%22 stroke-linecap=%22round%22/%3E%3C/svg%3E") right 2% center/auto 96% no-repeat;opacity:.5;-webkit-mask-image:linear-gradient(90deg,transparent 28%,#000 70%);mask-image:linear-gradient(90deg,transparent 28%,#000 70%);pointer-events:none}
-.hero .w{position:relative;grid-template-columns:1fr}.hero .w>div{max-width:600px}
-#why{position:relative}#why:before{content:"";position:absolute;right:-60px;top:30px;width:440px;height:440px;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22 fill=%22none%22 stroke=%22%232a3a66%22 stroke-width=%221.5%22%3E%3Crect x=%22110%22 y=%22110%22 width=%22180%22 height=%22180%22 rx=%2212%22 fill=%22%2306070b%22/%3E%3Crect x=%22150%22 y=%22150%22 width=%22100%22 height=%22100%22 rx=%226%22 stroke=%22%236f9bff%22 opacity=%22.7%22/%3E%3Cpath d=%22M175 200h50M200 175v50%22 stroke=%22%236f9bff%22 opacity=%22.5%22/%3E%3Cpath d=%22M125.0 110v-46M125.0 290v46M110 125.0h-46M290 125.0h46%22/%3E%3Ccircle cx=%22125.0%22 cy=%2260%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22125.0%22 cy=%22340%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%2260%22 cy=%22125.0%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22340%22 cy=%22125.0%22 r=%223%22 fill=%22%2306070b%22/%3E%3Cpath d=%22M146.5 110v-46M146.5 290v46M110 146.5h-46M290 146.5h46%22/%3E%3Ccircle cx=%22146.5%22 cy=%2260%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22146.5%22 cy=%22340%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%2260%22 cy=%22146.5%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22340%22 cy=%22146.5%22 r=%223%22 fill=%22%2306070b%22/%3E%3Cpath d=%22M168.0 110v-46M168.0 290v46M110 168.0h-46M290 168.0h46%22/%3E%3Ccircle cx=%22168.0%22 cy=%2260%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22168.0%22 cy=%22340%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%2260%22 cy=%22168.0%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22340%22 cy=%22168.0%22 r=%223%22 fill=%22%2306070b%22/%3E%3Cpath d=%22M189.5 110v-46M189.5 290v46M110 189.5h-46M290 189.5h46%22/%3E%3Ccircle cx=%22189.5%22 cy=%2260%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22189.5%22 cy=%22340%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%2260%22 cy=%22189.5%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22340%22 cy=%22189.5%22 r=%223%22 fill=%22%2306070b%22/%3E%3Cpath d=%22M211.0 110v-46M211.0 290v46M110 211.0h-46M290 211.0h46%22/%3E%3Ccircle cx=%22211.0%22 cy=%2260%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22211.0%22 cy=%22340%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%2260%22 cy=%22211.0%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22340%22 cy=%22211.0%22 r=%223%22 fill=%22%2306070b%22/%3E%3Cpath d=%22M232.5 110v-46M232.5 290v46M110 232.5h-46M290 232.5h46%22/%3E%3Ccircle cx=%22232.5%22 cy=%2260%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22232.5%22 cy=%22340%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%2260%22 cy=%22232.5%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22340%22 cy=%22232.5%22 r=%223%22 fill=%22%2306070b%22/%3E%3Cpath d=%22M254.0 110v-46M254.0 290v46M110 254.0h-46M290 254.0h46%22/%3E%3Ccircle cx=%22254.0%22 cy=%2260%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22254.0%22 cy=%22340%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%2260%22 cy=%22254.0%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22340%22 cy=%22254.0%22 r=%223%22 fill=%22%2306070b%22/%3E%3Cpath d=%22M275.5 110v-46M275.5 290v46M110 275.5h-46M290 275.5h46%22/%3E%3Ccircle cx=%22275.5%22 cy=%2260%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22275.5%22 cy=%22340%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%2260%22 cy=%22275.5%22 r=%223%22 fill=%22%2306070b%22/%3E%3Ccircle cx=%22340%22 cy=%22275.5%22 r=%223%22 fill=%22%2306070b%22/%3E%3Cpath d=%22M125 64V30h60M303 64V20h70M64 125H20v70M340 303h40v50M232 340v36h-70%22 stroke=%22%231f2a4a%22/%3E%3C/svg%3E") center/contain no-repeat;opacity:.25;pointer-events:none;z-index:-1}
-.cta{position:relative;overflow:hidden}.cta:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 700 320%22 fill=%22none%22%3E%3Crect x=%2220%22 y=%2240%22 width=%22660%22 height=%2296%22 rx=%2210%22 fill=%22%2306070b%22 stroke=%22%232a3a66%22 stroke-width=%221.6%22/%3E%3Crect x=%2244%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%2258%22 cy=%2263%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%2244%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%2258%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%2283%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%2297%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%2283%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%2297%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22122%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22136%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22122%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22136%22 cy=%2297%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22161%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22175%22 cy=%2263%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22161%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22175%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22200%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22214%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22200%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22214%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22239%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22253%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22239%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22253%22 cy=%2297%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22278%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22292%22 cy=%2263%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22278%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22292%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22317%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22331%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22317%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22331%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22356%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22370%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22356%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22370%22 cy=%2297%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22395%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22409%22 cy=%2263%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22395%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22409%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22434%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22448%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22434%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22448%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22473%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22487%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22473%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22487%22 cy=%2297%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22512%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22526%22 cy=%2263%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22512%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22526%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22551%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22565%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22551%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22565%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22590%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22604%22 cy=%2263%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Crect x=%22590%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22604%22 cy=%2297%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22629%22 y=%2258%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22643%22 cy=%2263%22 r=%222%22 fill=%22%236f9bff%22 opacity=%22.8%22/%3E%3Crect x=%22629%22 y=%2292%22 width=%2228%22 height=%2224%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22643%22 cy=%2297%22 r=%222%22 fill=%22%233ddc84%22 opacity=%22.8%22/%3E%3Cpath d=%22M58.0 116C58.0 156 118.0 230 88.0 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M118.45 116C118.45 193 58.45 267 88.45 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M178.9 116C178.9 230 238.9 304 208.9 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M239.35 116C239.35 177 179.35 251 209.35 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M299.8 116C299.8 214 359.8 288 329.8 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M360.25 116C360.25 161 300.25 235 330.25 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M420.7 116C420.7 198 480.7 272 450.7 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M481.15000000000003 116C481.15000000000003 235 421.15000000000003 309 451.15000000000003 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M541.6 116C541.6 182 601.6 256 571.6 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3Cpath d=%22M602.0500000000001 116C602.0500000000001 219 542.0500000000001 293 572.0500000000001 320%22 stroke=%22%232a3a66%22 stroke-width=%222%22 opacity=%22.8%22/%3E%3C/svg%3E") right -20px center/auto 135% no-repeat;opacity:.32;-webkit-mask-image:linear-gradient(90deg,transparent 35%,#000);mask-image:linear-gradient(90deg,transparent 35%,#000);pointer-events:none}.cta>*{position:relative}
-@media(max-width:700px){.hero:before{background-position:right -40% bottom;background-size:auto 75%;opacity:.45;-webkit-mask-image:none;mask-image:none}#why:before{width:260px;height:260px;right:-60px;opacity:.18}.cta:before{opacity:.18;-webkit-mask-image:none;mask-image:none}}
-.adm{position:fixed;inset:0;z-index:70;background:#000;overflow:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.adm.on{opacity:1;visibility:visible}
-.adm input,.adm select{width:100%;background:#050507;border:1px solid var(--bd);color:#fff;border-radius:9px;padding:12px 14px;font:inherit;min-height:46px}.adm input:focus,.adm select:focus{outline:2px solid var(--a);outline-offset:1px}.err{color:#f87171;font-size:.9rem}
-.aw{max-width:860px;margin:auto;padding:0 20px 80px}.ah{display:flex;gap:10px;align-items:center;height:62px;margin-bottom:22px;border-bottom:1px solid var(--bd)}.ah b{font:700 1.1rem Sora}.ah .sp{flex:1}
-.adm .card{margin-bottom:18px}.adm .card>p{margin-bottom:14px;font-size:.93rem}.adm .card h3{font-size:1.1rem;margin-bottom:6px}.af{display:flex;flex-direction:column;gap:12px}.lr{display:grid;grid-template-columns:1fr 1.6fr 120px auto;gap:8px}.lr2{display:grid;grid-template-columns:1fr 1.6fr;gap:8px}
-.pt{width:100%;border-collapse:collapse}.pt td,.pt th{padding:8px 6px;text-align:left;border-bottom:1px solid var(--bd)}.pt th{color:var(--mu);font-weight:500;font-size:.85rem}.btn.d{background:#b4232c;border-color:#b4232c;color:#fff}
-@media(max-width:640px){.lr,.lr2{grid-template-columns:1fr}}
-:focus-visible{outline:2px solid var(--a);outline-offset:3px}
-@media(max-width:900px){.hero .w{grid-template-columns:1fr}.hero svg{display:none}.strip{grid-template-columns:1fr 1fr}.strip div:nth-child(2){border-right:0}.strip div:nth-child(-n+2){border-bottom:1px solid var(--bd)}.g3,.g2{grid-template-columns:1fr}footer .cols{grid-template-columns:1fr 1fr}
-.burger{display:block;margin-left:auto}.menu{display:none;position:absolute;top:66px;left:0;right:0;background:#000;border-bottom:1px solid var(--bd);flex-direction:column;gap:0;padding:8px 24px}.menu.open{display:flex}.menu .mo{display:block}.menu a{padding:12px 0}header .hd{display:none}.cta{padding:28px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.hero{position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 900 520%22 fill=%22none%22%3E%3Crect x=%2245%22 y=%2220%22 width=%22250%22 height=%22486%22 rx=%2212%22 fill=%22%2306070b%22 stroke=%22%232a3a66%22 stroke-width=%221.6%22/%3E%3Crect x=%2257%22 y=%2236%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Crect x=%2269%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M75 52h12M75 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%2299%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M105 52h12M105 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22129%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M135 52h12M135 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Crect x=%22159%22 y=%2244%22 width=%2224%22 height=%2238%22 rx=%223%22 stroke=%22%232a3a66%22 stroke-width=%221%22/%3E%3Cpath d=%22M165 52h12M165 58h12%22 stroke=%22%231d2540%22 stroke-width=%221.5%22/%3E%3Cpath d=%22M195 50h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 57h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 64h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 71h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Cpath d=%22M195 78h58%22 stroke=%22%231d2540%22 stroke-width=%221.5%22 stroke-linecap=%22round%22/%3E%3Ccircle cx=%22267%22 cy=%2250%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Ccircle cx=%22267%22 cy=%2263%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.5%22/%3E%3Crect x=%2257%22 y=%2298%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22267%22 cy=%22112%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Crect x=%2257%22 y=%22160%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22267%22 cy=%22174%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Crect x=%2257%22 y=%22222%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22267%22 cy=%22236%22 r=%223%22 fill=%22%23f5b84a%22 opacity=%22.85%22/%3E%3Crect x=%2257%22 y=%22284%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22267%22 cy=%22298%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Crect x=%2257%22 y=%22346%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22267%22 cy=%22360%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Crect x=%2257%22 y=%22408%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22267%22 cy=%22422%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Crect x=%22325%22 y=%2220%22 width=%22250%22 height=%22486%22 rx=%2212%22 fill=%22%2306070b%22 stroke=%22%232a3a66%22 stroke-width=%221.6%22/%3E%3Crect x=%22337%22 y=%2236%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22547%22 cy=%2250%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Crect x=%22337%22 y=%2298%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22547%22 cy=%22112%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Crect x=%22337%22 y=%22160%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22547%22 cy=%22174%22 r=%223%22 fill=%22%23f5b84a%22 opacity=%22.85%22/%3E%3Crect x=%22337%22 y=%22222%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22547%22 cy=%22236%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Crect x=%22337%22 y=%22284%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22547%22 cy=%22298%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Crect x=%22605%22 y=%2220%22 width=%22250%22 height=%22486%22 rx=%2212%22 fill=%22%2306070b%22 stroke=%22%232a3a66%22 stroke-width=%221.6%22/%3E%3Crect x=%22617%22 y=%2236%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22827%22 cy=%2250%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3Crect x=%22617%22 y=%2298%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22827%22 cy=%22112%22 r=%223%22 fill=%22%236f9bff%22 opacity=%22.85%22/%3E%3Crect x=%22617%22 y=%22160%22 width=%22226%22 height=%2254%22 rx=%226%22 fill=%22%23090a0f%22 stroke=%22%231f2a4a%22 stroke-width=%221.2%22/%3E%3Ccircle cx=%22827%22 cy=%22174%22 r=%223%22 fill=%22%233ddc84%22 opacity=%22.85%22/%3E%3C/svg%3E") right center/cover no-repeat;opacity:.55;pointer-events:none}
+
+/* Minimal Matching Admin Overlay Styles */
+.ainp{width:100%;background:#050507;border:1px solid var(--bd);color:#fff;border-radius:9px;padding:11px 13px;font:inherit;font-size:.92rem;transition:border-color .15s,box-shadow .15s}
+.ainp:focus{outline:none;border-color:var(--a);box-shadow:0 0 0 3px rgba(111,155,255,.18)}
+.albl{display:block;font-size:.82rem;color:var(--mu);margin-bottom:6px}
+.agrd{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;align-items:end}
+.tok{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem;background:#050507;border:1px solid var(--bd);border-radius:6px;padding:4px 9px;color:var(--a)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;border:1px solid var(--bd);border-radius:99px;padding:2px 10px}
+.pill.ok{border-color:rgba(61,220,132,.35);color:#3ddc84}.pill.warn{border-color:rgba(245,184,74,.35);color:#f5b84a}.pill.off{border-color:rgba(248,113,113,.35);color:#f87171}
+.btn.d{background:transparent;color:#f87171!important;border-color:rgba(248,113,113,.35)}.btn.d:hover{background:rgba(248,113,113,.1)}
+@media(max-width:900px){.burger{display:block;margin-left:auto}.menu{display:none;position:absolute;top:66px;left:0;right:0;background:#000;border-bottom:1px solid var(--bd);flex-direction:column;gap:0;padding:8px 24px}.menu.open{display:flex}.menu .mo{display:block}.menu a{padding:12px 0}header .hd{display:none}}
 </style>
 </head>
 <body>
-<div id="ann" class="ann" hidden></div>
-<header><div class="w"><a class="logo" href="#top">Gavio Cloud</a>
-<nav class="menu" id="menu"><a href="#products">Products</a><a href="#why">Features</a><a href="#pricing">Pricing</a><a href="#compare">Compare</a><a href="#locations">Locations</a><a href="#faq">FAQ</a><a class="mo" href="#login">Login</a></nav>
-<a class="btn g s hd" href="#login">Login</a><a class="btn s hd" href="#pricing">Order a VPS</a><button class="burger" id="bg" aria-label="Menu">Menu</button></div></header>
 
-<main id="top">
-<div class="hero"><div class="w"><div>
- <h1>Cloud VPS built for performance and price</h1>
- <p>NVMe-powered virtual servers with DDoS protection and full root access, in India, the USA and Singapore. Set up for you by our team.</p>
- <div class="row"><a class="btn" href="#products">Explore products</a><a class="btn g" href="#" data-d>Talk to us on Discord</a></div></div>
-</div></div>
-<div class="w"><div class="strip"><div><b>NVMe storage</b><span>On every plan</span></div><div><b>DDoS protection</b><span>Included, no add-on</span></div><div><b>Full root access</b><span>Your server, your rules</span></div><div><b>3 locations</b><span>India, USA, Singapore</span></div></div></div>
+<!-- Announcement Banner -->
+<div id="ann" class="ann">
+  <span id="annTxt">AMD Ryzen 9 NVMe VPS nodes now live in India, USA and Singapore.</span>
+  <a id="annLnk" href="#plans">View plans &rarr;</a>
+  <button type="button" aria-label="Dismiss" onclick="document.getElementById('ann').hidden=true">&times;</button>
+</div>
 
-<div class="w">
-<section id="products"><div class="sh"><h2>VPS products</h2><p>Two tiers with the same six sizes. Pick the network and location that fit you.</p></div>
- <div class="grid g2">
-  <div class="card prod"><h3>Premium VPS</h3><p>High-performance servers in India with a 1 Gbps network.</p><ul><li>1 Gbps network</li><li>Located in India</li><li>12 to 64 GB RAM</li><li>NVMe storage and DDoS protection</li></ul><a class="btn" href="#pricing" data-tab="p">See Premium plans</a></div>
-  <div class="card prod"><h3>Budget VPS</h3><p>Affordable servers across three regions for everyday projects.</p><ul><li>200 Mbps to 1 Gbps network</li><li>India, USA and Singapore</li><li>12 to 64 GB RAM</li><li>NVMe storage and DDoS protection</li></ul><a class="btn g" href="#pricing" data-tab="b">See Budget plans</a></div>
- </div></section>
+<!-- Top Utility Bar -->
+<div class="top">
+  <div class="w">
+    <span id="topSys"><span class="dot" style="display:inline-block;margin-right:8px;vertical-align:middle"></span>All systems operational &bull; 99.99% uptime</span>
+    <span>DDoS Protection &bull; Full Root KVM &bull; Instant Setup</span>
+  </div>
+</div>
 
-<section id="why"><div class="sh"><h2>Features</h2><p>What every Gavio Cloud VPS comes with.</p></div><div class="grid g3" id="whyg"></div></section>
+<!-- Sticky Header -->
+<header>
+  <div class="w">
+    <a href="#" class="logo">Gavio Cloud</a>
+    <nav class="menu" id="menu">
+      <a href="#features" onclick="closeNav()">Features</a>
+      <a href="#plans" onclick="closeNav()">Plans</a>
+      <a href="#locations" onclick="closeNav()">Locations</a>
+      <a href="#faq" onclick="closeNav()">FAQ</a>
+      <a href="#status" class="mo" onclick="closeNav();openLeg('status')">Status</a>
+      <a href="#admin" class="mo" onclick="closeNav();openAdminOrLogin()">Admin</a>
+    </nav>
+    <div class="row hd" style="gap:10px">
+      <a href="#status" class="btn s g" onclick="event.preventDefault();openLeg('status')">Status</a>
+      <a href="#admin" id="hdrAdminBtn" class="btn s g" onclick="event.preventDefault();openAdminOrLogin()">Admin</a>
+      <a href="#plans" class="btn s">Deploy VPS</a>
+    </div>
+    <button type="button" class="burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">&#9776;</button>
+  </div>
+</header>
 
-<section id="uses"><div class="sh"><h2>What you can run</h2><p>A VPS is a full server. Here is what people use it for.</p></div><div class="grid g3" id="useg"></div></section>
+<!-- Hero -->
+<div class="hero">
+  <div class="w">
+    <div>
+      <h1>High-Frequency NVMe VPS in India, USA &amp; Singapore.</h1>
+      <p>KVM virtual servers powered by Ryzen 9 &amp; EPYC processors, RAID-10 Gen-4 NVMe storage, and always-on DDoS mitigation from &#8377;400/mo.</p>
+      <div class="row">
+        <a href="#plans" class="btn">View VPS Plans</a>
+        <a href="#locations" class="btn g">Network &amp; Locations</a>
+      </div>
+      <div class="trust">
+        <span>Instant deployment</span>
+        <span>Full root SSH access</span>
+        <span>DDoS protection included</span>
+      </div>
+    </div>
 
-<section id="pricing"><div class="sh"><h2>Pricing</h2><p>All prices are per month in INR.</p></div>
- <div class="tabs"><button class="on" data-t="p">Premium · India</button><button data-t="b">Budget · India, USA, Singapore</button></div>
- <p class="mu" id="sub" style="margin:0 0 22px;font-size:.92rem"></p><div class="grid" id="pg"></div></section>
+    <!-- Live Console / Telemetry Box -->
+    <div class="con">
+      <div class="ch">
+        <span id="conDot" class="dot"></span>
+        <span>Infrastructure Status</span>
+        <span class="mu" id="conCount">3 nodes online</span>
+      </div>
+      <div id="conBars"></div>
+      <div style="margin-top:14px">
+        <div class="cf"><span>Storage</span><b>Gen-4 NVMe RAID-10</b></div>
+        <div class="cf"><span>Mitigation</span><b>Always-on L3/L4/L7</b></div>
+        <div class="cf"><span>Virtualization</span><b>KVM (Full Root)</b></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<section id="compare"><div class="sh"><h2>Compare all plans</h2><p>Every size at a glance, with Premium and Budget prices per month.</p></div>
- <div class="card tw"><table><thead><tr><th>Plan</th><th>RAM</th><th>CPU cores</th><th>NVMe storage</th><th>Premium</th><th>Budget</th></tr></thead><tbody id="cmp"></tbody></table></div></section>
+<!-- 4-Column Strip -->
+<div class="strip">
+  <div class="w" style="display:contents">
+    <div><b>Instant Provisioning</b><span>OS ready in under 60 seconds</span></div>
+    <div><b>NVMe RAID-10</b><span>Enterprise Gen-4 flash arrays</span></div>
+    <div><b>DDoS Protected</b><span>Automated inline traffic scrubbing</span></div>
+    <div><b>24/7 Support</b><span>Direct engineer assistance</span></div>
+  </div>
+</div>
 
-<section id="locations"><div class="sh"><h2>Locations</h2><p>Deploy close to your users.</p></div>
- <div class="card tw"><table><thead><tr><th>Location</th><th>Tiers</th><th>Network</th><th>Storage</th></tr></thead><tbody>
- <tr><td><span class="fl"><img src="https://flagcdn.com/w80/in.png" alt="" width="30" height="20">India</span></td><td>Premium, Budget</td><td>Up to 1 Gbps</td><td>NVMe</td></tr>
- <tr><td><span class="fl"><img src="https://flagcdn.com/w80/us.png" alt="" width="30" height="20">United States</span></td><td>Budget</td><td>200 Mbps to 1 Gbps</td><td>NVMe</td></tr>
- <tr><td><span class="fl"><img src="https://flagcdn.com/w80/sg.png" alt="" width="30" height="20">Singapore</span></td><td>Budget</td><td>200 Mbps to 1 Gbps</td><td>NVMe</td></tr></tbody></table></div></section>
+<!-- Features -->
+<section id="features">
+  <div class="w">
+    <div class="sh">
+      <h2>Built for speed and reliability</h2>
+      <p>Clean KVM virtualization with dedicated resources and redundant network uplinks.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div>
+        <h3>High-Clock CPUs</h3>
+        <p>Latest generation AMD Ryzen 9 and EPYC processors for low-latency single and multi-core workloads.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>DDoS Mitigation</h3>
+        <p>Inline volumetric and protocol-level filtering keeps your services online during attacks.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+        <h3>Full Root &amp; VNC</h3>
+        <p>Complete SSH access, HTML5 VNC console, instant OS reinstalls, and custom ISO support.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="how"><div class="sh"><h2>How it works</h2><p>You talk to a person, not a checkout wall.</p></div>
- <div class="grid steps">
-  <div class="card"><h3>Choose a plan</h3><p>Pick Premium or Budget and the size you need.</p></div>
-  <div class="card"><h3>Message us</h3><p>Press Order. It opens our Discord where you tell us your plan.</p></div>
-  <div class="card"><h3>We deploy it</h3><p>We create the VPS and send you the IP, root login and payment details.</p></div>
-  <div class="card"><h3>Start building</h3><p>SSH in and install what you need. Ask us if you want help.</p></div></div></section>
+<!-- VPS Plans -->
+<section id="plans">
+  <div class="w">
+    <div class="sh">
+      <h2>NVMe VPS Plans</h2>
+      <p>Choose between high-frequency Ryzen NVMe instances or cost-effective Budget KVM servers.</p>
+    </div>
+    <div class="tabs" id="planTabs"></div>
+    <div class="grid g3" id="planGrid"></div>
+  </div>
+</section>
 
-<section id="faq"><div class="sh"><h2>Frequently asked questions</h2></div><div id="fq"></div></section>
+<!-- Locations Table -->
+<section id="locations">
+  <div class="w">
+    <div class="sh">
+      <h2>Datacenter Locations</h2>
+      <p>Strategically positioned Tier-III+ facilities with low-latency peering across Asia and North America.</p>
+    </div>
+    <div class="card tw">
+      <table>
+        <thead>
+          <tr><th>Location</th><th>Hardware</th><th>Uplink</th><th>Test IP</th><th>Status</th></tr>
+        </thead>
+        <tbody id="locTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
 
-<section><div class="cta"><div><h2>Ready to get your VPS?</h2><p>Tell us the plan you want on Discord and we will set it up.</p></div><div class="row"><a class="btn" href="#" data-d>Order on Discord</a><a class="btn g" href="#pricing">View pricing</a></div></div></section>
-</div></main>
+<!-- 3-Step Setup -->
+<section>
+  <div class="w">
+    <div class="sh">
+      <h2>Up and running in minutes</h2>
+      <p>Simple automated deployment from checkout to root shell.</p>
+    </div>
+    <div class="grid g3 steps">
+      <div class="card"><h3>Select a plan</h3><p>Pick your preferred region and compute tier based on your workload.</p></div>
+      <div class="card"><h3>Choose OS</h3><p>Deploy Ubuntu, Debian, AlmaLinux, Rocky, or Windows Server automatically.</p></div>
+      <div class="card"><h3>Connect via SSH</h3><p>Receive your IPv4/IPv6 credentials immediately and start building.</p></div>
+    </div>
+  </div>
+</section>
 
-<footer><div class="w"><div class="cols"><div><b style="font:700 1.15rem Sora">Gavio Cloud</b><p style="margin-top:8px;max-width:280px">NVMe VPS hosting in India, the USA and Singapore.</p></div>
-<div><b>Products</b><a href="#products">VPS overview</a><a href="#pricing">Pricing</a><a href="#locations">Locations</a></div>
-<div><b>Company</b><a href="#why">Features</a><a href="#faq">FAQ</a><a href="#" data-d>Discord</a><div id="fl"></div></div>
-<div><b>Legal</b><a href="#terms">Terms of Service</a><a href="#privacy">Privacy Policy</a><a href="#refund">Refund Policy</a></div></div>
-<p class="copy">© 2026 Gavio Cloud. All rights reserved.</p></div></footer>
-<a id="up" href="#top" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></a>
+<!-- FAQ -->
+<section id="faq">
+  <div class="w">
+    <div class="sh">
+      <h2>Frequently asked questions</h2>
+      <p>Quick answers about our virtual servers and network.</p>
+    </div>
+    <div>
+      <div class="q"><button type="button" onclick="this.parentElement.classList.toggle('o')">How fast is VPS activation?<i>+</i></button><div>Servers are deployed automatically within 60 seconds after order confirmation.</div></div>
+      <div class="q"><button type="button" onclick="this.parentElement.classList.toggle('o')">Is DDoS protection included on all plans?<i>+</i></button><div>Yes, always-on automated DDoS protection is included free of charge across India, USA, and Singapore.</div></div>
+      <div class="q"><button type="button" onclick="this.parentElement.classList.toggle('o')">Can I upgrade my VPS later?<i>+</i></button><div>Yes, you can scale CPU, RAM, and NVMe storage anytime from your client area without losing data.</div></div>
+      <div class="q"><button type="button" onclick="this.parentElement.classList.toggle('o')">Do you provide full root access?<i>+</i></button><div>Yes, every KVM instance comes with full root/Administrator privileges and out-of-band VNC console access.</div></div>
+    </div>
+  </div>
+</section>
 
-<div class="leg" id="terms"><div class="bar"><span>Gavio Cloud</span></div><a class="btn g x s" href="#close">Close</a><div class="pin"><h2>Terms of Service</h2><p class="lu">Last updated: 15 November 2026</p>
-<h3>Agreement</h3><p>By ordering a service from Gavio Cloud you agree to these terms.</p>
-<h3>Services</h3><p>We provide virtual private servers with the resources listed on our plans. Prices and availability may change, but an active service keeps its resources for the paid period.</p>
-<h3>Billing</h3><p>Services are billed in INR on the agreed cycle. Unpaid services may be suspended and later terminated.</p>
-<h3>Acceptable use</h3><p>No illegal activity, spam, phishing, malware, attacks on other networks (including DDoS) or port scanning. Abusive resource usage is not allowed.</p>
-<h3>Suspension</h3><p>We may suspend or terminate a service that breaks these terms or puts our network at risk.</p>
-<h3>Data and backups</h3><p>You are responsible for your own backups. We do not guarantee against data loss.</p>
-<h3>Availability and liability</h3><p>We aim for 99.9% uptime but do not guarantee uninterrupted service. To the extent the law allows, our liability is limited to the amount you paid for the affected service in the last month.</p></div></div>
-<div class="leg" id="privacy"><div class="bar"><span>Gavio Cloud</span></div><a class="btn g x s" href="#close">Close</a><div class="pin"><h2>Privacy Policy</h2><p class="lu">Last updated: 15 November 2026</p>
-<h3>What we collect</h3><p>The contact details you share with us (for example your Discord username or email), your order and billing details, and technical data such as IP addresses needed to run and secure the service.</p>
-<h3>How we use it</h3><p>To provide your service, handle billing, give support and prevent abuse.</p>
-<h3>Sharing</h3><p>We do not sell your data. We share it only with providers who help us operate, or when the law requires it.</p>
-<h3>Your server</h3><p>The contents of your VPS are yours. We access them only for support you request, abuse investigation or legal reasons.</p>
-<h3>Your rights</h3><p>Ask us on Discord to access, correct or delete your data. Some billing records must be kept by law.</p></div></div>
-<div class="leg" id="refund"><div class="bar"><span>Gavio Cloud</span></div><a class="btn g x s" href="#close">Close</a><div class="pin"><h2>Refund Policy</h2><p class="lu">Last updated: 15 November 2026</p>
-<h3>Refund window</h3><p>If you are not happy, ask for a refund within 48 hours of purchase.</p>
-<h3>Not refunded</h3><p>Services terminated for breaking our terms, abuse, and requests made after the window.</p>
-<h3>Payment</h3><p>Approved refunds go back to the original payment method where possible.</p></div></div>
+<!-- CTA -->
+<section>
+  <div class="w">
+    <div class="cta">
+      <div>
+        <h2>Ready to deploy your NVMe VPS?</h2>
+        <p>Launch in India, USA, or Singapore with instant setup and DDoS protection.</p>
+      </div>
+      <div class="row">
+        <a href="#plans" class="btn">Choose a Plan</a>
+        <a href="#status" class="btn g" onclick="event.preventDefault();openLeg('status')">Live Status</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="leg lgn" id="login"><div class="bar"><span>Gavio Cloud</span></div><a class="btn g x s" href="#close">Close</a>
-<div class="lbox"><h2>Welcome back</h2><p class="mu">Sign in to open your admin panel.</p>
-<form id="lf"><div class="pwr"><input id="pw" type="password" placeholder="Password" autocomplete="current-password" required><button type="button" class="eye" id="eye">Show</button></div>
-<p class="lerr" id="lerr" role="alert"></p><button class="btn" id="lgo">Sign in</button></form></div></div>
+<!-- Footer -->
+<footer>
+  <div class="w">
+    <div class="cols">
+      <div>
+        <a href="#" class="logo" style="margin-bottom:10px;display:inline-block">Gavio Cloud</a>
+        <p>High-frequency NVMe KVM hosting in India, USA and Singapore with DDoS protection and full root access.</p>
+      </div>
+      <div>
+        <b>Products</b>
+        <a href="#plans">Premium NVMe VPS</a>
+        <a href="#plans">Budget KVM VPS</a>
+        <a href="#locations">Network &amp; Ping</a>
+      </div>
+      <div>
+        <b>Company</b>
+        <a href="#status" onclick="event.preventDefault();openLeg('status')">System Status</a>
+        <a href="#faq">FAQ</a>
+        <a href="#admin" onclick="event.preventDefault();openAdminOrLogin()">Admin Panel</a>
+      </div>
+      <div>
+        <b>Legal</b>
+        <a href="#tos" onclick="event.preventDefault();openLeg('tos')">Terms of Service</a>
+        <a href="#privacy" onclick="event.preventDefault();openLeg('privacy')">Privacy Policy</a>
+        <a href="#aup" onclick="event.preventDefault();openLeg('aup')">Acceptable Use</a>
+      </div>
+    </div>
+    <div class="copy">&copy; 2026 Gavio Cloud. All rights reserved.</div>
+  </div>
+</footer>
 
-<div class="adm" id="adm"><div class="aw"><div class="ah"><b>Gavio Cloud admin</b><span class="sp"></span><button class="btn g s" id="aview">View site</button><button class="btn g s" id="aout">Log out</button></div>
- <div class="card"><h3>General</h3><p class="mu">Changes appear on the public site within about a minute.</p><div class="af"><label class="mu">Discord invite link<input id="adc" placeholder="https://discord.gg/..."></label></div></div>
- <div class="card"><h3>Announcement</h3><p class="mu">Show a banner at the top of your website. Visitors can close it.</p><div class="af">
-  <label style="display:flex;gap:10px;align-items:center"><input type="checkbox" id="aao" style="width:auto;min-height:0"> Show announcement</label>
-  <input id="aat" maxlength="200" placeholder="Maintenance on Sunday 2am IST"><select id="aas"><option value="info">Info (white)</option><option value="warn">Warning (amber)</option><option value="ok">Good news (green)</option></select>
-  <div class="lr2"><input id="aalb" maxlength="30" placeholder="Button text (optional)"><input id="aau" placeholder="Link, e.g. https://..."></div><div class="mu" style="font-size:.85rem">Preview</div><div id="aap" class="ann"></div></div></div>
- <div class="card"><h3>Custom links</h3><p class="mu">Add links to the top menu or the footer. Use full addresses like https://example.com</p><div class="af" id="all"></div><button class="btn g s" id="aal" style="margin-top:12px">Add link</button></div>
- <div class="card"><h3>Prices (INR per month)</h3><p class="mu">Shown on the plans and the comparison table.</p><div style="overflow-x:auto"><table class="pt"><thead><tr><th>Plan</th><th>Premium</th><th>Budget</th></tr></thead><tbody id="apr"></tbody></table></div></div>
- <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><button class="btn" id="asv">Save changes</button><span id="ast" class="mu"></span></div></div></div>
+<button type="button" id="up" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&uarr;</button>
+
+<!-- ==========================================================================
+     LEGAL & PUBLIC STATUS OVERLAYS (.leg)
+     ========================================================================== -->
+<div id="leg-status" class="leg">
+  <div class="bar">Gavio Cloud &mdash; System Status</div>
+  <button type="button" class="btn s g x" onclick="closeLeg()">Close</button>
+  <div class="pin">
+    <h2>Infrastructure Status</h2>
+    <p class="lu" id="legStatusSub">Live node telemetry reported by Gavio Cloud agents.</p>
+    <div id="legStatusList" style="display:flex;flex-direction:column;gap:14px"></div>
+  </div>
+</div>
+
+<div id="leg-tos" class="leg">
+  <div class="bar">Gavio Cloud &mdash; Terms of Service</div>
+  <button type="button" class="btn s g x" onclick="closeLeg()">Close</button>
+  <div class="pin">
+    <h2>Terms of Service</h2>
+    <p class="lu">Last updated: 2026</p>
+    <h3>Service Provisioning</h3>
+    <p>Services are provisioned automatically upon payment verification and remain active for the selected billing cycle.</p>
+    <h3>Backups &amp; Data</h3>
+    <p>Customers are responsible for maintaining independent off-site backups of critical virtual machine data.</p>
+    <h3>Uptime &amp; Maintenance</h3>
+    <p>We target 99.99% network availability across all datacenter locations with advance notice for scheduled maintenance.</p>
+  </div>
+</div>
+
+<div id="leg-privacy" class="leg">
+  <div class="bar">Gavio Cloud &mdash; Privacy Policy</div>
+  <button type="button" class="btn s g x" onclick="closeLeg()">Close</button>
+  <div class="pin">
+    <h2>Privacy Policy</h2>
+    <p class="lu">Last updated: 2026</p>
+    <h3>Information We Collect</h3>
+    <p>We collect only the account, billing, and technical logs required to provision and secure your VPS instances.</p>
+    <h3>Data Protection</h3>
+    <p>Customer data is never sold or shared with third parties except as required for payment processing or legal compliance.</p>
+  </div>
+</div>
+
+<div id="leg-aup" class="leg">
+  <div class="bar">Gavio Cloud &mdash; Acceptable Use Policy</div>
+  <button type="button" class="btn s g x" onclick="closeLeg()">Close</button>
+  <div class="pin">
+    <h2>Acceptable Use Policy</h2>
+    <p class="lu">Last updated: 2026</p>
+    <h3>Prohibited Activities</h3>
+    <p>Outbound DDoS attacks, port scanning, phishing, malware distribution, and unauthorized network intrusion are strictly prohibited.</p>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     CLEAN CENTERED LOGIN MODAL (.lgn + .lbox) — 100% CLIENT-SIDE
+     ========================================================================== -->
+<div id="leg-login" class="leg lgn">
+  <div class="bar">Gavio Cloud</div>
+  <button type="button" class="btn s g x" onclick="closeLeg()">Close</button>
+  <div class="lbox" id="lbox">
+    <h2>Welcome back</h2>
+    <p class="mu">Sign in to open your admin panel.</p>
+    <form onsubmit="submitLogin(event)">
+      <div class="pwr">
+        <input id="lpw" type="password" placeholder="Admin password" autocomplete="current-password" required>
+        <button type="button" class="eye" id="leye" onclick="togglePw()">Show</button>
+      </div>
+      <div class="lerr" id="lerr"></div>
+      <button type="submit" class="btn" id="lbtn">Sign in</button>
+    </form>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--mu)">
+      <span>Default password: <b style="color:#fff" id="pwHint">admin123</b></span>
+      <button type="button" class="btn s g" style="padding:5px 10px;font-size:.8rem" onclick="quickFillLogin()">Fill &amp; Sign in</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     CLEAN MATCHING ADMIN PANEL OVERLAY (.leg) — 100% CLIENT-SIDE
+     ========================================================================== -->
+<div id="leg-admin" class="leg">
+  <div class="bar">Gavio Cloud &mdash; Admin Panel</div>
+  <div class="x row" style="gap:8px">
+    <button type="button" class="btn s g" onclick="openLeg('status')">View Status</button>
+    <button type="button" class="btn s d" onclick="logoutAdmin()">Sign out</button>
+    <button type="button" class="btn s g" onclick="closeLeg()">Close</button>
+  </div>
+
+  <div style="max-width:960px;margin:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:22px">
+      <div>
+        <h2 style="font-size:1.7rem">Admin Control Panel</h2>
+        <p class="mu" style="font-size:.92rem">Manage infrastructure nodes, token agents, VPS plans, and site announcements.</p>
+      </div>
+      <div class="tabs" style="margin:0">
+        <button type="button" class="on" data-atab="nodes" onclick="switchAdmTab('nodes')">Infrastructure &amp; Agents</button>
+        <button type="button" data-atab="plans" onclick="switchAdmTab('plans')">Services &amp; Plans</button>
+        <button type="button" data-atab="site" onclick="switchAdmTab('site')">Banner &amp; Password</button>
+      </div>
+    </div>
+
+    <div id="admMsg" style="color:#3ddc84;font-size:.9rem;min-height:1.4em;margin-bottom:10px"></div>
+
+    <!-- TAB 1: INFRASTRUCTURE NODES & LIVE STATUS WITH TOKEN AGENT -->
+    <div id="atab-nodes">
+      <div class="card" style="margin-bottom:20px">
+        <h3 style="margin-bottom:4px">Add Infrastructure Node</h3>
+        <p style="font-size:.88rem;margin-bottom:16px">Creates a new node and generates a unique agent token for live status reporting.</p>
+        <form onsubmit="addNode(event)" class="agrd">
+          <div>
+            <label class="albl">Node Name</label>
+            <input class="ainp" id="nName" placeholder="in-bom-02" required>
+          </div>
+          <div>
+            <label class="albl">Location</label>
+            <input class="ainp" id="nLoc" placeholder="Mumbai, India" required>
+          </div>
+          <div>
+            <label class="albl">Hardware</label>
+            <input class="ainp" id="nHw" placeholder="Ryzen 9 7950X • NVMe" required>
+          </div>
+          <div>
+            <label class="albl">Test IP</label>
+            <input class="ainp" id="nIp" placeholder="103.189.44.50" required>
+          </div>
+          <div>
+            <label class="albl">Status</label>
+            <select class="ainp" id="nStat">
+              <option value="operational">Operational</option>
+              <option value="degraded">Degraded</option>
+              <option value="offline">Offline</option>
+            </select>
+          </div>
+          <div>
+            <button type="submit" class="btn" style="width:100%">+ Add Node</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="admNodesList" style="display:flex;flex-direction:column;gap:14px"></div>
+    </div>
+
+    <!-- TAB 2: SERVICES & VPS PLANS -->
+    <div id="atab-plans" style="display:none">
+      <div class="card" style="margin-bottom:20px">
+        <h3 style="margin-bottom:4px">Add VPS Service / Plan</h3>
+        <p style="font-size:.88rem;margin-bottom:16px">New plans appear immediately on the landing page.</p>
+        <form onsubmit="addPlan(event)" class="agrd">
+          <div>
+            <label class="albl">Plan Name</label>
+            <input class="ainp" id="pName" placeholder="NVMe-8G" required>
+          </div>
+          <div>
+            <label class="albl">Category Tab</label>
+            <input class="ainp" id="pCat" list="catSuggestions" placeholder="Premium NVMe" required>
+            <datalist id="catSuggestions">
+              <option value="Premium NVMe">
+              <option value="Budget KVM">
+            </datalist>
+          </div>
+          <div>
+            <label class="albl">Price (&#8377;/mo)</label>
+            <input class="ainp" id="pPrice" type="number" min="50" placeholder="999" required>
+          </div>
+          <div>
+            <label class="albl">vCPU</label>
+            <input class="ainp" id="pCpu" placeholder="4 vCPU Ryzen 9" required>
+          </div>
+          <div>
+            <label class="albl">RAM</label>
+            <input class="ainp" id="pRam" placeholder="8 GB DDR5" required>
+          </div>
+          <div>
+            <label class="albl">NVMe Storage</label>
+            <input class="ainp" id="pDisk" placeholder="120 GB NVMe" required>
+          </div>
+          <div>
+            <label class="albl">Bandwidth</label>
+            <input class="ainp" id="pBw" placeholder="4 TB @ 10 Gbps" required>
+          </div>
+          <div style="display:flex;align-items:center;height:44px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:.9rem;cursor:pointer">
+              <input type="checkbox" id="pPop" style="accent-color:#6f9bff;width:16px;height:16px"> Popular tag
+            </label>
+          </div>
+          <div>
+            <button type="submit" class="btn" style="width:100%">+ Add Plan</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card tw">
+        <table>
+          <thead>
+            <tr><th>Plan</th><th>Category</th><th>Price</th><th>Specs</th><th>Action</th></tr>
+          </thead>
+          <tbody id="admPlansBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 3: BANNER & PASSWORD -->
+    <div id="atab-site" style="display:none">
+      <div class="grid g2">
+        <div class="card">
+          <h3 style="margin-bottom:14px">Announcement Banner</h3>
+          <form onsubmit="saveBanner(event)" style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <label class="albl">Banner Message</label>
+              <input class="ainp" id="bTxt" required>
+            </div>
+            <div>
+              <label class="albl">Link Text</label>
+              <input class="ainp" id="bLnk" required>
+            </div>
+            <div>
+              <label class="albl">Style</label>
+              <select class="ainp" id="bSty">
+                <option value="">Default (White)</option>
+                <option value="ok">Green (Operational)</option>
+                <option value="warn">Amber (Notice)</option>
+              </select>
+            </div>
+            <label style="display:flex;align-items:center;gap:8px;font-size:.9rem;cursor:pointer">
+              <input type="checkbox" id="bVis" style="accent-color:#6f9bff;width:16px;height:16px"> Show announcement banner
+            </label>
+            <button type="submit" class="btn">Save Banner</button>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:14px">Admin Password &amp; Reset</h3>
+          <form onsubmit="saveAdminPw(event)" style="display:flex;flex-direction:column;gap:12px">
+            <div>
+              <label class="albl">New Admin Password</label>
+              <input class="ainp" id="newAdmPw" type="text" required>
+            </div>
+            <button type="submit" class="btn">Update Password</button>
+          </form>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--bd)">
+            <button type="button" class="btn s g" onclick="resetDefaults()">Reset Default Plans &amp; Nodes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-// ===== EDIT THESE =====
-let DISCORD = "https://discord.gg/u6jWENUZtV";
-let ORDER_URL = DISCORD;
-// ======================
-const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
-const specs=[["Starter",12,2,120],["Standard",16,4,160],["Advanced",24,4,250],["Performance",32,4,320],["Enterprise",48,6,480],["Ultimate",64,8,640]];
-const price={p:[600,800,1000,1200,1400,1600],b:[400,550,720,800,1000,1200]};
-const sub={p:"Premium: 1 Gbps network in India.",b:"Budget: 200 Mbps to 1 Gbps network in India, USA and Singapore."};
-$$("[data-d]").forEach(a=>{a.href=DISCORD;a.target="_blank";a.rel="noreferrer"});
-let cur="p";function plans(t){cur=t;const g=$("#pg");g.classList.remove("fade");void g.offsetWidth;g.classList.add("fade");$$(".tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));$("#sub").textContent=sub[t];
-$("#pg").innerHTML=specs.map((s,i)=>`<div class="card plan${i==1?" pop":""}">${i==1?'<span class="tag">Popular</span>':""}<h3>${s[0]}</h3><div class="price">₹${price[t][i]}<small> / month</small></div><ul><li><b>${s[1]} GB</b> RAM</li><li><b>${s[2]}</b> CPU cores</li><li><b>${s[3]} GB</b> NVMe storage</li><li>DDoS protection</li><li>Full root access</li></ul><a class="btn" href="${ORDER_URL}" target="_blank" rel="noreferrer">Order ${s[0]}</a></div>`).join("")}
-$$(".tabs button").forEach(b=>b.onclick=()=>plans(b.dataset.t));$$("[data-tab]").forEach(a=>a.addEventListener("click",()=>plans(a.dataset.tab)));plans("p");
-const I=p=>`<div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg></div>`;
-$("#whyg").innerHTML=[
-[I('<rect x="4" y="7" width="16" height="10" rx="2"/><path d="M8 11h2M8 14h8"/>'),"NVMe storage","Every plan uses NVMe drives, so installs, builds and databases stay quick."],
-[I('<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/>'),"DDoS protection","Attack traffic is filtered before it reaches your server, on every plan."],
-[I('<path d="m5 8 4 4-4 4M12 16h7"/>'),"Full root access","You control the whole machine. Install and configure anything."],
-[I('<rect x="3" y="8" width="18" height="8" rx="1"/><path d="M7 16v3M12 16v3M17 16v3"/>'),"Up to 64 GB RAM","Plans start at 12 GB and scale to 64 GB for heavy workloads."],
-[I('<rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>'),"Up to 8 CPU cores","From 2 cores on Starter up to 8 cores on Ultimate."],
-[I('<ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>'),"Up to 640 GB storage","Plenty of NVMe space, from 120 GB to 640 GB."],
-[I('<path d="M2 9a15 15 0 0 1 20 0M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0"/><circle cx="12" cy="20" r="1"/>'),"Up to 1 Gbps network","Premium servers get a 1 Gbps network. Budget runs 200 Mbps to 1 Gbps."],
-[I('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'),"Three regions","Deploy in India, the USA or Singapore, close to your audience."],
-[I('<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'),"Your choice of OS","Ubuntu, Debian, AlmaLinux or Rocky Linux, and we can reinstall it on request."],
-[I('<path d="M20 12 12 20 3 11V3h8z"/><circle cx="7.5" cy="7.5" r="1"/>'),"Simple pricing","Plans from ₹400 to ₹1,600 per month, listed in INR."],
-[I('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>'),"Support on Discord","Ask the team directly. The people replying run the servers."],
-[I('<path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-3 3-2-2z"/>'),"Set up by our team","We create your VPS and send the login, so you do not start from scratch."]
-].map(x=>`<div class="card">${x[0]}<h3>${x[1]}</h3><p>${x[2]}</p></div>`).join("");
-$("#useg").innerHTML=[["Websites and apps","Host sites, web apps and APIs with full control over the stack."],["Discord bots","Keep your bots online around the clock without your own PC running."],["Game servers","Run Minecraft and other game servers with enough RAM and a fast disk."],["Databases","Run PostgreSQL, MySQL, Redis or MongoDB on fast NVMe storage."],["Development and testing","Spin up a clean Linux box for builds, staging or experiments."],["Self-hosted tools","Run your own dashboards, automation, file sync or monitoring."]].map(x=>`<div class="card"><h3>${x[0]}</h3><p>${x[1]}</p></div>`).join("");
-function cmp(){$("#cmp").innerHTML=specs.map((x,i)=>`<tr><td>${x[0]}</td><td>${x[1]} GB</td><td>${x[2]}</td><td>${x[3]} GB</td><td>₹${price.p[i]}</td><td>₹${price.b[i]}</td></tr>`).join("")}cmp();
-$("#fq").innerHTML=[["Where are the servers located?","Premium plans run in India. Budget plans are available in India, the USA and Singapore."],["How do I order?","Press Order on a plan. It opens our Discord, where you tell us which plan you want and we set it up."],["Which operating systems are available?","Ubuntu, Debian, AlmaLinux and Rocky Linux."],["Is DDoS protection included?","Yes, on every plan."],["Do I get root access?","Yes. The server is yours to configure."],["How do I pay?","We send you the payment details once your order is confirmed."],["What is the difference between Premium and Budget?","Premium has a 1 Gbps network in India. Budget costs less and is available in more locations with a 200 Mbps to 1 Gbps network."]].map((x,i)=>`<div class="q${i?"":" o"}"><button>${x[0]}<i>+</i></button><div>${x[1]}</div></div>`).join("");
-$$(".q button").forEach(b=>b.onclick=()=>b.parentElement.classList.toggle("o"));
-$("#bg").onclick=()=>$("#menu").classList.toggle("open");$$("#menu a").forEach(a=>a.onclick=()=>$("#menu").classList.remove("open"));
-const links=$$("#menu a");const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});$$("section[id]").forEach(x=>io.observe(x));
-addEventListener("scroll",()=>$("#up").classList.toggle("show",scrollY>700),{passive:true});
-function apply(c){if(!c)return;
- if(c.discord&&/^https:\/\//.test(c.discord)){DISCORD=c.discord;ORDER_URL=c.discord;$$("[data-d]").forEach(a=>a.href=DISCORD)}
- const an=typeof c.announcement==="string"?{on:!!c.announcement,text:c.announcement,style:"info"}:c.announcement;
- if(an&&an.on&&an.text){let gone=false;try{gone=localStorage.getItem("gc_ann")===an.text}catch(e){}
-  if(!gone){const a=$("#ann");a.className="ann "+(an.style||"info");a.textContent="";const t=document.createElement("span");t.textContent=an.text;a.appendChild(t);
-   if(an.linkUrl&&an.linkLabel){const l=document.createElement("a");l.textContent=an.linkLabel;l.href=an.linkUrl;if(/^https?:/.test(an.linkUrl)){l.target="_blank";l.rel="noreferrer"}a.appendChild(l)}
-   const x=document.createElement("button");x.textContent="\u00d7";x.setAttribute("aria-label","Close");x.onclick=()=>{a.hidden=true;try{localStorage.setItem("gc_ann",an.text)}catch(e){}};a.appendChild(x);a.hidden=false}}
- if(c.prices)["p","b"].forEach(k=>{if(Array.isArray(c.prices[k])&&c.prices[k].length===6)price[k]=c.prices[k].map(Number)});
- (c.links||[]).forEach(l=>{const a=document.createElement("a");a.textContent=l.label;a.href=l.url;if(/^https?:/.test(l.url)){a.target="_blank";a.rel="noreferrer"}(l.where==="footer"?$("#fl"):$("#menu")).appendChild(a)});
- plans(cur);cmp()}
-fetch("/api/config").then(r=>r.ok?r.json():null).then(apply).catch(()=>{});
-let saved=0,isOpen=false;
-const PATHS={"/admin":"#login","/terms":"#terms","/privacy":"#privacy","/refund":"#refund","/login":"#login"};
-if(PATHS[location.pathname])history.replaceState(null,"","/"+PATHS[location.pathname]);
-function leg(){const el=[...$$(".leg")].find(e=>"#"+e.id===location.hash);
- if(el&&!isOpen){saved=scrollY;isOpen=true}
- $$(".leg").forEach(e=>e.classList.toggle("on",e===el));document.body.style.overflow=el?"hidden":"";
- if(el){el.scrollTop=0;if(el.id==="login"){setTimeout(()=>$("#pw").focus(),250);fetch("/api/login",{credentials:"same-origin"}).then(r=>r.json()).then(d=>{if(d.auth){location.hash="close";openA()}}).catch(()=>{})}}
- else if(isOpen){isOpen=false;history.replaceState(null,"",location.pathname+location.search);scrollTo({top:saved,behavior:"instant"})}}
-addEventListener("hashchange",leg);leg();
-addEventListener("keydown",e=>{if(e.key==="Escape"&&isOpen)location.hash="close"});
-$("#eye").onclick=()=>{const p=$("#pw"),h=p.type==="password";p.type=h?"text":"password";$("#eye").textContent=h?"Hide":"Show"};
-$("#lf").onsubmit=async e=>{e.preventDefault();const b=$("#lgo"),er=$("#lerr"),box=$(".lbox");er.textContent="";b.disabled=true;b.textContent="Signing in...";
- try{const r=await fetch("/api/login",{method:"POST",credentials:"same-origin",headers:{"content-type":"application/json"},body:JSON.stringify({password:$("#pw").value})});const d=await r.json().catch(()=>({}));
-  if(r.ok){b.textContent="Opening admin panel...";$("#login").style.opacity=0;setTimeout(()=>{location.hash="close";$("#login").style.opacity="";openA()},320);return}
-  er.textContent=r.status===404?"Login service not found. Upload the api folder to GitHub and redeploy.":(d.error||"Login failed")}catch(x){er.textContent="Could not reach the server. Try again."}
- b.disabled=false;b.textContent="Sign in";box.classList.remove("shake");void box.offsetWidth;box.classList.add("shake");$("#pw").select()};
+const STORAGE_KEY = 'gavio_cloud_clean_v1';
+const AUTH_KEY = 'gavio_cloud_authed';
 
-$$('a[href="#terms"],a[href="#privacy"],a[href="#refund"],a[href="#login"]').forEach(a=>a.addEventListener("click",e=>{e.preventDefault();$("#menu").classList.remove("open");history.pushState(null,"",a.getAttribute("href"));leg()}));
-const PN=["Starter","Standard","Advanced","Performance","Enterprise","Ultimate"],DP={p:[600,800,1000,1200,1400,1600],b:[400,550,720,800,1000,1200]};let lk=[];
-async function ax(u,b){try{const r=await fetch(u,{method:b?"POST":"GET",credentials:"same-origin",headers:{"content-type":"application/json"},body:b?JSON.stringify(b):undefined});return{ok:r.ok,s:r.status,d:await r.json().catch(()=>({}))}}catch(e){return{ok:false,s:0,d:{}}}}
-function drawL(){const w=$("#all");w.innerHTML="";lk.forEach((l,i)=>{const r=document.createElement("div");r.className="lr";r.innerHTML='<input placeholder="Label"><input placeholder="https://..."><select><option value="nav">Top menu</option><option value="footer">Footer</option></select><button class="btn d s">Remove</button>';
- const[a,b,c,d]=r.children;a.value=l.label;b.value=l.url;c.value=l.where;a.oninput=()=>l.label=a.value;b.oninput=()=>l.url=b.value;c.onchange=()=>l.where=c.value;d.onclick=()=>{lk.splice(i,1);drawL()};w.appendChild(r)})}
-function prev(){const p=$("#aap");p.className="ann "+$("#aas").value;p.textContent=$("#aat").value||"Your announcement text";const l=$("#aalb").value.trim();if(l){const x=document.createElement("a");x.textContent=l;x.href="#";x.onclick=e=>e.preventDefault();p.appendChild(x)}}
-async function openA(){const c=(await ax("/api/config")).d||{};$("#adc").value=c.discord||"";const an=typeof c.announcement==="string"?{on:!!c.announcement,text:c.announcement}:(c.announcement||{});
- $("#aao").checked=!!an.on;$("#aat").value=an.text||"";$("#aas").value=an.style||"info";$("#aalb").value=an.linkLabel||"";$("#aau").value=an.linkUrl||"";prev();lk=(c.links||[]).map(x=>({...x}));drawL();
- const p=Object.assign({},DP,c.prices||{});$("#apr").innerHTML=PN.map((n,i)=>`<tr><td>${n}</td><td><input type="number" min="1" data-k="p" data-i="${i}" value="${p.p[i]}"></td><td><input type="number" min="1" data-k="b" data-i="${i}" value="${p.b[i]}"></td></tr>`).join("");
- $("#adm").classList.add("on");document.body.style.overflow="hidden"}
-function closeA(){$("#adm").classList.remove("on");document.body.style.overflow=""}
-$("#aview").onclick=closeA;$("#aout").onclick=async()=>{await ax("/api/login",{logout:true});closeA()};
-$("#aal").onclick=()=>{lk.push({label:"",url:"",where:"nav"});drawL()};["#aao","#aat","#aas","#aalb","#aau"].forEach(i=>{$(i).oninput=prev;$(i).onchange=prev});
-$("#asv").onclick=async()=>{const pr={p:[],b:[]};$$("#apr input").forEach(x=>pr[x.dataset.k][+x.dataset.i]=x.value);$("#ast").textContent="Saving...";$("#ast").className="mu";
- const r=await ax("/api/config",{discord:$("#adc").value.trim(),announcement:{on:$("#aao").checked,text:$("#aat").value.trim(),style:$("#aas").value,linkLabel:$("#aalb").value.trim(),linkUrl:$("#aau").value.trim()},links:lk.filter(l=>l.label.trim()&&l.url.trim()),prices:pr});
- $("#ast").textContent=r.ok?"Saved.":(r.d.error||"Could not save");$("#ast").className=r.ok?"mu":"err"};
+const DEFAULT_DATA = {
+  password: 'admin123',
+  banner: {
+    visible: true,
+    style: '',
+    text: 'AMD Ryzen 9 NVMe VPS nodes now live in India, USA and Singapore.',
+    linkText: 'View plans →'
+  },
+  activeTab: 'Premium NVMe',
+  nodes: [
+    {
+      id: 'in-bom-01',
+      name: 'in-bom-01',
+      location: 'Mumbai, India',
+      hardware: 'Ryzen 9 7950X • Gen-4 NVMe',
+      uplink: '10 Gbps',
+      ip: '103.189.44.10',
+      status: 'operational',
+      cpu: 32,
+      ram: 48,
+      ping: 9,
+      token: 'gv_live_9a81f4c2e7b03d15',
+      lastHeartbeat: 'Just now'
+    },
+    {
+      id: 'sg-sin-01',
+      name: 'sg-sin-01',
+      location: 'Singapore',
+      hardware: 'Ryzen 9 7950X • Gen-4 NVMe',
+      uplink: '10 Gbps',
+      ip: '45.142.98.21',
+      status: 'operational',
+      cpu: 27,
+      ram: 41,
+      ping: 34,
+      token: 'gv_live_4c70e2b9a1f83d62',
+      lastHeartbeat: '4s ago'
+    },
+    {
+      id: 'us-nyc-01',
+      name: 'us-nyc-01',
+      location: 'New York, USA',
+      hardware: 'AMD EPYC • Gen-4 NVMe',
+      uplink: '10 Gbps',
+      ip: '198.54.112.9',
+      status: 'operational',
+      cpu: 44,
+      ram: 61,
+      ping: 84,
+      token: 'gv_live_7f13d5a8c0e49b21',
+      lastHeartbeat: '6s ago'
+    }
+  ],
+  plans: [
+    { id: 'p1', name: 'NVMe-4G', category: 'Premium NVMe', price: 699, cpu: '2 vCPU Ryzen 9', ram: '4 GB DDR5', disk: '60 GB NVMe', bw: '3 TB @ 10 Gbps', popular: false },
+    { id: 'p2', name: 'NVMe-8G', category: 'Premium NVMe', price: 1299, cpu: '4 vCPU Ryzen 9', ram: '8 GB DDR5', disk: '120 GB NVMe', bw: '5 TB @ 10 Gbps', popular: true },
+    { id: 'p3', name: 'NVMe-16G', category: 'Premium NVMe', price: 2499, cpu: '6 vCPU Ryzen 9', ram: '16 GB DDR5', disk: '240 GB NVMe', bw: '8 TB @ 10 Gbps', popular: false },
+    { id: 'p4', name: 'KVM-2G', category: 'Budget KVM', price: 400, cpu: '1 vCPU EPYC', ram: '2 GB DDR4', disk: '35 GB NVMe', bw: '2 TB @ 1 Gbps', popular: false },
+    { id: 'p5', name: 'KVM-4G', category: 'Budget KVM', price: 750, cpu: '2 vCPU EPYC', ram: '4 GB DDR4', disk: '70 GB NVMe', bw: '4 TB @ 1 Gbps', popular: true },
+    { id: 'p6', name: 'KVM-8G', category: 'Budget KVM', price: 1399, cpu: '4 vCPU EPYC', ram: '8 GB DDR4', disk: '140 GB NVMe', bw: '6 TB @ 1 Gbps', popular: false }
+  ]
+};
+
+let db = loadDB();
+
+function loadDB() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? { ...structuredClone(DEFAULT_DATA), ...JSON.parse(raw) } : structuredClone(DEFAULT_DATA);
+  } catch (e) {
+    return structuredClone(DEFAULT_DATA);
+  }
+}
+
+function saveDB() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(db)); } catch (e) {}
+  renderAll();
+}
+
+function isAuthed() {
+  return sessionStorage.getItem(AUTH_KEY) === '1' || localStorage.getItem(AUTH_KEY) === '1';
+}
+
+/* Overlays */
+function openLeg(id) {
+  closeLeg();
+  const el = document.getElementById('leg-' + id);
+  if (el) {
+    el.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  if (id === 'admin') renderAdmin();
+  if (id === 'status') renderStatusOverlay();
+}
+
+function closeLeg() {
+  document.querySelectorAll('.leg.on').forEach(el => el.classList.remove('on'));
+  document.body.style.overflow = '';
+}
+
+function closeNav() {
+  document.getElementById('menu').classList.remove('open');
+}
+
+function openAdminOrLogin() {
+  if (isAuthed()) {
+    openLeg('admin');
+  } else {
+    document.getElementById('lerr').textContent = '';
+    document.getElementById('pwHint').textContent = db.password;
+    openLeg('login');
+    setTimeout(() => document.getElementById('lpw').focus(), 80);
+  }
+}
+
+/* Client-Side Login (Zero External /api Folder Required) */
+function togglePw() {
+  const inp = document.getElementById('lpw');
+  const btn = document.getElementById('leye');
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    btn.textContent = 'Hide';
+  } else {
+    inp.type = 'password';
+    btn.textContent = 'Show';
+  }
+}
+
+function quickFillLogin() {
+  document.getElementById('lpw').value = db.password;
+  submitLogin(new Event('submit'));
+}
+
+function submitLogin(e) {
+  e.preventDefault();
+  const pw = document.getElementById('lpw').value;
+  const err = document.getElementById('lerr');
+  const box = document.getElementById('lbox');
+  const btn = document.getElementById('lbtn');
+
+  err.textContent = '';
+  btn.disabled = true;
+  btn.textContent = 'Signing in...';
+
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.textContent = 'Sign in';
+    if (pw === db.password) {
+      sessionStorage.setItem(AUTH_KEY, '1');
+      localStorage.setItem(AUTH_KEY, '1');
+      document.getElementById('lpw').value = '';
+      openLeg('admin');
+      renderAll();
+    } else {
+      err.textContent = 'Incorrect password.';
+      box.classList.remove('shake');
+      void box.offsetWidth;
+      box.classList.add('shake');
+    }
+  }, 220);
+}
+
+function logoutAdmin() {
+  sessionStorage.removeItem(AUTH_KEY);
+  localStorage.removeItem(AUTH_KEY);
+  closeLeg();
+  renderAll();
+}
+
+/* Render Public Storefront & Status */
+function renderAll() {
+  // Banner
+  const ann = document.getElementById('ann');
+  ann.hidden = !db.banner.visible;
+  ann.className = 'ann ' + (db.banner.style || '');
+  document.getElementById('annTxt').textContent = db.banner.text;
+  document.getElementById('annLnk').textContent = db.banner.linkText;
+
+  // Header Admin button label
+  document.getElementById('hdrAdminBtn').textContent = isAuthed() ? 'Admin Panel' : 'Admin';
+
+  // Node status telemetry
+  const online = db.nodes.filter(n => n.status === 'operational').length;
+  const total = db.nodes.length;
+  const dotColor = online === total && total > 0 ? '#3ddc84' : online === 0 ? '#f87171' : '#f5b84a';
+
+  document.getElementById('topSys').innerHTML = `<span class="dot" style="display:inline-block;margin-right:8px;vertical-align:middle;background:${dotColor}"></span>${online === total && total > 0 ? 'All systems operational' : `${online}/${total} nodes operational`} &bull; 99.99% uptime`;
+  document.getElementById('conDot').style.background = dotColor;
+  document.getElementById('conCount').textContent = `${online}/${total} online`;
+
+  document.getElementById('conBars').innerHTML = db.nodes.slice(0, 4).map(n => `
+    <div class="cr">
+      <span>${esc(n.name.split('-')[0].toUpperCase())}</span>
+      <i><u style="width:${n.status === 'offline' ? 0 : n.cpu}%;background:${n.status === 'offline' ? '#f87171' : n.status === 'degraded' ? '#f5b84a' : 'var(--a)'}"></u></i>
+      <em>${n.status === 'offline' ? 'OFF' : n.cpu + '%'}</em>
+    </div>
+  `).join('');
+
+  // Plans Tabs & Grid
+  const cats = [...new Set(db.plans.map(p => p.category))];
+  if (!cats.includes(db.activeTab) && cats.length) db.activeTab = cats[0];
+
+  document.getElementById('planTabs').innerHTML = cats.map(c => `
+    <button type="button" class="${c === db.activeTab ? 'on' : ''}" onclick="db.activeTab='${escAttr(c)}';renderAll()">${esc(c)}</button>
+  `).join('');
+
+  document.getElementById('planGrid').innerHTML = db.plans.filter(p => p.category === db.activeTab).map(p => `
+    <div class="card plan ${p.popular ? 'pop' : ''}">
+      ${p.popular ? '<span class="tag">Popular</span>' : ''}
+      <h3>${esc(p.name)}</h3>
+      <p>${esc(p.category)}</p>
+      <div class="price">&#8377;${Number(p.price).toLocaleString('en-IN')}<small> / mo</small></div>
+      <ul>
+        <li><b>${esc(p.cpu)}</b></li>
+        <li><b>${esc(p.ram)}</b> Memory</li>
+        <li><b>${esc(p.disk)}</b> Storage</li>
+        <li><b>${esc(p.bw)}</b> Bandwidth</li>
+        <li>DDoS Protection Included</li>
+      </ul>
+      <a href="#locations" class="btn">Deploy ${esc(p.name)}</a>
+    </div>
+  `).join('');
+
+  // Locations Table
+  document.getElementById('locTableBody').innerHTML = db.nodes.map(n => `
+    <tr>
+      <td><div class="fl"><span>${esc(n.location)}</span> <span class="mu" style="font-size:.82rem">(${esc(n.name)})</span></div></td>
+      <td>${esc(n.hardware)}</td>
+      <td>${esc(n.uplink || '10 Gbps')}</td>
+      <td>${esc(n.ip)}</td>
+      <td><span class="pill ${n.status === 'operational' ? 'ok' : n.status === 'degraded' ? 'warn' : 'off'}">${esc(n.status)}</span></td>
+    </tr>
+  `).join('');
+
+  renderStatusOverlay();
+  if (isAuthed()) renderAdmin();
+}
+
+function renderStatusOverlay() {
+  const online = db.nodes.filter(n => n.status === 'operational').length;
+  document.getElementById('legStatusSub').textContent = `${online} of ${db.nodes.length} nodes operational • Updated live via node token agents.`;
+  document.getElementById('legStatusList').innerHTML = db.nodes.map(n => `
+    <div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <h3>${esc(n.name)} <span class="mu" style="font-weight:400;font-size:.9rem">&mdash; ${esc(n.location)}</span></h3>
+        <p style="font-size:.88rem">${esc(n.hardware)} &bull; IP: ${esc(n.ip)} &bull; CPU ${n.cpu}% &bull; RAM ${n.ram}% &bull; ${n.ping}ms</p>
+      </div>
+      <span class="pill ${n.status === 'operational' ? 'ok' : n.status === 'degraded' ? 'warn' : 'off'}">${esc(n.status.toUpperCase())}</span>
+    </div>
+  `).join('');
+}
+
+/* Admin Panel Functions */
+function switchAdmTab(tab) {
+  document.querySelectorAll('[data-atab]').forEach(b => b.classList.toggle('on', b.dataset.atab === tab));
+  ['nodes', 'plans', 'site'].forEach(t => {
+    document.getElementById('atab-' + t).style.display = t === tab ? 'block' : 'none';
+  });
+}
+
+function notifyAdm(txt) {
+  const el = document.getElementById('admMsg');
+  el.textContent = txt;
+  clearTimeout(window._admT);
+  window._admT = setTimeout(() => { el.textContent = ''; }, 3200);
+}
+
+function renderAdmin() {
+  document.getElementById('admNodesList').innerHTML = db.nodes.map(n => {
+    const agentCmd = `curl -sSL https://get.gavio.cloud/agent.sh | bash -s -- --node=${n.name} --token=${n.token}`;
+    return `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+          <div>
+            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+              <h3>${esc(n.name)}</h3>
+              <span class="pill ${n.status === 'operational' ? 'ok' : n.status === 'degraded' ? 'warn' : 'off'}">${esc(n.status)}</span>
+              <span class="tok">${esc(n.token)}</span>
+            </div>
+            <p style="font-size:.88rem;margin-top:4px">${esc(n.location)} &bull; ${esc(n.hardware)} &bull; IP: ${esc(n.ip)} &bull; CPU: ${n.cpu}% &bull; Last ping: ${esc(n.lastHeartbeat)}</p>
+          </div>
+          <div class="row" style="gap:8px">
+            <select class="ainp" style="width:auto;padding:7px 10px;font-size:.84rem" onchange="setNodeStatus('${escAttr(n.id)}', this.value)">
+              <option value="operational" ${n.status === 'operational' ? 'selected' : ''}>Operational</option>
+              <option value="degraded" ${n.status === 'degraded' ? 'selected' : ''}>Degraded</option>
+              <option value="offline" ${n.status === 'offline' ? 'selected' : ''}>Offline</option>
+            </select>
+            <button type="button" class="btn s g" onclick="heartbeatNode('${escAttr(n.id)}')">Ping Agent</button>
+            <button type="button" class="btn s d" onclick="deleteNode('${escAttr(n.id)}')">Remove</button>
+          </div>
+        </div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <code style="font-size:.78rem;color:var(--mu);word-break:break-all">${esc(agentCmd)}</code>
+          <button type="button" class="btn s g" onclick="copyText('${escAttr(agentCmd)}')">Copy Agent Command</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('admPlansBody').innerHTML = db.plans.map(p => `
+    <tr>
+      <td><b>${esc(p.name)}</b> ${p.popular ? '<span class="tag" style="float:none;margin-left:6px">Popular</span>' : ''}</td>
+      <td>${esc(p.category)}</td>
+      <td>&#8377;${Number(p.price).toLocaleString('en-IN')}/mo</td>
+      <td>${esc(p.cpu)} &bull; ${esc(p.ram)} &bull; ${esc(p.disk)}</td>
+      <td><button type="button" class="btn s d" onclick="deletePlan('${escAttr(p.id)}')">Delete</button></td>
+    </tr>
+  `).join('');
+
+  document.getElementById('bTxt').value = db.banner.text;
+  document.getElementById('bLnk').value = db.banner.linkText;
+  document.getElementById('bSty').value = db.banner.style || '';
+  document.getElementById('bVis').checked = db.banner.visible;
+  document.getElementById('newAdmPw').value = db.password;
+}
+
+function genToken() {
+  const chars = 'abcdef0123456789';
+  let out = 'gv_live_';
+  for (let i = 0; i < 16; i++) out += chars[Math.floor(Math.random() * chars.length)];
+  return out;
+}
+
+function addNode(e) {
+  e.preventDefault();
+  const name = document.getElementById('nName').value.trim();
+  const location = document.getElementById('nLoc').value.trim();
+  const hardware = document.getElementById('nHw').value.trim();
+  const ip = document.getElementById('nIp').value.trim();
+  const status = document.getElementById('nStat').value;
+  const token = genToken();
+
+  db.nodes.push({
+    id: 'node-' + Date.now(),
+    name, location, hardware, uplink: '10 Gbps', ip, status,
+    cpu: status === 'offline' ? 0 : Math.floor(20 + Math.random() * 25),
+    ram: status === 'offline' ? 0 : Math.floor(32 + Math.random() * 24),
+    ping: Math.floor(10 + Math.random() * 45),
+    token,
+    lastHeartbeat: 'Just now'
+  });
+  e.target.reset();
+  saveDB();
+  notifyAdm(`Added node ${name} (${token})`);
+}
+
+function setNodeStatus(id, status) {
+  const n = db.nodes.find(x => x.id === id);
+  if (!n) return;
+  n.status = status;
+  n.lastHeartbeat = 'Just now';
+  if (status === 'offline') { n.cpu = 0; n.ram = 0; }
+  else if (n.cpu === 0) { n.cpu = 28; n.ram = 42; }
+  saveDB();
+  notifyAdm(`Updated ${n.name} status to ${status}`);
+}
+
+function heartbeatNode(id) {
+  const n = db.nodes.find(x => x.id === id);
+  if (!n) return;
+  if (n.status === 'offline') n.status = 'operational';
+  n.cpu = Math.min(90, Math.max(12, n.cpu + Math.floor(Math.random() * 12 - 6)));
+  n.ram = Math.min(90, Math.max(20, n.ram + Math.floor(Math.random() * 8 - 4)));
+  n.lastHeartbeat = 'Just now';
+  saveDB();
+  notifyAdm(`Agent heartbeat verified for ${n.name}`);
+}
+
+function deleteNode(id) {
+  db.nodes = db.nodes.filter(n => n.id !== id);
+  saveDB();
+  notifyAdm('Node removed');
+}
+
+function addPlan(e) {
+  e.preventDefault();
+  const name = document.getElementById('pName').value.trim();
+  const category = document.getElementById('pCat').value.trim();
+  const price = Number(document.getElementById('pPrice').value);
+  const cpu = document.getElementById('pCpu').value.trim();
+  const ram = document.getElementById('pRam').value.trim();
+  const disk = document.getElementById('pDisk').value.trim();
+  const bw = document.getElementById('pBw').value.trim();
+  const popular = document.getElementById('pPop').checked;
+
+  db.plans.push({ id: 'p-' + Date.now(), name, category, price, cpu, ram, disk, bw, popular });
+  db.activeTab = category;
+  e.target.reset();
+  saveDB();
+  notifyAdm(`Added plan ${name}`);
+}
+
+function deletePlan(id) {
+  db.plans = db.plans.filter(p => p.id !== id);
+  saveDB();
+  notifyAdm('Plan removed');
+}
+
+function saveBanner(e) {
+  e.preventDefault();
+  db.banner.text = document.getElementById('bTxt').value.trim();
+  db.banner.linkText = document.getElementById('bLnk').value.trim();
+  db.banner.style = document.getElementById('bSty').value;
+  db.banner.visible = document.getElementById('bVis').checked;
+  saveDB();
+  notifyAdm('Banner updated');
+}
+
+function saveAdminPw(e) {
+  e.preventDefault();
+  db.password = document.getElementById('newAdmPw').value;
+  saveDB();
+  notifyAdm('Admin password updated');
+}
+
+function resetDefaults() {
+  db = structuredClone(DEFAULT_DATA);
+  saveDB();
+  notifyAdm('Default plans and nodes restored');
+}
+
+function copyText(txt) {
+  const ta = document.createElement('textarea');
+  ta.value = txt;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); notifyAdm('Copied to clipboard'); } catch (e) {}
+  document.body.removeChild(ta);
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+}
+
+function escAttr(s) {
+  return String(s).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+window.addEventListener('scroll', () => {
+  document.getElementById('up').classList.toggle('show', window.scrollY > 450);
+}, { passive: true });
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLeg();
+});
+
+renderAll();
 </script>
 </body>
 </html>
