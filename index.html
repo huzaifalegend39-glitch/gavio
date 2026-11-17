@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Gavio Cloud | NVMe VPS in India, USA & Singapore</title>
-  <meta name="description" content="High-frequency NVMe VPS with DDoS protection and full root access. Plans from ₹400/mo in India, USA, and Singapore." />
-  <meta name="theme-color" content="#080a0f" />
-  
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <title>Gavio Cloud — NVMe VPS in India, USA & Singapore</title>
+  <meta name="description" content="NVMe VPS with DDoS protection and full root access. Plans from ₹400/mo in India, the USA and Singapore, set up by our engineers." />
+  <meta name="theme-color" content="#09090b" />
+
+  <!-- Fonts: Plus Jakarta Sans, Inter & IBM Plex Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -20,25 +20,16 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+            mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
           },
           colors: {
-            obsidian: '#080a0f',
-            surface: '#0d111a',
-            panel: '#121724',
-            indigoGlow: '#6366f1',
-            cyanGlow: '#06b6d4',
-          },
-          animation: {
-            'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'float': 'float 6s ease-in-out infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-8px)' },
-            }
+            base: '#09090b',
+            surface: '#0e1015',
+            elevated: '#14171f',
+            cobalt: '#2f6bff',
+            cobaltHover: '#2558d9',
           }
         }
       }
@@ -46,151 +37,161 @@
   </script>
 
   <style>
-    /* Custom Glassmorphism & Meowlix-Inspired Aesthetic Polish */
     :root {
-      --bg-obsidian: #080a0f;
-      --border-glass: rgba(255, 255, 255, 0.08);
-      --border-glass-hover: rgba(99, 102, 241, 0.45);
+      --bg-base: #09090b;
+      --bg-surface: #0e1015;
+      --border-hairline: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: 72px;
     }
 
     body {
-      background-color: var(--bg-obsidian);
-      color: #f1f5f9;
+      background-color: var(--bg-base);
+      color: #f4f4f5;
       font-family: 'Inter', system-ui, sans-serif;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Subtle Tech Grid Background */
-    .bg-tech-grid {
-      background-size: 44px 44px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    h1, h2, h3, .font-display {
+      font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
     }
 
-    /* Glassmorphic Card */
-    .glass-card {
-      background: linear-gradient(180deg, rgba(19, 24, 38, 0.72) 0%, rgba(12, 16, 26, 0.85) 100%);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border-glass);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Crisp Architectural Grid */
+    .arch-grid {
+      background-size: 48px 48px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
     }
 
-    .glass-card:hover {
-      border-color: var(--border-glass-hover);
-      box-shadow: 0 12px 40px -12px rgba(99, 102, 241, 0.22), 0 0 0 1px rgba(99, 102, 241, 0.15);
-      transform: translateY(-2px);
+    /* Precision Panel & Card Surfaces */
+    .panel-card {
+      background: #0e1015;
+      border: 1px solid var(--border-hairline);
+      transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
     }
 
-    .glass-static {
-      background: linear-gradient(180deg, rgba(19, 24, 38, 0.82) 0%, rgba(12, 16, 26, 0.92) 100%);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-glass);
+    .panel-card:hover {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: #11141b;
     }
 
-    /* Primary Gradient Button */
-    .btn-primary {
-      background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #3b82f6 100%);
-      box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      transition: all 0.2s ease;
+    .panel-static {
+      background: #0e1015;
+      border: 1px solid var(--border-hairline);
     }
 
-    .btn-primary:hover {
-      filter: brightness(1.1);
-      box-shadow: 0 8px 28px -2px rgba(99, 102, 241, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-      transform: translateY(-1px);
+    /* Primary & Secondary Action Controls */
+    .btn-cobalt {
+      background: #2f6bff;
+      color: #ffffff;
+      border: 1px solid #447bff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
     }
 
-    .btn-primary:active {
-      transform: translateY(0px);
+    .btn-cobalt:hover {
+      background: #2558d9;
+      border-color: #3b6ef0;
     }
 
-    /* Secondary Glass Button */
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.04);
+    .btn-cobalt:active {
+      transform: translateY(1px);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.03);
+      color: #e4e4e7;
+      border: 1px solid var(--border-hairline);
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+    }
+
+    /* Clean Inputs */
+    .field-input {
+      background: #09090b;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.2s ease;
+      color: #f4f4f5;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
+    .field-input:focus {
+      outline: none;
+      border-color: #2f6bff;
+      box-shadow: 0 0 0 3px rgba(47, 107, 255, 0.16);
     }
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #080a0f;
+      background: #09090b;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1e2638;
+      background: #222630;
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #33415c;
+      background: #323846;
     }
 
-    /* Modal Fade & Scale */
-    .modal-backdrop {
-      transition: opacity 0.22s ease;
+    /* Smooth Modal & View Transitions */
+    @keyframes modalEnter {
+      from { opacity: 0; transform: translateY(6px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
-    .modal-content {
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+    .animate-modal {
+      animation: modalEnter 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
   </style>
 </head>
-<body class="bg-obsidian text-slate-100 selection:bg-indigo-500/30 selection:text-indigo-200">
+<body class="bg-base text-zinc-100 selection:bg-cobalt/30 selection:text-white">
 
-  <!-- Ambient Top & Radial Glows -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-indigo-600/15 blur-[130px] rounded-full"></div>
-    <div class="absolute top-[35%] -right-40 w-[500px] h-[500px] bg-cyan-500/10 blur-[140px] rounded-full"></div>
-    <div class="absolute bottom-0 -left-40 w-[600px] h-[400px] bg-violet-600/10 blur-[140px] rounded-full"></div>
-  </div>
-
-  <!-- Dynamic Announcement Banner (Controlled by Admin) -->
-  <div id="announcement-bar" class="hidden relative z-40 bg-gradient-to-r from-indigo-950/90 via-indigo-900/90 to-slate-900/90 border-b border-indigo-500/30 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-center text-xs sm:text-sm text-indigo-100 pr-10">
-      <span class="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 mr-2.5 shrink-0">
-        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span> Notice
+  <!-- Announcement Banner (Managed by Admin Console) -->
+  <div id="announcement-bar" class="hidden relative z-40 bg-[#101522] border-b border-cobalt/30">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-center text-xs sm:text-[13px] text-zinc-200 pr-10">
+      <span class="font-mono text-[11px] uppercase tracking-wider px-2 py-0.5 rounded bg-cobalt/15 border border-cobalt/35 text-blue-300 mr-2.5 shrink-0">
+        Update
       </span>
-      <span id="announcement-text" class="truncate sm:whitespace-normal font-medium"></span>
-      <a id="announcement-link" href="#" target="_blank" rel="noreferrer" class="hidden ml-2.5 text-cyan-300 hover:text-cyan-200 underline underline-offset-4 font-semibold shrink-0">Learn more →</a>
-      <button id="announcement-close" aria-label="Dismiss announcement" class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-indigo-300/70 hover:text-white rounded-lg hover:bg-white/10 transition">
+      <span id="announcement-text" class="truncate sm:whitespace-normal"></span>
+      <a id="announcement-link" href="#" target="_blank" rel="noreferrer" class="hidden ml-2.5 text-blue-400 hover:text-blue-300 underline underline-offset-4 font-medium shrink-0">Details →</a>
+      <button id="announcement-close" aria-label="Dismiss announcement" class="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-zinc-400 hover:text-white rounded-md hover:bg-white/5 transition">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
     </div>
   </div>
 
-  <!-- Sticky Navigation Bar -->
-  <header class="sticky top-0 z-30 bg-obsidian/80 backdrop-blur-xl border-b border-white/[0.07]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-      <!-- Brand Logo -->
-      <a href="#top" class="flex items-center gap-3 group shrink-0">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 p-[1px] shadow-lg shadow-indigo-500/25 group-hover:shadow-indigo-500/40 transition">
-          <div class="w-full h-full bg-obsidian rounded-[11px] flex items-center justify-center">
-            <svg class="w-5 h-5 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="6" rx="2" />
-              <rect x="2" y="15" width="20" height="6" rx="2" />
-              <line x1="6" y1="6" x2="6.01" y2="6" />
-              <line x1="6" y1="18" x2="6.01" y2="18" />
-            </svg>
-          </div>
+  <!-- Top Navigation -->
+  <header class="sticky top-0 z-30 bg-base/85 backdrop-blur-md border-b border-white/[0.08]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-2.5 shrink-0 group">
+        <div class="w-8 h-8 rounded-lg bg-cobalt flex items-center justify-center shadow-sm">
+          <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+            <path d="M5 7h14M5 12h14M5 17h14" />
+          </svg>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="font-bold text-lg tracking-tight text-white">Gavio<span class="text-indigo-400">Cloud</span></span>
-          <span class="hidden sm:inline-block font-mono text-[10px] px-1.5 py-0.5 rounded bg-white/[0.06] border border-white/10 text-slate-400">NVMe</span>
-        </div>
+        <span class="font-display font-bold text-[17px] tracking-tight text-white">Gavio Cloud</span>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-400">
+      <!-- Primary Navigation -->
+      <nav class="hidden md:flex items-center gap-7 text-[13.5px] font-medium text-zinc-400">
         <a href="#products" class="hover:text-white transition">Products</a>
         <a href="#plans" class="hover:text-white transition">Pricing</a>
         <a href="#features" class="hover:text-white transition">Features</a>
@@ -198,247 +199,147 @@
         <a href="#faq" class="hover:text-white transition">FAQ</a>
       </nav>
 
-      <!-- Right Action Area (Auth State Aware) -->
-      <div class="flex items-center gap-2.5">
-        <button id="nav-auth-btn" class="btn-secondary px-3.5 py-2 rounded-lg text-sm font-medium text-slate-200 flex items-center gap-2">
-          <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      <!-- Account & Action Controls -->
+      <div class="flex items-center gap-2">
+        <button id="nav-auth-btn" class="btn-ghost px-3.5 py-2 rounded-lg text-[13px] font-medium flex items-center gap-2">
+          <span id="nav-status-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
           <span id="nav-auth-label">Client Area</span>
         </button>
-        <a href="#plans" class="hidden sm:inline-flex btn-primary px-4 py-2 rounded-lg text-sm font-semibold text-white">
-          Deploy VPS
+        <a href="#plans" class="hidden sm:inline-flex btn-cobalt px-4 py-2 rounded-lg text-[13px] font-medium">
+          View Plans
         </a>
-        <!-- Mobile Menu Button -->
-        <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded-lg bg-white/[0.05] border border-white/10 text-slate-300 hover:text-white">
+        <button id="mobile-menu-btn" aria-label="Open menu" class="md:hidden p-2 rounded-lg btn-ghost text-zinc-300">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Mobile Navigation Drawer -->
-    <div id="mobile-nav" class="hidden md:hidden border-t border-white/[0.07] bg-obsidian/95 backdrop-blur-xl px-4 py-4 space-y-2">
-      <a href="#products" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/[0.05] hover:text-white">Products</a>
-      <a href="#plans" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/[0.05] hover:text-white">Pricing</a>
-      <a href="#features" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/[0.05] hover:text-white">Features</a>
-      <a href="#locations" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/[0.05] hover:text-white">Locations</a>
-      <a href="#faq" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:bg-white/[0.05] hover:text-white">FAQ</a>
-      <div class="pt-2 border-t border-white/[0.07] flex gap-2">
-        <button id="mobile-portal-btn" class="w-full btn-primary py-2.5 rounded-lg text-sm font-semibold text-white text-center">Open Client / Admin Portal</button>
+    <!-- Mobile Menu -->
+    <div id="mobile-nav" class="hidden md:hidden border-t border-white/[0.08] bg-base px-4 py-3 space-y-1">
+      <a href="#products" class="mobile-link block px-3 py-2 rounded-md text-sm text-zinc-300 hover:bg-white/[0.04] hover:text-white">Products</a>
+      <a href="#plans" class="mobile-link block px-3 py-2 rounded-md text-sm text-zinc-300 hover:bg-white/[0.04] hover:text-white">Pricing</a>
+      <a href="#features" class="mobile-link block px-3 py-2 rounded-md text-sm text-zinc-300 hover:bg-white/[0.04] hover:text-white">Features</a>
+      <a href="#locations" class="mobile-link block px-3 py-2 rounded-md text-sm text-zinc-300 hover:bg-white/[0.04] hover:text-white">Locations</a>
+      <a href="#faq" class="mobile-link block px-3 py-2 rounded-md text-sm text-zinc-300 hover:bg-white/[0.04] hover:text-white">FAQ</a>
+      <div class="pt-2 border-t border-white/[0.08]">
+        <button id="mobile-portal-btn" class="w-full btn-cobalt py-2.5 rounded-lg text-sm font-medium text-center">Client & Admin Portal</button>
       </div>
     </div>
   </header>
 
-  <main id="top" class="relative z-10">
+  <main id="top">
     <!-- Hero Section -->
-    <section class="relative bg-tech-grid border-b border-white/[0.06] overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28">
+    <section class="relative arch-grid border-b border-white/[0.08]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28">
         <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-          <!-- Left Hero Copy -->
+          <!-- Left Column -->
           <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-xs font-mono text-indigo-300">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>NVMe VPS HOSTING · INDIA, USA & SINGAPORE</span>
+            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.09] font-mono text-[11px] tracking-wider text-zinc-300">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>NVMe VPS HOSTING · IN / US / SG</span>
             </div>
 
-            <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold tracking-tight text-white leading-[1.08]">
-              Cloud servers with <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-300 to-indigo-400">full root access</span>, set up by our team
+            <h1 class="text-4xl sm:text-5xl lg:text-[3.35rem] font-extrabold tracking-tight text-white leading-[1.08]">
+              Cloud servers with full root access, set up by our team
             </h1>
 
-            <p class="text-base sm:text-lg text-slate-400 max-w-xl leading-relaxed">
-              Enterprise NVMe storage and always-on DDoS protection on every plan across India, the USA, and Singapore. Transparent monthly pricing starting at <span class="text-slate-200 font-semibold">₹400/mo</span>.
+            <p class="text-base sm:text-[17px] text-zinc-400 max-w-xl leading-relaxed">
+              NVMe storage and DDoS protection included on every plan, hosted in India, the USA, and Singapore. Straightforward monthly pricing starting at <span class="text-zinc-200 font-medium">₹400/mo</span>.
             </p>
 
-            <div class="flex flex-wrap items-center gap-3.5 pt-2">
-              <a href="#plans" class="btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold text-white inline-flex items-center gap-2">
-                <span>View Pricing Plans</span>
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a href="#plans" class="btn-cobalt px-5 py-3 rounded-lg text-sm font-medium inline-flex items-center gap-2">
+                <span>View pricing</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
               </a>
-              <button onclick="openPortal('tickets')" class="btn-secondary px-6 py-3.5 rounded-xl text-sm font-semibold text-slate-200 inline-flex items-center gap-2">
-                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
-                <span>Open Support Ticket</span>
+              <button onclick="openPortal('new')" class="btn-ghost px-5 py-3 rounded-lg text-sm font-medium inline-flex items-center gap-2">
+                <span>Open deployment ticket</span>
               </button>
-              <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="px-4 py-3.5 rounded-xl text-sm font-medium text-slate-400 hover:text-white inline-flex items-center gap-2 transition">
+              <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="px-3.5 py-3 rounded-lg text-sm font-medium text-zinc-400 hover:text-white inline-flex items-center gap-1.5 transition">
                 <span>Discord</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
             </div>
           </div>
 
-          <!-- Right Featured Server Card (Meowlix-inspired telemetry card) -->
+          <!-- Right Column: Dynamic Featured Plan Spec Card -->
           <div class="lg:col-span-5">
-            <div class="glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden animate-float">
-              <div class="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
-              
-              <div class="flex items-center justify-between mb-4">
-                <span class="font-mono text-xs uppercase tracking-wider px-2.5 py-1 rounded-md bg-indigo-500/15 border border-indigo-500/30 text-indigo-300">
-                  PREMIUM · INDIA
-                </span>
-                <span class="flex items-center gap-1.5 text-xs font-mono text-emerald-400">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span> IN STOCK
-                </span>
-              </div>
-
-              <div class="flex items-baseline justify-between mb-6">
-                <div>
-                  <h3 class="text-2xl font-bold text-white">Standard</h3>
-                  <p class="text-xs text-slate-400 mt-0.5">Most popular for game & app workloads</p>
-                </div>
-                <div class="text-right">
-                  <div class="text-3xl font-extrabold text-white tracking-tight">₹800</div>
-                  <div class="text-xs text-slate-400 font-mono">/ month</div>
-                </div>
-              </div>
-
-              <div class="space-y-2.5 mb-6">
-                <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm">
-                  <span class="text-slate-400 flex items-center gap-2">
-                    <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    Memory
-                  </span>
-                  <span class="font-mono font-semibold text-white">16 GB DDR4/DDR5</span>
-                </div>
-                <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm">
-                  <span class="text-slate-400 flex items-center gap-2">
-                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    Compute
-                  </span>
-                  <span class="font-mono font-semibold text-white">4 vCPU Cores</span>
-                </div>
-                <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm">
-                  <span class="text-slate-400 flex items-center gap-2">
-                    <svg class="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
-                    Storage
-                  </span>
-                  <span class="font-mono font-semibold text-white">160 GB NVMe SSD</span>
-                </div>
-                <div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm">
-                  <span class="text-slate-400 flex items-center gap-2">
-                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/></svg>
-                    Uplink
-                  </span>
-                  <span class="font-mono font-semibold text-emerald-300">1 Gbps Port</span>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2 gap-2.5">
-                <button onclick="orderPlan('Standard (Premium - India, ₹800/mo)')" class="btn-primary py-3 rounded-xl text-sm font-semibold text-white text-center">
-                  Order via Ticket
-                </button>
-                <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="btn-secondary py-3 rounded-xl text-sm font-semibold text-slate-200 text-center">
-                  Order on Discord
-                </a>
-              </div>
+            <div id="hero-featured-card" class="panel-static rounded-xl p-6 sm:p-7 shadow-2xl">
+              <!-- Populated dynamically from plans state -->
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Key Metrics Bar -->
-    <div class="border-b border-white/[0.06] bg-surface/60 backdrop-blur-md">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-white/[0.06]">
+    <!-- Key Infrastructure Metrics -->
+    <div class="border-b border-white/[0.08] bg-surface">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-white/[0.08]">
           <div class="py-6 sm:px-6 first:pl-0">
-            <div class="text-2xl sm:text-3xl font-bold text-white font-mono">3</div>
-            <div class="text-xs sm:text-sm text-slate-400 mt-1">Global Datacenter Regions</div>
+            <div class="font-mono text-2xl font-semibold text-white">3</div>
+            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Datacenter locations</div>
           </div>
           <div class="py-6 px-4 sm:px-6">
-            <div class="text-2xl sm:text-3xl font-bold text-cyan-400 font-mono">1 Gbps</div>
-            <div class="text-xs sm:text-sm text-slate-400 mt-1">High-Speed Network Uplink</div>
+            <div class="font-mono text-2xl font-semibold text-white">1 Gbps</div>
+            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Peak port speed</div>
           </div>
           <div class="py-6 sm:px-6 lg:pl-6 pl-0">
-            <div class="text-2xl sm:text-3xl font-bold text-indigo-400 font-mono">64 GB</div>
-            <div class="text-xs sm:text-sm text-slate-400 mt-1">Max Memory Configuration</div>
+            <div id="stat-max-ram" class="font-mono text-2xl font-semibold text-white">64 GB</div>
+            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Largest memory tier</div>
           </div>
           <div class="py-6 px-4 sm:px-6">
-            <div class="text-2xl sm:text-3xl font-bold text-emerald-400 font-mono">₹400</div>
-            <div class="text-xs sm:text-sm text-slate-400 mt-1">Starting Price Per Month</div>
+            <div id="stat-min-price" class="font-mono text-2xl font-semibold text-white">₹400</div>
+            <div class="text-xs sm:text-sm text-zinc-400 mt-1">Starting monthly price</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- VPS Product Tiers Overview -->
+    <!-- VPS Product Tiers -->
     <section id="products" class="py-20 sm:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-2xl mb-12">
-          <div class="font-mono text-xs uppercase tracking-widest text-indigo-400 mb-2">INFRASTRUCTURE TIERS</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">VPS products built for reliability</h2>
-          <p class="text-slate-400 mt-3 text-base">Two distinct tiers across the same six resource sizes. Pick the network speed and region that match your workload.</p>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-xl mb-12">
+          <div class="font-mono text-xs uppercase tracking-wider text-blue-400 mb-2">Products</div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">VPS product tiers</h2>
+          <p class="text-zinc-400 mt-2.5 text-sm sm:text-base">Two tiers built on NVMe storage. Pick the network throughput and region that suit your project.</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
-          <!-- Premium VPS Card -->
-          <div class="glass-card rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 blur-3xl rounded-full pointer-events-none"></div>
+          <div class="panel-card rounded-xl p-7 flex flex-col justify-between">
             <div>
-              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-mono text-xs mb-4">
-                LOW LATENCY INDIA
-              </div>
-              <h3 class="text-2xl font-bold text-white">Premium VPS</h3>
-              <p class="text-slate-400 text-sm mt-2">High-performance virtual servers hosted in India with dedicated 1 Gbps connectivity for latency-critical applications.</p>
-              
-              <ul class="mt-6 space-y-3 text-sm text-slate-300">
-                <li class="flex items-center gap-3">
-                  <span class="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">✓</span>
-                  <span>Unmetered 1 Gbps network port</span>
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">✓</span>
-                  <span>Hosted directly in India</span>
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">✓</span>
-                  <span>12 GB to 64 GB RAM configurations</span>
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-5 h-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0">✓</span>
-                  <span>Pure NVMe storage & DDoS protection</span>
-                </li>
+              <div class="font-mono text-[11px] uppercase tracking-wider text-blue-400 mb-3">Low-Latency India</div>
+              <h3 class="text-xl font-bold text-white">Premium VPS</h3>
+              <p class="text-zinc-400 text-sm mt-2 leading-relaxed">High-performance servers located in India on a 1 Gbps network for latency-sensitive workloads.</p>
+              <ul class="mt-6 space-y-2.5 text-sm text-zinc-300 border-t border-white/[0.08] pt-5">
+                <li class="flex items-center gap-2.5"><span class="text-blue-400 font-mono">✓</span> 1 Gbps network port</li>
+                <li class="flex items-center gap-2.5"><span class="text-blue-400 font-mono">✓</span> Hosted in India</li>
+                <li class="flex items-center gap-2.5"><span class="text-blue-400 font-mono">✓</span> 12 GB to 64 GB RAM</li>
+                <li class="flex items-center gap-2.5"><span class="text-blue-400 font-mono">✓</span> NVMe storage and DDoS protection</li>
               </ul>
             </div>
-
-            <div class="mt-8 pt-6 border-t border-white/[0.07]">
-              <a href="#plans" data-tab="p" class="btn-primary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white">
-                <span>Explore Premium Plans</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <div class="mt-7 pt-5 border-t border-white/[0.08]">
+              <a href="#plans" data-select-tier="Premium · India" class="btn-cobalt inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium">
+                <span>See Premium plans</span>
               </a>
             </div>
           </div>
 
-          <!-- Budget VPS Card -->
-          <div class="glass-card rounded-2xl p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 blur-3xl rounded-full pointer-events-none"></div>
+          <div class="panel-card rounded-xl p-7 flex flex-col justify-between">
             <div>
-              <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono text-xs mb-4">
-                MULTI-REGION VALUE
-              </div>
-              <h3 class="text-2xl font-bold text-white">Budget VPS</h3>
-              <p class="text-slate-400 text-sm mt-2">Cost-effective cloud servers across three global regions for bots, web hosting, dev environments, and everyday workloads.</p>
-              
-              <ul class="mt-6 space-y-3 text-sm text-slate-300">
-                <li class="flex items-center gap-3">
-                  <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">✓</span>
-                  <span>200 Mbps to 1 Gbps network speeds</span>
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">✓</span>
-                  <span>Available in India, USA, and Singapore</span>
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">✓</span>
-                  <span>12 GB to 64 GB RAM configurations</span>
-                </li>
-                <li class="flex items-center gap-3">
-                  <span class="w-5 h-5 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">✓</span>
-                  <span>Pure NVMe storage & DDoS protection</span>
-                </li>
+              <div class="font-mono text-[11px] uppercase tracking-wider text-zinc-400 mb-3">Multi-Region Value</div>
+              <h3 class="text-xl font-bold text-white">Budget VPS</h3>
+              <p class="text-zinc-400 text-sm mt-2 leading-relaxed">Lower-cost servers across three regions for everyday projects, bots, web apps, and staging environments.</p>
+              <ul class="mt-6 space-y-2.5 text-sm text-zinc-300 border-t border-white/[0.08] pt-5">
+                <li class="flex items-center gap-2.5"><span class="text-blue-400 font-mono">✓</span> 200 Mbps to 1 Gbps network</li>
+                <li class="flex items-center gap-2.5"><span class="text-blue-400 font-mono">✓</span> India, USA, and Singapore</li>
+                <li class="flex items-center gap-2.5"><span class="text-blue-400 font-mono">✓</span> 12 GB to 64 GB RAM</li>
+                <li class="flex items-center gap-2.5"><span class="text-blue-400 font-mono">✓</span> NVMe storage and DDoS protection</li>
               </ul>
             </div>
-
-            <div class="mt-8 pt-6 border-t border-white/[0.07]">
-              <a href="#plans" data-tab="b" class="btn-secondary inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white">
-                <span>Explore Budget Plans</span>
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <div class="mt-7 pt-5 border-t border-white/[0.08]">
+              <a href="#plans" data-select-tier="Budget · IN / US / SG" class="btn-ghost inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium">
+                <span>See Budget plans</span>
               </a>
             </div>
           </div>
@@ -446,103 +347,88 @@
       </div>
     </section>
 
-    <!-- Interactive Pricing Section -->
-    <section id="plans" class="py-20 sm:py-24 bg-surface/50 border-y border-white/[0.06]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+    <!-- Dynamic Storefront Pricing Section -->
+    <section id="plans" class="py-20 sm:py-24 bg-surface border-y border-white/[0.08]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
-            <div class="font-mono text-xs uppercase tracking-widest text-indigo-400 mb-2">TRANSPARENT BILLING</div>
-            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Choose your server size</h2>
-            <p class="text-slate-400 mt-2 text-sm sm:text-base">Simple monthly pricing in INR. Every instance includes NVMe storage, DDoS mitigation, and full root access.</p>
+            <div class="font-mono text-xs uppercase tracking-wider text-blue-400 mb-2">Pricing</div>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Simple monthly plans</h2>
+            <p class="text-zinc-400 mt-2 text-sm sm:text-base">Monthly prices in INR. Every plan includes NVMe storage, DDoS protection, and full root access.</p>
           </div>
 
-          <!-- Interactive Tier Switcher -->
-          <div class="inline-flex p-1.5 rounded-xl bg-obsidian border border-white/10 self-start">
-            <button data-t="p" class="tier-btn px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition">
-              Premium · India
-            </button>
-            <button data-t="b" class="tier-btn px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition">
-              Budget · IN / US / SG
-            </button>
+          <!-- Dynamic Category Tabs -->
+          <div id="pricing-tabs" class="inline-flex flex-wrap gap-1.5 p-1 rounded-lg bg-base border border-white/[0.08] self-start">
+            <!-- Rendered dynamically from active plan categories -->
           </div>
         </div>
 
-        <!-- Tier Context Banner -->
-        <div class="mb-8 px-4 py-3 rounded-xl bg-indigo-500/[0.07] border border-indigo-500/20 flex flex-wrap items-center justify-between gap-3">
-          <p id="tier-note" class="text-sm text-indigo-200 font-medium"></p>
-          <span class="text-xs font-mono text-slate-400">All prices in INR (₹) · Zero hidden setup fees</span>
-        </div>
+        <p id="tier-description" class="text-xs sm:text-sm font-mono text-zinc-400 mb-7"></p>
 
-        <!-- Pricing Cards Grid -->
-        <div id="plans-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <!-- Dynamic Plans Grid -->
+        <div id="plans-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
       </div>
     </section>
 
-    <!-- Core Features Section -->
+    <!-- Included Features -->
     <section id="features" class="py-20 sm:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-2xl mb-12">
-          <div class="font-mono text-xs uppercase tracking-widest text-cyan-400 mb-2">PLATFORM STANDARD</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">What every plan includes</h2>
-          <p class="text-slate-400 mt-3 text-base">No feature gating—every VPS gets the same core hardware capabilities and engineering support.</p>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-xl mb-12">
+          <div class="font-mono text-xs uppercase tracking-wider text-blue-400 mb-2">Included</div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">What every plan includes</h2>
+          <p class="text-zinc-400 mt-2.5 text-sm sm:text-base">The fundamentals remain consistent regardless of which plan size you deploy.</p>
         </div>
 
-        <div id="features-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <div id="features-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
       </div>
     </section>
 
     <!-- Datacenter Locations -->
-    <section id="locations" class="py-20 sm:py-24 bg-surface/50 border-y border-white/[0.06]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-2xl mb-12">
-          <div class="font-mono text-xs uppercase tracking-widest text-indigo-400 mb-2">GLOBAL FOOTPRINT</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Locations</h2>
-          <p class="text-slate-400 mt-3 text-base">Deploy closer to your users for minimal round-trip latency.</p>
+    <section id="locations" class="py-20 sm:py-24 bg-surface border-y border-white/[0.08]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-xl mb-12">
+          <div class="font-mono text-xs uppercase tracking-wider text-blue-400 mb-2">Network</div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Locations</h2>
+          <p class="text-zinc-400 mt-2.5 text-sm sm:text-base">Deploy close to the people using your server.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="glass-card rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="font-mono text-xs text-indigo-400 tracking-wider">ASIA · IN</span>
-              <span class="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Online
-              </span>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="panel-card rounded-xl p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] text-blue-400 tracking-wider">ASIA</span>
+              <span class="font-mono text-[11px] text-emerald-400">● Operational</span>
             </div>
-            <h3 class="text-xl font-bold text-white">India</h3>
-            <p class="text-sm text-slate-400 mt-1">Available on both Premium and Budget VPS plans.</p>
-            <div class="mt-5 pt-4 border-t border-white/[0.07] flex items-center justify-between text-xs font-mono text-slate-300">
-              <span>Network Speed</span>
-              <span class="text-indigo-300">Up to 1 Gbps</span>
+            <h3 class="text-lg font-bold text-white">India</h3>
+            <p class="text-sm text-zinc-400 mt-1">Premium and Budget plans.</p>
+            <div class="mt-5 pt-3.5 border-t border-white/[0.08] font-mono text-xs text-zinc-300 flex justify-between">
+              <span class="text-zinc-500">Port</span>
+              <span>Up to 1 Gbps</span>
             </div>
           </div>
 
-          <div class="glass-card rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="font-mono text-xs text-cyan-400 tracking-wider">ASIA PACIFIC · SG</span>
-              <span class="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Online
-              </span>
+          <div class="panel-card rounded-xl p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] text-blue-400 tracking-wider">ASIA PACIFIC</span>
+              <span class="font-mono text-[11px] text-emerald-400">● Operational</span>
             </div>
-            <h3 class="text-xl font-bold text-white">Singapore</h3>
-            <p class="text-sm text-slate-400 mt-1">Available on Budget VPS plans for SEA routing.</p>
-            <div class="mt-5 pt-4 border-t border-white/[0.07] flex items-center justify-between text-xs font-mono text-slate-300">
-              <span>Network Speed</span>
-              <span class="text-cyan-300">200 Mbps – 1 Gbps</span>
+            <h3 class="text-lg font-bold text-white">Singapore</h3>
+            <p class="text-sm text-zinc-400 mt-1">Budget plans.</p>
+            <div class="mt-5 pt-3.5 border-t border-white/[0.08] font-mono text-xs text-zinc-300 flex justify-between">
+              <span class="text-zinc-500">Port</span>
+              <span>200 Mbps to 1 Gbps</span>
             </div>
           </div>
 
-          <div class="glass-card rounded-2xl p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="font-mono text-xs text-violet-400 tracking-wider">NORTH AMERICA · US</span>
-              <span class="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Online
-              </span>
+          <div class="panel-card rounded-xl p-6">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-[11px] text-blue-400 tracking-wider">NORTH AMERICA</span>
+              <span class="font-mono text-[11px] text-emerald-400">● Operational</span>
             </div>
-            <h3 class="text-xl font-bold text-white">United States</h3>
-            <p class="text-sm text-slate-400 mt-1">Available on Budget VPS plans for NA/EU reach.</p>
-            <div class="mt-5 pt-4 border-t border-white/[0.07] flex items-center justify-between text-xs font-mono text-slate-300">
-              <span>Network Speed</span>
-              <span class="text-violet-300">200 Mbps – 1 Gbps</span>
+            <h3 class="text-lg font-bold text-white">United States</h3>
+            <p class="text-sm text-zinc-400 mt-1">Budget plans.</p>
+            <div class="mt-5 pt-3.5 border-t border-white/[0.08] font-mono text-xs text-zinc-300 flex justify-between">
+              <span class="text-zinc-500">Port</span>
+              <span>200 Mbps to 1 Gbps</span>
             </div>
           </div>
         </div>
@@ -551,63 +437,55 @@
 
     <!-- How It Works -->
     <section id="how" class="py-20 sm:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-2xl mb-12">
-          <div class="font-mono text-xs uppercase tracking-widest text-indigo-400 mb-2">STREAMLINED SETUP</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">How deployment works</h2>
-          <p class="text-slate-400 mt-3 text-base">Direct human provisioning via our Client Ticket Portal or Discord—no automated checkout friction.</p>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="max-w-xl mb-12">
+          <div class="font-mono text-xs uppercase tracking-wider text-blue-400 mb-2">Provisioning</div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">How it works</h2>
+          <p class="text-zinc-400 mt-2.5 text-sm sm:text-base">You talk directly to our engineers—no automated checkout walls.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="glass-card rounded-2xl p-7">
-            <div class="w-10 h-10 rounded-xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-mono font-bold flex items-center justify-center mb-5">01</div>
-            <h3 class="text-lg font-bold text-white">Choose a plan</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed">Select Premium or Budget and pick the RAM, CPU, and NVMe storage tier that fits your project.</p>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="panel-card rounded-xl p-6">
+            <div class="w-8 h-8 rounded-md bg-white/[0.05] border border-white/[0.1] font-mono text-xs font-semibold text-zinc-200 flex items-center justify-center mb-4">1</div>
+            <h3 class="text-base font-bold text-white">Choose a plan</h3>
+            <p class="text-sm text-zinc-400 mt-1.5 leading-relaxed">Pick Premium or Budget and select the RAM, CPU, and NVMe size you need.</p>
           </div>
-          <div class="glass-card rounded-2xl p-7">
-            <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono font-bold flex items-center justify-center mb-5">02</div>
-            <h3 class="text-lg font-bold text-white">Open a ticket or message us</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed">Create an account here to open a support ticket or reach us on Discord with your plan and preferred region.</p>
+          <div class="panel-card rounded-xl p-6">
+            <div class="w-8 h-8 rounded-md bg-white/[0.05] border border-white/[0.1] font-mono text-xs font-semibold text-zinc-200 flex items-center justify-center mb-4">2</div>
+            <h3 class="text-base font-bold text-white">Open a ticket or message us</h3>
+            <p class="text-sm text-zinc-400 mt-1.5 leading-relaxed">Click Order on any plan to open a deployment ticket here, or message us on Discord.</p>
           </div>
-          <div class="glass-card rounded-2xl p-7">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono font-bold flex items-center justify-center mb-5">03</div>
-            <h3 class="text-lg font-bold text-white">We provision your server</h3>
-            <p class="text-sm text-slate-400 mt-2 leading-relaxed">Our team configures your OS, assigns your dedicated IPv4 with root credentials, and sends payment instructions.</p>
+          <div class="panel-card rounded-xl p-6">
+            <div class="w-8 h-8 rounded-md bg-white/[0.05] border border-white/[0.1] font-mono text-xs font-semibold text-zinc-200 flex items-center justify-center mb-4">3</div>
+            <h3 class="text-base font-bold text-white">We deploy it</h3>
+            <p class="text-sm text-zinc-400 mt-1.5 leading-relaxed">We send you the server IP, root login credentials, and INR payment details.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ Accordion -->
-    <section id="faq" class="py-20 sm:py-24 bg-surface/50 border-t border-white/[0.06]">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="mb-12">
-          <div class="font-mono text-xs uppercase tracking-widest text-indigo-400 mb-2">SUPPORT & ANSWERS</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Frequently asked questions</h2>
+    <!-- FAQ -->
+    <section id="faq" class="py-20 sm:py-24 bg-surface border-t border-white/[0.08]">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="mb-10">
+          <div class="font-mono text-xs uppercase tracking-wider text-blue-400 mb-2">FAQ</div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Frequently asked questions</h2>
         </div>
-
-        <div id="faq-list" class="space-y-3"></div>
+        <div id="faq-list" class="divide-y divide-white/[0.08] border-y border-white/[0.08]"></div>
       </div>
     </section>
 
-    <!-- Bottom CTA Banner -->
+    <!-- Final Call to Action -->
     <section class="py-16 sm:py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="glass-static rounded-3xl p-8 sm:p-12 relative overflow-hidden border border-indigo-500/25">
-          <div class="absolute -right-20 -top-20 w-80 h-80 bg-indigo-600/20 blur-3xl rounded-full pointer-events-none"></div>
-          <div class="relative flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div class="max-w-xl">
-              <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Ready to deploy your NVMe VPS?</h2>
-              <p class="text-slate-300 mt-2 text-sm sm:text-base">Create a free client account to open an order ticket directly on the site, or chat with our engineers on Discord.</p>
-            </div>
-            <div class="flex flex-wrap gap-3">
-              <button onclick="openPortal('tickets')" class="btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold text-white">
-                Client Portal & Tickets
-              </button>
-              <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="btn-secondary px-6 py-3.5 rounded-xl text-sm font-semibold text-white">
-                Join Discord
-              </a>
-            </div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="panel-static rounded-xl p-8 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Ready to get your VPS?</h2>
+            <p class="text-zinc-400 text-sm sm:text-base mt-1.5">Open a deployment ticket in the Client Area or tell us the plan you want on Discord.</p>
+          </div>
+          <div class="flex flex-wrap gap-3 shrink-0">
+            <button onclick="openPortal('new')" class="btn-cobalt px-5 py-2.5 rounded-lg text-sm font-medium">Order via Ticket</button>
+            <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="btn-ghost px-5 py-2.5 rounded-lg text-sm font-medium">Order on Discord</a>
           </div>
         </div>
       </div>
@@ -615,40 +493,40 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-white/[0.07] bg-obsidian pt-16 pb-10 text-sm text-slate-400">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 pb-12 border-b border-white/[0.07]">
+  <footer class="border-t border-white/[0.08] bg-base pt-14 pb-10 text-sm text-zinc-400">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-12 border-b border-white/[0.08]">
         <div class="col-span-2 md:col-span-1 space-y-3">
-          <a href="#top" class="flex items-center gap-2.5 text-white font-bold text-lg">
-            <span class="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center text-xs font-mono">GC</span>
-            <span>GavioCloud</span>
+          <a href="#top" class="flex items-center gap-2.5 text-white font-display font-bold text-base">
+            <span class="w-6 h-6 rounded bg-cobalt flex items-center justify-center text-[11px] font-mono">GC</span>
+            <span>Gavio Cloud</span>
           </a>
-          <p class="text-xs text-slate-400 leading-relaxed max-w-xs">
-            High-performance NVMe VPS hosting with DDoS protection and full root access in India, the USA, and Singapore.
+          <p class="text-xs text-zinc-400 leading-relaxed max-w-[240px]">
+            NVMe VPS hosting in India, the USA and Singapore.
           </p>
         </div>
 
         <div>
-          <h4 class="font-semibold text-white mb-3">Products</h4>
+          <h4 class="font-semibold text-white text-xs uppercase tracking-wider mb-3">Products</h4>
           <ul class="space-y-2 text-xs sm:text-sm">
-            <li><a href="#products" class="hover:text-white transition">VPS Overview</a></li>
-            <li><a href="#plans" class="hover:text-white transition">Pricing Plans</a></li>
-            <li><a href="#locations" class="hover:text-white transition">Datacenters</a></li>
+            <li><a href="#products" class="hover:text-white transition">VPS overview</a></li>
+            <li><a href="#plans" class="hover:text-white transition">Pricing</a></li>
+            <li><a href="#locations" class="hover:text-white transition">Locations</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-semibold text-white mb-3">Platform</h4>
+          <h4 class="font-semibold text-white text-xs uppercase tracking-wider mb-3">Company</h4>
           <ul class="space-y-2 text-xs sm:text-sm">
             <li><a href="#features" class="hover:text-white transition">Features</a></li>
             <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
-            <li><button onclick="openPortal('tickets')" class="hover:text-white transition">Support Tickets</button></li>
-            <li><a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="hover:text-white transition">Discord Community</a></li>
+            <li><a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="hover:text-white transition">Discord</a></li>
+            <li><button onclick="openPortal('tickets')" class="hover:text-white transition">Client Login</button></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="font-semibold text-white mb-3">Legal</h4>
+          <h4 class="font-semibold text-white text-xs uppercase tracking-wider mb-3">Legal</h4>
           <ul class="space-y-2 text-xs sm:text-sm">
             <li><button onclick="openLegal('terms')" class="hover:text-white transition">Terms of Service</button></li>
             <li><button onclick="openLegal('privacy')" class="hover:text-white transition">Privacy Policy</button></li>
@@ -657,195 +535,231 @@
         </div>
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <div class="pt-7 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-zinc-500">
         <p>© 2026 Gavio Cloud. All rights reserved.</p>
-        <p class="font-mono">NVMe Infrastructure · IN / US / SG</p>
+        <p class="font-mono">IN · US · SG Infrastructure</p>
       </div>
     </div>
   </footer>
 
   <!-- ===================================================================== -->
-  <!-- CLIENT & ADMIN PORTAL MODAL (AUTH + SUPPORT TICKETS + ADMIN CONTROLS) -->
+  <!-- CLIENT AREA & ADMIN CONSOLE MODAL                                     -->
   <!-- ===================================================================== -->
-  <div id="portal-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md">
-    <div class="glass-static w-full max-w-4xl max-h-[90vh] rounded-2xl border border-white/15 shadow-2xl flex flex-col overflow-hidden">
-      
-      <!-- Modal Top Header -->
-      <div class="px-5 sm:px-7 py-4 border-b border-white/[0.08] flex items-center justify-between bg-obsidian/60">
+  <div id="portal-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm">
+    <div class="panel-static animate-modal w-full max-w-5xl max-h-[90vh] rounded-xl border border-white/[0.12] shadow-2xl flex flex-col overflow-hidden">
+
+      <!-- Modal Header -->
+      <div class="px-5 sm:px-6 py-4 border-b border-white/[0.08] flex items-center justify-between bg-base">
         <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          <div class="w-8 h-8 rounded-lg bg-cobalt/15 border border-cobalt/30 flex items-center justify-center text-blue-400 font-mono text-xs font-semibold">
+            GC
           </div>
           <div>
-            <h3 id="portal-title" class="font-bold text-white text-base sm:text-lg leading-tight">Gavio Cloud Portal</h3>
-            <p id="portal-subtitle" class="text-xs text-slate-400">Sign in or create an account to manage support tickets</p>
+            <h3 id="portal-title" class="font-bold text-white text-base leading-tight">Client Area</h3>
+            <p id="portal-subtitle" class="text-xs text-zinc-400">Sign in or create an account to manage tickets & services</p>
           </div>
         </div>
         <div class="flex items-center gap-2">
-          <button id="portal-logout-btn" class="hidden px-3 py-1.5 rounded-lg text-xs font-medium bg-rose-500/15 text-rose-300 border border-rose-500/30 hover:bg-rose-500/25 transition">
-            Sign Out
+          <button id="portal-logout-btn" class="hidden px-3 py-1.5 rounded-md text-xs font-medium bg-red-500/10 text-red-300 border border-red-500/25 hover:bg-red-500/20 transition">
+            Sign out
           </button>
-          <button onclick="closePortal()" aria-label="Close portal" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition">
+          <button onclick="closePortal()" aria-label="Close portal" class="p-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-white/[0.06] transition">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
           </button>
         </div>
       </div>
 
-      <!-- Toast Feedback Banner inside Modal -->
+      <!-- Inline Notification Bar -->
       <div id="portal-toast" class="hidden px-6 py-2.5 text-xs font-medium border-b"></div>
 
-      <!-- Modal Body Scrollable Container -->
+      <!-- Modal Scrollable Content -->
       <div class="flex-1 overflow-y-auto p-5 sm:p-7">
-        
-        <!-- VIEW 1: AUTHENTICATION (LOGIN & CREATE ACCOUNT) -->
+
+        <!-- =============================================================== -->
+        <!-- 1. AUTHENTICATION VIEW (SIGN IN & CREATE ACCOUNT)               -->
+        <!-- =============================================================== -->
         <div id="auth-view" class="max-w-md mx-auto py-2">
-          <!-- Auth Mode Tabs -->
-          <div class="grid grid-cols-2 p-1 rounded-xl bg-obsidian border border-white/10 mb-6">
-            <button id="tab-login" onclick="switchAuthTab('login')" class="py-2.5 rounded-lg text-sm font-semibold transition bg-indigo-600 text-white shadow">
+          <!-- Mode Switcher -->
+          <div class="grid grid-cols-2 p-1 rounded-lg bg-base border border-white/[0.08] mb-6">
+            <button id="tab-login" type="button" onclick="switchAuthTab('login')" class="py-2 rounded-md text-xs sm:text-sm font-medium transition bg-elevated text-white border border-white/[0.08]">
               Sign In
             </button>
-            <button id="tab-register" onclick="switchAuthTab('register')" class="py-2.5 rounded-lg text-sm font-semibold transition text-slate-400 hover:text-white">
+            <button id="tab-register" type="button" onclick="switchAuthTab('register')" class="py-2 rounded-md text-xs sm:text-sm font-medium transition text-zinc-400 hover:text-white">
               Create Account
             </button>
           </div>
 
-          <!-- Login Form -->
+          <!-- Sign In Form -->
           <form id="login-form" class="space-y-4">
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Username or Email</label>
-              <input id="login-identifier" type="text" required placeholder="e.g. alex or admin" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" />
+              <label for="login-identifier" class="block text-xs font-medium text-zinc-300 mb-1.5">Username or Email</label>
+              <input id="login-identifier" type="text" required autocomplete="username" placeholder="you@domain.com or username" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
             </div>
-            <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Password</label>
-              <input id="login-password" type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" />
-            </div>
-            <button type="submit" class="w-full btn-primary py-3 rounded-xl text-sm font-semibold text-white mt-2">
-              Sign In to Portal
-            </button>
 
-            <!-- Helpful Demo / Admin Quick-Fill Box -->
-            <div class="mt-5 p-3.5 rounded-xl bg-indigo-500/[0.07] border border-indigo-500/20 text-xs text-slate-300 flex items-center justify-between gap-3">
-              <div>
-                <div class="font-semibold text-indigo-300">Admin Demo Access</div>
-                <div class="font-mono text-[11px] text-slate-400 mt-0.5">User: <span class="text-white">admin</span> · Pass: <span class="text-white">admin123</span></div>
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="login-password" class="block text-xs font-medium text-zinc-300">Password</label>
               </div>
-              <button type="button" onclick="fillAdminCreds()" class="px-2.5 py-1.5 rounded-lg bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-400/30 text-indigo-200 font-medium shrink-0 transition">
-                Auto-fill
+              <div class="relative">
+                <input id="login-password" type="password" required autocomplete="current-password" placeholder="Enter your password" class="field-input w-full px-3.5 py-2.5 pr-10 rounded-lg text-sm" />
+                <button type="button" onclick="togglePasswordVisibility('login-password', this)" aria-label="Toggle password visibility" class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-zinc-200">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-0.5">
+              <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+                <input id="login-remember" type="checkbox" checked class="w-3.5 h-3.5 rounded border-white/20 bg-base text-cobalt focus:ring-cobalt" />
+                <span class="text-xs text-zinc-400">Keep me signed in</span>
+              </label>
+              <button type="button" onclick="fillAdminCreds()" class="text-xs font-mono text-blue-400 hover:text-blue-300 transition">
+                Fill Admin Demo →
               </button>
             </div>
+
+            <button type="submit" class="w-full btn-cobalt py-2.5 rounded-lg text-sm font-medium mt-2">
+              Continue to Dashboard
+            </button>
           </form>
 
-          <!-- Register Form -->
+          <!-- Create Account Form -->
           <form id="register-form" class="hidden space-y-4">
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Username</label>
-              <input id="reg-username" type="text" required minlength="3" placeholder="Choose a username" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" />
+              <label for="reg-username" class="block text-xs font-medium text-zinc-300 mb-1.5">Username</label>
+              <input id="reg-username" type="text" required minlength="3" autocomplete="username" placeholder="e.g. rohan" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
             </div>
+
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Email Address</label>
-              <input id="reg-email" type="email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" />
+              <label for="reg-email" class="block text-xs font-medium text-zinc-300 mb-1.5">Email Address</label>
+              <input id="reg-email" type="email" required autocomplete="email" placeholder="rohan@example.com" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
             </div>
+
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Discord Handle <span class="text-slate-500">(optional)</span></label>
-              <input id="reg-discord" type="text" placeholder="username#0000 or @username" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" />
+              <label for="reg-discord" class="block text-xs font-medium text-zinc-300 mb-1.5">Discord Username <span class="text-zinc-500">(optional)</span></label>
+              <input id="reg-discord" type="text" placeholder="@username" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
             </div>
+
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Password</label>
-              <input id="reg-password" type="password" required minlength="4" placeholder="Create a password" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition" />
+              <label for="reg-password" class="block text-xs font-medium text-zinc-300 mb-1.5">Password</label>
+              <div class="relative">
+                <input id="reg-password" type="password" required minlength="4" autocomplete="new-password" placeholder="Minimum 4 characters" class="field-input w-full px-3.5 py-2.5 pr-10 rounded-lg text-sm" />
+                <button type="button" onclick="togglePasswordVisibility('reg-password', this)" aria-label="Toggle password visibility" class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-zinc-200">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </button>
+              </div>
             </div>
-            <button type="submit" class="w-full btn-primary py-3 rounded-xl text-sm font-semibold text-white mt-2">
+
+            <button type="submit" class="w-full btn-cobalt py-2.5 rounded-lg text-sm font-medium mt-2">
               Create Client Account
             </button>
           </form>
         </div>
 
-        <!-- VIEW 2: LOGGED-IN DASHBOARD (CLIENT & ADMIN) -->
+        <!-- =============================================================== -->
+        <!-- 2. AUTHENTICATED DASHBOARD VIEW (CLIENT & ADMIN CONSOLE)        -->
+        <!-- =============================================================== -->
         <div id="dashboard-view" class="hidden space-y-6">
-          
-          <!-- Dashboard Navigation Tabs -->
+
+          <!-- Top Navigation Strip Inside Dashboard -->
           <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/[0.08]">
-            <div class="flex flex-wrap items-center gap-2">
-              <button id="dash-tab-tickets" onclick="switchDashTab('tickets')" class="dash-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition">
-                Support Tickets
+            <div class="flex flex-wrap items-center gap-1.5">
+              <button id="dash-tab-tickets" onclick="switchDashTab('tickets')" class="dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition">
+                Support & Order Tickets
               </button>
-              <button id="dash-tab-new" onclick="switchDashTab('new')" class="dash-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition">
-                + New Ticket / Order
+              <button id="dash-tab-new" onclick="switchDashTab('new')" class="dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition">
+                + New Ticket
               </button>
-              <button id="dash-tab-admin" onclick="switchDashTab('admin')" class="hidden dash-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition">
-                Site Announcement (Admin)
+              <button id="dash-tab-services" onclick="switchDashTab('services')" class="dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition">
+                Active Services
+              </button>
+              <!-- Admin-Only Tabs -->
+              <button id="dash-tab-admin-plans" onclick="switchDashTab('admin-plans')" class="hidden dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition">
+                Manage Plans & Services
+              </button>
+              <button id="dash-tab-admin-ann" onclick="switchDashTab('admin-ann')" class="hidden dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition">
+                Announcement
               </button>
             </div>
-            <div id="user-badge" class="text-xs font-mono px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-slate-300"></div>
+
+            <div id="user-badge" class="font-mono text-xs px-3 py-1.5 rounded-md bg-base border border-white/[0.08] text-zinc-300"></div>
           </div>
 
-          <!-- SUB-VIEW A: TICKETS LIST & CONVERSATION THREAD -->
+          <!-- ------------------------------------------------------------- -->
+          <!-- SUB-VIEW A: SUPPORT & ORDER TICKETS                           -->
+          <!-- ------------------------------------------------------------- -->
           <div id="subview-tickets">
-            <!-- Ticket List Container -->
-            <div id="tickets-list-wrapper" class="space-y-3">
-              <div class="flex items-center justify-between mb-2">
-                <h4 id="tickets-heading" class="text-sm font-semibold text-white">Your Support Tickets</h4>
-                <button onclick="switchDashTab('new')" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium">+ Open New Ticket</button>
-              </div>
-              <div id="tickets-container" class="space-y-3"></div>
-            </div>
-
-            <!-- Active Ticket Thread Detail Container -->
-            <div id="ticket-detail-wrapper" class="hidden space-y-4">
-              <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-white/[0.08]">
-                <button onclick="backToTicketList()" class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 hover:text-white transition">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                  <span>Back to all tickets</span>
-                </button>
-
-                <!-- Admin Status Controls -->
-                <div id="admin-ticket-controls" class="hidden flex items-center gap-2">
-                  <span class="text-xs text-slate-400">Status:</span>
-                  <select id="admin-status-select" onchange="updateTicketStatus(this.value)" class="px-2.5 py-1 rounded-lg bg-obsidian border border-white/15 text-xs text-white focus:outline-none focus:border-indigo-500">
+            <div id="tickets-list-wrapper" class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <h4 id="tickets-heading" class="text-sm font-semibold text-white">Your Tickets</h4>
+                <div class="flex items-center gap-2">
+                  <select id="ticket-filter-status" onchange="renderTicketsList()" class="field-input px-2.5 py-1.5 rounded-md text-xs">
+                    <option value="ALL">All Statuses</option>
                     <option value="Open">Open</option>
                     <option value="Answered">Answered</option>
                     <option value="Closed">Closed</option>
                   </select>
+                  <button onclick="switchDashTab('new')" class="btn-cobalt px-3 py-1.5 rounded-md text-xs font-medium">+ New Ticket</button>
+                </div>
+              </div>
+              <div id="tickets-container" class="space-y-2.5"></div>
+            </div>
+
+            <!-- Single Ticket Conversation Thread -->
+            <div id="ticket-detail-wrapper" class="hidden space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-white/[0.08]">
+                <button onclick="backToTicketList()" class="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 hover:text-white transition">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                  <span>Back to tickets</span>
+                </button>
+
+                <!-- Admin Ticket Actions -->
+                <div id="admin-ticket-controls" class="hidden flex flex-wrap items-center gap-2">
+                  <button type="button" onclick="provisionServiceFromTicket()" class="px-2.5 py-1 rounded-md text-xs font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition">
+                    + Provision VPS to Client
+                  </button>
+                  <select id="admin-status-select" onchange="updateTicketStatus(this.value)" class="field-input px-2.5 py-1 rounded-md text-xs">
+                    <option value="Open">Status: Open</option>
+                    <option value="Answered">Status: Answered</option>
+                    <option value="Closed">Status: Closed</option>
+                  </select>
                 </div>
               </div>
 
-              <!-- Ticket Header Meta -->
-              <div id="ticket-detail-header" class="p-4 rounded-xl bg-white/[0.03] border border-white/[0.07]"></div>
+              <div id="ticket-detail-header" class="p-4 rounded-lg bg-base border border-white/[0.08]"></div>
+              <div id="ticket-messages" class="space-y-3 max-h-72 overflow-y-auto pr-1"></div>
 
-              <!-- Messages Feed -->
-              <div id="ticket-messages" class="space-y-3 max-h-80 overflow-y-auto pr-1"></div>
-
-              <!-- Reply Form -->
-              <form id="ticket-reply-form" class="pt-2 space-y-3">
-                <textarea id="ticket-reply-input" rows="3" required placeholder="Write your reply here..." class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition"></textarea>
+              <form id="ticket-reply-form" class="pt-2 space-y-2.5">
+                <textarea id="ticket-reply-input" rows="3" required placeholder="Type your reply..." class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm"></textarea>
                 <div class="flex items-center justify-between">
-                  <span class="text-[11px] text-slate-500">Replies update immediately in the thread.</span>
-                  <button type="submit" class="btn-primary px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold text-white">
-                    Send Reply
-                  </button>
+                  <span class="text-[11px] text-zinc-500 font-mono">Saved automatically</span>
+                  <button type="submit" class="btn-cobalt px-4 py-2 rounded-lg text-xs sm:text-sm font-medium">Send Reply</button>
                 </div>
               </form>
             </div>
           </div>
 
-          <!-- SUB-VIEW B: CREATE NEW SUPPORT TICKET -->
+          <!-- ------------------------------------------------------------- -->
+          <!-- SUB-VIEW B: CREATE NEW TICKET                                 -->
+          <!-- ------------------------------------------------------------- -->
           <div id="subview-new" class="hidden max-w-2xl">
-            <h4 class="text-base font-bold text-white mb-1">Open a Support or Order Ticket</h4>
-            <p class="text-xs text-slate-400 mb-5">Need a new VPS provisioned, OS reinstall, or billing help? Submit a ticket below and our team will respond shortly.</p>
+            <h4 class="text-base font-bold text-white">Open a Support or Deployment Ticket</h4>
+            <p class="text-xs text-zinc-400 mt-1 mb-5">Request a new VPS deployment, OS reinstall, or billing assistance directly from our team.</p>
 
             <form id="new-ticket-form" class="space-y-4">
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-medium text-slate-300 mb-1.5">Department / Category</label>
-                  <select id="ticket-category" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white focus:outline-none focus:border-indigo-500">
-                    <option value="VPS Order & Setup">VPS Order & Setup</option>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1.5">Department</label>
+                  <select id="ticket-category" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm">
+                    <option value="VPS Deployment">VPS Deployment</option>
                     <option value="Technical Support">Technical Support</option>
                     <option value="Billing & Payments">Billing & Payments</option>
-                    <option value="Sales Inquiry">Sales Inquiry</option>
+                    <option value="General Inquiry">General Inquiry</option>
                   </select>
                 </div>
                 <div>
-                  <label class="block text-xs font-medium text-slate-300 mb-1.5">Priority</label>
-                  <select id="ticket-priority" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white focus:outline-none focus:border-indigo-500">
+                  <label class="block text-xs font-medium text-zinc-300 mb-1.5">Priority</label>
+                  <select id="ticket-priority" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm">
                     <option value="Normal">Normal</option>
                     <option value="High">High</option>
                     <option value="Urgent">Urgent</option>
@@ -854,61 +768,162 @@
               </div>
 
               <div>
-                <label class="block text-xs font-medium text-slate-300 mb-1.5">Plan & Preferred Location <span class="text-slate-500">(optional)</span></label>
-                <input id="ticket-plan" type="text" placeholder="e.g. Standard 16GB - India (Premium)" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                <label class="block text-xs font-medium text-zinc-300 mb-1.5">Selected Plan & Region <span class="text-zinc-500">(optional)</span></label>
+                <input id="ticket-plan" type="text" placeholder="e.g. Standard — Premium · India (₹800/mo)" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
               </div>
 
               <div>
-                <label class="block text-xs font-medium text-slate-300 mb-1.5">Subject</label>
-                <input id="ticket-subject" type="text" required placeholder="Brief summary of your request" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                <label class="block text-xs font-medium text-zinc-300 mb-1.5">Subject</label>
+                <input id="ticket-subject" type="text" required placeholder="Summary of your request" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
               </div>
 
               <div>
-                <label class="block text-xs font-medium text-slate-300 mb-1.5">Message Details</label>
-                <textarea id="ticket-message" rows="4" required placeholder="Include preferred OS (Ubuntu, Debian, AlmaLinux, Rocky), location, or issue details..." class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"></textarea>
+                <label class="block text-xs font-medium text-zinc-300 mb-1.5">Details</label>
+                <textarea id="ticket-message" rows="4" required placeholder="Mention your preferred Linux OS (Ubuntu, Debian, AlmaLinux, Rocky Linux) and location..." class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm"></textarea>
               </div>
 
-              <div class="flex items-center gap-3 pt-1">
-                <button type="submit" class="btn-primary px-6 py-2.5 rounded-xl text-sm font-semibold text-white">
-                  Submit Ticket
-                </button>
-                <button type="button" onclick="switchDashTab('tickets')" class="btn-secondary px-4 py-2.5 rounded-xl text-sm font-medium text-slate-300">
-                  Cancel
-                </button>
+              <div class="flex items-center gap-2.5 pt-1">
+                <button type="submit" class="btn-cobalt px-5 py-2.5 rounded-lg text-sm font-medium">Submit Ticket</button>
+                <button type="button" onclick="switchDashTab('tickets')" class="btn-ghost px-4 py-2.5 rounded-lg text-sm font-medium">Cancel</button>
               </div>
             </form>
           </div>
 
-          <!-- SUB-VIEW C: ADMIN ANNOUNCEMENT MANAGER -->
-          <div id="subview-admin" class="hidden max-w-2xl space-y-4">
+          <!-- ------------------------------------------------------------- -->
+          <!-- SUB-VIEW C: CLIENT ACTIVE SERVICES / INSTANCES                -->
+          <!-- ------------------------------------------------------------- -->
+          <div id="subview-services" class="hidden space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 id="services-heading" class="text-base font-bold text-white">Active VPS Services</h4>
+                <p class="text-xs text-zinc-400 mt-0.5">Servers provisioned to your account by Gavio Cloud engineers.</p>
+              </div>
+              <button onclick="switchDashTab('new')" class="btn-cobalt px-3.5 py-2 rounded-lg text-xs font-medium">+ Order New VPS</button>
+            </div>
+            <div id="services-container" class="space-y-3"></div>
+          </div>
+
+          <!-- ------------------------------------------------------------- -->
+          <!-- SUB-VIEW D: ADMIN CONSOLE — MANAGE PLANS & SERVICES (CRUD)    -->
+          <!-- ------------------------------------------------------------- -->
+          <div id="subview-admin-plans" class="hidden space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h4 class="text-base font-bold text-white">Plans & Services Catalog</h4>
+                <p class="text-xs text-zinc-400 mt-0.5">Create, edit, or remove VPS plans. Changes reflect immediately on the live homepage.</p>
+              </div>
+              <button type="button" onclick="resetPlansToDefaults()" class="btn-ghost px-3 py-1.5 rounded-md text-xs text-zinc-400 hover:text-white">
+                Reset Default Plans
+              </button>
+            </div>
+
+            <!-- Create / Edit Plan Form -->
+            <form id="admin-plan-form" class="p-4 sm:p-5 rounded-xl bg-base border border-white/[0.08] space-y-4">
+              <div class="flex items-center justify-between">
+                <h5 id="plan-form-title" class="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold">+ Create New Plan / Service</h5>
+                <button type="button" id="cancel-edit-plan-btn" onclick="cancelEditPlan()" class="hidden text-xs text-zinc-400 hover:text-white">Cancel Edit</button>
+              </div>
+
+              <input type="hidden" id="plan-edit-id" value="" />
+
+              <div class="grid sm:grid-cols-3 gap-3.5">
+                <div>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1">Plan Name *</label>
+                  <input id="plan-name" type="text" required placeholder="e.g. Starter or Ryzen Pro" class="field-input w-full px-3 py-2 rounded-lg text-sm" />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1">Tier / Category *</label>
+                  <input id="plan-tier" type="text" required list="tier-suggestions" placeholder="e.g. Premium · India" class="field-input w-full px-3 py-2 rounded-lg text-sm" />
+                  <datalist id="tier-suggestions">
+                    <option value="Premium · India"></option>
+                    <option value="Budget · IN / US / SG"></option>
+                    <option value="Dedicated · India"></option>
+                  </datalist>
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1">Monthly Price (₹ INR) *</label>
+                  <input id="plan-price" type="number" required min="1" placeholder="800" class="field-input w-full px-3 py-2 rounded-lg text-sm font-mono" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                <div>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1">RAM (GB) *</label>
+                  <input id="plan-ram" type="number" required min="1" placeholder="16" class="field-input w-full px-3 py-2 rounded-lg text-sm font-mono" />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1">CPU Cores *</label>
+                  <input id="plan-cpu" type="number" required min="1" placeholder="4" class="field-input w-full px-3 py-2 rounded-lg text-sm font-mono" />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1">NVMe Storage (GB) *</label>
+                  <input id="plan-nvme" type="number" required min="10" placeholder="160" class="field-input w-full px-3 py-2 rounded-lg text-sm font-mono" />
+                </div>
+                <div>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1">Network Port *</label>
+                  <input id="plan-network" type="text" required placeholder="1 Gbps" value="1 Gbps" class="field-input w-full px-3 py-2 rounded-lg text-sm font-mono" />
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-3.5 items-center">
+                <div>
+                  <label class="block text-xs font-medium text-zinc-300 mb-1">Badge Tag <span class="text-zinc-500">(optional)</span></label>
+                  <input id="plan-badge" type="text" placeholder="e.g. POPULAR or NEW" class="field-input w-full px-3 py-2 rounded-lg text-sm" />
+                </div>
+                <div class="flex flex-wrap items-center gap-5 pt-2 sm:pt-5">
+                  <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+                    <input id="plan-featured" type="checkbox" class="w-4 h-4 rounded border-white/20 bg-base text-cobalt focus:ring-cobalt" />
+                    <span class="text-xs text-zinc-300">Feature in Hero Card</span>
+                  </label>
+                  <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+                    <input id="plan-active" type="checkbox" checked class="w-4 h-4 rounded border-white/20 bg-base text-cobalt focus:ring-cobalt" />
+                    <span class="text-xs text-zinc-300">Visible on Storefront</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5 pt-1">
+                <button type="submit" id="plan-submit-btn" class="btn-cobalt px-5 py-2 rounded-lg text-xs sm:text-sm font-medium">
+                  Save Plan
+                </button>
+              </div>
+            </form>
+
+            <!-- Existing Plans Table / List -->
+            <div class="space-y-2.5">
+              <div class="text-xs font-mono uppercase tracking-wider text-zinc-400">Configured Plans & Services (<span id="admin-plans-count">0</span>)</div>
+              <div id="admin-plans-list" class="space-y-2"></div>
+            </div>
+          </div>
+
+          <!-- ------------------------------------------------------------- -->
+          <!-- SUB-VIEW E: ADMIN ANNOUNCEMENT BANNER                         -->
+          <!-- ------------------------------------------------------------- -->
+          <div id="subview-admin-ann" class="hidden max-w-2xl space-y-4">
             <div>
-              <h4 class="text-base font-bold text-white">Global Site Announcement Banner</h4>
-              <p class="text-xs text-slate-400 mt-0.5">Publish a live top-of-site notice for promotions, maintenance, or restock alerts.</p>
+              <h4 class="text-base font-bold text-white">Site Announcement Banner</h4>
+              <p class="text-xs text-zinc-400 mt-0.5">Shown as a notice bar at the top of the storefront.</p>
             </div>
 
             <form id="admin-announcement-form" class="space-y-4">
               <div>
-                <label class="block text-xs font-medium text-slate-300 mb-1.5">Announcement Message (max 300 chars)</label>
-                <textarea id="admin-ann-text" rows="3" maxlength="300" placeholder="e.g. India Premium NVMe nodes restocked! Instant setup via ticket or Discord." class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"></textarea>
+                <label class="block text-xs font-medium text-zinc-300 mb-1.5">Message (300 characters max)</label>
+                <textarea id="admin-ann-text" rows="3" maxlength="300" placeholder="e.g. India 1 Gbps NVMe nodes restocked — open a ticket to deploy." class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm"></textarea>
               </div>
 
               <div>
-                <label class="block text-xs font-medium text-slate-300 mb-1.5">Optional Action URL</label>
-                <input id="admin-ann-link" type="url" placeholder="https://discord.gg/u6jWENUZtV" class="w-full px-3.5 py-2.5 rounded-xl bg-obsidian/90 border border-white/10 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500" />
+                <label class="block text-xs font-medium text-zinc-300 mb-1.5">Link <span class="text-zinc-500">(optional, https://...)</span></label>
+                <input id="admin-ann-link" type="url" placeholder="https://discord.gg/u6jWENUZtV" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
               </div>
 
               <label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
-                <input id="admin-ann-active" type="checkbox" class="w-4 h-4 rounded border-white/20 bg-obsidian text-indigo-600 focus:ring-indigo-500" />
-                <span class="text-sm text-slate-200">Display banner publicly on Gavio Cloud</span>
+                <input id="admin-ann-active" type="checkbox" class="w-4 h-4 rounded border-white/20 bg-base text-cobalt focus:ring-cobalt" />
+                <span class="text-sm text-zinc-200">Show on the site</span>
               </label>
 
-              <div class="flex flex-wrap gap-3 pt-2">
-                <button type="submit" class="btn-primary px-5 py-2.5 rounded-xl text-sm font-semibold text-white">
-                  Save & Publish Banner
-                </button>
-                <button type="button" onclick="disableAnnouncement()" class="btn-secondary px-4 py-2.5 rounded-xl text-sm font-medium text-slate-300">
-                  Turn Off Banner
-                </button>
+              <div class="flex flex-wrap gap-2.5 pt-2">
+                <button type="submit" class="btn-cobalt px-5 py-2 rounded-lg text-sm font-medium">Publish</button>
+                <button type="button" onclick="disableAnnouncement()" class="btn-ghost px-4 py-2 rounded-lg text-sm font-medium">Turn off</button>
               </div>
             </form>
           </div>
@@ -919,106 +934,239 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- LEGAL DOCUMENTS MODAL (TERMS / PRIVACY / REFUND)                      -->
+  <!-- LEGAL DOCUMENTS MODAL                                                 -->
   <!-- ===================================================================== -->
-  <div id="legal-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md">
-    <div class="glass-static w-full max-w-2xl max-h-[85vh] rounded-2xl border border-white/15 shadow-2xl flex flex-col overflow-hidden">
-      <div class="px-6 py-4 border-b border-white/[0.08] flex items-center justify-between bg-obsidian/60">
-        <h3 id="legal-title" class="font-bold text-white text-lg">Legal Policy</h3>
-        <button onclick="closeLegal()" aria-label="Close modal" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition">
+  <div id="legal-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm">
+    <div class="panel-static animate-modal w-full max-w-2xl max-h-[85vh] rounded-xl border border-white/[0.12] shadow-2xl flex flex-col overflow-hidden">
+      <div class="px-6 py-4 border-b border-white/[0.08] flex items-center justify-between bg-base">
+        <h3 id="legal-title" class="font-bold text-white text-base sm:text-lg">Legal</h3>
+        <button onclick="closeLegal()" aria-label="Close legal modal" class="p-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-white/[0.06] transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
-      <div id="legal-body" class="p-6 overflow-y-auto space-y-4 text-sm text-slate-300 leading-relaxed"></div>
+      <div id="legal-body" class="p-6 overflow-y-auto space-y-4 text-sm text-zinc-300 leading-relaxed"></div>
     </div>
   </div>
 
   <!-- ===================================================================== -->
-  <!-- APPLICATION SCRIPT (DATA, RENDERING, AUTH, TICKETS & ADMIN STATE)     -->
+  <!-- APPLICATION LOGIC                                                     -->
   <!-- ===================================================================== -->
   <script>
     const DISCORD_URL = "https://discord.gg/u6jWENUZtV";
 
-    // -----------------------------------------------------------------------
-    // 1. VPS PLANS, FEATURES & FAQ DATA (Preserved from Gavio Cloud)
-    // -----------------------------------------------------------------------
-    const SPECS = [
-      { name: "Starter", ram: 12, cpu: 2, nvme: 120, badge: "" },
-      { name: "Standard", ram: 16, cpu: 4, nvme: 160, badge: "POPULAR" },
-      { name: "Advanced", ram: 24, cpu: 4, nvme: 250, badge: "" },
-      { name: "Performance", ram: 32, cpu: 4, nvme: 320, badge: "" },
-      { name: "Enterprise", ram: 48, cpu: 6, nvme: 480, badge: "" },
-      { name: "Ultimate", ram: 64, cpu: 8, nvme: 640, badge: "MAX POWER" }
+    const KEYS = {
+      USERS: "gavio_users_v2",
+      SESSION: "gavio_session_v2",
+      PLANS: "gavio_plans_v2",
+      TICKETS: "gavio_tickets_v2",
+      SERVICES: "gavio_services_v2",
+      ANNOUNCEMENT: "gavio_announcement_v2"
+    };
+
+    // Original Gavio Cloud Plans Catalog (Seeded on first visit, editable by Admin)
+    const DEFAULT_PLANS = [
+      // Premium · India
+      { id: "pln_p1", name: "Starter", tier: "Premium · India", price: 600, ram: 12, cpu: 2, nvme: 120, network: "1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_p2", name: "Standard", tier: "Premium · India", price: 800, ram: 16, cpu: 4, nvme: 160, network: "1 Gbps", badge: "POPULAR", featured: true, active: true },
+      { id: "pln_p3", name: "Advanced", tier: "Premium · India", price: 1000, ram: 24, cpu: 4, nvme: 250, network: "1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_p4", name: "Performance", tier: "Premium · India", price: 1200, ram: 32, cpu: 4, nvme: 320, network: "1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_p5", name: "Enterprise", tier: "Premium · India", price: 1400, ram: 48, cpu: 6, nvme: 480, network: "1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_p6", name: "Ultimate", tier: "Premium · India", price: 1600, ram: 64, cpu: 8, nvme: 640, network: "1 Gbps", badge: "", featured: false, active: true },
+      // Budget · IN / US / SG
+      { id: "pln_b1", name: "Starter", tier: "Budget · IN / US / SG", price: 400, ram: 12, cpu: 2, nvme: 120, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_b2", name: "Standard", tier: "Budget · IN / US / SG", price: 550, ram: 16, cpu: 4, nvme: 160, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_b3", name: "Advanced", tier: "Budget · IN / US / SG", price: 720, ram: 24, cpu: 4, nvme: 250, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_b4", name: "Performance", tier: "Budget · IN / US / SG", price: 800, ram: 32, cpu: 4, nvme: 320, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_b5", name: "Enterprise", tier: "Budget · IN / US / SG", price: 1000, ram: 48, cpu: 6, nvme: 480, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
+      { id: "pln_b6", name: "Ultimate", tier: "Budget · IN / US / SG", price: 1200, ram: 64, cpu: 8, nvme: 640, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true }
     ];
 
-    const PRICING = {
-      p: [600, 800, 1000, 1200, 1400, 1600],
-      b: [400, 550, 720, 800, 1000, 1200]
-    };
-
     const TIER_NOTES = {
-      p: "Premium Tier: High-priority 1 Gbps network port hosted in India.",
-      b: "Budget Tier: 200 Mbps to 1 Gbps network port available in India, the USA, and Singapore."
+      "Premium · India": "Premium: 1 Gbps network port in India.",
+      "Budget · IN / US / SG": "Budget: 200 Mbps to 1 Gbps network in India, the USA and Singapore."
     };
 
-    let currentTier = "p";
+    // -----------------------------------------------------------------------
+    // 1. INITIALIZE PERSISTENT STORAGE
+    // -----------------------------------------------------------------------
+    function initState() {
+      let users = JSON.parse(localStorage.getItem(KEYS.USERS) || "null");
+      if (!Array.isArray(users) || users.length === 0) {
+        users = [{
+          id: "usr_admin",
+          username: "admin",
+          email: "admin@gaviocloud.com",
+          discord: "GavioAdmin",
+          password: "admin123",
+          role: "admin",
+          createdAt: new Date().toISOString()
+        }];
+        localStorage.setItem(KEYS.USERS, JSON.stringify(users));
+      }
 
-    function renderPlans(tier) {
-      currentTier = tier;
-      document.querySelectorAll(".tier-btn").forEach(btn => {
-        const active = btn.dataset.t === tier;
-        btn.className = active
-          ? "tier-btn px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition bg-indigo-600 text-white shadow-lg shadow-indigo-600/30"
-          : "tier-btn px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition text-slate-400 hover:text-white";
-      });
+      let plans = JSON.parse(localStorage.getItem(KEYS.PLANS) || "null");
+      if (!Array.isArray(plans) || plans.length === 0) {
+        localStorage.setItem(KEYS.PLANS, JSON.stringify(DEFAULT_PLANS));
+      }
 
-      document.getElementById("tier-note").textContent = TIER_NOTES[tier];
-      const tierLabel = tier === "p" ? "Premium · India" : "Budget · IN / US / SG";
+      if (!localStorage.getItem(KEYS.TICKETS)) {
+        localStorage.setItem(KEYS.TICKETS, JSON.stringify([]));
+      }
 
-      document.getElementById("plans-grid").innerHTML = SPECS.map((s, idx) => {
-        const price = PRICING[tier][idx];
-        const planFullTitle = `${s.name} (${tierLabel}, ₹${price}/mo)`;
-        const isPopular = s.badge === "POPULAR";
+      if (!localStorage.getItem(KEYS.SERVICES)) {
+        localStorage.setItem(KEYS.SERVICES, JSON.stringify([]));
+      }
+
+      if (!localStorage.getItem(KEYS.ANNOUNCEMENT)) {
+        localStorage.setItem(KEYS.ANNOUNCEMENT, JSON.stringify({
+          id: 1,
+          active: false,
+          text: "",
+          link: ""
+        }));
+      }
+    }
+
+    initState();
+
+    // State Accessors
+    const getUsers = () => JSON.parse(localStorage.getItem(KEYS.USERS) || "[]");
+    const saveUsers = (arr) => localStorage.setItem(KEYS.USERS, JSON.stringify(arr));
+
+    const getPlans = () => JSON.parse(localStorage.getItem(KEYS.PLANS) || "[]");
+    const savePlans = (arr) => {
+      localStorage.setItem(KEYS.PLANS, JSON.stringify(arr));
+      renderStorefront();
+    };
+
+    const getTickets = () => JSON.parse(localStorage.getItem(KEYS.TICKETS) || "[]");
+    const saveTickets = (arr) => localStorage.setItem(KEYS.TICKETS, JSON.stringify(arr));
+
+    const getServices = () => JSON.parse(localStorage.getItem(KEYS.SERVICES) || "[]");
+    const saveServices = (arr) => localStorage.setItem(KEYS.SERVICES, JSON.stringify(arr));
+
+    function getSession() {
+      const local = localStorage.getItem(KEYS.SESSION);
+      const sess = sessionStorage.getItem(KEYS.SESSION);
+      return JSON.parse(local || sess || "null");
+    }
+
+    function setSession(user, remember = true) {
+      localStorage.removeItem(KEYS.SESSION);
+      sessionStorage.removeItem(KEYS.SESSION);
+      if (user) {
+        const target = remember ? localStorage : sessionStorage;
+        target.setItem(KEYS.SESSION, JSON.stringify(user));
+      }
+      updateNavbarAuth();
+    }
+
+    // -----------------------------------------------------------------------
+    // 2. STOREFRONT RENDERING (HERO FEATURED CARD, PRICING, FEATURES, FAQ)
+    // -----------------------------------------------------------------------
+    let selectedCategory = "Premium · India";
+
+    function renderStorefront() {
+      const allPlans = getPlans();
+      const activePlans = allPlans.filter(p => p.active);
+
+      // Update Hero Metrics
+      if (activePlans.length > 0) {
+        const minPrice = Math.min(...activePlans.map(p => Number(p.price) || 0));
+        const maxRam = Math.max(...activePlans.map(p => Number(p.ram) || 0));
+        document.getElementById("stat-min-price").textContent = `₹${minPrice.toLocaleString("en-IN")}`;
+        document.getElementById("stat-max-ram").textContent = `${maxRam} GB`;
+      }
+
+      // Render Hero Featured Card
+      const featured = activePlans.find(p => p.featured) || activePlans[0];
+      const heroCard = document.getElementById("hero-featured-card");
+      if (featured) {
+        const fullTitle = `${featured.name} (${featured.tier}, ₹${featured.price}/mo)`;
+        heroCard.innerHTML = `
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-[11px] uppercase tracking-wider text-zinc-400">${escapeHtml(featured.tier)}</span>
+            <span class="font-mono text-[11px] text-emerald-400">● Ready</span>
+          </div>
+          <div class="flex items-baseline justify-between mb-5">
+            <h3 class="text-xl font-bold text-white">${escapeHtml(featured.name)}</h3>
+            <div class="text-right">
+              <span class="text-2xl sm:text-3xl font-bold text-white tracking-tight">₹${Number(featured.price).toLocaleString("en-IN")}</span>
+              <span class="text-xs font-mono text-zinc-400">/ month</span>
+            </div>
+          </div>
+          <ul class="divide-y divide-white/[0.08] border-y border-white/[0.08] text-sm mb-6">
+            <li class="py-2.5 flex justify-between"><span class="text-zinc-400">RAM</span><b class="font-mono font-medium text-white">${featured.ram} GB</b></li>
+            <li class="py-2.5 flex justify-between"><span class="text-zinc-400">CPU</span><b class="font-mono font-medium text-white">${featured.cpu} cores</b></li>
+            <li class="py-2.5 flex justify-between"><span class="text-zinc-400">Storage</span><b class="font-mono font-medium text-white">${featured.nvme} GB NVMe</b></li>
+            <li class="py-2.5 flex justify-between"><span class="text-zinc-400">Network</span><b class="font-mono font-medium text-white">${escapeHtml(featured.network || "1 Gbps")}</b></li>
+          </ul>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button onclick="orderPlan('${escapeAttr(fullTitle)}')" class="btn-cobalt py-2.5 rounded-lg text-xs sm:text-sm font-medium text-center">
+              Order ${escapeHtml(featured.name)}
+            </button>
+            <a href="${DISCORD_URL}" target="_blank" rel="noreferrer" class="btn-ghost py-2.5 rounded-lg text-xs sm:text-sm font-medium text-center">
+              Discord
+            </a>
+          </div>
+        `;
+      }
+
+      // Build Dynamic Category Tabs
+      const categories = [...new Set(activePlans.map(p => p.tier))];
+      if (!categories.includes(selectedCategory) && categories.length > 0) {
+        selectedCategory = categories[0];
+      }
+
+      const tabsEl = document.getElementById("pricing-tabs");
+      tabsEl.innerHTML = categories.map(cat => {
+        const isOn = cat === selectedCategory;
         return `
-          <div class="glass-card rounded-2xl p-6 flex flex-col justify-between relative ${isPopular ? 'border-indigo-500/45 ring-1 ring-indigo-500/20' : ''}">
-            ${s.badge ? `<span class="absolute top-4 right-4 font-mono text-[10px] font-semibold px-2 py-0.5 rounded bg-indigo-500/20 border border-indigo-400/30 text-indigo-300">${s.badge}</span>` : ''}
+          <button type="button" onclick="selectCategory('${escapeAttr(cat)}')" class="px-3.5 py-2 rounded-md text-xs sm:text-sm font-medium transition ${isOn ? 'bg-elevated text-white border border-white/[0.1]' : 'text-zinc-400 hover:text-white'}">
+            ${escapeHtml(cat)}
+          </button>
+        `;
+      }).join("");
+
+      document.getElementById("tier-description").textContent =
+        TIER_NOTES[selectedCategory] || `${selectedCategory}: NVMe storage, DDoS protection, and full root access.`;
+
+      // Render Plans Grid for Selected Category
+      const filtered = activePlans.filter(p => p.tier === selectedCategory);
+      const gridEl = document.getElementById("plans-grid");
+
+      if (filtered.length === 0) {
+        gridEl.innerHTML = `<div class="col-span-full panel-static rounded-xl p-8 text-center text-sm text-zinc-400">No active plans in this category right now.</div>`;
+        return;
+      }
+
+      gridEl.innerHTML = filtered.map(p => {
+        const fullTitle = `${p.name} (${p.tier}, ₹${p.price}/mo)`;
+        return `
+          <div class="panel-card rounded-xl p-6 flex flex-col justify-between relative">
+            ${p.badge ? `<span class="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-cobalt/15 border border-cobalt/35 text-blue-300">${escapeHtml(p.badge)}</span>` : ''}
             <div>
-              <div class="text-xs font-mono text-slate-400 uppercase">${tierLabel}</div>
-              <h3 class="text-xl font-bold text-white mt-1">${s.name}</h3>
-              <div class="mt-4 mb-5 flex items-baseline gap-1">
-                <span class="text-3xl font-extrabold text-white tracking-tight">₹${price.toLocaleString("en-IN")}</span>
-                <span class="text-xs font-mono text-slate-400">/ month</span>
+              <div class="text-xs font-mono text-zinc-500">${escapeHtml(p.tier)}</div>
+              <h3 class="text-lg font-bold text-white mt-0.5">${escapeHtml(p.name)}</h3>
+              <div class="mt-3 mb-5 flex items-baseline gap-1">
+                <span class="text-3xl font-bold text-white tracking-tight">₹${Number(p.price).toLocaleString("en-IN")}</span>
+                <span class="text-xs font-mono text-zinc-400">/ month</span>
               </div>
 
-              <ul class="space-y-2.5 text-sm text-slate-300 border-t border-white/[0.07] pt-4">
-                <li class="flex items-center justify-between">
-                  <span class="text-slate-400">Memory</span>
-                  <span class="font-mono font-semibold text-white">${s.ram} GB RAM</span>
-                </li>
-                <li class="flex items-center justify-between">
-                  <span class="text-slate-400">Processor</span>
-                  <span class="font-mono font-semibold text-white">${s.cpu} CPU Cores</span>
-                </li>
-                <li class="flex items-center justify-between">
-                  <span class="text-slate-400">NVMe Disk</span>
-                  <span class="font-mono font-semibold text-white">${s.nvme} GB NVMe</span>
-                </li>
-                <li class="flex items-center justify-between">
-                  <span class="text-slate-400">Protection</span>
-                  <span class="font-mono text-xs text-emerald-400">DDoS Shield</span>
-                </li>
-                <li class="flex items-center justify-between">
-                  <span class="text-slate-400">Access</span>
-                  <span class="font-mono text-xs text-indigo-300">Full Root</span>
-                </li>
+              <ul class="divide-y divide-white/[0.07] border-t border-white/[0.07] text-sm text-zinc-300">
+                <li class="py-2 flex justify-between"><span class="text-zinc-400">RAM</span><b class="font-mono font-medium text-white">${p.ram} GB</b></li>
+                <li class="py-2 flex justify-between"><span class="text-zinc-400">CPU</span><b class="font-mono font-medium text-white">${p.cpu} cores</b></li>
+                <li class="py-2 flex justify-between"><span class="text-zinc-400">Storage</span><b class="font-mono font-medium text-white">${p.nvme} GB NVMe</b></li>
+                <li class="py-2 flex justify-between"><span class="text-zinc-400">Network</span><b class="font-mono font-medium text-white">${escapeHtml(p.network || "1 Gbps")}</b></li>
+                <li class="py-2 flex justify-between"><span class="text-zinc-400">Access</span><span class="font-mono text-xs text-zinc-300">Root + DDoS</span></li>
               </ul>
             </div>
 
-            <div class="mt-6 pt-4 border-t border-white/[0.07] grid grid-cols-2 gap-2">
-              <button onclick="orderPlan('${planFullTitle.replace(/'/g, "\\'")}')" class="${isPopular ? 'btn-primary text-white' : 'btn-secondary text-white'} py-2.5 px-3 rounded-xl text-xs font-semibold text-center">
-                Order via Ticket
+            <div class="mt-6 pt-4 border-t border-white/[0.08] grid grid-cols-2 gap-2">
+              <button onclick="orderPlan('${escapeAttr(fullTitle)}')" class="btn-cobalt py-2.5 px-3 rounded-lg text-xs font-medium text-center">
+                Order Ticket
               </button>
-              <a href="${DISCORD_URL}" target="_blank" rel="noreferrer" class="btn-secondary py-2.5 px-3 rounded-xl text-xs font-semibold text-slate-300 hover:text-white text-center">
+              <a href="${DISCORD_URL}" target="_blank" rel="noreferrer" class="btn-ghost py-2.5 px-3 rounded-lg text-xs font-medium text-center">
                 Discord
               </a>
             </div>
@@ -1027,181 +1175,67 @@
       }).join("");
     }
 
-    document.querySelectorAll(".tier-btn").forEach(b => b.addEventListener("click", () => renderPlans(b.dataset.t)));
-    document.querySelectorAll("[data-tab]").forEach(a => a.addEventListener("click", () => renderPlans(a.dataset.tab)));
-    renderPlans("p");
+    function selectCategory(cat) {
+      selectedCategory = cat;
+      renderStorefront();
+    }
 
-    // Render Features Grid
+    document.querySelectorAll("[data-select-tier]").forEach(link => {
+      link.addEventListener("click", () => {
+        selectedCategory = link.dataset.selectTier;
+        renderStorefront();
+      });
+    });
+
+    // Features List
     const FEATURES = [
-      {
-        title: "Enterprise NVMe Storage",
-        desc: "120 GB to 640 GB of high-IOPS NVMe storage so OS boots, packages, and databases stay snappy.",
-        icon: '<rect x="4" y="7" width="16" height="10" rx="2"/><path d="M8 11h2M8 14h8"/>'
-      },
-      {
-        title: "Always-On DDoS Protection",
-        desc: "Automated volumetric and protocol mitigation included on every plan with zero extra cost.",
-        icon: '<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/>'
-      },
-      {
-        title: "Full Root SSH Access",
-        desc: "Complete administrative control over your virtual machine. Install Docker, panels, or custom kernels.",
-        icon: '<path d="m5 8 4 4-4 4M12 16h7"/>'
-      },
-      {
-        title: "Three Strategic Regions",
-        desc: "Deploy across India, the United States, or Singapore depending on where your traffic originates.",
-        icon: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'
-      },
-      {
-        title: "Linux OS Choice",
-        desc: "Ubuntu, Debian, AlmaLinux, or Rocky Linux pre-installed cleanly, with free reinstalls on request.",
-        icon: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'
-      },
-      {
-        title: "Direct Engineer Support",
-        desc: "Get direct answers via our integrated Support Ticket System or Discord from the team running the nodes.",
-        icon: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>'
-      }
+      ["NVMe storage", "120 GB to 640 GB of NVMe, so installs, builds and databases stay quick.", '<rect x="4" y="7" width="16" height="10" rx="2"/><path d="M8 11h2M8 14h8"/>'],
+      ["DDoS protection", "Included on every plan, with nothing extra to buy.", '<path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/>'],
+      ["Full root access", "It is your server. Install and configure what you like.", '<path d="m5 8 4 4-4 4M12 16h7"/>'],
+      ["Three regions", "India, the USA and Singapore.", '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>'],
+      ["Your choice of OS", "Ubuntu, Debian, AlmaLinux or Rocky Linux, reinstalled on request.", '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'],
+      ["Support on Discord & Tickets", "Ask the team directly. The people replying run the servers.", '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>']
     ];
 
     document.getElementById("features-grid").innerHTML = FEATURES.map(f => `
-      <div class="glass-card rounded-2xl p-6">
-        <div class="w-11 h-11 rounded-xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-400 flex items-center justify-center mb-4">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${f.icon}</svg>
+      <div class="panel-card rounded-xl p-6">
+        <div class="w-9 h-9 rounded-lg bg-cobalt/15 border border-cobalt/25 text-blue-400 flex items-center justify-center mb-4">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${f[2]}</svg>
         </div>
-        <h3 class="text-lg font-bold text-white">${f.title}</h3>
-        <p class="text-sm text-slate-400 mt-2 leading-relaxed">${f.desc}</p>
+        <h3 class="text-base font-bold text-white">${f[0]}</h3>
+        <p class="text-sm text-zinc-400 mt-1.5 leading-relaxed">${f[1]}</p>
       </div>
     `).join("");
 
-    // Render FAQ Accordion
+    // FAQ List
     const FAQS = [
-      ["How do I order a VPS?", "You can either click 'Order via Ticket' to create an account and submit an order ticket right here on the website, or message us on Discord with your chosen plan and region."],
-      ["Is DDoS protection included on all plans?", "Yes, every Premium and Budget VPS plan includes DDoS protection at no additional charge."],
-      ["Do I get full root access?", "Yes. You receive full root SSH credentials so you have total control over your server environment."],
-      ["Which operating systems are supported?", "We support Ubuntu, Debian, AlmaLinux, and Rocky Linux. Need an OS reload? Just open a ticket and we will reinstall it."],
-      ["How do payments work?", "Once you open an order ticket or contact us on Discord, our team confirms availability and sends simple INR payment instructions."],
-      ["What is the difference between Premium and Budget VPS?", "Premium VPS runs on a dedicated 1 Gbps port in India for maximum throughput and lowest domestic ping. Budget VPS offers lower pricing and is available in India, the USA, and Singapore."]
+      ["How do I order?", "Press Order Ticket on any plan to create an account and submit a deployment ticket right here, or open Discord and tell us the plan and location."],
+      ["Is DDoS protection included?", "Yes, on every plan."],
+      ["Do I get root access?", "Yes. The server is yours to configure."],
+      ["Which operating systems can I use?", "Ubuntu, Debian, AlmaLinux and Rocky Linux. We can reinstall on request."],
+      ["How do I pay?", "We send you the payment details once your order is confirmed."],
+      ["Premium or Budget?", "Premium has a 1 Gbps network in India. Budget costs less and is also available in the USA and Singapore."]
     ];
 
-    document.getElementById("faq-list").innerHTML = FAQS.map((item, i) => `
-      <div class="glass-static rounded-xl overflow-hidden border border-white/[0.07]">
-        <button type="button" onclick="this.parentElement.classList.toggle('faq-open'); this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−';" class="w-full px-5 py-4 flex items-center justify-between text-left font-semibold text-sm sm:text-base text-white hover:bg-white/[0.02] transition">
-          <span>${item[0]}</span>
-          <span class="font-mono text-indigo-400 text-lg ml-4">${i === 0 ? '−' : '+'}</span>
+    document.getElementById("faq-list").innerHTML = FAQS.map((q, idx) => `
+      <div>
+        <button type="button" onclick="const body=this.nextElementSibling; const icon=this.querySelector('span'); body.classList.toggle('hidden'); icon.textContent=body.classList.contains('hidden')?'+':'−';" class="w-full py-4 flex items-center justify-between text-left font-medium text-sm sm:text-base text-white hover:text-zinc-200 transition">
+          <span>${q[0]}</span>
+          <span class="font-mono text-zinc-400 ml-4">${idx === 0 ? '−' : '+'}</span>
         </button>
-        <div class="${i === 0 ? '' : 'hidden'} px-5 pb-4 text-sm text-slate-400 leading-relaxed border-t border-white/[0.05] pt-3">
-          ${item[1]}
+        <div class="${idx === 0 ? '' : 'hidden'} pb-4 text-sm text-zinc-400 leading-relaxed">
+          ${q[1]}
         </div>
       </div>
     `).join("");
 
-    // Mobile Nav Toggle
-    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-    const mobileNav = document.getElementById("mobile-nav");
-    mobileMenuBtn.addEventListener("click", () => mobileNav.classList.toggle("hidden"));
-    document.querySelectorAll(".mobile-link").forEach(link => {
-      link.addEventListener("click", () => mobileNav.classList.add("hidden"));
-    });
-    document.getElementById("mobile-portal-btn").addEventListener("click", () => {
-      mobileNav.classList.add("hidden");
-      openPortal("tickets");
-    });
+    renderStorefront();
 
     // -----------------------------------------------------------------------
-    // 2. PERSISTENT STATE: USERS, SESSION, TICKETS & ANNOUNCEMENT
-    // -----------------------------------------------------------------------
-    const STORAGE_KEYS = {
-      USERS: "gavio_users_v1",
-      SESSION: "gavio_session_v1",
-      TICKETS: "gavio_tickets_v1",
-      ANNOUNCEMENT: "gavio_announcement_v1"
-    };
-
-    function initStorage() {
-      // Seed default admin account if not present
-      let users = JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "null");
-      if (!users || !Array.isArray(users) || users.length === 0) {
-        users = [
-          {
-            id: "usr_admin",
-            username: "admin",
-            email: "admin@gaviocloud.com",
-            discord: "GavioAdmin",
-            password: "admin123",
-            role: "admin",
-            createdAt: new Date().toISOString()
-          }
-        ];
-        localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
-      }
-
-      // Seed an example welcome ticket if none exist
-      let tickets = JSON.parse(localStorage.getItem(STORAGE_KEYS.TICKETS) || "null");
-      if (!tickets || !Array.isArray(tickets)) {
-        tickets = [];
-        localStorage.setItem(STORAGE_KEYS.TICKETS, JSON.stringify(tickets));
-      }
-
-      // Seed default announcement
-      let ann = JSON.parse(localStorage.getItem(STORAGE_KEYS.ANNOUNCEMENT) || "null");
-      if (!ann) {
-        ann = {
-          id: 1,
-          active: true,
-          text: "India Premium 1 Gbps NVMe nodes are online & ready for instant setup!",
-          link: ""
-        };
-        localStorage.setItem(STORAGE_KEYS.ANNOUNCEMENT, JSON.stringify(ann));
-      }
-    }
-
-    initStorage();
-
-    function getUsers() {
-      return JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS) || "[]");
-    }
-
-    function saveUsers(users) {
-      localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
-    }
-
-    function getSession() {
-      return JSON.parse(localStorage.getItem(STORAGE_KEYS.SESSION) || "null");
-    }
-
-    function setSession(user) {
-      if (user) {
-        localStorage.setItem(STORAGE_KEYS.SESSION, JSON.stringify(user));
-      } else {
-        localStorage.removeItem(STORAGE_KEYS.SESSION);
-      }
-      updateNavbarAuthUI();
-    }
-
-    function getTickets() {
-      return JSON.parse(localStorage.getItem(STORAGE_KEYS.TICKETS) || "[]");
-    }
-
-    function saveTickets(tickets) {
-      localStorage.setItem(STORAGE_KEYS.TICKETS, JSON.stringify(tickets));
-    }
-
-    function getAnnouncement() {
-      return JSON.parse(localStorage.getItem(STORAGE_KEYS.ANNOUNCEMENT) || '{"active":false,"text":"","link":""}');
-    }
-
-    function saveAnnouncement(ann) {
-      localStorage.setItem(STORAGE_KEYS.ANNOUNCEMENT, JSON.stringify(ann));
-      renderAnnouncementBanner();
-    }
-
-    // -----------------------------------------------------------------------
-    // 3. ANNOUNCEMENT BANNER LOGIC
+    // 3. ANNOUNCEMENT BANNER
     // -----------------------------------------------------------------------
     function renderAnnouncementBanner() {
-      const ann = getAnnouncement();
+      const ann = JSON.parse(localStorage.getItem(KEYS.ANNOUNCEMENT) || '{"active":false}');
       const bar = document.getElementById("announcement-bar");
       const textEl = document.getElementById("announcement-text");
       const linkEl = document.getElementById("announcement-link");
@@ -1228,7 +1262,7 @@
     renderAnnouncementBanner();
 
     // -----------------------------------------------------------------------
-    // 4. PORTAL MODAL, AUTHENTICATION & DASHBOARD LOGIC
+    // 4. SMOOTH AUTHENTICATION & CLIENT AREA MODAL
     // -----------------------------------------------------------------------
     const portalModal = document.getElementById("portal-modal");
     const portalToast = document.getElementById("portal-toast");
@@ -1238,23 +1272,37 @@
     function showToast(msg, type = "success") {
       portalToast.textContent = msg;
       portalToast.className = type === "error"
-        ? "px-6 py-2.5 text-xs font-medium border-b bg-rose-500/15 border-rose-500/30 text-rose-200"
+        ? "px-6 py-2.5 text-xs font-medium border-b bg-red-500/15 border-red-500/30 text-red-200"
         : "px-6 py-2.5 text-xs font-medium border-b bg-emerald-500/15 border-emerald-500/30 text-emerald-200";
       portalToast.classList.remove("hidden");
       clearTimeout(window._toastTimer);
-      window._toastTimer = setTimeout(() => portalToast.classList.add("hidden"), 3800);
+      window._toastTimer = setTimeout(() => portalToast.classList.add("hidden"), 3500);
     }
 
-    function updateNavbarAuthUI() {
+    function updateNavbarAuth() {
       const user = getSession();
       const label = document.getElementById("nav-auth-label");
+      const dot = document.getElementById("nav-status-dot");
       if (user) {
-        label.textContent = user.role === "admin" ? `Admin (${user.username})` : `${user.username} · Tickets`;
+        label.textContent = user.role === "admin" ? `Admin · ${user.username}` : user.username;
+        dot.className = user.role === "admin"
+          ? "w-1.5 h-1.5 rounded-full bg-amber-400"
+          : "w-1.5 h-1.5 rounded-full bg-emerald-400";
       } else {
         label.textContent = "Client Area";
+        dot.className = "w-1.5 h-1.5 rounded-full bg-zinc-500";
       }
     }
-    updateNavbarAuthUI();
+    updateNavbarAuth();
+
+    // Mobile Nav
+    const mobileNav = document.getElementById("mobile-nav");
+    document.getElementById("mobile-menu-btn").addEventListener("click", () => mobileNav.classList.toggle("hidden"));
+    document.querySelectorAll(".mobile-link").forEach(a => a.addEventListener("click", () => mobileNav.classList.add("hidden")));
+    document.getElementById("mobile-portal-btn").addEventListener("click", () => {
+      mobileNav.classList.add("hidden");
+      openPortal("tickets");
+    });
 
     document.getElementById("nav-auth-btn").addEventListener("click", () => openPortal("tickets"));
 
@@ -1269,6 +1317,7 @@
         renderDashboard(user, initialTab);
       } else {
         renderAuthView();
+        setTimeout(() => document.getElementById("login-identifier").focus(), 50);
       }
     }
 
@@ -1279,10 +1328,10 @@
       activeTicketId = null;
     }
 
-    // Close modal on backdrop click or Escape key
     portalModal.addEventListener("click", e => {
       if (e.target === portalModal) closePortal();
     });
+
     document.addEventListener("keydown", e => {
       if (e.key === "Escape") {
         if (!portalModal.classList.contains("hidden")) closePortal();
@@ -1290,12 +1339,11 @@
       }
     });
 
-    function orderPlan(planName) {
-      pendingOrderPlan = planName;
+    function orderPlan(planTitle) {
+      pendingOrderPlan = planTitle;
       openPortal("new");
-      const user = getSession();
-      if (!user) {
-        showToast(`Sign in or create an account to submit your order for ${planName}.`, "success");
+      if (!getSession()) {
+        showToast(`Sign in or create an account to order ${planTitle}.`, "success");
       }
     }
 
@@ -1308,17 +1356,27 @@
       if (mode === "login") {
         loginForm.classList.remove("hidden");
         regForm.classList.add("hidden");
-        tabLogin.className = "py-2.5 rounded-lg text-sm font-semibold transition bg-indigo-600 text-white shadow";
-        tabReg.className = "py-2.5 rounded-lg text-sm font-semibold transition text-slate-400 hover:text-white";
+        tabLogin.className = "py-2 rounded-md text-xs sm:text-sm font-medium transition bg-elevated text-white border border-white/[0.08]";
+        tabReg.className = "py-2 rounded-md text-xs sm:text-sm font-medium transition text-zinc-400 hover:text-white";
+        setTimeout(() => document.getElementById("login-identifier").focus(), 30);
       } else {
         loginForm.classList.add("hidden");
         regForm.classList.remove("hidden");
-        tabReg.className = "py-2.5 rounded-lg text-sm font-semibold transition bg-indigo-600 text-white shadow";
-        tabLogin.className = "py-2.5 rounded-lg text-sm font-semibold transition text-slate-400 hover:text-white";
+        tabReg.className = "py-2 rounded-md text-xs sm:text-sm font-medium transition bg-elevated text-white border border-white/[0.08]";
+        tabLogin.className = "py-2 rounded-md text-xs sm:text-sm font-medium transition text-zinc-400 hover:text-white";
+        setTimeout(() => document.getElementById("reg-username").focus(), 30);
       }
     }
 
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const isHidden = input.type === "password";
+      input.type = isHidden ? "text" : "password";
+      btn.classList.toggle("text-blue-400", isHidden);
+    }
+
     function fillAdminCreds() {
+      switchAuthTab("login");
       document.getElementById("login-identifier").value = "admin";
       document.getElementById("login-password").value = "admin123";
     }
@@ -1327,34 +1385,34 @@
       document.getElementById("auth-view").classList.remove("hidden");
       document.getElementById("dashboard-view").classList.add("hidden");
       document.getElementById("portal-logout-btn").classList.add("hidden");
-      document.getElementById("portal-title").textContent = "Gavio Cloud Portal";
-      document.getElementById("portal-subtitle").textContent = "Sign in or create an account to manage support tickets";
+      document.getElementById("portal-title").textContent = "Client Area";
+      document.getElementById("portal-subtitle").textContent = "Sign in or create an account to manage tickets & services";
     }
 
-    // Handle Sign In
+    // Sign In Handler
     document.getElementById("login-form").addEventListener("submit", e => {
       e.preventDefault();
-      const idInput = document.getElementById("login-identifier").value.trim().toLowerCase();
-      const passInput = document.getElementById("login-password").value;
+      const identifier = document.getElementById("login-identifier").value.trim().toLowerCase();
+      const password = document.getElementById("login-password").value;
+      const remember = document.getElementById("login-remember").checked;
 
-      const users = getUsers();
-      const found = users.find(u =>
-        (u.username.toLowerCase() === idInput || u.email.toLowerCase() === idInput) &&
-        u.password === passInput
+      const user = getUsers().find(u =>
+        (u.username.toLowerCase() === identifier || u.email.toLowerCase() === identifier) &&
+        u.password === password
       );
 
-      if (!found) {
-        showToast("Invalid username/email or password.", "error");
+      if (!user) {
+        showToast("Incorrect username/email or password.", "error");
         return;
       }
 
-      setSession(found);
+      setSession(user, remember);
       document.getElementById("login-form").reset();
-      showToast(`Welcome back, ${found.username}!`, "success");
-      renderDashboard(found, pendingOrderPlan ? "new" : "tickets");
+      showToast(`Signed in as ${user.username}.`, "success");
+      renderDashboard(user, pendingOrderPlan ? "new" : "tickets");
     });
 
-    // Handle Create Account
+    // Register Handler
     document.getElementById("register-form").addEventListener("submit", e => {
       e.preventDefault();
       const username = document.getElementById("reg-username").value.trim();
@@ -1362,18 +1420,13 @@
       const discord = document.getElementById("reg-discord").value.trim();
       const password = document.getElementById("reg-password").value;
 
-      if (username.length < 3) {
-        showToast("Username must be at least 3 characters.", "error");
-        return;
-      }
-
       const users = getUsers();
       if (users.some(u => u.username.toLowerCase() === username.toLowerCase())) {
-        showToast("That username is already taken.", "error");
+        showToast("Username is already in use.", "error");
         return;
       }
       if (users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
-        showToast("An account with this email already exists.", "error");
+        showToast("An account with that email already exists.", "error");
         return;
       }
 
@@ -1389,46 +1442,42 @@
 
       users.push(newUser);
       saveUsers(users);
-      setSession(newUser);
+      setSession(newUser, true);
       document.getElementById("register-form").reset();
-      showToast("Account created! You are now signed in.", "success");
+      showToast("Account created.", "success");
       renderDashboard(newUser, pendingOrderPlan ? "new" : "tickets");
     });
 
-    // Handle Sign Out
+    // Sign Out Handler
     document.getElementById("portal-logout-btn").addEventListener("click", () => {
       setSession(null);
       pendingOrderPlan = "";
       renderAuthView();
-      showToast("You have been signed out.", "success");
+      showToast("Signed out.", "success");
     });
 
     // -----------------------------------------------------------------------
-    // 5. DASHBOARD TABS & SUPPORT TICKET SYSTEM
+    // 5. DASHBOARD NAVIGATION & VIEWS
     // -----------------------------------------------------------------------
-    function renderDashboard(user, tab = "tickets") {
+    function renderDashboard(user, initialTab = "tickets") {
       document.getElementById("auth-view").classList.add("hidden");
       document.getElementById("dashboard-view").classList.remove("hidden");
       document.getElementById("portal-logout-btn").classList.remove("hidden");
 
       const isAdmin = user.role === "admin";
-      document.getElementById("portal-title").textContent = isAdmin ? "Admin Control & Support Desk" : "Client Support Center";
+      document.getElementById("portal-title").textContent = isAdmin ? "Admin Console" : "Client Dashboard";
       document.getElementById("portal-subtitle").textContent = isAdmin
-        ? "Manage all client support tickets and global site announcements"
-        : "Open VPS order requests or get technical help from our engineers";
+        ? "Manage VPS plans, client services, support tickets, and announcements"
+        : "Manage your support tickets and provisioned servers";
 
       document.getElementById("user-badge").innerHTML = isAdmin
-        ? `<span class="text-amber-300 font-semibold">★ ADMIN</span> · ${escapeHtml(user.username)}`
-        : `<span class="text-indigo-300">● CLIENT</span> · ${escapeHtml(user.username)}`;
+        ? `<span class="text-amber-400">ADMIN</span> · ${escapeHtml(user.username)}`
+        : `<span class="text-emerald-400">CLIENT</span> · ${escapeHtml(user.username)}`;
 
-      const adminTabBtn = document.getElementById("dash-tab-admin");
-      if (isAdmin) {
-        adminTabBtn.classList.remove("hidden");
-      } else {
-        adminTabBtn.classList.add("hidden");
-      }
+      document.getElementById("dash-tab-admin-plans").classList.toggle("hidden", !isAdmin);
+      document.getElementById("dash-tab-admin-ann").classList.toggle("hidden", !isAdmin);
 
-      switchDashTab(tab);
+      switchDashTab(initialTab);
     }
 
     function switchDashTab(tab) {
@@ -1436,135 +1485,135 @@
       if (!user) return;
 
       document.querySelectorAll(".dash-tab").forEach(btn => {
-        btn.className = "dash-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-white/[0.04] text-slate-400 hover:text-white border border-white/[0.07]";
+        btn.className = "dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition text-zinc-400 hover:text-white bg-white/[0.02] border border-white/[0.07]";
       });
 
       const activeBtn = document.getElementById(`dash-tab-${tab}`);
       if (activeBtn) {
-        activeBtn.className = "dash-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-indigo-600 text-white shadow shadow-indigo-600/30";
+        activeBtn.className = "dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition bg-cobalt text-white border border-cobalt";
       }
 
-      document.getElementById("subview-tickets").classList.add("hidden");
-      document.getElementById("subview-new").classList.add("hidden");
-      document.getElementById("subview-admin").classList.add("hidden");
+      ["tickets", "new", "services", "admin-plans", "admin-ann"].forEach(id => {
+        document.getElementById(`subview-${id}`).classList.add("hidden");
+      });
+
+      const target = document.getElementById(`subview-${tab}`);
+      if (target) target.classList.remove("hidden");
 
       if (tab === "tickets") {
-        document.getElementById("subview-tickets").classList.remove("hidden");
         backToTicketList();
       } else if (tab === "new") {
-        document.getElementById("subview-new").classList.remove("hidden");
         if (pendingOrderPlan) {
-          document.getElementById("ticket-category").value = "VPS Order & Setup";
+          document.getElementById("ticket-category").value = "VPS Deployment";
           document.getElementById("ticket-plan").value = pendingOrderPlan;
-          document.getElementById("ticket-subject").value = `New VPS Order: ${pendingOrderPlan}`;
+          document.getElementById("ticket-subject").value = `VPS Order: ${pendingOrderPlan}`;
           pendingOrderPlan = "";
         }
-      } else if (tab === "admin" && user.role === "admin") {
-        document.getElementById("subview-admin").classList.remove("hidden");
-        const ann = getAnnouncement();
+      } else if (tab === "services") {
+        renderServicesList();
+      } else if (tab === "admin-plans" && user.role === "admin") {
+        renderAdminPlansList();
+      } else if (tab === "admin-ann" && user.role === "admin") {
+        const ann = JSON.parse(localStorage.getItem(KEYS.ANNOUNCEMENT) || "{}");
         document.getElementById("admin-ann-text").value = ann.text || "";
         document.getElementById("admin-ann-link").value = ann.link || "";
         document.getElementById("admin-ann-active").checked = !!ann.active;
       }
     }
 
-    // Create New Ticket
+    // -----------------------------------------------------------------------
+    // 6. SUPPORT & DEPLOYMENT TICKET SYSTEM
+    // -----------------------------------------------------------------------
     document.getElementById("new-ticket-form").addEventListener("submit", e => {
       e.preventDefault();
       const user = getSession();
       if (!user) return;
 
-      const category = document.getElementById("ticket-category").value;
-      const priority = document.getElementById("ticket-priority").value;
-      const plan = document.getElementById("ticket-plan").value.trim();
-      const subject = document.getElementById("ticket-subject").value.trim();
-      const message = document.getElementById("ticket-message").value.trim();
-
       const tickets = getTickets();
       const newTicket = {
-        id: "TKT-" + Math.floor(100000 + Math.random() * 900000),
+        id: "GC-" + Math.floor(10000 + Math.random() * 90000),
         userId: user.id,
         username: user.username,
         userEmail: user.email,
-        category,
-        priority,
-        plan,
-        subject,
+        category: document.getElementById("ticket-category").value,
+        priority: document.getElementById("ticket-priority").value,
+        plan: document.getElementById("ticket-plan").value.trim(),
+        subject: document.getElementById("ticket-subject").value.trim(),
         status: "Open",
         createdAt: new Date().toISOString(),
-        messages: [
-          {
-            sender: user.username,
-            role: user.role,
-            text: message,
-            timestamp: new Date().toISOString()
-          }
-        ]
+        messages: [{
+          sender: user.username,
+          role: user.role,
+          text: document.getElementById("ticket-message").value.trim(),
+          timestamp: new Date().toISOString()
+        }]
       };
 
       tickets.unshift(newTicket);
       saveTickets(tickets);
       document.getElementById("new-ticket-form").reset();
-      showToast(`Ticket ${newTicket.id} submitted!`, "success");
+      showToast(`Ticket ${newTicket.id} created.`, "success");
       switchDashTab("tickets");
       openTicketDetail(newTicket.id);
     });
 
-    function getStatusBadge(status) {
+    function statusPill(status) {
       if (status === "Open") {
-        return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>Open</span>`;
+        return `<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">Open</span>`;
       }
       if (status === "Answered") {
-        return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-indigo-500/15 text-indigo-300 border border-indigo-500/30"><span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>Answered</span>`;
+        return `<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-cobalt/15 text-blue-300 border border-cobalt/35">Answered</span>`;
       }
-      return `<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-slate-500/15 text-slate-400 border border-slate-500/30">Closed</span>`;
+      return `<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-500/15 text-zinc-400 border border-zinc-500/30">Closed</span>`;
     }
 
     function renderTicketsList() {
       const user = getSession();
       if (!user) return;
 
-      const allTickets = getTickets();
       const isAdmin = user.role === "admin";
-      const visibleTickets = isAdmin
-        ? allTickets
-        : allTickets.filter(t => t.userId === user.id);
+      const filterStatus = document.getElementById("ticket-filter-status").value;
+      let list = getTickets();
+
+      if (!isAdmin) {
+        list = list.filter(t => t.userId === user.id);
+      }
+      if (filterStatus !== "ALL") {
+        list = list.filter(t => t.status === filterStatus);
+      }
 
       document.getElementById("tickets-heading").textContent = isAdmin
-        ? `All Platform Support Tickets (${visibleTickets.length})`
-        : `Your Support Tickets (${visibleTickets.length})`;
+        ? `All Client Tickets (${list.length})`
+        : `Your Tickets (${list.length})`;
 
       const container = document.getElementById("tickets-container");
-
-      if (visibleTickets.length === 0) {
+      if (list.length === 0) {
         container.innerHTML = `
-          <div class="p-8 rounded-2xl border border-dashed border-white/10 text-center space-y-3">
-            <div class="text-slate-300 font-semibold text-sm">No support tickets yet</div>
-            <p class="text-xs text-slate-500 max-w-sm mx-auto">Have a question about our NVMe plans or ready to deploy a server? Open a ticket and our team will assist you.</p>
-            <button onclick="switchDashTab('new')" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold text-white">
-              Create Your First Ticket
-            </button>
+          <div class="p-8 rounded-xl border border-dashed border-white/[0.1] text-center space-y-2.5">
+            <p class="text-sm font-medium text-zinc-300">No tickets found</p>
+            <p class="text-xs text-zinc-500">Open a ticket to deploy a VPS or ask our team a question.</p>
           </div>
         `;
         return;
       }
 
-      container.innerHTML = visibleTickets.map(t => {
-        const dateStr = new Date(t.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+      container.innerHTML = list.map(t => {
+        const dt = new Date(t.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
         return `
-          <div onclick="openTicketDetail('${t.id}')" class="p-4 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-indigo-500/40 transition cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div onclick="openTicketDetail('${t.id}')" class="p-4 rounded-lg bg-base hover:bg-elevated border border-white/[0.08] hover:border-white/[0.16] transition cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div class="space-y-1">
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="font-mono text-xs text-indigo-400 font-semibold">${escapeHtml(t.id)}</span>
-                <span class="text-xs px-2 py-0.5 rounded bg-white/[0.05] text-slate-300">${escapeHtml(t.category)}</span>
-                ${isAdmin ? `<span class="text-xs font-mono text-amber-300/90">by @${escapeHtml(t.username)}</span>` : ''}
+              <div class="flex flex-wrap items-center gap-2 text-xs">
+                <span class="font-mono text-blue-400 font-medium">${escapeHtml(t.id)}</span>
+                <span class="text-zinc-500">·</span>
+                <span class="text-zinc-400">${escapeHtml(t.category)}</span>
+                ${isAdmin ? `<span class="font-mono text-amber-300/90">(@${escapeHtml(t.username)})</span>` : ''}
               </div>
               <div class="font-semibold text-sm text-white">${escapeHtml(t.subject)}</div>
-              ${t.plan ? `<div class="text-xs font-mono text-slate-400">Plan: ${escapeHtml(t.plan)}</div>` : ''}
+              ${t.plan ? `<div class="font-mono text-xs text-zinc-400">Plan: ${escapeHtml(t.plan)}</div>` : ''}
             </div>
-            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0">
-              ${getStatusBadge(t.status)}
-              <span class="text-[11px] font-mono text-slate-500">${dateStr}</span>
+            <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1.5 shrink-0">
+              ${statusPill(t.status)}
+              <span class="font-mono text-[11px] text-zinc-500">${dt}</span>
             </div>
           </div>
         `;
@@ -1582,15 +1631,13 @@
       const user = getSession();
       if (!user) return;
 
-      const tickets = getTickets();
-      const ticket = tickets.find(t => t.id === ticketId);
+      const ticket = getTickets().find(t => t.id === ticketId);
       if (!ticket) return;
 
       activeTicketId = ticketId;
       document.getElementById("tickets-list-wrapper").classList.add("hidden");
       document.getElementById("ticket-detail-wrapper").classList.remove("hidden");
 
-      // Admin status dropdown
       const adminControls = document.getElementById("admin-ticket-controls");
       if (user.role === "admin") {
         adminControls.classList.remove("hidden");
@@ -1602,42 +1649,36 @@
       document.getElementById("ticket-detail-header").innerHTML = `
         <div class="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-1">
-              <span class="text-indigo-400 font-semibold">${escapeHtml(ticket.id)}</span>
-              <span>·</span>
-              <span>${escapeHtml(ticket.category)}</span>
-              <span>·</span>
-              <span>Priority: ${escapeHtml(ticket.priority)}</span>
+            <div class="font-mono text-xs text-zinc-400 mb-1">
+              <span class="text-blue-400">${escapeHtml(ticket.id)}</span> · ${escapeHtml(ticket.category)} · ${escapeHtml(ticket.priority)} Priority
             </div>
-            <h4 class="text-base sm:text-lg font-bold text-white">${escapeHtml(ticket.subject)}</h4>
-            ${ticket.plan ? `<p class="text-xs font-mono text-cyan-300 mt-1">Requested Plan: ${escapeHtml(ticket.plan)}</p>` : ''}
+            <h4 class="text-base font-bold text-white">${escapeHtml(ticket.subject)}</h4>
+            ${ticket.plan ? `<p class="font-mono text-xs text-zinc-300 mt-1">Plan: ${escapeHtml(ticket.plan)}</p>` : ''}
           </div>
-          <div>${getStatusBadge(ticket.status)}</div>
+          ${statusPill(ticket.status)}
         </div>
       `;
 
-      const msgContainer = document.getElementById("ticket-messages");
-      msgContainer.innerHTML = ticket.messages.map(m => {
+      const msgEl = document.getElementById("ticket-messages");
+      msgEl.innerHTML = ticket.messages.map(m => {
         const isStaff = m.role === "admin";
-        const timeStr = new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        const time = new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
         return `
-          <div class="p-3.5 rounded-xl border ${isStaff ? 'bg-indigo-500/10 border-indigo-500/30 ml-4' : 'bg-obsidian/80 border-white/[0.08] mr-4'}">
-            <div class="flex items-center justify-between gap-2 mb-1.5">
+          <div class="p-3.5 rounded-lg border ${isStaff ? 'bg-cobalt/[0.08] border-cobalt/30 ml-4' : 'bg-base border-white/[0.08] mr-4'}">
+            <div class="flex items-center justify-between gap-2 mb-1">
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold ${isStaff ? 'text-indigo-300' : 'text-white'}">${escapeHtml(m.sender)}</span>
-                ${isStaff ? '<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-indigo-500/30 text-indigo-200">STAFF</span>' : ''}
+                <span class="text-xs font-semibold ${isStaff ? 'text-blue-300' : 'text-white'}">${escapeHtml(m.sender)}</span>
+                ${isStaff ? '<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-cobalt/20 text-blue-300">STAFF</span>' : ''}
               </div>
-              <span class="text-[11px] font-mono text-slate-500">${timeStr}</span>
+              <span class="font-mono text-[11px] text-zinc-500">${time}</span>
             </div>
-            <p class="text-sm text-slate-200 whitespace-pre-wrap leading-relaxed">${escapeHtml(m.text)}</p>
+            <p class="text-sm text-zinc-200 whitespace-pre-wrap leading-relaxed">${escapeHtml(m.text)}</p>
           </div>
         `;
       }).join("");
-
-      msgContainer.scrollTop = msgContainer.scrollHeight;
+      msgEl.scrollTop = msgEl.scrollHeight;
     }
 
-    // Send Reply in Ticket Thread
     document.getElementById("ticket-reply-form").addEventListener("submit", e => {
       e.preventDefault();
       const user = getSession();
@@ -1658,7 +1699,6 @@
         timestamp: new Date().toISOString()
       });
 
-      // Automatically update status based on who replied
       if (user.role === "admin") {
         tickets[idx].status = "Answered";
       } else if (tickets[idx].status === "Closed") {
@@ -1670,20 +1710,233 @@
       openTicketDetail(activeTicketId);
     });
 
-    function updateTicketStatus(newStatus) {
+    function updateTicketStatus(status) {
       if (!activeTicketId) return;
       const tickets = getTickets();
       const idx = tickets.findIndex(t => t.id === activeTicketId);
       if (idx === -1) return;
 
-      tickets[idx].status = newStatus;
+      tickets[idx].status = status;
       saveTickets(tickets);
-      showToast(`Ticket status updated to ${newStatus}.`, "success");
+      showToast(`Status set to ${status}.`, "success");
+      openTicketDetail(activeTicketId);
+    }
+
+    // Admin Quick-Provision VPS Service directly from a client ticket
+    function provisionServiceFromTicket() {
+      const user = getSession();
+      if (!user || user.role !== "admin" || !activeTicketId) return;
+
+      const ticket = getTickets().find(t => t.id === activeTicketId);
+      if (!ticket) return;
+
+      const services = getServices();
+      const randomIp = `103.${Math.floor(20 + Math.random() * 200)}.${Math.floor(10 + Math.random() * 220)}.${Math.floor(10 + Math.random() * 230)}`;
+      const newSvc = {
+        id: "VPS-" + Math.floor(1000 + Math.random() * 9000),
+        userId: ticket.userId,
+        username: ticket.username,
+        planName: ticket.plan || ticket.subject,
+        ip: randomIp,
+        os: "Ubuntu 24.04 LTS",
+        status: "Active",
+        createdAt: new Date().toISOString()
+      };
+
+      services.unshift(newSvc);
+      saveServices(services);
+
+      // Post automated confirmation into the ticket
+      const tickets = getTickets();
+      const idx = tickets.findIndex(t => t.id === activeTicketId);
+      if (idx !== -1) {
+        tickets[idx].messages.push({
+          sender: user.username,
+          role: "admin",
+          text: `Service ${newSvc.id} has been provisioned to your account.\nIPv4: ${newSvc.ip}\nOS: ${newSvc.os}\nCheck your "Active Services" tab for details.`,
+          timestamp: new Date().toISOString()
+        });
+        tickets[idx].status = "Answered";
+        saveTickets(tickets);
+      }
+
+      showToast(`Provisioned ${newSvc.id} (${newSvc.ip}) to @${ticket.username}.`, "success");
       openTicketDetail(activeTicketId);
     }
 
     // -----------------------------------------------------------------------
-    // 6. ADMIN ANNOUNCEMENT CONTROLS
+    // 7. CLIENT & ADMIN ACTIVE SERVICES VIEW
+    // -----------------------------------------------------------------------
+    function renderServicesList() {
+      const user = getSession();
+      if (!user) return;
+
+      const isAdmin = user.role === "admin";
+      const allServices = getServices();
+      const list = isAdmin ? allServices : allServices.filter(s => s.userId === user.id);
+
+      document.getElementById("services-heading").textContent = isAdmin
+        ? `All Provisioned Client Services (${list.length})`
+        : `Your Active VPS Services (${list.length})`;
+
+      const container = document.getElementById("services-container");
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 rounded-xl border border-dashed border-white/[0.1] text-center space-y-2.5">
+            <p class="text-sm font-medium text-zinc-300">No active VPS instances yet</p>
+            <p class="text-xs text-zinc-500">Order any plan and open a deployment ticket to get started.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(s => `
+        <div class="p-4 rounded-lg bg-base border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2 text-xs font-mono">
+              <span class="text-blue-400 font-semibold">${escapeHtml(s.id)}</span>
+              <span class="text-emerald-400">● ${escapeHtml(s.status)}</span>
+              ${isAdmin ? `<span class="text-amber-300">(@${escapeHtml(s.username)})</span>` : ''}
+            </div>
+            <div class="font-semibold text-sm text-white">${escapeHtml(s.planName)}</div>
+            <div class="font-mono text-xs text-zinc-400">IPv4: <span class="text-zinc-200">${escapeHtml(s.ip)}</span> · OS: ${escapeHtml(s.os)}</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="switchDashTab('new')" class="btn-ghost px-3 py-1.5 rounded-md text-xs font-medium">Request Reinstall</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // -----------------------------------------------------------------------
+    // 8. ADMIN CONSOLE: PLANS & SERVICES MANAGER (CREATE / EDIT / DELETE)
+    // -----------------------------------------------------------------------
+    function renderAdminPlansList() {
+      const plans = getPlans();
+      document.getElementById("admin-plans-count").textContent = plans.length;
+      const listEl = document.getElementById("admin-plans-list");
+
+      listEl.innerHTML = plans.map(p => `
+        <div class="p-3.5 rounded-lg bg-base border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="font-semibold text-sm text-white">${escapeHtml(p.name)}</span>
+              <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-white/[0.05] text-zinc-300">${escapeHtml(p.tier)}</span>
+              ${p.featured ? '<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-cobalt/20 text-blue-300">HERO FEATURED</span>' : ''}
+              ${!p.active ? '<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-red-500/15 text-red-300">HIDDEN</span>' : ''}
+            </div>
+            <div class="font-mono text-xs text-zinc-400">
+              ₹${Number(p.price).toLocaleString("en-IN")}/mo · ${p.ram} GB RAM · ${p.cpu} vCPU · ${p.nvme} GB NVMe · ${escapeHtml(p.network || "1 Gbps")}
+            </div>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <button type="button" onclick="editPlan('${p.id}')" class="btn-ghost px-3 py-1.5 rounded-md text-xs font-medium">Edit</button>
+            <button type="button" onclick="deletePlan('${p.id}')" class="px-3 py-1.5 rounded-md text-xs font-medium bg-red-500/10 text-red-300 border border-red-500/20 hover:bg-red-500/20 transition">Delete</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    document.getElementById("admin-plan-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const user = getSession();
+      if (!user || user.role !== "admin") return;
+
+      const editId = document.getElementById("plan-edit-id").value;
+      const name = document.getElementById("plan-name").value.trim();
+      const tier = document.getElementById("plan-tier").value.trim();
+      const price = Number(document.getElementById("plan-price").value);
+      const ram = Number(document.getElementById("plan-ram").value);
+      const cpu = Number(document.getElementById("plan-cpu").value);
+      const nvme = Number(document.getElementById("plan-nvme").value);
+      const network = document.getElementById("plan-network").value.trim();
+      const badge = document.getElementById("plan-badge").value.trim();
+      const featured = document.getElementById("plan-featured").checked;
+      const active = document.getElementById("plan-active").checked;
+
+      let plans = getPlans();
+
+      // If marked featured, unfeature others so hero stays clean
+      if (featured) {
+        plans = plans.map(item => ({ ...item, featured: false }));
+      }
+
+      if (editId) {
+        const idx = plans.findIndex(item => item.id === editId);
+        if (idx !== -1) {
+          plans[idx] = { ...plans[idx], name, tier, price, ram, cpu, nvme, network, badge, featured, active };
+        }
+        showToast(`Updated "${name}" plan.`, "success");
+      } else {
+        plans.push({
+          id: "pln_" + Date.now(),
+          name,
+          tier,
+          price,
+          ram,
+          cpu,
+          nvme,
+          network,
+          badge,
+          featured,
+          active
+        });
+        selectedCategory = tier;
+        showToast(`Created "${name}" (${tier}).`, "success");
+      }
+
+      savePlans(plans);
+      cancelEditPlan();
+      renderAdminPlansList();
+    });
+
+    function editPlan(planId) {
+      const plan = getPlans().find(p => p.id === planId);
+      if (!plan) return;
+
+      document.getElementById("plan-edit-id").value = plan.id;
+      document.getElementById("plan-name").value = plan.name;
+      document.getElementById("plan-tier").value = plan.tier;
+      document.getElementById("plan-price").value = plan.price;
+      document.getElementById("plan-ram").value = plan.ram;
+      document.getElementById("plan-cpu").value = plan.cpu;
+      document.getElementById("plan-nvme").value = plan.nvme;
+      document.getElementById("plan-network").value = plan.network || "1 Gbps";
+      document.getElementById("plan-badge").value = plan.badge || "";
+      document.getElementById("plan-featured").checked = !!plan.featured;
+      document.getElementById("plan-active").checked = plan.active !== false;
+
+      document.getElementById("plan-form-title").textContent = `Editing Plan: ${plan.name}`;
+      document.getElementById("plan-submit-btn").textContent = "Update Plan";
+      document.getElementById("cancel-edit-plan-btn").classList.remove("hidden");
+      document.getElementById("admin-plan-form").scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function cancelEditPlan() {
+      document.getElementById("admin-plan-form").reset();
+      document.getElementById("plan-edit-id").value = "";
+      document.getElementById("plan-network").value = "1 Gbps";
+      document.getElementById("plan-active").checked = true;
+      document.getElementById("plan-form-title").textContent = "+ Create New Plan / Service";
+      document.getElementById("plan-submit-btn").textContent = "Save Plan";
+      document.getElementById("cancel-edit-plan-btn").classList.add("hidden");
+    }
+
+    function deletePlan(planId) {
+      const plans = getPlans().filter(p => p.id !== planId);
+      savePlans(plans);
+      renderAdminPlansList();
+      showToast("Plan removed.", "success");
+    }
+
+    function resetPlansToDefaults() {
+      savePlans(DEFAULT_PLANS);
+      renderAdminPlansList();
+      showToast("Restored default Gavio Cloud plans.", "success");
+    }
+
+    // -----------------------------------------------------------------------
+    // 9. ADMIN ANNOUNCEMENT CONTROLS
     // -----------------------------------------------------------------------
     document.getElementById("admin-announcement-form").addEventListener("submit", e => {
       e.preventDefault();
@@ -1692,76 +1945,74 @@
       const active = document.getElementById("admin-ann-active").checked;
 
       if (active && !text) {
-        showToast("Please enter an announcement message before publishing.", "error");
+        showToast("Write a message before publishing.", "error");
         return;
       }
 
-      saveAnnouncement({
-        id: Date.now(),
-        text,
-        link,
-        active
-      });
-
-      showToast(active ? "Announcement banner published live!" : "Announcement saved (hidden).", "success");
+      localStorage.setItem(KEYS.ANNOUNCEMENT, JSON.stringify({ id: Date.now(), text, link, active }));
+      renderAnnouncementBanner();
+      showToast(active ? "Announcement published." : "Announcement saved.", "success");
     });
 
     function disableAnnouncement() {
-      const current = getAnnouncement();
+      const current = JSON.parse(localStorage.getItem(KEYS.ANNOUNCEMENT) || "{}");
       current.active = false;
-      saveAnnouncement(current);
+      localStorage.setItem(KEYS.ANNOUNCEMENT, JSON.stringify(current));
       document.getElementById("admin-ann-active").checked = false;
-      showToast("Announcement banner turned off.", "success");
+      renderAnnouncementBanner();
+      showToast("Announcement turned off.", "success");
     }
 
     // -----------------------------------------------------------------------
-    // 7. LEGAL DOCUMENTS MODAL
+    // 10. LEGAL MODALS & UTILITIES
     // -----------------------------------------------------------------------
-    const LEGAL_DOCS = {
+    const LEGAL_CONTENT = {
       terms: {
         title: "Terms of Service",
         html: `
-          <p class="text-xs font-mono text-slate-400">Last updated: 15 November 2026</p>
-          <h4 class="font-bold text-white pt-2">1. Agreement</h4>
-          <p>By ordering or using a service from Gavio Cloud, you agree to these Terms of Service.</p>
-          <h4 class="font-bold text-white pt-2">2. Services</h4>
-          <p>We provide virtual private servers with the compute, memory, and NVMe storage resources listed on our plans. Active services retain their allocated resources for the paid billing period.</p>
-          <h4 class="font-bold text-white pt-2">3. Billing</h4>
-          <p>Services are billed in INR on the agreed monthly cycle. Unpaid invoices may result in suspension and subsequent termination.</p>
-          <h4 class="font-bold text-white pt-2">4. Acceptable Use</h4>
-          <p>Illegal activity, spam, phishing, malware distribution, outbound DDoS attacks, and unauthorized port scanning are strictly prohibited.</p>
-          <h4 class="font-bold text-white pt-2">5. Data & Backups</h4>
-          <p>Clients are responsible for maintaining independent backups of their server data.</p>
+          <p class="font-mono text-xs text-zinc-400">Last updated: 15 November 2026</p>
+          <h4 class="font-bold text-white pt-2">Agreement</h4>
+          <p>By ordering a service from Gavio Cloud you agree to these terms.</p>
+          <h4 class="font-bold text-white pt-2">Services</h4>
+          <p>We provide virtual private servers with the resources listed on our plans. Prices and availability may change, but an active service keeps its resources for the paid period.</p>
+          <h4 class="font-bold text-white pt-2">Billing</h4>
+          <p>Services are billed in INR on the agreed cycle. Unpaid services may be suspended and later terminated.</p>
+          <h4 class="font-bold text-white pt-2">Acceptable use</h4>
+          <p>No illegal activity, spam, phishing, malware, attacks on other networks (including DDoS) or port scanning. Abusive resource usage is not allowed.</p>
+          <h4 class="font-bold text-white pt-2">Suspension</h4>
+          <p>We may suspend or terminate a service that breaks these terms or puts our network at risk.</p>
+          <h4 class="font-bold text-white pt-2">Data and backups</h4>
+          <p>You are responsible for your own backups. We do not guarantee against data loss.</p>
         `
       },
       privacy: {
         title: "Privacy Policy",
         html: `
-          <p class="text-xs font-mono text-slate-400">Last updated: 15 November 2026</p>
-          <h4 class="font-bold text-white pt-2">1. Information We Collect</h4>
-          <p>We collect account contact details (username, email, Discord handle), billing records, and technical metadata required to provision and secure your VPS.</p>
-          <h4 class="font-bold text-white pt-2">2. How We Use Information</h4>
-          <p>Information is used solely to provision servers, process billing, answer support tickets, and prevent network abuse.</p>
-          <h4 class="font-bold text-white pt-2">3. Your Server Data</h4>
-          <p>The contents of your VPS belong exclusively to you. We never sell client data to third parties.</p>
+          <p class="font-mono text-xs text-zinc-400">Last updated: 15 November 2026</p>
+          <h4 class="font-bold text-white pt-2">What we collect</h4>
+          <p>The contact details you share with us (for example your Discord username or email), your order and billing details, and technical data such as IP addresses needed to run and secure the service.</p>
+          <h4 class="font-bold text-white pt-2">How we use it</h4>
+          <p>To provide your service, handle billing, give support and prevent abuse.</p>
+          <h4 class="font-bold text-white pt-2">Your server</h4>
+          <p>The contents of your VPS are yours. We access them only for support you request, abuse investigation or legal reasons.</p>
         `
       },
       refund: {
         title: "Refund Policy",
         html: `
-          <p class="text-xs font-mono text-slate-400">Last updated: 15 November 2026</p>
-          <h4 class="font-bold text-white pt-2">1. 48-Hour Refund Window</h4>
-          <p>If you are unsatisfied with your VPS performance, you may request a refund within 48 hours of initial purchase via a support ticket or Discord.</p>
-          <h4 class="font-bold text-white pt-2">2. Exclusions</h4>
-          <p>Services suspended or terminated due to Acceptable Use Policy violations or requests submitted after 48 hours are non-refundable.</p>
+          <p class="font-mono text-xs text-zinc-400">Last updated: 15 November 2026</p>
+          <h4 class="font-bold text-white pt-2">Refund window</h4>
+          <p>If you are not happy, ask for a refund within 48 hours of purchase.</p>
+          <h4 class="font-bold text-white pt-2">Not refunded</h4>
+          <p>Services terminated for breaking our terms, abuse, and requests made after the window.</p>
         `
       }
     };
 
     const legalModal = document.getElementById("legal-modal");
 
-    function openLegal(type) {
-      const doc = LEGAL_DOCS[type];
+    function openLegal(key) {
+      const doc = LEGAL_CONTENT[key];
       if (!doc) return;
       document.getElementById("legal-title").textContent = doc.title;
       document.getElementById("legal-body").innerHTML = doc.html;
@@ -1780,7 +2031,6 @@
       if (e.target === legalModal) closeLegal();
     });
 
-    // Safe HTML escaping utility
     function escapeHtml(str) {
       return String(str)
         .replace(/&/g, "&amp;")
@@ -1788,6 +2038,10 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttr(str) {
+      return String(str).replace(/\\/g, "\\\\").replace(/'/g, "\\'");
     }
   </script>
 </body>
