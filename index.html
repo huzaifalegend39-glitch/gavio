@@ -680,7 +680,13 @@
               <button id="dash-tab-admin-ann" onclick="switchDashTab('admin-ann')" class="hidden dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition">
                 Announcement
               </button>
+              <button id="dash-tab-profile" onclick="switchDashTab('profile')" class="dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition">
+                Profile & Security
+              </button>
             </div>
+
+            <button type="button" onclick="switchDashTab('profile')" title="Edit Profile & Security" id="user-badge" class="font-mono text-xs px-3 py-1.5 rounded-md bg-base hover:bg-elevated border border-white/[0.08] hover:border-white/[0.16] text-zinc-300 transition cursor-pointer"></button>
+          </div>
 
             <div id="user-badge" class="font-mono text-xs px-3 py-1.5 rounded-md bg-base border border-white/[0.08] text-zinc-300"></div>
           </div>
@@ -928,6 +934,106 @@
             </form>
           </div>
 
+          <!-- ------------------------------------------------------------- -->
+          <!-- SUB-VIEW F: UNIVERSAL PROFILE & SECURITY (CLIENT & ADMIN)     -->
+          <!-- ------------------------------------------------------------- -->
+          <div id="subview-profile" class="hidden space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/[0.08]">
+              <div>
+                <h4 class="text-base font-bold text-white">Account Profile & Security</h4>
+                <p class="text-xs text-zinc-400 mt-0.5">Update your contact details, preferred deployment region, and login credentials.</p>
+              </div>
+              <div id="profile-meta-badge" class="font-mono text-xs px-3 py-1.5 rounded-md bg-base border border-white/[0.08] text-zinc-400"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6">
+              <!-- Profile Details Form -->
+              <form id="profile-details-form" class="p-5 rounded-xl bg-base border border-white/[0.08] space-y-4">
+                <div class="font-mono text-xs uppercase tracking-wider text-blue-400 font-semibold">Profile Information</div>
+
+                <div>
+                  <label for="prof-fullname" class="block text-xs font-medium text-zinc-300 mb-1.5">Display Name / Full Name</label>
+                  <input id="prof-fullname" type="text" placeholder="e.g. Rohan Sharma" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
+                </div>
+
+                <div>
+                  <label for="prof-username" class="block text-xs font-medium text-zinc-300 mb-1.5">Username *</label>
+                  <input id="prof-username" type="text" required minlength="3" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm font-mono" />
+                </div>
+
+                <div>
+                  <label for="prof-email" class="block text-xs font-medium text-zinc-300 mb-1.5">Email Address *</label>
+                  <input id="prof-email" type="email" required class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm" />
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-3.5">
+                  <div>
+                    <label for="prof-discord" class="block text-xs font-medium text-zinc-300 mb-1.5">Discord Handle</label>
+                    <input id="prof-discord" type="text" placeholder="@username or user#0000" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm font-mono" />
+                  </div>
+                  <div>
+                    <label for="prof-region" class="block text-xs font-medium text-zinc-300 mb-1.5">Preferred Region</label>
+                    <select id="prof-region" class="field-input w-full px-3.5 py-2.5 rounded-lg text-sm">
+                      <option value="India">India (IN)</option>
+                      <option value="Singapore">Singapore (SG)</option>
+                      <option value="United States">United States (US)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="pt-1">
+                  <button type="submit" class="btn-cobalt px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium">
+                    Save Profile Changes
+                  </button>
+                </div>
+              </form>
+
+              <!-- Password & Security Form -->
+              <form id="profile-password-form" class="p-5 rounded-xl bg-base border border-white/[0.08] space-y-4 flex flex-col justify-between">
+                <div class="space-y-4">
+                  <div class="font-mono text-xs uppercase tracking-wider text-amber-400 font-semibold">Password & Security</div>
+
+                  <div>
+                    <label for="prof-curr-pass" class="block text-xs font-medium text-zinc-300 mb-1.5">Current Password *</label>
+                    <div class="relative">
+                      <input id="prof-curr-pass" type="password" required autocomplete="current-password" placeholder="Verify current password" class="field-input w-full px-3.5 py-2.5 pr-10 rounded-lg text-sm" />
+                      <button type="button" onclick="togglePasswordVisibility('prof-curr-pass', this)" aria-label="Toggle password visibility" class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-zinc-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="prof-new-pass" class="block text-xs font-medium text-zinc-300 mb-1.5">New Password *</label>
+                    <div class="relative">
+                      <input id="prof-new-pass" type="password" required minlength="4" autocomplete="new-password" placeholder="Minimum 4 characters" class="field-input w-full px-3.5 py-2.5 pr-10 rounded-lg text-sm" />
+                      <button type="button" onclick="togglePasswordVisibility('prof-new-pass', this)" aria-label="Toggle password visibility" class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-zinc-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="prof-confirm-pass" class="block text-xs font-medium text-zinc-300 mb-1.5">Confirm New Password *</label>
+                    <div class="relative">
+                      <input id="prof-confirm-pass" type="password" required minlength="4" autocomplete="new-password" placeholder="Re-enter new password" class="field-input w-full px-3.5 py-2.5 pr-10 rounded-lg text-sm" />
+                      <button type="button" onclick="togglePasswordVisibility('prof-confirm-pass', this)" aria-label="Toggle password visibility" class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-zinc-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between gap-3">
+                  <span class="text-[11px] font-mono text-zinc-500">Applies immediately on next login</span>
+                  <button type="submit" class="btn-ghost px-4 py-2 rounded-lg text-xs sm:text-sm font-medium border-amber-500/30 text-amber-200 hover:bg-amber-500/10">
+                    Update Password
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -994,197 +1100,272 @@
       if (!Array.isArray(users) || users.length === 0) {
         users = [{
           id: "usr_admin",
+          fullName: "Gavio Administrator",
           username: "admin",
           email: "admin@gaviocloud.com",
           discord: "GavioAdmin",
+          region: "India",
           password: "admin123",
           role: "admin",
           createdAt: new Date().toISOString()
         }];
         localStorage.setItem(KEYS.USERS, JSON.stringify(users));
       }
-
-      let plans = JSON.parse(localStorage.getItem(KEYS.PLANS) || "null");
-      if (!Array.isArray(plans) || plans.length === 0) {
-        localStorage.setItem(KEYS.PLANS, JSON.stringify(DEFAULT_PLANS));
-      }
-
-      if (!localStorage.getItem(KEYS.TICKETS)) {
-        localStorage.setItem(KEYS.TICKETS, JSON.stringify([]));
-      }
-
-      if (!localStorage.getItem(KEYS.SERVICES)) {
-        localStorage.setItem(KEYS.SERVICES, JSON.stringify([]));
-      }
-
-      if (!localStorage.getItem(KEYS.ANNOUNCEMENT)) {
-        localStorage.setItem(KEYS.ANNOUNCEMENT, JSON.stringify({
-          id: 1,
-          active: false,
-          text: "",
-          link: ""
-        }));
-      }
-    }
-
-    initState();
-
-    // State Accessors
-    const getUsers = () => JSON.parse(localStorage.getItem(KEYS.USERS) || "[]");
-    const saveUsers = (arr) => localStorage.setItem(KEYS.USERS, JSON.stringify(arr));
-
-    const getPlans = () => JSON.parse(localStorage.getItem(KEYS.PLANS) || "[]");
-    const savePlans = (arr) => {
-      localStorage.setItem(KEYS.PLANS, JSON.stringify(arr));
-      renderStorefront();
-    };
-
-    const getTickets = () => JSON.parse(localStorage.getItem(KEYS.TICKETS) || "[]");
-    const saveTickets = (arr) => localStorage.setItem(KEYS.TICKETS, JSON.stringify(arr));
-
-    const getServices = () => JSON.parse(localStorage.getItem(KEYS.SERVICES) || "[]");
-    const saveServices = (arr) => localStorage.setItem(KEYS.SERVICES, JSON.stringify(arr));
-
-    function getSession() {
-      const local = localStorage.getItem(KEYS.SESSION);
-      const sess = sessionStorage.getItem(KEYS.SESSION);
-      return JSON.parse(local || sess || "null");
-    }
-
-    function setSession(user, remember = true) {
-      localStorage.removeItem(KEYS.SESSION);
-      sessionStorage.removeItem(KEYS.SESSION);
+// ... existing code ... -->
+    function updateNavbarAuth() {
+      const user = getSession();
+      const label = document.getElementById("nav-auth-label");
+      const dot = document.getElementById("nav-status-dot");
       if (user) {
-        const target = remember ? localStorage : sessionStorage;
-        target.setItem(KEYS.SESSION, JSON.stringify(user));
+        const display = user.fullName || user.username;
+        label.textContent = user.role === "admin" ? `Admin · ${display}` : display;
+        dot.className = user.role === "admin"
+          ? "w-1.5 h-1.5 rounded-full bg-amber-400"
+          : "w-1.5 h-1.5 rounded-full bg-emerald-400";
+      } else {
+        label.textContent = "Client Area";
+        dot.className = "w-1.5 h-1.5 rounded-full bg-zinc-500";
       }
-      updateNavbarAuth();
+    }
+    updateNavbarAuth();
+// ... existing code ... -->
+      const newUser = {
+        id: "usr_" + Date.now(),
+        fullName: username,
+        username,
+        email,
+        discord,
+        region: "India",
+        password,
+        role: "client",
+        createdAt: new Date().toISOString()
+      };
+
+      users.push(newUser);
+// ... existing code ... -->
+      ["tickets", "new", "services", "admin-plans", "admin-ann", "profile"].forEach(id => {
+        document.getElementById(`subview-${id}`).classList.add("hidden");
+      });
+
+      const target = document.getElementById(`subview-${tab}`);
+      if (target) target.classList.remove("hidden");
+
+      if (tab === "tickets") {
+        backToTicketList();
+      } else if (tab === "new") {
+        if (pendingOrderPlan) {
+          document.getElementById("ticket-category").value = "VPS Deployment";
+          document.getElementById("ticket-plan").value = pendingOrderPlan;
+          document.getElementById("ticket-subject").value = `VPS Order: ${pendingOrderPlan}`;
+          pendingOrderPlan = "";
+        }
+      } else if (tab === "services") {
+        renderServicesList();
+      } else if (tab === "profile") {
+        renderProfileView();
+      } else if (tab === "admin-plans" && user.role === "admin") {
+        renderAdminPlansList();
+      } else if (tab === "admin-ann" && user.role === "admin") {
+// ... existing code ... -->
+      const services = getServices();
+      const randomIp = `103.${Math.floor(20 + Math.random() * 200)}.${Math.floor(10 + Math.random() * 220)}.${Math.floor(10 + Math.random() * 230)}`;
+      const rootPass = "Gv#" + Math.random().toString(36).slice(2, 10) + "9!";
+      const newSvc = {
+        id: "VPS-" + Math.floor(1000 + Math.random() * 9000),
+        userId: ticket.userId,
+        username: ticket.username,
+        planName: ticket.plan || ticket.subject,
+        ip: randomIp,
+        rootPass,
+        os: "Ubuntu 24.04 LTS",
+        status: "Active",
+        createdAt: new Date().toISOString()
+      };
+
+      services.unshift(newSvc);
+      saveServices(services);
+
+      // Post automated confirmation into the ticket
+      const tickets = getTickets();
+      const idx = tickets.findIndex(t => t.id === activeTicketId);
+      if (idx !== -1) {
+        tickets[idx].messages.push({
+          sender: user.username,
+          role: "admin",
+          text: `Service ${newSvc.id} has been provisioned to your account.\nIPv4: ${newSvc.ip}\nRoot Password: ${newSvc.rootPass}\nOS: ${newSvc.os}\nCheck your "Active Services" tab for details.`,
+          timestamp: new Date().toISOString()
+        });
+        tickets[idx].status = "Answered";
+        saveTickets(tickets);
+      }
+
+      showToast(`Provisioned ${newSvc.id} (${newSvc.ip}) to @${ticket.username}.`, "success");
+      openTicketDetail(activeTicketId);
     }
 
     // -----------------------------------------------------------------------
-    // 2. STOREFRONT RENDERING (HERO FEATURED CARD, PRICING, FEATURES, FAQ)
+    // 7. CLIENT & ADMIN ACTIVE SERVICES VIEW
     // -----------------------------------------------------------------------
-    let selectedCategory = "Premium · India";
-
-    function renderStorefront() {
-      const allPlans = getPlans();
-      const activePlans = allPlans.filter(p => p.active);
-
-      // Update Hero Metrics
-      if (activePlans.length > 0) {
-        const minPrice = Math.min(...activePlans.map(p => Number(p.price) || 0));
-        const maxRam = Math.max(...activePlans.map(p => Number(p.ram) || 0));
-        document.getElementById("stat-min-price").textContent = `₹${minPrice.toLocaleString("en-IN")}`;
-        document.getElementById("stat-max-ram").textContent = `${maxRam} GB`;
+    function copyText(text, label = "Copied") {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand("copy");
+        showToast(`${label}: ${text}`, "success");
+      } catch (e) {
+        showToast("Unable to copy.", "error");
       }
+      document.body.removeChild(ta);
+    }
 
-      // Render Hero Featured Card
-      const featured = activePlans.find(p => p.featured) || activePlans[0];
-      const heroCard = document.getElementById("hero-featured-card");
-      if (featured) {
-        const fullTitle = `${featured.name} (${featured.tier}, ₹${featured.price}/mo)`;
-        heroCard.innerHTML = `
-          <div class="flex items-center justify-between mb-3">
-            <span class="font-mono text-[11px] uppercase tracking-wider text-zinc-400">${escapeHtml(featured.tier)}</span>
-            <span class="font-mono text-[11px] text-emerald-400">● Ready</span>
-          </div>
-          <div class="flex items-baseline justify-between mb-5">
-            <h3 class="text-xl font-bold text-white">${escapeHtml(featured.name)}</h3>
-            <div class="text-right">
-              <span class="text-2xl sm:text-3xl font-bold text-white tracking-tight">₹${Number(featured.price).toLocaleString("en-IN")}</span>
-              <span class="text-xs font-mono text-zinc-400">/ month</span>
-            </div>
-          </div>
-          <ul class="divide-y divide-white/[0.08] border-y border-white/[0.08] text-sm mb-6">
-            <li class="py-2.5 flex justify-between"><span class="text-zinc-400">RAM</span><b class="font-mono font-medium text-white">${featured.ram} GB</b></li>
-            <li class="py-2.5 flex justify-between"><span class="text-zinc-400">CPU</span><b class="font-mono font-medium text-white">${featured.cpu} cores</b></li>
-            <li class="py-2.5 flex justify-between"><span class="text-zinc-400">Storage</span><b class="font-mono font-medium text-white">${featured.nvme} GB NVMe</b></li>
-            <li class="py-2.5 flex justify-between"><span class="text-zinc-400">Network</span><b class="font-mono font-medium text-white">${escapeHtml(featured.network || "1 Gbps")}</b></li>
-          </ul>
-          <div class="grid grid-cols-2 gap-2.5">
-            <button onclick="orderPlan('${escapeAttr(fullTitle)}')" class="btn-cobalt py-2.5 rounded-lg text-xs sm:text-sm font-medium text-center">
-              Order ${escapeHtml(featured.name)}
-            </button>
-            <a href="${DISCORD_URL}" target="_blank" rel="noreferrer" class="btn-ghost py-2.5 rounded-lg text-xs sm:text-sm font-medium text-center">
-              Discord
-            </a>
+    function renderServicesList() {
+      const user = getSession();
+      if (!user) return;
+
+      const isAdmin = user.role === "admin";
+      const allServices = getServices();
+      const list = isAdmin ? allServices : allServices.filter(s => s.userId === user.id);
+
+      document.getElementById("services-heading").textContent = isAdmin
+        ? `All Provisioned Client Services (${list.length})`
+        : `Your Active VPS Services (${list.length})`;
+
+      const container = document.getElementById("services-container");
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 rounded-xl border border-dashed border-white/[0.1] text-center space-y-2.5">
+            <p class="text-sm font-medium text-zinc-300">No active VPS instances yet</p>
+            <p class="text-xs text-zinc-500">Order any plan and open a deployment ticket to get started.</p>
           </div>
         `;
-      }
-
-      // Build Dynamic Category Tabs
-      const categories = [...new Set(activePlans.map(p => p.tier))];
-      if (!categories.includes(selectedCategory) && categories.length > 0) {
-        selectedCategory = categories[0];
-      }
-
-      const tabsEl = document.getElementById("pricing-tabs");
-      tabsEl.innerHTML = categories.map(cat => {
-        const isOn = cat === selectedCategory;
-        return `
-          <button type="button" onclick="selectCategory('${escapeAttr(cat)}')" class="px-3.5 py-2 rounded-md text-xs sm:text-sm font-medium transition ${isOn ? 'bg-elevated text-white border border-white/[0.1]' : 'text-zinc-400 hover:text-white'}">
-            ${escapeHtml(cat)}
-          </button>
-        `;
-      }).join("");
-
-      document.getElementById("tier-description").textContent =
-        TIER_NOTES[selectedCategory] || `${selectedCategory}: NVMe storage, DDoS protection, and full root access.`;
-
-      // Render Plans Grid for Selected Category
-      const filtered = activePlans.filter(p => p.tier === selectedCategory);
-      const gridEl = document.getElementById("plans-grid");
-
-      if (filtered.length === 0) {
-        gridEl.innerHTML = `<div class="col-span-full panel-static rounded-xl p-8 text-center text-sm text-zinc-400">No active plans in this category right now.</div>`;
         return;
       }
 
-      gridEl.innerHTML = filtered.map(p => {
-        const fullTitle = `${p.name} (${p.tier}, ₹${p.price}/mo)`;
-        return `
-          <div class="panel-card rounded-xl p-6 flex flex-col justify-between relative">
-            ${p.badge ? `<span class="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded bg-cobalt/15 border border-cobalt/35 text-blue-300">${escapeHtml(p.badge)}</span>` : ''}
-            <div>
-              <div class="text-xs font-mono text-zinc-500">${escapeHtml(p.tier)}</div>
-              <h3 class="text-lg font-bold text-white mt-0.5">${escapeHtml(p.name)}</h3>
-              <div class="mt-3 mb-5 flex items-baseline gap-1">
-                <span class="text-3xl font-bold text-white tracking-tight">₹${Number(p.price).toLocaleString("en-IN")}</span>
-                <span class="text-xs font-mono text-zinc-400">/ month</span>
-              </div>
-
-              <ul class="divide-y divide-white/[0.07] border-t border-white/[0.07] text-sm text-zinc-300">
-                <li class="py-2 flex justify-between"><span class="text-zinc-400">RAM</span><b class="font-mono font-medium text-white">${p.ram} GB</b></li>
-                <li class="py-2 flex justify-between"><span class="text-zinc-400">CPU</span><b class="font-mono font-medium text-white">${p.cpu} cores</b></li>
-                <li class="py-2 flex justify-between"><span class="text-zinc-400">Storage</span><b class="font-mono font-medium text-white">${p.nvme} GB NVMe</b></li>
-                <li class="py-2 flex justify-between"><span class="text-zinc-400">Network</span><b class="font-mono font-medium text-white">${escapeHtml(p.network || "1 Gbps")}</b></li>
-                <li class="py-2 flex justify-between"><span class="text-zinc-400">Access</span><span class="font-mono text-xs text-zinc-300">Root + DDoS</span></li>
-              </ul>
+      container.innerHTML = list.map(s => `
+        <div class="p-4 rounded-lg bg-base border border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2 text-xs font-mono">
+              <span class="text-blue-400 font-semibold">${escapeHtml(s.id)}</span>
+              <span class="text-emerald-400">● ${escapeHtml(s.status)}</span>
+              ${isAdmin ? `<span class="text-amber-300">(@${escapeHtml(s.username)})</span>` : ''}
             </div>
-
-            <div class="mt-6 pt-4 border-t border-white/[0.08] grid grid-cols-2 gap-2">
-              <button onclick="orderPlan('${escapeAttr(fullTitle)}')" class="btn-cobalt py-2.5 px-3 rounded-lg text-xs font-medium text-center">
-                Order Ticket
-              </button>
-              <a href="${DISCORD_URL}" target="_blank" rel="noreferrer" class="btn-ghost py-2.5 px-3 rounded-lg text-xs font-medium text-center">
-                Discord
-              </a>
+            <div class="font-semibold text-sm text-white">${escapeHtml(s.planName)}</div>
+            <div class="font-mono text-xs text-zinc-400 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span>IPv4: <span class="text-zinc-200">${escapeHtml(s.ip)}</span></span>
+              ${s.rootPass ? `<span>Root Pass: <span class="text-zinc-200">${escapeHtml(s.rootPass)}</span></span>` : ''}
+              <span>OS: ${escapeHtml(s.os)}</span>
             </div>
           </div>
-        `;
-      }).join("");
+          <div class="flex flex-wrap items-center gap-2 shrink-0">
+            <button type="button" onclick="copyText('${escapeAttr(s.ip)}', 'IPv4 copied')" class="btn-ghost px-2.5 py-1.5 rounded-md text-xs font-mono">Copy IP</button>
+            ${s.rootPass ? `<button type="button" onclick="copyText('${escapeAttr(s.rootPass)}', 'Root password copied')" class="btn-ghost px-2.5 py-1.5 rounded-md text-xs font-mono">Copy Pass</button>` : ''}
+            <button type="button" onclick="switchDashTab('new')" class="btn-ghost px-3 py-1.5 rounded-md text-xs font-medium">Reinstall</button>
+          </div>
+        </div>
+      `).join("");
     }
 
-    function selectCategory(cat) {
-      selectedCategory = cat;
-      renderStorefront();
+    // -----------------------------------------------------------------------
+    // 7B. UNIVERSAL PROFILE & SECURITY EDITOR (CLIENT & ADMIN)
+    // -----------------------------------------------------------------------
+    function renderProfileView() {
+      const sessionUser = getSession();
+      if (!sessionUser) return;
+
+      const freshUser = getUsers().find(u => u.id === sessionUser.id) || sessionUser;
+      const joined = freshUser.createdAt
+        ? new Date(freshUser.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })
+        : "2026";
+
+      document.getElementById("profile-meta-badge").innerHTML = `
+        Role: <span class="${freshUser.role === 'admin' ? 'text-amber-400' : 'text-emerald-400'} uppercase">${escapeHtml(freshUser.role)}</span> · Joined ${joined}
+      `;
+
+      document.getElementById("prof-fullname").value = freshUser.fullName || "";
+      document.getElementById("prof-username").value = freshUser.username || "";
+      document.getElementById("prof-email").value = freshUser.email || "";
+      document.getElementById("prof-discord").value = freshUser.discord || "";
+      document.getElementById("prof-region").value = freshUser.region || "India";
     }
 
-    document.querySelectorAll("[data-select-tier]").forEach(link => {
-      link.addEventListener("click", () => {
-        selectedCategory = link.dataset.selectTier;
-        renderStorefront();
-      });
+    document.getElementById("profile-details-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const sessionUser = getSession();
+      if (!sessionUser) return;
+
+      const fullName = document.getElementById("prof-fullname").value.trim();
+      const username = document.getElementById("prof-username").value.trim();
+      const email = document.getElementById("prof-email").value.trim();
+      const discord = document.getElementById("prof-discord").value.trim();
+      const region = document.getElementById("prof-region").value;
+
+      const users = getUsers();
+      if (users.some(u => u.id !== sessionUser.id && u.username.toLowerCase() === username.toLowerCase())) {
+        showToast("That username is already taken.", "error");
+        return;
+      }
+      if (users.some(u => u.id !== sessionUser.id && u.email.toLowerCase() === email.toLowerCase())) {
+        showToast("That email address is already in use.", "error");
+        return;
+      }
+
+      const idx = users.findIndex(u => u.id === sessionUser.id);
+      if (idx === -1) return;
+
+      users[idx] = {
+        ...users[idx],
+        fullName,
+        username,
+        email,
+        discord,
+        region
+      };
+
+      saveUsers(users);
+      const keepLocal = !!localStorage.getItem(KEYS.SESSION);
+      setSession(users[idx], keepLocal);
+      renderDashboard(users[idx], "profile");
+      showToast("Profile details updated.", "success");
+    });
+
+    document.getElementById("profile-password-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const sessionUser = getSession();
+      if (!sessionUser) return;
+
+      const currPass = document.getElementById("prof-curr-pass").value;
+      const newPass = document.getElementById("prof-new-pass").value;
+      const confirmPass = document.getElementById("prof-confirm-pass").value;
+
+      const users = getUsers();
+      const idx = users.findIndex(u => u.id === sessionUser.id);
+      if (idx === -1) return;
+
+      if (users[idx].password !== currPass) {
+        showToast("Current password is incorrect.", "error");
+        return;
+      }
+      if (newPass.length < 4) {
+        showToast("New password must be at least 4 characters.", "error");
+        return;
+      }
+      if (newPass !== confirmPass) {
+        showToast("New passwords do not match.", "error");
+        return;
+      }
+
+      users[idx].password = newPass;
+      saveUsers(users);
+      const keepLocal = !!localStorage.getItem(KEYS.SESSION);
+      setSession(users[idx], keepLocal);
+
+      document.getElementById("profile-password-form").reset();
+      showToast("Password updated successfully.", "success");
+    });
     });
 
     // Features List
