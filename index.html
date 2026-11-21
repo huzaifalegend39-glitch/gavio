@@ -1638,7 +1638,9 @@
           const raw = localStorage.getItem(KEYS.SESSION) || sessionStorage.getItem(KEYS.SESSION);
           if (!raw) return null;
           const parsed = JSON.parse(raw);
-          const fresh = getUsers().find(u => u.id === parsed.id);
+          const users = getUsers();
+          const fresh = users.find(u => u.id === parsed.id)
+            || users.find(u => u.username.toLowerCase() === String(parsed.username || "").toLowerCase());
           return fresh || parsed;
         } catch {
           return null;
@@ -1963,9 +1965,11 @@
         const remember = document.getElementById("login-remember").checked;
         const submitBtn = document.getElementById("login-submit-btn");
 
-        const user = getUsers().find(u =>
-          (u.username.toLowerCase() === identifier || u.email.toLowerCase() === identifier) &&
-          u.password === password
+        const users = getUsers();
+        const user = users.find(u =>
+          (String(u.username || "").trim().toLowerCase() === identifier ||
+           String(u.email || "").trim().toLowerCase() === identifier) &&
+          String(u.password) === String(password)
         );
 
         if (!user) {
@@ -1986,8 +1990,9 @@
 
       document.getElementById("fill-admin-btn").addEventListener("click", () => {
         switchAuthTab("login");
-        document.getElementById("login-identifier").value = "admin";
-        document.getElementById("login-password").value = "admin123";
+        const adminAccount = getUsers().find(u => u.id === "usr_admin" || u.role === "admin");
+        document.getElementById("login-identifier").value = adminAccount ? adminAccount.username : "admin";
+        document.getElementById("login-password").value = adminAccount ? adminAccount.password : "admin123";
         document.getElementById("login-form").requestSubmit();
       });
 
@@ -2508,10 +2513,16 @@
         const confirmPass = document.getElementById("prof-confirm-pass").value;
 
         const users = getUsers();
-        const idx = users.findIndex(u => u.id === sessionUser.id);
-        if (idx === -1) return;
+        let idx = users.findIndex(u => u.id === sessionUser.id);
+        if (idx === -1) {
+          idx = users.findIndex(u => u.username.toLowerCase() === String(sessionUser.username || "").toLowerCase());
+        }
+        if (idx === -1) {
+          showToast("Account record not found. Please sign in again.", "error");
+          return;
+        }
 
-        if (users[idx].password !== currPass) {
+        if (String(users[idx].password) !== String(currPass)) {
           showToast("Current password is incorrect.", "error");
           return;
         }
@@ -2524,13 +2535,15 @@
           return;
         }
 
-        users[idx].password = newPass;
+        const updatedUser = { ...users[idx], password: newPass };
+        users[idx] = updatedUser;
         saveUsers(users);
+
         const keepLocal = !!localStorage.getItem(KEYS.SESSION);
-        setSession(users[idx], keepLocal);
+        setSession(updatedUser, keepLocal);
 
         document.getElementById("profile-password-form").reset();
-        showToast("Password updated successfully.", "success");
+        showToast("Password updated! Use your new password next time you sign in.", "success");
       });
 
       // ---------------------------------------------------------------------
@@ -2721,13 +2734,62 @@
         refund: {
           title: "Refund Policy",
           html: `
-            <p class="font-mono text-xs text-slate-400">Last updated: 15 November 2026</p>
-            <h4 class="font-semibold text-white pt-2">Refund window</h4>
-            <p>If you are not happy, ask for a refund within 48 hours of purchase.</p>
-            <h4 class="font-semibold text-white pt-2">Not refunded</h4>
-            <p>Services terminated for breaking our terms, abuse, and requests made after the window.</p>
-            <h4 class="font-semibold text-white pt-2">Payment</h4>
-            <p>Approved refunds go back to the original payment method where possible.</p>
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10">
+              <p class="font-mono text-xs text-slate-400">Last updated: November 2026</p>
+              <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-amberBrand/15 text-amberBrand border border-amberBrand/35">48-Hour Guarantee</span>
+            </div>
+
+            <div class="space-y-4 pt-2">
+              <section class="space-y-1.5">
+                <h4 class="font-semibold text-white text-sm sm:text-base">1. 48-Hour Eligibility Window &amp; Qualifying Criteria</h4>
+                <p>At Gavio Cloud, we stand behind the performance and reliability of our NVMe VPS infrastructure. You may request a full refund within <strong class="text-white">48 hours</strong> of your initial service activation if any of the following apply:</p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                  <li>It is your <strong class="text-white">first-time VPS order</strong> with Gavio Cloud and the server does not meet your performance or latency expectations.</li>
+                  <li>We fail to provision and deliver your server credentials within <strong class="text-white">24 hours</strong> of confirmed payment.</li>
+                  <li>The assigned node experiences verified, unresolved hardware failure or severe packet loss caused by our infrastructure during the initial 48-hour period.</li>
+                </ul>
+              </section>
+
+              <section class="space-y-1.5">
+                <h4 class="font-semibold text-white text-sm sm:text-base">2. Non-Refundable Items &amp; Exclusions</h4>
+                <p>To prevent abuse of our compute resources, refunds are strictly not issued under the following circumstances:</p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                  <li><strong class="text-white">Requests after 48 hours:</strong> Any refund request submitted more than 48 hours after initial server deployment.</li>
+                  <li><strong class="text-white">Renewals &amp; Upgrades:</strong> Recurring monthly renewals, plan upgrades, additional IPv4 addresses, or custom configuration fees.</li>
+                  <li><strong class="text-white">Terms &amp; AUP Violations:</strong> Services suspended or terminated due to DDoS attacks originating from your VPS, port scanning, phishing, malware hosting, spam, crypto-mining, or abusive CPU/network saturation.</li>
+                  <li><strong class="text-white">Client-Side Misconfiguration:</strong> Issues caused by custom OS modifications, firewall lockouts, kernel panics from user scripts, or IP blacklisting resulting from user activity.</li>
+                </ul>
+              </section>
+
+              <section class="space-y-1.5">
+                <h4 class="font-semibold text-white text-sm sm:text-base">3. How to Request a Refund</h4>
+                <p>To initiate a refund review, please submit a request before the 48-hour window expires using either method below:</p>
+                <ol class="list-decimal pl-5 space-y-1 text-slate-300">
+                  <li><strong class="text-white">Client Panel Ticket:</strong> Sign in to your Client Panel, click <span class="font-mono text-xs text-amberBrand">+ New Ticket</span>, select the <strong class="text-white">Billing</strong> department, and include your Service ID (e.g., <span class="font-mono text-xs">VPS-1042</span>) and reason for cancellation.</li>
+                  <li><strong class="text-white">Official Discord:</strong> Open a billing ticket in our Discord server from the same Discord account used during ordering, along with your payment transaction reference.</li>
+                </ol>
+              </section>
+
+              <section class="space-y-1.5">
+                <h4 class="font-semibold text-white text-sm sm:text-base">4. Processing Timeline &amp; Payout Methods</h4>
+                <p>Our billing team reviews all refund requests within <strong class="text-white">24 to 48 business hours</strong>. Once approved, your VPS instance is immediately decommissioned and your refund is processed as follows:</p>
+                <ul class="list-disc pl-5 space-y-1 text-slate-300">
+                  <li><strong class="text-white">UPI &amp; Bank Transfers (INR):</strong> Credited back to the original UPI ID or bank account within <strong class="text-white">3–5 business days</strong>.</li>
+                  <li><strong class="text-white">Cards &amp; Payment Gateways:</strong> Returned to the original payment method within <strong class="text-white">5–7 business days</strong>, depending on your issuing bank.</li>
+                  <li><strong class="text-white">Instant Account Credit:</strong> Upon request, approved refunds can be applied immediately as Gavio Cloud account balance for future deployments in India, Singapore, or the USA.</li>
+                </ul>
+              </section>
+
+              <section class="space-y-1.5">
+                <h4 class="font-semibold text-white text-sm sm:text-base">5. Service Credits &amp; 99.9% SLA Compensation</h4>
+                <p>Outside the 48-hour refund window, if an active server experiences unscheduled network or host-node downtime exceeding our <strong class="text-white">99.9% monthly uptime guarantee</strong> (excluding scheduled maintenance), you are eligible for prorated <strong class="text-white">Service Credits</strong> applied toward your next billing cycle.</p>
+              </section>
+
+              <section class="space-y-1.5">
+                <h4 class="font-semibold text-white text-sm sm:text-base">6. Chargebacks &amp; Payment Disputes</h4>
+                <p>If you encounter a billing issue, please contact our team first so we can resolve it promptly. Filing an unauthorized bank chargeback or payment dispute without contacting Gavio Cloud support will result in <strong class="text-white">immediate suspension</strong> of all active services and permanent restriction of the associated account.</p>
+              </section>
+            </div>
           `
         }
       };
