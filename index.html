@@ -416,10 +416,10 @@
         </div>
 
         <!-- Offers with Green SALE Badge -->
-        <a href="#plans" class="flex items-center gap-1.5 py-2 text-emerald-400 hover:text-emerald-300 transition">
+        <a href="#offers" class="flex items-center gap-1.5 py-2 text-emerald-400 hover:text-emerald-300 transition">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
           <span>Offers</span>
-          <span class="font-mono text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 leading-none">
+          <span id="nav-offers-badge" class="font-mono text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 leading-none">
             SALE
           </span>
         </a>
@@ -499,10 +499,11 @@
     <!-- Mobile Navigation Drawer -->
     <div id="mobile-nav" class="hidden lg:hidden border-t border-white/10 bg-[#080c15] px-4 py-3 space-y-1">
       <a href="#products" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Services (VPS Tiers)</a>
-      <a href="#plans" class="mobile-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-emerald-400 hover:bg-white/5">
-        <span>Offers &amp; Pricing</span>
-        <span class="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/40">SALE</span>
+      <a href="#offers" class="mobile-link flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium text-emerald-400 hover:bg-white/5">
+        <span>Offers &amp; Promos</span>
+        <span id="mobile-offers-badge" class="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/40">SALE</span>
       </a>
+      <a href="#plans" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Pricing</a>
       <a href="#features" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Features</a>
       <a href="#locations" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Locations</a>
       <a href="#faq" class="mobile-link block px-3 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">FAQ</a>
@@ -514,151 +515,25 @@
 
   <main id="top">
     <!-- =================================================================== -->
-    <!-- LIONCLOUD-INSPIRED ATMOSPHERIC HERO SECTION                         -->
+    <!-- OFFERS & PROMOTIONS SECTION (ADMIN-CONTROLLED)                      -->
     <!-- =================================================================== -->
-    <section class="relative hero-backdrop border-b border-white/10 overflow-hidden">
-      <!-- Atmospheric Isometric Cloud & Server Rack Artwork Layer -->
-      <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-        <svg viewBox="0 0 1440 720" fill="none" class="w-full h-full object-cover opacity-40">
-          <!-- Isometric Perspective Grid Lines -->
-          <g stroke="#2f6bff" stroke-opacity="0.24" stroke-width="1">
-            <path d="M720 -80 L1480 340 L720 760 L-40 340 Z" />
-            <path d="M720 10 L1320 340 L720 670 L120 340 Z" />
-            <path d="M720 100 L1160 340 L720 580 L280 340 Z" />
-            <line x1="240" y1="0" x2="1200" y2="720" />
-            <line x1="1200" y1="0" x2="240" y2="720" />
-          </g>
-          <!-- Stylized Isometric Server Clusters -->
-          <g transform="translate(860, 110)" opacity="0.6">
-            <polygon points="120,0 240,65 120,130 0,65" fill="#101c36" stroke="#3b82f6" stroke-width="1.5"/>
-            <polygon points="0,65 120,130 120,250 0,185" fill="#091020" stroke="#2563eb" stroke-width="1.5"/>
-            <polygon points="240,65 120,130 120,250 240,185" fill="#0d162b" stroke="#2563eb" stroke-width="1.5"/>
-            <circle cx="95" cy="148" r="4" fill="#3b82f6"/>
-            <circle cx="95" cy="176" r="4" fill="#10b981"/>
-            <circle cx="95" cy="204" r="4" fill="#60a5fa"/>
-          </g>
-          <g transform="translate(1090, 270)" opacity="0.5">
-            <polygon points="90,0 180,50 90,100 0,50" fill="#101c36" stroke="#3b82f6" stroke-width="1.5"/>
-            <polygon points="0,50 90,100 90,190 0,140" fill="#091020" stroke="#2563eb" stroke-width="1.5"/>
-            <polygon points="180,50 90,100 90,190 180,140" fill="#0d162b" stroke="#2563eb" stroke-width="1.5"/>
-            <circle cx="70" cy="118" r="3.5" fill="#10b981"/>
-            <circle cx="70" cy="142" r="3.5" fill="#3b82f6"/>
-          </g>
-        </svg>
-
-        <!-- Subtle Ambient Floating Particles -->
-        <span class="hero-particle absolute top-[24%] left-[12%] w-1.5 h-1.5 rounded-full bg-white/70"></span>
-        <span class="hero-particle absolute top-[62%] left-[8%] w-1 h-1 rounded-full bg-blue-400/85" style="animation-delay: 1.4s;"></span>
-        <span class="hero-particle absolute top-[35%] left-[48%] w-1.5 h-1.5 rounded-full bg-white/50" style="animation-delay: 2.3s;"></span>
-        <span class="hero-particle absolute top-[72%] left-[54%] w-1 h-1 rounded-full bg-white/60" style="animation-delay: 0.8s;"></span>
-        <span class="hero-particle absolute top-[20%] right-[18%] w-1.5 h-1.5 rounded-full bg-blue-400/80" style="animation-delay: 3.1s;"></span>
-      </div>
-
-      <!-- Deep Obsidian Vignette Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-r from-[#05070c]/92 via-[#05070c]/68 to-[#05070c]/78 pointer-events-none"></div>
-
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28 lg:py-32">
-        <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-
-          <!-- Left Hero Column (Exact LionCloud Typography & CTA Hierarchy) -->
-          <div class="lg:col-span-6 space-y-6 animate-view-in">
-            <h1 class="text-4xl sm:text-5xl lg:text-[3.65rem] font-bold tracking-tight leading-[1.08] text-white">
-              Host your own<br />
-              <span class="text-amberBrand">NVMe Cloud</span><br />
-              Servers
-            </h1>
-
-            <p class="text-base sm:text-[17px] text-slate-300 max-w-lg leading-relaxed">
-              Experience lightning-fast NVMe performance, unbeatable reliability, and 24/7 support across India, the USA, and Singapore.
-            </p>
-
-            <!-- Action Buttons Row -->
-            <div class="pt-1">
-              <div class="flex flex-wrap items-center gap-3.5">
-                <a href="#plans" class="btn-amber px-6 py-3 rounded-lg text-sm font-semibold inline-flex items-center gap-2">
-                  <span>Get started</span>
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
-                <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="btn-frosted px-6 py-3 rounded-lg text-sm font-semibold inline-flex items-center gap-2">
-                  <span>Learn More</span>
-                  <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                </a>
-              </div>
-
-              <!-- Micro-caption matching "Get started for free!" -->
-              <div class="mt-3 pl-3 flex items-center gap-2 text-xs text-slate-400">
-                <svg class="w-3.5 h-3.5 text-amberBrand/80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5l7 7-7 7"/></svg>
-                <span>Plans starting at <strong id="hero-min-price" class="text-slate-200 font-semibold">₹400/month!</strong></span>
-              </div>
+    <section id="offers" class="py-16 sm:py-20 bg-slateDeep border-b border-white/10 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+          <div>
+            <div class="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>Limited-Time Promotions</span>
             </div>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Active Offers &amp; Promo Codes</h2>
+            <p class="text-slate-400 mt-2 text-sm sm:text-base">Copy a promo code below or claim an offer directly in a deployment ticket.</p>
           </div>
-
-          <!-- Right Hero Column: 2x2 Architectural Feature Grid (Exact LionCloud Match) -->
-          <div class="lg:col-span-6 animate-view-in" style="animation-delay: 90ms;">
-            <div class="grid sm:grid-cols-2">
-              <!-- Quadrant 1: Top-Left -->
-              <div class="p-6 sm:p-7 border-b sm:border-r border-white/15 hover:bg-white/[0.03] transition">
-                <div class="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 class="text-base sm:text-[17px] font-bold text-white">Setup Within 24h</h3>
-                    <p class="text-xs sm:text-[13px] text-slate-300/90 mt-2 leading-relaxed">
-                      Get your server deployed quickly by our team on Discord or Client Panel
-                    </p>
-                  </div>
-                  <div class="text-amberBrand shrink-0 mt-0.5">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6" rx="1.5" stroke-width="1.8"/><rect x="4" y="14" width="16" height="6" rx="1.5" stroke-width="1.8"/><circle cx="8" cy="7" r="1" fill="currentColor"/><circle cx="8" cy="17" r="1" fill="currentColor"/></svg>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Quadrant 2: Top-Right -->
-              <div class="p-6 sm:p-7 border-b border-white/15 hover:bg-white/[0.03] transition">
-                <div class="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 class="text-base sm:text-[17px] font-bold text-white">DDoS Protection</h3>
-                    <p class="text-xs sm:text-[13px] text-slate-300/90 mt-2 leading-relaxed">
-                      Enterprise grade security included on every NVMe VPS plan
-                    </p>
-                  </div>
-                  <div class="text-amberBrand shrink-0 mt-0.5">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3l8 4v5c0 5.25-3.4 9.74-8 11-4.6-1.26-8-5.75-8-11V7l8-4z"/></svg>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Quadrant 3: Bottom-Left -->
-              <div class="p-6 sm:p-7 border-b sm:border-b-0 sm:border-r border-white/15 hover:bg-white/[0.03] transition">
-                <div class="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 class="text-base sm:text-[17px] font-bold text-white">99.9% Uptime</h3>
-                    <p class="text-xs sm:text-[13px] text-slate-300/90 mt-2 leading-relaxed">
-                      Reliable NVMe hosting with guaranteed availability across 3 regions
-                    </p>
-                  </div>
-                  <div class="text-amberBrand shrink-0 mt-0.5">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="1.8"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 7v5l3 2"/></svg>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Quadrant 4: Bottom-Right -->
-              <div class="p-6 sm:p-7 hover:bg-white/[0.03] transition">
-                <div class="flex items-start justify-between gap-3">
-                  <div>
-                    <h3 class="text-base sm:text-[17px] font-bold text-white">24/7 Support</h3>
-                    <p class="text-xs sm:text-[13px] text-slate-300/90 mt-2 leading-relaxed">
-                      Expert help &amp; full root access whenever you need it
-                    </p>
-                  </div>
-                  <div class="text-amberBrand shrink-0 mt-0.5">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
+          <a href="#plans" class="btn-frosted px-4 py-2 rounded-lg text-xs font-semibold self-start md:self-auto">
+            Browse All VPS Plans →
+          </a>
         </div>
+
+        <div id="offers-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
       </div>
     </section>
 
@@ -898,9 +773,20 @@
         <div>
           <h4 class="font-semibold text-white text-xs uppercase tracking-wider mb-3">Products</h4>
           <ul class="space-y-2 text-xs sm:text-sm">
+            <li><a href="#offers" class="hover:text-emerald-400 transition">Offers &amp; Promos</a></li>
             <li><a href="#products" class="hover:text-amberBrand transition">VPS overview</a></li>
             <li><a href="#plans" class="hover:text-amberBrand transition">Pricing</a></li>
             <li><a href="#locations" class="hover:text-amberBrand transition">Locations</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold text-white text-xs uppercase tracking-wider mb-3">Company</h4>
+          <ul class="space-y-2 text-xs sm:text-sm">
+            <li><a href="#features" class="hover:text-amberBrand transition">Features</a></li>
+            <li><a href="#faq" class="hover:text-amberBrand transition">FAQ</a></li>
+            <li><a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="hover:text-amberBrand transition">Discord</a></li>
+            <li><button type="button" data-open-portal="tickets" class="hover:text-amberBrand transition text-slate-200 font-medium">Client Panel</button></li>
           </ul>
         </div>
 
@@ -998,11 +884,12 @@
             <div class="flex items-center justify-between pt-0.5">
               <label class="inline-flex items-center gap-2 cursor-pointer select-none">
                 <input id="login-remember" type="checkbox" checked class="w-3.5 h-3.5 rounded border-white/20 bg-void text-amberBrand focus:ring-amberBrand" />
-                <span class="text-xs text-slate-400">Keep me signed in</span>
+                <span class="text-xs text-slate-400">Keep session active (15m idle lock)</span>
               </label>
-              <button id="fill-admin-btn" type="button" class="text-xs font-mono font-semibold text-amberBrand hover:text-amberHover transition">
-                Fill Admin Credentials →
-              </button>
+              <span class="text-[11px] font-mono text-slate-500 flex items-center gap-1">
+                <svg class="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Session Protected</span>
+              </span>
             </div>
 
             <button id="login-submit-btn" type="submit" class="w-full btn-amber-solid py-2.5 rounded-lg text-sm font-semibold mt-2 flex items-center justify-center gap-2">
@@ -1064,6 +951,9 @@
               <button id="dash-tab-admin-plans" type="button" data-dash-tab="admin-plans" class="hidden dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition">
                 Manage Plans &amp; Services
               </button>
+              <button id="dash-tab-admin-offers" type="button" data-dash-tab="admin-offers" class="hidden dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition">
+                Offers &amp; Promos
+              </button>
               <button id="dash-tab-admin-ann" type="button" data-dash-tab="admin-ann" class="hidden dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition">
                 Announcement
               </button>
@@ -1072,7 +962,13 @@
               </button>
             </div>
 
-            <button id="user-badge" type="button" data-dash-tab="profile" title="Edit Profile & Security" class="font-mono text-xs px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 transition cursor-pointer"></button>
+            <div class="flex items-center gap-2">
+              <span id="session-security-pill" class="hidden sm:inline-flex items-center gap-1.5 font-mono text-[11px] px-2.5 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/25 text-emerald-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span id="session-timer-label">Verified · 15m</span>
+              </span>
+              <button id="user-badge" type="button" data-dash-tab="profile" title="Edit Profile & Security" class="font-mono text-xs px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 transition cursor-pointer"></button>
+            </div>
           </div>
 
           <!-- SUB-VIEW A: SUPPORT & ORDER TICKETS -->
@@ -1281,6 +1177,75 @@
             </div>
           </div>
 
+          <!-- SUB-VIEW D2: ADMIN — OFFERS & PROMOTIONS MANAGER -->
+          <div id="subview-admin-offers" class="hidden space-y-6 animate-view-in">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h4 class="text-base font-bold text-white">Offers &amp; Promotions Manager</h4>
+                <p class="text-xs text-slate-400 mt-0.5">Publish promotional discounts and coupon codes directly to the public Offers section.</p>
+              </div>
+              <button id="reset-offers-btn" type="button" class="btn-frosted px-3 py-1.5 rounded-lg text-xs font-medium">
+                Reset Default Offers
+              </button>
+            </div>
+
+            <form id="admin-offer-form" class="p-4 sm:p-5 rounded-xl bg-[#05070c] border border-white/10 space-y-4">
+              <div class="flex items-center justify-between">
+                <h5 id="offer-form-title" class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">+ Create New Offer</h5>
+                <button type="button" id="cancel-edit-offer-btn" class="hidden text-xs text-slate-400 hover:text-white">Cancel Edit</button>
+              </div>
+
+              <input type="hidden" id="offer-edit-id" value="" />
+
+              <div class="grid sm:grid-cols-3 gap-3.5">
+                <div>
+                  <label for="offer-title" class="block text-xs font-medium text-slate-300 mb-1">Offer Title *</label>
+                  <input id="offer-title" type="text" required placeholder="e.g. India NVMe Launch Deal" class="field-input w-full px-3 py-2 rounded-lg text-sm" />
+                </div>
+                <div>
+                  <label for="offer-code" class="block text-xs font-medium text-slate-300 mb-1">Promo Code *</label>
+                  <input id="offer-code" type="text" required placeholder="e.g. GAVIO20" class="field-input w-full px-3 py-2 rounded-lg text-sm font-mono uppercase" />
+                </div>
+                <div>
+                  <label for="offer-badge" class="block text-xs font-medium text-slate-300 mb-1">Discount Badge *</label>
+                  <input id="offer-badge" type="text" required placeholder="e.g. 20% OFF or ₹150 OFF" class="field-input w-full px-3 py-2 rounded-lg text-sm font-mono" />
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label for="offer-tier" class="block text-xs font-medium text-slate-300 mb-1">Applicable Tier / Region *</label>
+                  <input id="offer-tier" type="text" required list="tier-suggestions" placeholder="e.g. Premium · India" class="field-input w-full px-3 py-2 rounded-lg text-sm" />
+                </div>
+                <div>
+                  <label for="offer-expiry" class="block text-xs font-medium text-slate-300 mb-1">Expiry / Validity Note *</label>
+                  <input id="offer-expiry" type="text" required placeholder="e.g. Valid till 31 Dec 2026" class="field-input w-full px-3 py-2 rounded-lg text-sm" />
+                </div>
+              </div>
+
+              <div>
+                <label for="offer-desc" class="block text-xs font-medium text-slate-300 mb-1">Description &amp; Terms *</label>
+                <textarea id="offer-desc" rows="2" required placeholder="Describe what the promo applies to and any billing terms..." class="field-input w-full px-3 py-2 rounded-lg text-sm"></textarea>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+                <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+                  <input id="offer-active" type="checkbox" checked class="w-4 h-4 rounded border-white/20 bg-void text-amberBrand focus:ring-amberBrand" />
+                  <span class="text-xs text-slate-300">Active &amp; Visible on Storefront</span>
+                </label>
+
+                <button type="submit" id="offer-submit-btn" class="btn-amber-solid px-5 py-2 rounded-lg text-xs sm:text-sm font-semibold">
+                  Publish Offer
+                </button>
+              </div>
+            </form>
+
+            <div class="space-y-2.5">
+              <div class="text-xs font-mono uppercase tracking-wider text-slate-400">Configured Offers (<span id="admin-offers-count">0</span>)</div>
+              <div id="admin-offers-list" class="space-y-2"></div>
+            </div>
+          </div>
+
           <!-- SUB-VIEW E: ADMIN ANNOUNCEMENT -->
           <div id="subview-admin-ann" class="hidden max-w-2xl space-y-4 animate-view-in">
             <div>
@@ -1446,10 +1411,49 @@
         USERS: "gavio_users_v3",
         SESSION: "gavio_session_v3",
         PLANS: "gavio_plans_v3",
+        OFFERS: "gavio_offers_v1",
         TICKETS: "gavio_tickets_v3",
         SERVICES: "gavio_services_v3",
         ANNOUNCEMENT: "gavio_announcement_v3"
       };
+
+      const IDLE_TIMEOUT_MS = 15 * 60 * 1000; // 15-minute idle session auto-lock
+      const SESSION_MAX_TTL_MS = 4 * 60 * 60 * 1000; // 4-hour hard token lifetime
+      const RUNTIME_SIGNING_SECRET = (() => {
+        const arr = new Uint8Array(16);
+        if (window.crypto && window.crypto.getRandomValues) {
+          window.crypto.getRandomValues(arr);
+          return Array.from(arr, b => b.toString(16).padStart(2, "0")).join("");
+        }
+        return String(Date.now()) + Math.random().toString(36).slice(2);
+      })();
+
+      let activeSessionEnvelope = null;
+      let lastActivityTs = Date.now();
+
+      function computeSessionSignature(payload) {
+        const raw = `${payload.userId}|${payload.role}|${payload.issuedAt}|${payload.expiresAt}|${payload.nonce}|${RUNTIME_SIGNING_SECRET}`;
+        let h1 = 0x811c9dc5;
+        let h2 = 0x1b873593;
+        for (let i = 0; i < raw.length; i++) {
+          const ch = raw.charCodeAt(i);
+          h1 ^= ch;
+          h1 = Math.imul(h1, 0x01000193);
+          h2 ^= ch + i;
+          h2 = Math.imul(h2, 0x85ebca6b);
+        }
+        return (h1 >>> 0).toString(16).padStart(8, "0") + (h2 >>> 0).toString(16).padStart(8, "0");
+      }
+
+      function stripSensitiveHash() {
+        const sensitiveHashes = ["#admin", "#panel", "#dashboard", "#login", "#offers-admin"];
+        if (sensitiveHashes.includes(location.hash.toLowerCase())) {
+          history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+      }
+
+      // Strip any sensitive URL hash immediately on load so shared admin URLs never auto-open
+      stripSensitiveHash();
 
       // Live IST Clock (Asia/Kolkata) matching LionCloud Header
       function updateISTClock() {
@@ -1494,6 +1498,39 @@
         "Premium · India": "Premium: 1 Gbps network in India.",
         "Budget · India, USA, Singapore": "Budget: 200 Mbps to 1 Gbps network in India, the USA and Singapore."
       };
+
+      const DEFAULT_OFFERS = [
+        {
+          id: "off_gavio20",
+          title: "India 1 Gbps Launch Offer",
+          code: "GAVIO20",
+          badge: "20% OFF",
+          tier: "Premium · India",
+          desc: "Get 20% off your first billing cycle on any Premium India NVMe VPS plan (12 GB to 64 GB RAM).",
+          expiry: "Valid for new deployments",
+          active: true
+        },
+        {
+          id: "off_deploy15",
+          title: "Multi-Region Starter Discount",
+          code: "DEPLOY15",
+          badge: "₹150 OFF",
+          tier: "Budget · India, USA, Singapore",
+          desc: "Instant ₹150 discount on Budget NVMe servers in India, Singapore, or the United States.",
+          expiry: "Limited slots available",
+          active: true
+        },
+        {
+          id: "off_nvme10",
+          title: "Quarterly Billing Bonus",
+          code: "QUARTER10",
+          badge: "10% RECURRING",
+          tier: "All VPS Tiers",
+          desc: "Lock in a flat 10% recurring discount when paying quarterly across Premium or Budget plans.",
+          expiry: "Applies to 3-month cycles",
+          active: true
+        }
+      ];
 
       const DEMO_TICKETS = [
         {
@@ -1599,6 +1636,11 @@
           writeJSON(KEYS.PLANS, DEFAULT_PLANS);
         }
 
+        let offers = readJSON(KEYS.OFFERS, null);
+        if (!Array.isArray(offers)) {
+          writeJSON(KEYS.OFFERS, DEFAULT_OFFERS);
+        }
+
         let tickets = readJSON(KEYS.TICKETS, null);
         if (!Array.isArray(tickets)) {
           writeJSON(KEYS.TICKETS, DEMO_TICKETS);
@@ -1628,38 +1670,132 @@
         writeJSON(KEYS.PLANS, p);
         renderStorefront();
       };
+      const getOffers = () => readJSON(KEYS.OFFERS, DEFAULT_OFFERS);
+      const saveOffers = o => {
+        writeJSON(KEYS.OFFERS, o);
+        renderOffersSection();
+      };
       const getTickets = () => readJSON(KEYS.TICKETS, []);
       const saveTickets = t => writeJSON(KEYS.TICKETS, t);
       const getServices = () => readJSON(KEYS.SERVICES, []);
       const saveServices = s => writeJSON(KEYS.SERVICES, s);
 
+      function clearAllSessionStorage() {
+        activeSessionEnvelope = null;
+        localStorage.removeItem(KEYS.SESSION);
+        sessionStorage.removeItem(KEYS.SESSION);
+      }
+
       function getSession() {
         try {
-          const raw = localStorage.getItem(KEYS.SESSION) || sessionStorage.getItem(KEYS.SESSION);
-          if (!raw) return null;
-          const parsed = JSON.parse(raw);
+          if (Date.now() - lastActivityTs > IDLE_TIMEOUT_MS && activeSessionEnvelope) {
+            clearAllSessionStorage();
+            return null;
+          }
+
+          let envelope = activeSessionEnvelope;
+          if (!envelope) {
+            const raw = sessionStorage.getItem(KEYS.SESSION);
+            if (!raw) return null;
+            envelope = JSON.parse(raw);
+          }
+
+          if (!envelope || !envelope.session_token || !envelope.userId || !envelope.expiresAt) {
+            clearAllSessionStorage();
+            return null;
+          }
+
+          if (Date.now() > Number(envelope.expiresAt)) {
+            clearAllSessionStorage();
+            return null;
+          }
+
+          const expectedSig = computeSessionSignature(envelope);
+          if (envelope.session_token !== expectedSig) {
+            clearAllSessionStorage();
+            return null;
+          }
+
           const users = getUsers();
-          const fresh = users.find(u => u.id === parsed.id)
-            || users.find(u => u.username.toLowerCase() === String(parsed.username || "").toLowerCase());
-          return fresh || parsed;
+          const fresh = users.find(u => u.id === envelope.userId);
+          if (!fresh || fresh.role !== envelope.role) {
+            clearAllSessionStorage();
+            return null;
+          }
+
+          activeSessionEnvelope = envelope;
+          return fresh;
         } catch {
+          clearAllSessionStorage();
           return null;
         }
       }
 
-      function setSession(user, persistLocal = true) {
-        localStorage.removeItem(KEYS.SESSION);
-        sessionStorage.removeItem(KEYS.SESSION);
+      function verifyAdminSession() {
+        const user = getSession();
+        if (!user || user.role !== "admin") {
+          return null;
+        }
+        return user;
+      }
+
+      function setSession(user, remember = true) {
+        clearAllSessionStorage();
         if (user) {
-          const serialized = JSON.stringify(user);
-          if (persistLocal) {
-            localStorage.setItem(KEYS.SESSION, serialized);
-          } else {
-            sessionStorage.setItem(KEYS.SESSION, serialized);
-          }
+          const now = Date.now();
+          lastActivityTs = now;
+          const ttl = remember ? SESSION_MAX_TTL_MS : IDLE_TIMEOUT_MS;
+          const nonce = Math.random().toString(36).slice(2) + now.toString(36);
+          const payload = {
+            userId: user.id,
+            role: user.role,
+            issuedAt: now,
+            expiresAt: now + ttl,
+            nonce
+          };
+          payload.session_token = computeSessionSignature(payload);
+          activeSessionEnvelope = payload;
+          sessionStorage.setItem(KEYS.SESSION, JSON.stringify(payload));
         }
         updateNavbarAuth();
       }
+
+      // Idle timeout watcher & activity tracker
+      ["mousemove", "keydown", "click", "scroll", "touchstart"].forEach(evt => {
+        window.addEventListener(evt, () => {
+          if (activeSessionEnvelope) {
+            if (Date.now() - lastActivityTs > IDLE_TIMEOUT_MS) {
+              clearAllSessionStorage();
+              updateNavbarAuth();
+              if (portalModal.classList.contains("is-open")) {
+                renderAuthView();
+                showToast("Session locked due to 15 minutes of inactivity.", "error");
+              }
+            } else {
+              lastActivityTs = Date.now();
+            }
+          }
+        }, { passive: true });
+      });
+
+      setInterval(() => {
+        if (!activeSessionEnvelope) return;
+        const remainingMs = IDLE_TIMEOUT_MS - (Date.now() - lastActivityTs);
+        if (remainingMs <= 0) {
+          clearAllSessionStorage();
+          updateNavbarAuth();
+          if (portalModal.classList.contains("is-open")) {
+            renderAuthView();
+            showToast("Session locked due to inactivity. Please sign in again.", "error");
+          }
+          return;
+        }
+        const timerEl = document.getElementById("session-timer-label");
+        if (timerEl) {
+          const mins = Math.max(1, Math.ceil(remainingMs / 60000));
+          timerEl.textContent = `Verified · ${mins}m`;
+        }
+      }, 15000);
 
       function escapeHtml(str) {
         return String(str ?? "")
@@ -1787,6 +1923,79 @@
 
       window.addEventListener("resize", positionTabPill);
 
+      // Offers & Promotions Storefront Renderer
+      function renderOffersSection() {
+        const activeOffers = getOffers().filter(o => o.active !== false);
+        const sectionEl = document.getElementById("offers");
+        const gridEl = document.getElementById("offers-grid");
+        const navBadge = document.getElementById("nav-offers-badge");
+        const mobileBadge = document.getElementById("mobile-offers-badge");
+
+        if (navBadge) {
+          navBadge.textContent = activeOffers.length > 0 ? `${activeOffers.length} SALE` : "SALE";
+        }
+        if (mobileBadge) {
+          mobileBadge.textContent = activeOffers.length > 0 ? `${activeOffers.length} SALE` : "SALE";
+        }
+
+        if (!sectionEl || !gridEl) return;
+
+        if (activeOffers.length === 0) {
+          gridEl.innerHTML = `
+            <div class="col-span-full p-8 rounded-xl bg-[#05070c] border border-dashed border-white/15 text-center space-y-2">
+              <p class="text-sm font-medium text-white">No active promotional offers at the moment</p>
+              <p class="text-xs text-slate-400">Check back soon or browse our standard monthly NVMe VPS pricing below.</p>
+            </div>
+          `;
+          return;
+        }
+
+        gridEl.innerHTML = activeOffers.map((o, idx) => {
+          const claimTitle = `Promo ${o.code} (${o.badge}) — ${o.tier}`;
+          return `
+            <div class="glass-card stagger-card rounded-xl p-6 flex flex-col justify-between border-emerald-500/25 hover:border-emerald-400/50" style="animation-delay: ${idx * 45}ms;">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="font-mono text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/35">
+                    ${escapeHtml(o.badge)}
+                  </span>
+                  <span class="font-mono text-[11px] text-slate-400">${escapeHtml(o.tier)}</span>
+                </div>
+
+                <h3 class="text-lg font-bold text-white">${escapeHtml(o.title)}</h3>
+                <p class="text-sm text-slate-300 mt-2 leading-relaxed">${escapeHtml(o.desc)}</p>
+
+                <!-- Copyable Promo Code Box -->
+                <div class="mt-4 p-2.5 rounded-lg bg-[#05070c] border border-dashed border-white/20 flex items-center justify-between gap-2">
+                  <div>
+                    <span class="block font-mono text-[10px] uppercase tracking-wider text-slate-500">Promo Code</span>
+                    <span class="font-mono text-sm font-bold text-amberBrand tracking-wider">${escapeHtml(o.code)}</span>
+                  </div>
+                  <button type="button" data-copy-val="${escapeHtml(o.code)}" data-copy-label="Promo code copied" class="btn-frosted px-3 py-1.5 rounded-md text-xs font-mono font-semibold hover:border-amberBrand/50">
+                    Copy Code
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-5 pt-4 border-t border-white/10 space-y-3">
+                <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                  <span>${escapeHtml(o.expiry)}</span>
+                  <span class="text-emerald-400">● Active</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <button type="button" data-claim-offer="${escapeHtml(claimTitle)}" data-offer-code="${escapeHtml(o.code)}" class="btn-amber-solid py-2 px-3 rounded-lg text-xs font-semibold text-center">
+                    Claim Offer
+                  </button>
+                  <a href="${DISCORD_URL}" target="_blank" rel="noreferrer" class="btn-frosted py-2 px-3 rounded-lg text-xs font-semibold text-center">
+                    Discord
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
       // Features Grid
       const FEATURES = [
         ["NVMe storage", "120 GB to 640 GB of NVMe, so installs, builds and databases stay quick.", '<rect x="4" y="7" width="16" height="10" rx="2"/><path d="M8 11h2M8 14h8"/>'],
@@ -1832,6 +2041,7 @@
       `).join("");
 
       renderStorefront();
+      renderOffersSection();
 
       // ---------------------------------------------------------------------
       // ANNOUNCEMENT BANNER
@@ -1887,19 +2097,47 @@
 
       function openPortal(initialTab = "tickets") {
         closeLegal(false);
+        stripSensitiveHash();
         portalModal.classList.add("is-open");
         document.body.style.overflow = "hidden";
         portalToast.classList.add("hidden");
 
         const user = getSession();
         if (user) {
-          renderDashboard(user, initialTab);
+          const safeTab = (initialTab.startsWith("admin-") && user.role !== "admin") ? "tickets" : initialTab;
+          renderDashboard(user, safeTab);
         } else {
           renderAuthView();
           setTimeout(() => {
             const input = document.getElementById("login-identifier");
             if (input) input.focus();
           }, 80);
+        }
+      }
+
+      function closePortal(clearHash = true) {
+        portalModal.classList.remove("is-open");
+        document.body.style.overflow = "";
+        activeTicketId = null;
+        if (clearHash) {
+          stripSensitiveHash();
+        }
+      }
+
+      function orderPlan(planTitle) {
+        pendingOrderPlan = planTitle;
+        openPortal("new");
+        if (!getSession()) {
+          showToast(`Sign in or create an account to order ${planTitle}.`, "success");
+        }
+      }
+
+      function claimOffer(offerTitle, promoCode) {
+        pendingOrderPlan = offerTitle;
+        copyText(promoCode, "Promo code copied");
+        openPortal("new");
+        if (!getSession()) {
+          showToast(`Code ${promoCode} copied! Sign in to claim this offer.`, "success");
         }
       }
 
@@ -1988,14 +2226,6 @@
         }, 200);
       });
 
-      document.getElementById("fill-admin-btn").addEventListener("click", () => {
-        switchAuthTab("login");
-        const adminAccount = getUsers().find(u => u.id === "usr_admin" || u.role === "admin");
-        document.getElementById("login-identifier").value = adminAccount ? adminAccount.username : "admin";
-        document.getElementById("login-password").value = adminAccount ? adminAccount.password : "admin123";
-        document.getElementById("login-form").requestSubmit();
-      });
-
       document.getElementById("register-form").addEventListener("submit", e => {
         e.preventDefault();
         const username = document.getElementById("reg-username").value.trim();
@@ -2036,22 +2266,10 @@
       document.getElementById("portal-logout-btn").addEventListener("click", () => {
         setSession(null);
         pendingOrderPlan = "";
-        renderAuthView();
-        showToast("Signed out successfully.", "success");
-      });
-
-      // ---------------------------------------------------------------------
-      // DASHBOARD VIEWS & NAVIGATION
-      // ---------------------------------------------------------------------
-      function renderDashboard(user, initialTab = "tickets") {
-        document.getElementById("auth-view").classList.add("hidden");
-        document.getElementById("dashboard-view").classList.remove("hidden");
-        document.getElementById("portal-logout-btn").classList.remove("hidden");
-
-        const isAdmin = user.role === "admin";
-        document.getElementById("portal-title").textContent = isAdmin ? "Admin Panel" : "Client Panel";
+        const isAdmin = verifyAdminSession() !== null;
+        document.getElementById("portal-title").textContent = isAdmin ? "Admin Console" : "Client Panel";
         document.getElementById("portal-subtitle").textContent = isAdmin
-          ? "Manage client tickets, VPS plans, services, and site announcements"
+          ? "Protected session · Manage client tickets, VPS plans, offers, and announcements"
           : "Manage your support tickets, active servers, and profile";
 
         const displayName = user.fullName || user.username;
@@ -2060,6 +2278,7 @@
           : `<span class="text-emerald-400 font-semibold">CLIENT</span> · ${escapeHtml(displayName)}`;
 
         document.getElementById("dash-tab-admin-plans").classList.toggle("hidden", !isAdmin);
+        document.getElementById("dash-tab-admin-offers").classList.toggle("hidden", !isAdmin);
         document.getElementById("dash-tab-admin-ann").classList.toggle("hidden", !isAdmin);
 
         switchDashTab(initialTab);
@@ -2067,7 +2286,16 @@
 
       function switchDashTab(tab) {
         const user = getSession();
-        if (!user) return;
+        if (!user) {
+          renderAuthView();
+          return;
+        }
+
+        // Strict guard: block non-admins from opening any admin subview
+        if (tab.startsWith("admin-") && !verifyAdminSession()) {
+          showToast("Unauthorized: Admin session required.", "error");
+          tab = "tickets";
+        }
 
         document.querySelectorAll(".dash-tab").forEach(btn => {
           btn.className = "dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-medium transition text-slate-400 hover:text-white bg-white/5 border border-white/5";
@@ -2078,7 +2306,7 @@
           activeBtn.className = "dash-tab px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-amberBrand text-white border border-amberBrand shadow-sm";
         }
 
-        ["tickets", "new", "services", "admin-plans", "admin-ann", "profile"].forEach(id => {
+        ["tickets", "new", "services", "admin-plans", "admin-offers", "admin-ann", "profile"].forEach(id => {
           const el = document.getElementById(`subview-${id}`);
           if (el) el.classList.add("hidden");
         });
@@ -2094,16 +2322,18 @@
           if (pendingOrderPlan) {
             document.getElementById("ticket-category").value = "Sales / VPS Order";
             document.getElementById("ticket-plan").value = pendingOrderPlan;
-            document.getElementById("ticket-subject").value = `VPS Order: ${pendingOrderPlan}`;
+            document.getElementById("ticket-subject").value = `VPS Order / Offer: ${pendingOrderPlan}`;
             pendingOrderPlan = "";
           }
         } else if (tab === "services") {
           renderServicesList();
         } else if (tab === "profile") {
           renderProfileView();
-        } else if (tab === "admin-plans" && user.role === "admin") {
+        } else if (tab === "admin-plans" && verifyAdminSession()) {
           renderAdminPlansList();
-        } else if (tab === "admin-ann" && user.role === "admin") {
+        } else if (tab === "admin-offers" && verifyAdminSession()) {
+          renderAdminOffersList();
+        } else if (tab === "admin-ann" && verifyAdminSession()) {
           const ann = readJSON(KEYS.ANNOUNCEMENT, {});
           document.getElementById("admin-ann-text").value = ann.text || "";
           document.getElementById("admin-ann-link").value = ann.link || "";
@@ -2340,8 +2570,11 @@
 
       // Admin 1-Click VPS Provisioning from Ticket
       document.getElementById("provision-vps-btn").addEventListener("click", () => {
-        const user = getSession();
-        if (!user || user.role !== "admin" || !activeTicketId) return;
+        const user = verifyAdminSession();
+        if (!user || !activeTicketId) {
+          showToast("Admin session required.", "error");
+          return;
+        }
 
         const ticket = getTickets().find(t => t.id === activeTicketId);
         if (!ticket) return;
@@ -2497,8 +2730,7 @@
         users[idx] = { ...users[idx], fullName, username, email, discord, region };
         saveUsers(users);
 
-        const keepLocal = !!localStorage.getItem(KEYS.SESSION);
-        setSession(users[idx], keepLocal);
+        setSession(users[idx], true);
         renderDashboard(users[idx], "profile");
         showToast("Profile details saved.", "success");
       });
@@ -2539,8 +2771,7 @@
         users[idx] = updatedUser;
         saveUsers(users);
 
-        const keepLocal = !!localStorage.getItem(KEYS.SESSION);
-        setSession(updatedUser, keepLocal);
+        setSession(updatedUser, true);
 
         document.getElementById("profile-password-form").reset();
         showToast("Password updated! Use your new password next time you sign in.", "success");
@@ -2577,8 +2808,11 @@
 
       document.getElementById("admin-plan-form").addEventListener("submit", e => {
         e.preventDefault();
-        const user = getSession();
-        if (!user || user.role !== "admin") return;
+        if (!verifyAdminSession()) {
+          showToast("Admin session expired or unauthorized.", "error");
+          renderAuthView();
+          return;
+        }
 
         const editId = document.getElementById("plan-edit-id").value;
         const name = document.getElementById("plan-name").value.trim();
@@ -2658,9 +2892,129 @@
       document.getElementById("cancel-edit-plan-btn").addEventListener("click", cancelEditPlan);
 
       document.getElementById("reset-plans-btn").addEventListener("click", () => {
+        if (!verifyAdminSession()) return;
         savePlans(DEFAULT_PLANS);
         renderAdminPlansList();
         showToast("Restored default Gavio Cloud plans.", "success");
+      });
+
+      // ---------------------------------------------------------------------
+      // ADMIN PANEL: OFFERS & PROMOTIONS MANAGER
+      // ---------------------------------------------------------------------
+      function renderAdminOffersList() {
+        if (!verifyAdminSession()) return;
+        const offers = getOffers();
+        document.getElementById("admin-offers-count").textContent = offers.length;
+        const listEl = document.getElementById("admin-offers-list");
+
+        if (offers.length === 0) {
+          listEl.innerHTML = `<div class="p-6 rounded-xl bg-[#05070c] border border-dashed border-white/15 text-center text-xs text-slate-400">No offers created yet. Use the form above to publish a promotion.</div>`;
+          return;
+        }
+
+        listEl.innerHTML = offers.map(o => `
+          <div class="p-3.5 rounded-xl bg-[#05070c] border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="space-y-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="font-semibold text-sm text-white">${escapeHtml(o.title)}</span>
+                <span class="font-mono text-[11px] font-bold px-2 py-0.5 rounded bg-amberBrand/15 text-amberBrand border border-amberBrand/35">${escapeHtml(o.code)}</span>
+                <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/35">${escapeHtml(o.badge)}</span>
+                ${o.active === false ? '<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-red-500/15 text-red-300 border border-red-500/30">PAUSED</span>' : ''}
+              </div>
+              <div class="text-xs text-slate-400">${escapeHtml(o.desc)}</div>
+              <div class="font-mono text-[11px] text-slate-500">${escapeHtml(o.tier)} · ${escapeHtml(o.expiry)}</div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 shrink-0">
+              <button type="button" data-toggle-offer="${escapeHtml(o.id)}" class="btn-frosted px-2.5 py-1.5 rounded-lg text-xs font-medium">
+                ${o.active === false ? "Activate" : "Pause"}
+              </button>
+              <button type="button" data-edit-offer="${escapeHtml(o.id)}" class="btn-frosted px-2.5 py-1.5 rounded-lg text-xs font-medium">Edit</button>
+              <button type="button" data-delete-offer="${escapeHtml(o.id)}" class="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-red-500/15 text-red-300 border border-red-500/30 hover:bg-red-500/25 transition">Delete</button>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      document.getElementById("admin-offer-form").addEventListener("submit", e => {
+        e.preventDefault();
+        if (!verifyAdminSession()) {
+          showToast("Admin session expired or unauthorized.", "error");
+          renderAuthView();
+          return;
+        }
+
+        const editId = document.getElementById("offer-edit-id").value;
+        const title = document.getElementById("offer-title").value.trim();
+        const code = document.getElementById("offer-code").value.trim().toUpperCase();
+        const badge = document.getElementById("offer-badge").value.trim();
+        const tier = document.getElementById("offer-tier").value.trim();
+        const expiry = document.getElementById("offer-expiry").value.trim();
+        const desc = document.getElementById("offer-desc").value.trim();
+        const active = document.getElementById("offer-active").checked;
+
+        let offers = getOffers();
+
+        if (editId) {
+          const idx = offers.findIndex(item => item.id === editId);
+          if (idx !== -1) {
+            offers[idx] = { ...offers[idx], title, code, badge, tier, expiry, desc, active };
+          }
+          showToast(`Updated offer "${title}".`, "success");
+        } else {
+          offers.unshift({
+            id: "off_" + Date.now(),
+            title,
+            code,
+            badge,
+            tier,
+            expiry,
+            desc,
+            active
+          });
+          showToast(`Published offer "${title}" (${code}).`, "success");
+        }
+
+        saveOffers(offers);
+        cancelEditOffer();
+        renderAdminOffersList();
+      });
+
+      function editOffer(offerId) {
+        if (!verifyAdminSession()) return;
+        const offer = getOffers().find(o => o.id === offerId);
+        if (!offer) return;
+
+        document.getElementById("offer-edit-id").value = offer.id;
+        document.getElementById("offer-title").value = offer.title;
+        document.getElementById("offer-code").value = offer.code;
+        document.getElementById("offer-badge").value = offer.badge;
+        document.getElementById("offer-tier").value = offer.tier;
+        document.getElementById("offer-expiry").value = offer.expiry;
+        document.getElementById("offer-desc").value = offer.desc;
+        document.getElementById("offer-active").checked = offer.active !== false;
+
+        document.getElementById("offer-form-title").textContent = `Editing Offer: ${offer.title}`;
+        document.getElementById("offer-submit-btn").textContent = "Update Offer";
+        document.getElementById("cancel-edit-offer-btn").classList.remove("hidden");
+        document.getElementById("admin-offer-form").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      function cancelEditOffer() {
+        document.getElementById("admin-offer-form").reset();
+        document.getElementById("offer-edit-id").value = "";
+        document.getElementById("offer-active").checked = true;
+        document.getElementById("offer-form-title").textContent = "+ Create New Offer";
+        document.getElementById("offer-submit-btn").textContent = "Publish Offer";
+        document.getElementById("cancel-edit-offer-btn").classList.add("hidden");
+      }
+
+      document.getElementById("cancel-edit-offer-btn").addEventListener("click", cancelEditOffer);
+
+      document.getElementById("reset-offers-btn").addEventListener("click", () => {
+        if (!verifyAdminSession()) return;
+        saveOffers(DEFAULT_OFFERS);
+        renderAdminOffersList();
+        showToast("Restored default offers.", "success");
       });
 
       // ---------------------------------------------------------------------
@@ -2668,6 +3022,11 @@
       // ---------------------------------------------------------------------
       document.getElementById("admin-announcement-form").addEventListener("submit", e => {
         e.preventDefault();
+        if (!verifyAdminSession()) {
+          showToast("Admin session expired or unauthorized.", "error");
+          renderAuthView();
+          return;
+        }
         const text = document.getElementById("admin-ann-text").value.trim();
         const link = document.getElementById("admin-ann-link").value.trim();
         const active = document.getElementById("admin-ann-active").checked;
@@ -2683,6 +3042,7 @@
       });
 
       document.getElementById("disable-ann-btn").addEventListener("click", () => {
+        if (!verifyAdminSession()) return;
         const current = readJSON(KEYS.ANNOUNCEMENT, {});
         current.active = false;
         writeJSON(KEYS.ANNOUNCEMENT, current);
@@ -2830,6 +3190,16 @@
           return;
         }
 
+        const claimOfferBtn = e.target.closest("[data-claim-offer]");
+        if (claimOfferBtn) {
+          e.preventDefault();
+          claimOffer(
+            claimOfferBtn.getAttribute("data-claim-offer"),
+            claimOfferBtn.getAttribute("data-offer-code") || ""
+          );
+          return;
+        }
+
         const catBtn = e.target.closest("[data-cat-tab]");
         if (catBtn) {
           selectedCategory = catBtn.getAttribute("data-cat-tab");
@@ -2888,10 +3258,42 @@
 
         const deletePlanBtn = e.target.closest("[data-delete-plan]");
         if (deletePlanBtn) {
+          if (!verifyAdminSession()) return;
           const id = deletePlanBtn.getAttribute("data-delete-plan");
           savePlans(getPlans().filter(p => p.id !== id));
           renderAdminPlansList();
           showToast("Plan removed.", "success");
+          return;
+        }
+
+        const toggleOfferBtn = e.target.closest("[data-toggle-offer]");
+        if (toggleOfferBtn) {
+          if (!verifyAdminSession()) return;
+          const id = toggleOfferBtn.getAttribute("data-toggle-offer");
+          const offers = getOffers();
+          const idx = offers.findIndex(o => o.id === id);
+          if (idx !== -1) {
+            offers[idx].active = offers[idx].active === false;
+            saveOffers(offers);
+            renderAdminOffersList();
+            showToast(offers[idx].active ? "Offer activated." : "Offer paused.", "success");
+          }
+          return;
+        }
+
+        const editOfferBtn = e.target.closest("[data-edit-offer]");
+        if (editOfferBtn) {
+          editOffer(editOfferBtn.getAttribute("data-edit-offer"));
+          return;
+        }
+
+        const deleteOfferBtn = e.target.closest("[data-delete-offer]");
+        if (deleteOfferBtn) {
+          if (!verifyAdminSession()) return;
+          const id = deleteOfferBtn.getAttribute("data-delete-offer");
+          saveOffers(getOffers().filter(o => o.id !== id));
+          renderAdminOffersList();
+          showToast("Offer deleted.", "success");
           return;
         }
 
@@ -2939,16 +3341,16 @@
         mobileMenuBtn.setAttribute("aria-expanded", String(!isHidden));
       });
       document.querySelectorAll(".mobile-link").forEach(a => {
-        a.addEventListener("click", () => {
-          mobileNav.classList.add("hidden");
-          mobileMenuBtn.setAttribute("aria-expanded", "false");
-        });
-      });
-
-      // Hash Sync
+      // Hash Sync (Never auto-opens Admin Console from shared URLs)
       function syncFromHash() {
-        const h = location.hash;
-        if (h === "#login") {
+        const h = location.hash.toLowerCase();
+        if (h === "#admin" || h === "#panel" || h === "#dashboard" || h === "#offers-admin") {
+          stripSensitiveHash();
+          if (!getSession()) {
+            openPortal("tickets");
+          }
+        } else if (h === "#login") {
+          stripSensitiveHash();
           openPortal("tickets");
         } else if (h === "#terms" || h === "#privacy" || h === "#refund") {
           openLegal(h.slice(1));
