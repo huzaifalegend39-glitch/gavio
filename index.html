@@ -1,2726 +1,660 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Gavio Cloud — NVMe Cloud VPS Hosting</title>
-  <meta name="description" content="NVMe VPS hosting with DDoS protection and full root access in India, the USA, and Singapore. Plans starting at ₹400/month." />
-  <meta name="theme-color" content="#09090b" />
-
-  <!-- Fonts: Inter & IBM Plex Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-            mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-          },
-          colors: {
-            canvas: '#09090b',
-            surface: '#111114',
-            surfaceHover: '#18181b',
-            borderSubtle: '#27272a',
-            accent: '#2563eb',
-            accentHover: '#1d4ed8',
-          }
-        }
-      }
-    };
-  </script>
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-padding-top: 72px;
-      color-scheme: dark;
-    }
-
-    body {
-      background-color: #09090b;
-      color: #fafafa;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* Clean Architectural Card */
-    .card {
-      background-color: #111114;
-      border: 1px solid #27272a;
-      transition: border-color 0.15s ease, background-color 0.15s ease;
-    }
-
-    .card:hover {
-      border-color: #3f3f46;
-    }
-
-    /* Primary & Secondary Buttons */
-    .btn-primary {
-      background-color: #2563eb;
-      color: #ffffff;
-      border: 1px solid #2563eb;
-      transition: background-color 0.15s ease, border-color 0.15s ease;
-    }
-
-    .btn-primary:hover {
-      background-color: #1d4ed8;
-      border-color: #1d4ed8;
-    }
-
-    .btn-secondary {
-      background-color: #18181b;
-      color: #e4e4e7;
-      border: 1px solid #27272a;
-      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-    }
-
-    .btn-secondary:hover {
-      background-color: #27272a;
-      border-color: #3f3f46;
-      color: #ffffff;
-    }
-
-    /* Inputs */
-    .input-field {
-      background-color: #09090b;
-      border: 1px solid #27272a;
-      color: #fafafa;
-      transition: border-color 0.15s ease;
-    }
-
-    .input-field::placeholder {
-      color: #71717a;
-    }
-
-    .input-field:focus {
-      outline: none;
-      border-color: #2563eb;
-    }
-
-    /* Modals */
-    .modal-overlay {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.15s ease;
-    }
-
-    .modal-overlay.is-open {
-      display: flex;
-      opacity: 1;
-    }
-
-    /* FAQ Accordion */
-    .faq-body {
-      display: none;
-    }
-
-    .faq-item.is-open .faq-body {
-      display: block;
-    }
-
-    .faq-item.is-open .faq-plus {
-      transform: rotate(45deg);
-    }
-
-    /* Toast */
-    .toast-box {
-      transform: translateY(12px);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.18s ease, opacity 0.18s ease;
-    }
-
-    .toast-box.is-visible {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #09090b;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #27272a;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #3f3f46;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gavio Cloud — NVMe Cloud VPS Hosting</title>
+<meta name="description" content="NVMe VPS hosting with DDoS protection and full root access in India, the USA and Singapore. Plans from ₹400/month.">
+<meta name="theme-color" content="#0b0c10">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0c10;--panel:#111218;--panel2:#15171e;--line:#23252d;--line2:#33363f;--text:#e8e9ee;--mut:#8b8f9c;--acc:#3b6cf0;--acc2:#2f58cc;--ok:#3ecf8e;--err:#ef5350;--mono:'IBM Plex Mono',ui-monospace,Menlo,monospace}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:72px;color-scheme:dark}
+body{background:var(--bg);color:var(--text);font:15px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}
+.mono{font-family:var(--mono)}
+.mut{color:var(--mut)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 16px;border-radius:8px;border:1px solid var(--line2);background:transparent;font-size:14px;font-weight:500;transition:background .15s,border-color .15s}
+.btn:hover{background:var(--panel2);border-color:#454955}
+.btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.p:hover{background:var(--acc2);border-color:var(--acc2)}
+.btn.sm{padding:5px 10px;font-size:12px;border-radius:6px}
+.btn.d{color:var(--err);border-color:#4a2527}
+.btn.d:hover{background:#2a1517}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
+.tag{font:500 11px var(--mono);padding:2px 8px;border-radius:5px;border:1px solid var(--line2);color:var(--mut);display:inline-block}
+.tag.ok{color:var(--ok);border-color:#1f4a38;background:#10241c}
+.tag.b{color:#7da2ff;border-color:#2a3d73;background:#121a33}
+input,select,textarea{width:100%;background:#0b0c10;border:1px solid var(--line2);color:var(--text);border-radius:8px;padding:9px 12px;font:inherit;font-size:14px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--acc)}
+input[type=checkbox]{width:auto}
+label{display:block;font-size:12px;font-weight:500;color:#c3c6d0;margin-bottom:5px}
+.f{margin-bottom:14px}
+.row{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+.eyebrow{font:500 12px var(--mono);color:#7da2ff;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;line-height:1.2}
+h2{font-size:clamp(26px,4vw,34px)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+/* header */
+header{position:sticky;top:0;z-index:30;background:rgba(11,12,16,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hb{height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-weight:600;font-size:17px;display:flex;align-items:center;gap:9px}
+.logo i{width:26px;height:26px;border-radius:6px;background:var(--acc);display:grid;place-items:center;font:600 11px var(--mono);font-style:normal;color:#fff}
+.logo em{color:#7da2ff;font-style:normal}
+nav{display:flex;gap:24px;font-size:14px;color:var(--mut)}
+nav a,nav button{background:none;border:0;color:inherit;transition:color .15s}
+nav a:hover,nav button:hover{color:var(--text)}
+.ha{display:flex;gap:8px;align-items:center}
+#menu{display:none}
+@media(max-width:820px){nav{display:none;position:absolute;top:60px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;padding:12px 20px;gap:12px}nav.open{display:flex}#menu{display:inline-flex}.hide-m{display:none}}
+#ann{background:#10172b;border-bottom:1px solid #22305c;font-size:13px;text-align:center;padding:9px 40px;position:relative}
+#ann a{color:#7da2ff;text-decoration:underline;margin-left:8px}
+#ann button{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--mut);font-size:16px}
+/* hero */
+.hero{padding:84px 0 72px;border-bottom:1px solid var(--line);background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:56px 56px}
+.hg{display:grid;gap:48px;grid-template-columns:1.15fr .85fr;align-items:center}
+@media(max-width:900px){.hg{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(34px,5.4vw,52px);margin:18px 0}
+.hero h1 span{color:#7da2ff}
+.hero p.lead{color:var(--mut);font-size:17px;max-width:520px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 20px}
+.pills{display:flex;flex-wrap:wrap;gap:8px 22px;font:12px var(--mono);color:var(--mut)}
+.pills b{color:var(--ok);font-weight:400}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid var(--line2);border-radius:99px;font:12px var(--mono);color:#c3c6d0}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block}
+.opt{display:grid;gap:8px;grid-template-columns:repeat(3,1fr);margin-bottom:16px}
+.opt.two{grid-template-columns:repeat(2,1fr)}
+.opt button{padding:8px;border:1px solid var(--line2);border-radius:8px;background:transparent;font-size:13px;color:var(--mut);transition:.15s}
+.opt button:hover{color:var(--text)}
+.opt button.on{border-color:var(--acc);background:#121a33;color:#fff}
+.lbl{font:11px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--mut);margin-bottom:8px}
+.out{font:12px var(--mono);background:#0b0c10;border:1px solid var(--line);border-radius:8px;padding:12px;margin-bottom:14px}
+.out div{display:flex;justify-content:space-between;padding:2px 0}
+.stats{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:56px}
+.stats .card{padding:18px}
+.stats b{display:block;font-size:24px;font-weight:600;margin:2px 0}
+/* plans */
+.sh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:34px}
+.tabs{display:inline-flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.tabs button{border:0;background:none;padding:7px 14px;border-radius:7px;font-size:13px;color:var(--mut)}
+.tabs button.on{background:var(--acc);color:#fff}
+.plan{display:flex;flex-direction:column;justify-content:space-between}
+.plan.feat{border-color:#3b5bdb}
+.price{font-size:32px;font-weight:600;letter-spacing:-.02em;padding:10px 0 16px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.price small{font-size:13px;font-weight:400;color:var(--mut)}
+.spec{list-style:none;padding:0;font-size:14px}
+.spec li{display:flex;justify-content:space-between;padding:6px 0}
+.spec span:first-child{color:var(--mut)}
+.spec span:last-child{font-family:var(--mono);font-size:13px}
+.pb{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+#offers,#locations{background:#0d0e13}
+.code{display:flex;justify-content:space-between;align-items:center;margin:16px 0;padding:8px 12px;border:1px dashed var(--line2);border-radius:8px;font:500 14px var(--mono)}
+.code button{background:none;border:0;color:#7da2ff;font:12px var(--mono)}
+.ico{width:38px;height:38px;border-radius:9px;border:1px solid var(--line2);display:grid;place-items:center;margin-bottom:14px;color:#7da2ff;font:600 15px var(--mono)}
+/* faq */
+.faq{border-top:1px solid var(--line)}
+.faq button{width:100%;display:flex;justify-content:space-between;background:none;border:0;padding:18px 0;text-align:left;font-weight:500;font-size:15px}
+.faq button::after{content:"+";color:var(--mut);font:18px var(--mono);transition:transform .2s}
+.faq.open button::after{transform:rotate(45deg)}
+.faq p{display:none;padding:0 0 18px;color:var(--mut);font-size:14px}
+.faq.open p{display:block}
+.band{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;border-color:#2a3d73;background:#0f1424}
+footer{padding:48px 0 28px;font-size:13px;color:var(--mut)}
+.fg{display:grid;gap:30px;grid-template-columns:2fr 1fr 1fr 1fr;padding-bottom:30px;border-bottom:1px solid var(--line)}
+@media(max-width:700px){.fg{grid-template-columns:1fr 1fr}}
+footer h4{color:var(--text);font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+footer li{list-style:none;margin-bottom:8px}
+footer ul{padding:0}
+footer li a,footer li button{background:none;border:0;color:inherit;padding:0;font-size:13px}
+footer li a:hover,footer li button:hover{color:var(--text)}
+.copy{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-top:20px;font-size:12px}
+/* modal */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:14px}
+.modal.open{display:flex}
+.mbox{background:var(--panel);border:1px solid var(--line2);border-radius:14px;width:100%;max-width:900px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
+.mh{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--bg)}
+.mh b{font-weight:600}
+.x{background:none;border:0;font-size:18px;color:var(--mut);padding:4px 8px}
+.mbody{padding:22px;overflow-y:auto}
+.mnarrow{max-width:640px}
+.dt{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.dt button{border:1px solid var(--line);background:transparent;border-radius:7px;padding:6px 12px;font-size:13px;color:var(--mut)}
+.dt button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.item{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);margin-bottom:10px}
+.item.click{cursor:pointer}
+.item.click:hover{border-color:var(--line2)}
+.msg{padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);margin-bottom:10px;white-space:pre-wrap;font-size:14px}
+.msg.st{background:#0f1424;border-color:#22305c}
+.msg small{display:block;font:11px var(--mono);color:var(--mut);margin-bottom:4px}
+#toast{position:fixed;bottom:20px;right:20px;z-index:80;background:var(--panel2);border:1px solid var(--line2);border-radius:10px;padding:10px 16px;font-size:13px;opacity:0;transform:translateY(8px);pointer-events:none;transition:.2s;max-width:320px}
+#toast.show{opacity:1;transform:none}
+#toast.err{border-color:#5a2a2c}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
-<body class="bg-canvas text-zinc-100 selection:bg-blue-600/30 selection:text-white">
+<body>
+<div id="ann" hidden><span class="tag b" style="margin-right:8px">Notice</span><span id="annt"></span><a id="annl" href="#" target="_blank" rel="noopener" hidden>Learn more →</a><button data-a="annx" aria-label="Dismiss">✕</button></div>
 
-  <!-- Top Announcement Bar (Admin Controlled) -->
-  <div id="announcement-bar" class="hidden relative z-40 bg-zinc-900 border-b border-zinc-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-center text-xs text-zinc-200 pr-10">
-      <span class="font-mono text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded bg-blue-600 text-white mr-2.5 shrink-0">Notice</span>
-      <span id="announcement-text" class="truncate sm:whitespace-normal"></span>
-      <a id="announcement-link" href="#" target="_blank" rel="noreferrer" class="hidden ml-2 text-blue-400 hover:text-blue-300 underline underline-offset-4 font-medium shrink-0">Learn more →</a>
-      <button id="announcement-close" type="button" aria-label="Dismiss" class="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-white">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
+<header>
+ <div class="w hb">
+  <a href="#top" class="logo"><i>GC</i><span>Gavio<em>Cloud</em></span></a>
+  <nav id="nav">
+   <a href="#plans">Pricing</a><a href="#offers">Offers</a><a href="#features">Features</a><a href="#locations">Locations</a><a href="#faq">FAQ</a>
+   <button data-a="info" data-v="status"><span class="dot"></span>&nbsp; Status</button>
+  </nav>
+  <div class="ha">
+   <span class="chip hide-m">IST <b id="clk" style="font-weight:400">--:--:--</b></span>
+   <button class="btn p" data-a="portal" data-v="tickets" id="navauth">Client Panel</button>
+   <button class="btn" id="menu" data-a="menu" aria-label="Menu">☰</button>
   </div>
+ </div>
+</header>
 
-  <!-- Minimal Top Navbar -->
-  <header class="sticky top-0 z-30 bg-canvas/95 backdrop-blur border-b border-zinc-800">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-      <!-- Brand -->
-      <a href="#top" class="flex items-center gap-2.5 font-semibold text-base tracking-tight text-white shrink-0">
-        <span class="w-7 h-7 rounded-md bg-blue-600 text-white font-mono text-xs font-bold flex items-center justify-center">GC</span>
-        <span>Gavio Cloud</span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-400">
-        <a href="#plans" class="hover:text-white transition">Pricing</a>
-        <a href="#offers" class="inline-flex items-center gap-1.5 hover:text-white transition">
-          <span>Offers</span>
-          <span id="nav-offers-badge" class="font-mono text-[10px] font-medium px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">3</span>
-        </a>
-        <a href="#features" class="hover:text-white transition">Features</a>
-        <a href="#locations" class="hover:text-white transition">Locations</a>
-        <a href="#faq" class="hover:text-white transition">FAQ</a>
-        <button type="button" data-open-status class="inline-flex items-center gap-1.5 hover:text-white transition">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-          <span>Status</span>
-        </button>
-      </nav>
-
-      <!-- Right Actions -->
-      <div class="flex items-center gap-2.5">
-        <span class="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-surface border border-zinc-800 font-mono text-xs text-zinc-400">
-          <span>IST</span>
-          <span id="live-ist-clock" class="text-zinc-200">11:21:00 am</span>
-        </span>
-
-        <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="hidden sm:inline-flex btn-secondary px-3 py-1.5 rounded-md text-xs font-medium">
-          Discord
-        </a>
-
-        <button id="nav-auth-btn" type="button" data-open-portal="tickets" class="btn-primary px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-medium inline-flex items-center gap-1.5">
-          <span id="nav-auth-label">Client Panel</span>
-        </button>
-
-        <button id="mobile-menu-btn" type="button" aria-label="Menu" aria-expanded="false" class="md:hidden p-2 rounded-md border border-zinc-800 text-zinc-300 hover:text-white">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
-      </div>
+<main id="top">
+ <div class="hero"><div class="w">
+  <div class="hg">
+   <div>
+    <span class="chip"><span class="dot"></span>NVMe Cloud VPS · India, USA &amp; Singapore</span>
+    <h1>Cloud servers with full root access, <span>built for speed.</span></h1>
+    <p class="lead">Enterprise NVMe storage, always-on DDoS mitigation and up to 1 Gbps uplinks. Plans start at <b id="minp" style="color:#fff">₹400/month</b>, set up by real people through the Client Panel or Discord.</p>
+    <div class="cta">
+     <a href="#plans" class="btn p">Explore plans →</a>
+     <button class="btn" data-a="portal" data-v="new">Open order ticket</button>
+     <a class="btn" href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noopener">Join Discord</a>
     </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-nav" class="hidden md:hidden border-t border-zinc-800 bg-canvas px-4 py-4 space-y-2 text-sm">
-      <a href="#plans" class="mobile-link block py-2 text-zinc-300 hover:text-white">Pricing</a>
-      <a href="#offers" class="mobile-link block py-2 text-zinc-300 hover:text-white">Offers &amp; Promos</a>
-      <a href="#features" class="mobile-link block py-2 text-zinc-300 hover:text-white">Features</a>
-      <a href="#locations" class="mobile-link block py-2 text-zinc-300 hover:text-white">Locations</a>
-      <a href="#faq" class="mobile-link block py-2 text-zinc-300 hover:text-white">FAQ</a>
-      <button type="button" data-open-status class="mobile-link block w-full text-left py-2 text-zinc-300 hover:text-white">System Status (99.98%)</button>
-      <div class="pt-2 border-t border-zinc-800 flex gap-2">
-        <button type="button" data-open-portal="tickets" class="mobile-link flex-1 btn-primary py-2 rounded-md text-xs font-medium text-center">Client Panel</button>
-        <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="mobile-link flex-1 btn-secondary py-2 rounded-md text-xs font-medium text-center">Discord</a>
-      </div>
+    <div class="pills"><span><b>✓</b> Full root SSH</span><span><b>✓</b> DDoS protection</span><span><b>✓</b> 48h refund window</span></div>
+   </div>
+   <div class="card">
+    <div class="lbl">1. Datacenter</div>
+    <div class="opt" id="hreg">
+     <button class="on" data-a="hreg" data-v="Mumbai, India (IN-MUM1)" data-p="14 ms">India</button>
+     <button data-a="hreg" data-v="Singapore (SG-SIN1)" data-p="46 ms">Singapore</button>
+     <button data-a="hreg" data-v="Virginia, USA (US-IAD1)" data-p="168 ms">USA</button>
     </div>
-  </header>
-
-  <main id="top">
-    <!-- Clean, Straightforward Hero Section -->
-    <section class="border-b border-zinc-800 py-16 sm:py-24">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="max-w-2xl space-y-6">
-          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-surface border border-zinc-800 font-mono text-xs text-zinc-400">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>NVMe VPS Hosting · India, USA &amp; Singapore</span>
-          </div>
-
-          <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-[1.12]">
-            Cloud servers with full root access, set up by our team.
-          </h1>
-
-          <p class="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-xl">
-            Dedicated NVMe storage and always-on DDoS protection on every plan. Starting at <span id="hero-min-price" class="text-white font-medium">₹400/month</span> with direct deployment via Client Panel or Discord.
-          </p>
-
-          <div class="flex flex-wrap items-center gap-3 pt-1">
-            <a href="#plans" class="btn-primary px-5 py-2.5 rounded-md text-sm font-medium">View pricing</a>
-            <button type="button" data-open-portal="new" class="btn-secondary px-5 py-2.5 rounded-md text-sm font-medium">Open order ticket</button>
-            <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="btn-secondary px-5 py-2.5 rounded-md text-sm font-medium">Discord</a>
-          </div>
-        </div>
-
-        <!-- Clean Key Metrics Strip -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-14 pt-10 border-t border-zinc-800">
-          <div>
-            <div class="text-2xl font-bold text-white">3 Regions</div>
-            <div class="text-xs text-zinc-400 mt-1">India, Singapore &amp; USA</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-white">Up to 1 Gbps</div>
-            <div class="text-xs text-zinc-400 mt-1">Unmetered DDoS mitigation</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-white">12–64 GB</div>
-            <div class="text-xs text-zinc-400 mt-1">Flexible RAM configurations</div>
-          </div>
-          <div>
-            <div class="text-2xl font-bold text-white">99.98%</div>
-            <div class="text-xs text-zinc-400 mt-1">Historical node availability</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =================================================================== -->
-    <!-- PRICING & VPS PLANS SECTION                                         -->
-    <!-- =================================================================== -->
-    <section id="plans" class="py-16 sm:py-20 border-b border-zinc-800">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">VPS Pricing</h2>
-            <p id="tier-description" class="text-sm text-zinc-400 mt-1.5">Premium: 1 Gbps network in India.</p>
-          </div>
-
-          <!-- Tier Switcher -->
-          <div id="pricing-tabs" class="inline-flex p-1 rounded-lg bg-surface border border-zinc-800 self-start"></div>
-        </div>
-
-        <div id="plans-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-      </div>
-    </section>
-
-    <!-- =================================================================== -->
-    <!-- OFFERS & PROMO CODES SECTION                                        -->
-    <!-- =================================================================== -->
-    <section id="offers" class="py-16 sm:py-20 bg-surface/40 border-b border-zinc-800">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="mb-8">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Active Offers &amp; Promo Codes</h2>
-          <p class="text-sm text-zinc-400 mt-1.5">Copy any promo code below and include it when opening your order ticket.</p>
-        </div>
-
-        <div id="offers-grid" class="grid md:grid-cols-3 gap-5"></div>
-      </div>
-    </section>
-
-    <!-- =================================================================== -->
-    <!-- FEATURES INCLUDED                                                   -->
-    <!-- =================================================================== -->
-    <section id="features" class="py-16 sm:py-20 border-b border-zinc-800">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="mb-10">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Included on every plan</h2>
-          <p class="text-sm text-zinc-400 mt-1.5">Standard features across all Premium and Budget servers.</p>
-        </div>
-        <div id="features-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
-      </div>
-    </section>
-
-    <!-- =================================================================== -->
-    <!-- LOCATIONS & LATENCY                                                 -->
-    <!-- =================================================================== -->
-    <section id="locations" class="py-16 sm:py-20 bg-surface/40 border-b border-zinc-800">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Locations</h2>
-            <p class="text-sm text-zinc-400 mt-1.5">Deploy close to your users across three regions.</p>
-          </div>
-          <button type="button" id="ping-nodes-btn" class="btn-secondary px-3 py-1.5 rounded-md text-xs font-mono">
-            ↻ Refresh Latency
-          </button>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-5">
-          <div class="card rounded-xl p-6">
-            <div class="flex items-center justify-between text-xs font-mono mb-3">
-              <span class="text-zinc-400">IN-MUM1 · ASIA</span>
-              <span class="text-emerald-400" id="ping-in">14 ms</span>
-            </div>
-            <h3 class="text-lg font-semibold text-white">India</h3>
-            <p class="text-sm text-zinc-400 mt-1">Premium and Budget plans available.</p>
-            <div class="mt-4 pt-3 border-t border-zinc-800 flex justify-between text-xs font-mono text-zinc-400">
-              <span>Uplink</span>
-              <span class="text-zinc-200">Up to 1 Gbps</span>
-            </div>
-          </div>
-
-          <div class="card rounded-xl p-6">
-            <div class="flex items-center justify-between text-xs font-mono mb-3">
-              <span class="text-zinc-400">SG-SIN1 · APAC</span>
-              <span class="text-emerald-400" id="ping-sg">46 ms</span>
-            </div>
-            <h3 class="text-lg font-semibold text-white">Singapore</h3>
-            <p class="text-sm text-zinc-400 mt-1">Budget plans available.</p>
-            <div class="mt-4 pt-3 border-t border-zinc-800 flex justify-between text-xs font-mono text-zinc-400">
-              <span>Uplink</span>
-              <span class="text-zinc-200">200 Mbps – 1 Gbps</span>
-            </div>
-          </div>
-
-          <div class="card rounded-xl p-6">
-            <div class="flex items-center justify-between text-xs font-mono mb-3">
-              <span class="text-zinc-400">US-IAD1 · NORTH AMERICA</span>
-              <span class="text-emerald-400" id="ping-us">168 ms</span>
-            </div>
-            <h3 class="text-lg font-semibold text-white">United States</h3>
-            <p class="text-sm text-zinc-400 mt-1">Budget plans available.</p>
-            <div class="mt-4 pt-3 border-t border-zinc-800 flex justify-between text-xs font-mono text-zinc-400">
-              <span>Uplink</span>
-              <span class="text-zinc-200">200 Mbps – 1 Gbps</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =================================================================== -->
-    <!-- FAQ                                                                 -->
-    <!-- =================================================================== -->
-    <section id="faq" class="py-16 sm:py-20 border-b border-zinc-800">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6">
-        <div class="mb-8">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">Frequently asked questions</h2>
-        </div>
-        <div id="fq" class="card rounded-xl divide-y divide-zinc-800 px-6"></div>
-      </div>
-    </section>
-
-    <!-- Bottom CTA -->
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6">
-        <div class="card rounded-xl p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-          <div>
-            <h2 class="text-xl font-bold text-white">Ready to deploy your server?</h2>
-            <p class="text-sm text-zinc-400 mt-1">Open a ticket in the Client Panel or reach out on Discord and we will set it up.</p>
-          </div>
-          <div class="flex flex-wrap gap-3 shrink-0">
-            <button type="button" data-open-portal="new" class="btn-primary px-5 py-2.5 rounded-md text-sm font-medium">Order in Client Panel</button>
-            <a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="btn-secondary px-5 py-2.5 rounded-md text-sm font-medium">Discord</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Minimal Footer -->
-  <footer class="border-t border-zinc-800 py-12 text-sm text-zinc-400">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pb-10 border-b border-zinc-800">
-        <div class="col-span-2 md:col-span-1 space-y-2.5">
-          <a href="#top" class="flex items-center gap-2 font-semibold text-white">
-            <span class="w-6 h-6 rounded bg-blue-600 text-white font-mono text-xs font-bold flex items-center justify-center">GC</span>
-            <span>Gavio Cloud</span>
-          </a>
-          <p class="text-xs text-zinc-500 leading-relaxed max-w-[230px]">
-            NVMe VPS hosting in India, the USA, and Singapore with DDoS protection and full root access.
-          </p>
-        </div>
-
-        <div>
-          <h4 class="font-medium text-white text-xs uppercase tracking-wider mb-3">Products</h4>
-          <ul class="space-y-2 text-xs">
-            <li><a href="#plans" class="hover:text-white transition">VPS Pricing</a></li>
-            <li><a href="#offers" class="hover:text-white transition">Offers &amp; Promos</a></li>
-            <li><a href="#locations" class="hover:text-white transition">Locations</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-medium text-white text-xs uppercase tracking-wider mb-3">Support</h4>
-          <ul class="space-y-2 text-xs">
-            <li><button type="button" data-open-portal="tickets" class="hover:text-white transition">Client Panel</button></li>
-            <li><button type="button" data-open-status class="hover:text-white transition">System Status</button></li>
-            <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
-            <li><a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noreferrer" class="hover:text-white transition">Discord</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="font-medium text-white text-xs uppercase tracking-wider mb-3">Legal</h4>
-          <ul class="space-y-2 text-xs">
-            <li><a href="#terms" data-open-legal="terms" class="hover:text-white transition">Terms of Service</a></li>
-            <li><a href="#privacy" data-open-legal="privacy" class="hover:text-white transition">Privacy Policy</a></li>
-            <li><a href="#refund" data-open-legal="refund" class="hover:text-white transition">Refund Policy</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-500">
-        <p>© 2026 Gavio Cloud. All rights reserved.</p>
-        <p class="font-mono">IN · SG · US</p>
-      </div>
+    <div class="lbl">2. Operating system</div>
+    <div class="opt two" id="hos">
+     <button class="on" data-a="hos" data-v="Ubuntu 24.04 LTS">Ubuntu 24.04</button>
+     <button data-a="hos" data-v="Debian 12">Debian 12</button>
+     <button data-a="hos" data-v="AlmaLinux 9">AlmaLinux 9</button>
+     <button data-a="hos" data-v="Rocky Linux 9">Rocky Linux 9</button>
     </div>
-  </footer>
-
-  <!-- ===================================================================== -->
-  <!-- CLIENT & ADMIN PANEL MODAL                                            -->
-  <!-- ===================================================================== -->
-  <div id="portal-modal" role="dialog" aria-modal="true" aria-labelledby="portal-title" class="modal-overlay fixed inset-0 z-50 items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-xs">
-    <div class="bg-surface w-full max-w-5xl max-h-[90vh] rounded-xl border border-zinc-800 shadow-2xl flex flex-col overflow-hidden">
-
-      <!-- Modal Header -->
-      <div class="px-5 sm:px-6 py-4 border-b border-zinc-800 flex items-center justify-between bg-canvas">
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-md bg-blue-600 text-white flex items-center justify-center font-mono text-xs font-bold">
-            GC
-          </div>
-          <div>
-            <h3 id="portal-title" class="font-semibold text-white text-base leading-tight">Client Panel</h3>
-            <p id="portal-subtitle" class="text-xs text-zinc-400">Sign in or create an account to manage tickets &amp; servers</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2">
-          <button id="portal-logout-btn" type="button" class="hidden px-3 py-1.5 rounded-md text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/25 hover:bg-red-500/20 transition">
-            Sign out
-          </button>
-          <button id="portal-close-btn" type="button" aria-label="Close portal" class="p-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800 transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Inline Feedback Banner -->
-      <div id="portal-toast" role="status" class="hidden px-6 py-2.5 text-xs font-medium border-b"></div>
-
-      <!-- Modal Body -->
-      <div class="flex-1 overflow-y-auto p-5 sm:p-7">
-
-        <!-- 1. AUTHENTICATION VIEW -->
-        <div id="auth-view" class="max-w-md mx-auto py-2">
-          <div class="grid grid-cols-2 p-1 rounded-lg bg-canvas border border-zinc-800 mb-6">
-            <button id="tab-login" type="button" data-auth-mode="login" class="py-2 rounded-md text-xs sm:text-sm font-medium transition bg-blue-600 text-white">
-              Sign In
-            </button>
-            <button id="tab-register" type="button" data-auth-mode="register" class="py-2 rounded-md text-xs sm:text-sm font-medium transition text-zinc-400 hover:text-white">
-              Create Account
-            </button>
-          </div>
-
-          <!-- Sign In Form -->
-          <form id="login-form" class="space-y-4">
-            <div>
-              <label for="login-identifier" class="block text-xs font-medium text-zinc-300 mb-1.5">Username or Email</label>
-              <input id="login-identifier" type="text" required autocomplete="username" placeholder="admin or you@domain.com" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm" />
-            </div>
-
-            <div>
-              <label for="login-password" class="block text-xs font-medium text-zinc-300 mb-1.5">Password</label>
-              <div class="relative">
-                <input id="login-password" type="password" required autocomplete="current-password" placeholder="Enter your password" class="input-field w-full px-3.5 py-2.5 pr-10 rounded-md text-sm" />
-                <button type="button" data-toggle-pass="login-password" aria-label="Toggle password" class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-white">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between pt-0.5">
-              <label class="inline-flex items-center gap-2 cursor-pointer select-none">
-                <input id="login-remember" type="checkbox" checked class="w-3.5 h-3.5 rounded border-zinc-700 bg-canvas text-blue-600 focus:ring-blue-600" />
-                <span class="text-xs text-zinc-400">Keep signed in</span>
-              </label>
-              <span class="text-[11px] font-mono text-zinc-500">15m idle lock</span>
-            </div>
-
-            <button id="login-submit-btn" type="submit" class="w-full btn-primary py-2.5 rounded-md text-sm font-medium mt-2">
-              Sign In
-            </button>
-          </form>
-
-          <!-- Register Form -->
-          <form id="register-form" class="hidden space-y-4">
-            <div>
-              <label for="reg-username" class="block text-xs font-medium text-zinc-300 mb-1.5">Username</label>
-              <input id="reg-username" type="text" required minlength="3" autocomplete="username" placeholder="e.g. rohan" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm" />
-            </div>
-
-            <div>
-              <label for="reg-email" class="block text-xs font-medium text-zinc-300 mb-1.5">Email Address</label>
-              <input id="reg-email" type="email" required autocomplete="email" placeholder="rohan@example.com" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm" />
-            </div>
-
-            <div>
-              <label for="reg-discord" class="block text-xs font-medium text-zinc-300 mb-1.5">Discord Username <span class="text-zinc-500">(optional)</span></label>
-              <input id="reg-discord" type="text" placeholder="@username" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm" />
-            </div>
-
-            <div>
-              <label for="reg-password" class="block text-xs font-medium text-zinc-300 mb-1.5">Password</label>
-              <div class="relative">
-                <input id="reg-password" type="password" required minlength="4" autocomplete="new-password" placeholder="Minimum 4 characters" class="input-field w-full px-3.5 py-2.5 pr-10 rounded-md text-sm" />
-                <button type="button" data-toggle-pass="reg-password" aria-label="Toggle password" class="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-zinc-400 hover:text-white">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <button id="register-submit-btn" type="submit" class="w-full btn-primary py-2.5 rounded-md text-sm font-medium mt-2">
-              Create Account
-            </button>
-          </form>
-        </div>
-
-        <!-- 2. AUTHENTICATED DASHBOARD VIEW -->
-        <div id="dashboard-view" class="hidden space-y-6">
-          <!-- Dashboard Tabs -->
-          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-zinc-800">
-            <div class="flex flex-wrap items-center gap-1.5">
-              <button id="dash-tab-tickets" type="button" data-dash-tab="tickets" class="dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition">
-                Tickets
-              </button>
-              <button id="dash-tab-new" type="button" data-dash-tab="new" class="dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition">
-                + New Ticket
-              </button>
-              <button id="dash-tab-services" type="button" data-dash-tab="services" class="dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition">
-                Services
-              </button>
-              <button id="dash-tab-admin-plans" type="button" data-dash-tab="admin-plans" class="hidden dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition">
-                Plans
-              </button>
-              <button id="dash-tab-admin-offers" type="button" data-dash-tab="admin-offers" class="hidden dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition">
-                Offers
-              </button>
-              <button id="dash-tab-admin-ann" type="button" data-dash-tab="admin-ann" class="hidden dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition">
-                Announcement
-              </button>
-              <button id="dash-tab-profile" type="button" data-dash-tab="profile" class="dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition">
-                Profile
-              </button>
-            </div>
-
-            <div class="flex items-center gap-2">
-              <span id="session-timer-label" class="hidden sm:inline-block font-mono text-[11px] px-2 py-1 rounded bg-canvas border border-zinc-800 text-zinc-400">
-                Session · 15m
-              </span>
-              <button id="user-badge" type="button" data-dash-tab="profile" class="font-mono text-xs px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition"></button>
-            </div>
-          </div>
-
-          <!-- SUB-VIEW: TICKETS -->
-          <div id="subview-tickets">
-            <div id="tickets-list-wrapper" class="space-y-4">
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <h4 id="tickets-heading" class="text-sm font-semibold text-white">Your Tickets</h4>
-                <div class="flex items-center gap-2">
-                  <select id="ticket-filter-status" class="input-field px-2.5 py-1.5 rounded-md text-xs">
-                    <option value="ALL">All Statuses</option>
-                    <option value="Open">Open</option>
-                    <option value="Answered">Answered</option>
-                    <option value="Closed">Closed</option>
-                  </select>
-                  <button type="button" data-dash-tab="new" class="btn-primary px-3 py-1.5 rounded-md text-xs font-medium">+ New Ticket</button>
-                </div>
-              </div>
-              <div id="tickets-container" class="space-y-2.5"></div>
-            </div>
-
-            <!-- Single Ticket Thread -->
-            <div id="ticket-detail-wrapper" class="hidden space-y-4">
-              <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-zinc-800">
-                <button id="back-to-tickets-btn" type="button" class="inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400 hover:text-white transition">
-                  <span>← Back to tickets</span>
-                </button>
-
-                <div class="flex flex-wrap items-center gap-2">
-                  <button id="toggle-ticket-closed-btn" type="button" class="btn-secondary px-2.5 py-1 rounded-md text-xs font-medium">
-                    Close Ticket
-                  </button>
-
-                  <div id="admin-ticket-controls" class="hidden flex flex-wrap items-center gap-2">
-                    <button id="provision-vps-btn" type="button" class="px-2.5 py-1 rounded-md text-xs font-medium bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-600/30 transition">
-                      + Provision VPS
-                    </button>
-                    <select id="admin-status-select" class="input-field px-2.5 py-1 rounded-md text-xs">
-                      <option value="Open">Status: Open</option>
-                      <option value="Answered">Status: Answered</option>
-                      <option value="Closed">Status: Closed</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div id="ticket-detail-header" class="p-4 rounded-lg bg-canvas border border-zinc-800"></div>
-              <div id="ticket-messages" class="space-y-3 max-h-72 overflow-y-auto pr-1"></div>
-
-              <form id="ticket-reply-form" class="pt-2 space-y-2.5">
-                <textarea id="ticket-reply-input" rows="3" required placeholder="Write a reply..." class="input-field w-full px-3.5 py-2.5 rounded-md text-sm"></textarea>
-                <div class="flex items-center justify-end">
-                  <button type="submit" class="btn-primary px-4 py-2 rounded-md text-xs sm:text-sm font-medium">Send Reply</button>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <!-- SUB-VIEW: NEW TICKET -->
-          <div id="subview-new" class="hidden max-w-2xl">
-            <h4 class="text-base font-semibold text-white">Open a Support or Order Ticket</h4>
-            <p class="text-xs text-zinc-400 mt-1 mb-5">Order a VPS, apply a promo code, or request technical support.</p>
-
-            <form id="new-ticket-form" class="space-y-4">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="ticket-category" class="block text-xs font-medium text-zinc-300 mb-1.5">Department</label>
-                  <select id="ticket-category" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm">
-                    <option value="Sales / VPS Order">Sales / VPS Order</option>
-                    <option value="Technical Support">Technical Support</option>
-                    <option value="Billing">Billing</option>
-                    <option value="Reinstall OS">Reinstall OS</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="ticket-priority" class="block text-xs font-medium text-zinc-300 mb-1.5">Priority</label>
-                  <select id="ticket-priority" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm">
-                    <option value="Normal">Normal</option>
-                    <option value="High">High</option>
-                    <option value="Urgent">Urgent</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label for="ticket-plan" class="block text-xs font-medium text-zinc-300 mb-1.5">Plan / Promo Code <span class="text-zinc-500">(optional)</span></label>
-                <input id="ticket-plan" type="text" placeholder="e.g. Standard — Premium · India (₹800/mo)" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm" />
-              </div>
-
-              <div>
-                <label for="ticket-subject" class="block text-xs font-medium text-zinc-300 mb-1.5">Subject *</label>
-                <input id="ticket-subject" type="text" required placeholder="Summary of your order or question" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm" />
-              </div>
-
-              <div>
-                <label for="ticket-message" class="block text-xs font-medium text-zinc-300 mb-1.5">Message *</label>
-                <textarea id="ticket-message" rows="4" required placeholder="Include your preferred OS (Ubuntu, Debian, AlmaLinux, Rocky Linux) and location (India, USA, Singapore)..." class="input-field w-full px-3.5 py-2.5 rounded-md text-sm"></textarea>
-              </div>
-
-              <div class="flex items-center gap-2.5 pt-1">
-                <button type="submit" class="btn-primary px-5 py-2 rounded-md text-sm font-medium">Submit Ticket</button>
-                <button type="button" data-dash-tab="tickets" class="btn-secondary px-4 py-2 rounded-md text-sm font-medium">Cancel</button>
-              </div>
-            </form>
-          </div>
-
-          <!-- SUB-VIEW: SERVICES -->
-          <div id="subview-services" class="hidden space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <h4 id="services-heading" class="text-base font-semibold text-white">Active VPS Services</h4>
-                <p class="text-xs text-zinc-400 mt-0.5">Servers provisioned to your account.</p>
-              </div>
-              <button type="button" data-dash-tab="new" class="btn-primary px-3.5 py-1.5 rounded-md text-xs font-medium">+ Order New VPS</button>
-            </div>
-            <div id="services-container" class="space-y-3"></div>
-          </div>
-
-          <!-- SUB-VIEW: ADMIN PLANS -->
-          <div id="subview-admin-plans" class="hidden space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <h4 class="text-base font-semibold text-white">Manage Plans</h4>
-                <p class="text-xs text-zinc-400 mt-0.5">Add, update, or remove VPS plans shown on the pricing section.</p>
-              </div>
-              <button id="reset-plans-btn" type="button" class="btn-secondary px-3 py-1.5 rounded-md text-xs font-medium">
-                Reset Defaults
-              </button>
-            </div>
-
-            <form id="admin-plan-form" class="p-4 sm:p-5 rounded-lg bg-canvas border border-zinc-800 space-y-4">
-              <div class="flex items-center justify-between">
-                <h5 id="plan-form-title" class="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold">+ Create New Plan</h5>
-                <button type="button" id="cancel-edit-plan-btn" class="hidden text-xs text-zinc-400 hover:text-white">Cancel Edit</button>
-              </div>
-
-              <input type="hidden" id="plan-edit-id" value="" />
-
-              <div class="grid sm:grid-cols-3 gap-3.5">
-                <div>
-                  <label for="plan-name" class="block text-xs font-medium text-zinc-300 mb-1">Plan Name *</label>
-                  <input id="plan-name" type="text" required placeholder="e.g. Starter" class="input-field w-full px-3 py-2 rounded-md text-sm" />
-                </div>
-                <div>
-                  <label for="plan-tier" class="block text-xs font-medium text-zinc-300 mb-1">Tier *</label>
-                  <input id="plan-tier" type="text" required list="tier-suggestions" placeholder="Premium · India" class="input-field w-full px-3 py-2 rounded-md text-sm" />
-                  <datalist id="tier-suggestions">
-                    <option value="Premium · India"></option>
-                    <option value="Budget · India, USA, Singapore"></option>
-                  </datalist>
-                </div>
-                <div>
-                  <label for="plan-price" class="block text-xs font-medium text-zinc-300 mb-1">Price (₹/mo) *</label>
-                  <input id="plan-price" type="number" required min="1" placeholder="800" class="input-field w-full px-3 py-2 rounded-md text-sm font-mono" />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-                <div>
-                  <label for="plan-ram" class="block text-xs font-medium text-zinc-300 mb-1">RAM (GB) *</label>
-                  <input id="plan-ram" type="number" required min="1" placeholder="16" class="input-field w-full px-3 py-2 rounded-md text-sm font-mono" />
-                </div>
-                <div>
-                  <label for="plan-cpu" class="block text-xs font-medium text-zinc-300 mb-1">CPU Cores *</label>
-                  <input id="plan-cpu" type="number" required min="1" placeholder="4" class="input-field w-full px-3 py-2 rounded-md text-sm font-mono" />
-                </div>
-                <div>
-                  <label for="plan-nvme" class="block text-xs font-medium text-zinc-300 mb-1">NVMe (GB) *</label>
-                  <input id="plan-nvme" type="number" required min="10" placeholder="160" class="input-field w-full px-3 py-2 rounded-md text-sm font-mono" />
-                </div>
-                <div>
-                  <label for="plan-network" class="block text-xs font-medium text-zinc-300 mb-1">Network *</label>
-                  <input id="plan-network" type="text" required value="1 Gbps" class="input-field w-full px-3 py-2 rounded-md text-sm font-mono" />
-                </div>
-              </div>
-
-              <div class="grid sm:grid-cols-2 gap-3.5 items-center">
-                <div>
-                  <label for="plan-badge" class="block text-xs font-medium text-zinc-300 mb-1">Badge <span class="text-zinc-500">(optional)</span></label>
-                  <input id="plan-badge" type="text" placeholder="e.g. POPULAR" class="input-field w-full px-3 py-2 rounded-md text-sm" />
-                </div>
-                <div class="flex flex-wrap items-center gap-5 pt-2 sm:pt-5">
-                  <label class="inline-flex items-center gap-2 cursor-pointer select-none">
-                    <input id="plan-featured" type="checkbox" class="w-4 h-4 rounded border-zinc-700 bg-canvas text-blue-600" />
-                    <span class="text-xs text-zinc-300">Highlight Plan</span>
-                  </label>
-                  <label class="inline-flex items-center gap-2 cursor-pointer select-none">
-                    <input id="plan-active" type="checkbox" checked class="w-4 h-4 rounded border-zinc-700 bg-canvas text-blue-600" />
-                    <span class="text-xs text-zinc-300">Visible</span>
-                  </label>
-                </div>
-              </div>
-
-              <button type="submit" id="plan-submit-btn" class="btn-primary px-4 py-2 rounded-md text-xs sm:text-sm font-medium">
-                Save Plan
-              </button>
-            </form>
-
-            <div class="space-y-2">
-              <div class="text-xs font-mono text-zinc-400">Configured Plans (<span id="admin-plans-count">0</span>)</div>
-              <div id="admin-plans-list" class="space-y-2"></div>
-            </div>
-          </div>
-
-          <!-- SUB-VIEW: ADMIN OFFERS -->
-          <div id="subview-admin-offers" class="hidden space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <h4 class="text-base font-semibold text-white">Manage Offers &amp; Promos</h4>
-                <p class="text-xs text-zinc-400 mt-0.5">Create and manage promotional codes displayed on the site.</p>
-              </div>
-              <button id="reset-offers-btn" type="button" class="btn-secondary px-3 py-1.5 rounded-md text-xs font-medium">
-                Reset Defaults
-              </button>
-            </div>
-
-            <form id="admin-offer-form" class="p-4 sm:p-5 rounded-lg bg-canvas border border-zinc-800 space-y-4">
-              <div class="flex items-center justify-between">
-                <h5 id="offer-form-title" class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">+ Create New Offer</h5>
-                <button type="button" id="cancel-edit-offer-btn" class="hidden text-xs text-zinc-400 hover:text-white">Cancel Edit</button>
-              </div>
-
-              <input type="hidden" id="offer-edit-id" value="" />
-
-              <div class="grid sm:grid-cols-3 gap-3.5">
-                <div>
-                  <label for="offer-title" class="block text-xs font-medium text-zinc-300 mb-1">Offer Title *</label>
-                  <input id="offer-title" type="text" required placeholder="India Launch Deal" class="input-field w-full px-3 py-2 rounded-md text-sm" />
-                </div>
-                <div>
-                  <label for="offer-code" class="block text-xs font-medium text-zinc-300 mb-1">Promo Code *</label>
-                  <input id="offer-code" type="text" required placeholder="GAVIO20" class="input-field w-full px-3 py-2 rounded-md text-sm font-mono uppercase" />
-                </div>
-                <div>
-                  <label for="offer-badge" class="block text-xs font-medium text-zinc-300 mb-1">Discount Tag *</label>
-                  <input id="offer-badge" type="text" required placeholder="20% OFF" class="input-field w-full px-3 py-2 rounded-md text-sm font-mono" />
-                </div>
-              </div>
-
-              <div class="grid sm:grid-cols-2 gap-3.5">
-                <div>
-                  <label for="offer-tier" class="block text-xs font-medium text-zinc-300 mb-1">Applicable Tier *</label>
-                  <input id="offer-tier" type="text" required list="tier-suggestions" placeholder="Premium · India" class="input-field w-full px-3 py-2 rounded-md text-sm" />
-                </div>
-                <div>
-                  <label for="offer-expiry" class="block text-xs font-medium text-zinc-300 mb-1">Validity Note *</label>
-                  <input id="offer-expiry" type="text" required placeholder="Valid for new orders" class="input-field w-full px-3 py-2 rounded-md text-sm" />
-                </div>
-              </div>
-
-              <div>
-                <label for="offer-desc" class="block text-xs font-medium text-zinc-300 mb-1">Description *</label>
-                <textarea id="offer-desc" rows="2" required placeholder="Offer details..." class="input-field w-full px-3 py-2 rounded-md text-sm"></textarea>
-              </div>
-
-              <div class="flex flex-wrap items-center justify-between gap-3">
-                <label class="inline-flex items-center gap-2 cursor-pointer select-none">
-                  <input id="offer-active" type="checkbox" checked class="w-4 h-4 rounded border-zinc-700 bg-canvas text-blue-600" />
-                  <span class="text-xs text-zinc-300">Active on Storefront</span>
-                </label>
-
-                <button type="submit" id="offer-submit-btn" class="btn-primary px-4 py-2 rounded-md text-xs sm:text-sm font-medium">
-                  Publish Offer
-                </button>
-              </div>
-            </form>
-
-            <div class="space-y-2">
-              <div class="text-xs font-mono text-zinc-400">Configured Offers (<span id="admin-offers-count">0</span>)</div>
-              <div id="admin-offers-list" class="space-y-2"></div>
-            </div>
-          </div>
-
-          <!-- SUB-VIEW: ADMIN ANNOUNCEMENT -->
-          <div id="subview-admin-ann" class="hidden max-w-2xl space-y-4">
-            <div>
-              <h4 class="text-base font-semibold text-white">Site Announcement Banner</h4>
-              <p class="text-xs text-zinc-400 mt-0.5">Shown at the top of the storefront when enabled.</p>
-            </div>
-
-            <form id="admin-announcement-form" class="space-y-4">
-              <div>
-                <label for="admin-ann-text" class="block text-xs font-medium text-zinc-300 mb-1.5">Message (300 characters max)</label>
-                <textarea id="admin-ann-text" rows="3" maxlength="300" placeholder="e.g. India 1 Gbps NVMe nodes restocked." class="input-field w-full px-3.5 py-2.5 rounded-md text-sm"></textarea>
-              </div>
-
-              <div>
-                <label for="admin-ann-link" class="block text-xs font-medium text-zinc-300 mb-1.5">Link <span class="text-zinc-500">(optional, https://...)</span></label>
-                <input id="admin-ann-link" type="url" placeholder="https://discord.gg/u6jWENUZtV" class="input-field w-full px-3.5 py-2.5 rounded-md text-sm" />
-              </div>
-
-              <label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
-                <input id="admin-ann-active" type="checkbox" class="w-4 h-4 rounded border-zinc-700 bg-canvas text-blue-600" />
-                <span class="text-sm text-zinc-200">Show on the site</span>
-              </label>
-
-              <div class="flex flex-wrap gap-2.5 pt-2">
-                <button type="submit" class="btn-primary px-4 py-2 rounded-md text-sm font-medium">Publish</button>
-                <button id="disable-ann-btn" type="button" class="btn-secondary px-4 py-2 rounded-md text-sm font-medium">Turn off</button>
-              </div>
-            </form>
-          </div>
-
-          <!-- SUB-VIEW: PROFILE & SECURITY -->
-          <div id="subview-profile" class="hidden space-y-6">
-            <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-zinc-800">
-              <div>
-                <h4 class="text-base font-semibold text-white">Profile &amp; Security</h4>
-                <p class="text-xs text-zinc-400 mt-0.5">Edit your account details or update your password.</p>
-              </div>
-              <div id="profile-meta-badge" class="font-mono text-xs px-3 py-1 rounded bg-canvas border border-zinc-800 text-zinc-300"></div>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-6">
-              <form id="profile-details-form" class="p-5 rounded-lg bg-canvas border border-zinc-800 space-y-4">
-                <div class="font-mono text-xs uppercase tracking-wider text-zinc-400">Account Details</div>
-
-                <div>
-                  <label for="prof-fullname" class="block text-xs font-medium text-zinc-300 mb-1.5">Display Name</label>
-                  <input id="prof-fullname" type="text" class="input-field w-full px-3.5 py-2 rounded-md text-sm" />
-                </div>
-
-                <div>
-                  <label for="prof-username" class="block text-xs font-medium text-zinc-300 mb-1.5">Username *</label>
-                  <input id="prof-username" type="text" required minlength="3" class="input-field w-full px-3.5 py-2 rounded-md text-sm font-mono" />
-                </div>
-
-                <div>
-                  <label for="prof-email" class="block text-xs font-medium text-zinc-300 mb-1.5">Email Address *</label>
-                  <input id="prof-email" type="email" required class="input-field w-full px-3.5 py-2 rounded-md text-sm" />
-                </div>
-
-                <div class="grid sm:grid-cols-2 gap-3.5">
-                  <div>
-                    <label for="prof-discord" class="block text-xs font-medium text-zinc-300 mb-1.5">Discord Handle</label>
-                    <input id="prof-discord" type="text" placeholder="@username" class="input-field w-full px-3.5 py-2 rounded-md text-sm font-mono" />
-                  </div>
-                  <div>
-                    <label for="prof-region" class="block text-xs font-medium text-zinc-300 mb-1.5">Preferred Region</label>
-                    <select id="prof-region" class="input-field w-full px-3.5 py-2 rounded-md text-sm">
-                      <option value="India">India (IN)</option>
-                      <option value="Singapore">Singapore (SG)</option>
-                      <option value="United States">United States (US)</option>
-                    </select>
-                  </div>
-                </div>
-
-                <button type="submit" class="btn-primary px-4 py-2 rounded-md text-xs sm:text-sm font-medium">
-                  Save Profile
-                </button>
-              </form>
-
-              <form id="profile-password-form" class="p-5 rounded-lg bg-canvas border border-zinc-800 space-y-4 flex flex-col justify-between">
-                <div class="space-y-4">
-                  <div class="font-mono text-xs uppercase tracking-wider text-zinc-400">Change Password</div>
-
-                  <div>
-                    <label for="prof-curr-pass" class="block text-xs font-medium text-zinc-300 mb-1.5">Current Password *</label>
-                    <input id="prof-curr-pass" type="password" required autocomplete="current-password" class="input-field w-full px-3.5 py-2 rounded-md text-sm" />
-                  </div>
-
-                  <div>
-                    <label for="prof-new-pass" class="block text-xs font-medium text-zinc-300 mb-1.5">New Password *</label>
-                    <input id="prof-new-pass" type="password" required minlength="4" autocomplete="new-password" class="input-field w-full px-3.5 py-2 rounded-md text-sm" />
-                  </div>
-
-                  <div>
-                    <label for="prof-confirm-pass" class="block text-xs font-medium text-zinc-300 mb-1.5">Confirm New Password *</label>
-                    <input id="prof-confirm-pass" type="password" required minlength="4" autocomplete="new-password" class="input-field w-full px-3.5 py-2 rounded-md text-sm" />
-                  </div>
-                </div>
-
-                <div class="pt-3 border-t border-zinc-800 flex items-center justify-between">
-                  <span class="text-[11px] font-mono text-zinc-500">Updates immediately</span>
-                  <button type="submit" class="btn-secondary px-4 py-2 rounded-md text-xs sm:text-sm font-medium">
-                    Update Password
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="out">
+     <div><span class="mut">Location</span><span id="sreg">Mumbai, India (IN-MUM1)</span></div>
+     <div><span class="mut">Image</span><span id="sos">Ubuntu 24.04 LTS</span></div>
+     <div><span class="mut">Typical latency</span><span id="sping" style="color:var(--ok)">14 ms</span></div>
     </div>
+    <button class="btn p" style="width:100%" data-a="hdeploy">Request this configuration</button>
+   </div>
   </div>
-
-  <!-- Legal Modal -->
-  <div id="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-title" class="modal-overlay fixed inset-0 z-50 items-center justify-center p-4 sm:p-6 bg-black/80">
-    <div class="bg-surface w-full max-w-2xl max-h-[85vh] rounded-xl border border-zinc-800 shadow-2xl flex flex-col overflow-hidden">
-      <div class="px-6 py-4 border-b border-zinc-800 flex items-center justify-between bg-canvas">
-        <h3 id="legal-title" class="font-semibold text-white text-base">Legal</h3>
-        <button id="legal-close-btn" type="button" aria-label="Close" class="p-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div id="legal-body" class="p-6 overflow-y-auto space-y-4 text-sm text-zinc-300 leading-relaxed"></div>
-    </div>
+  <div class="stats">
+   <div class="card"><span class="mono mut" style="font-size:11px">REGIONS</span><b>3 locations</b><span class="mut" style="font-size:13px">India, Singapore, USA</span></div>
+   <div class="card"><span class="mono mut" style="font-size:11px">NETWORK</span><b>Up to 1 Gbps</b><span class="mut" style="font-size:13px">DDoS protection included</span></div>
+   <div class="card"><span class="mono mut" style="font-size:11px">MEMORY</span><b>12 – 64 GB</b><span class="mut" style="font-size:13px">Dedicated ECC RAM</span></div>
+   <div class="card"><span class="mono mut" style="font-size:11px">UPTIME</span><b style="color:var(--ok)">99.98%</b><span class="mut" style="font-size:13px">Historical node uptime</span></div>
   </div>
+ </div></div>
 
-  <!-- System Status Modal -->
-  <div id="status-modal" role="dialog" aria-modal="true" aria-labelledby="status-title" class="modal-overlay fixed inset-0 z-50 items-center justify-center p-3 sm:p-6 bg-black/80">
-    <div class="bg-surface w-full max-w-3xl max-h-[85vh] rounded-xl border border-zinc-800 shadow-2xl flex flex-col overflow-hidden">
-      <div class="px-6 py-4 border-b border-zinc-800 flex items-center justify-between bg-canvas">
-        <div class="flex items-center gap-2.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <div>
-            <h3 id="status-title" class="font-semibold text-white text-base">System Status</h3>
-            <p class="font-mono text-[11px] text-emerald-400">ALL SYSTEMS OPERATIONAL · 99.98% UPTIME</p>
-          </div>
-        </div>
-        <button id="status-close-btn" type="button" aria-label="Close" class="p-1.5 rounded-md text-zinc-400 hover:text-white hover:bg-zinc-800">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div id="status-body" class="p-5 sm:p-6 overflow-y-auto space-y-4 text-sm text-zinc-300"></div>
-    </div>
+ <section id="plans"><div class="w">
+  <div class="sh">
+   <div><div class="eyebrow">Pricing</div><h2>Choose your NVMe VPS plan</h2><p class="mut" id="tnote" style="margin-top:8px"></p></div>
+   <div class="tabs" id="tabs"></div>
   </div>
+  <div class="grid" id="plans-grid"></div>
+ </div></section>
 
-  <!-- Toast Notification -->
-  <div id="global-toast" role="status" class="toast-box fixed bottom-5 right-5 z-[60] max-w-sm px-4 py-3 rounded-lg bg-surface border border-zinc-700 shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-medium text-white">
-    <span id="global-toast-dot" class="w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
-    <span id="global-toast-text"></span>
+ <section id="offers"><div class="w">
+  <div style="margin-bottom:34px"><div class="eyebrow">Promotions</div><h2>Active offers &amp; promo codes</h2><p class="mut" style="margin-top:8px">Copy a code and add it to your order ticket.</p></div>
+  <div class="grid" id="offers-grid"></div>
+ </div></section>
+
+ <section id="features"><div class="w">
+  <div style="margin-bottom:34px"><div class="eyebrow">Included</div><h2>On every server</h2></div>
+  <div class="grid" id="feat"></div>
+ </div></section>
+
+ <section id="locations"><div class="w">
+  <div class="sh"><div><div class="eyebrow">Network</div><h2>Datacenter locations</h2></div><button class="btn sm mono" data-a="ping">↻ Test latency</button></div>
+  <div class="grid">
+   <div class="card"><div style="display:flex;justify-content:space-between"><span class="tag b">IN-MUM1</span><span class="mono" style="color:var(--ok);font-size:12px" id="pin">14 ms</span></div><h3 style="margin:14px 0 4px">India (Mumbai)</h3><p class="mut" style="font-size:14px">Premium and Budget plans with low domestic latency.</p><p class="mono mut" style="font-size:12px;margin-top:14px">Uplink · up to 1 Gbps</p></div>
+   <div class="card"><div style="display:flex;justify-content:space-between"><span class="tag">SG-SIN1</span><span class="mono" style="color:var(--ok);font-size:12px" id="psg">46 ms</span></div><h3 style="margin:14px 0 4px">Singapore</h3><p class="mut" style="font-size:14px">Budget plans for Southeast Asian and Indian traffic.</p><p class="mono mut" style="font-size:12px;margin-top:14px">Uplink · 200 Mbps – 1 Gbps</p></div>
+   <div class="card"><div style="display:flex;justify-content:space-between"><span class="tag">US-IAD1</span><span class="mono" style="color:var(--ok);font-size:12px" id="pus">168 ms</span></div><h3 style="margin:14px 0 4px">United States</h3><p class="mut" style="font-size:14px">Budget plans with US backbone peering.</p><p class="mono mut" style="font-size:12px;margin-top:14px">Uplink · 200 Mbps – 1 Gbps</p></div>
   </div>
-
-  <script>
-    (() => {
-      const DISCORD_URL = "https://discord.gg/u6jWENUZtV";
-
-      const KEYS = {
-        USERS: "gavio_users_v4",
-        SESSION: "gavio_session_v4",
-        PLANS: "gavio_plans_v4",
-        OFFERS: "gavio_offers_v4",
-        TICKETS: "gavio_tickets_v4",
-        SERVICES: "gavio_services_v4",
-        ANNOUNCEMENT: "gavio_announcement_v4"
-      };
-
-      // Safe Web Storage with in-memory fallback
-      const memLocal = {};
-      const memSession = {};
-
-      function safeLocalGet(key) {
-        try {
-          return window.localStorage.getItem(key);
-        } catch {
-          return Object.prototype.hasOwnProperty.call(memLocal, key) ? memLocal[key] : null;
-        }
-      }
-
-      function safeLocalSet(key, val) {
-        memLocal[key] = val;
-        try {
-          window.localStorage.setItem(key, val);
-        } catch {}
-      }
-
-      function safeLocalRemove(key) {
-        delete memLocal[key];
-        try {
-          window.localStorage.removeItem(key);
-        } catch {}
-      }
-
-      function safeSessionGet(key) {
-        try {
-          return window.sessionStorage.getItem(key);
-        } catch {
-          return Object.prototype.hasOwnProperty.call(memSession, key) ? memSession[key] : null;
-        }
-      }
-
-      function safeSessionSet(key, val) {
-        memSession[key] = val;
-        try {
-          window.sessionStorage.setItem(key, val);
-        } catch {}
-      }
-
-      function safeSessionRemove(key) {
-        delete memSession[key];
-        try {
-          window.sessionStorage.removeItem(key);
-        } catch {}
-      }
-
-      function safeReplaceState(url) {
-        try {
-          if (window.history && typeof window.history.replaceState === "function") {
-            window.history.replaceState(null, "", url);
-          }
-        } catch {}
-      }
-
-      // Session Security & Hash Sanitization
-      const IDLE_TIMEOUT_MS = 15 * 60 * 1000;
-      const SESSION_MAX_TTL_MS = 4 * 60 * 60 * 1000;
-      const RUNTIME_SECRET = String(Date.now()) + Math.random().toString(36).slice(2);
-      let activeSessionEnvelope = null;
-      let lastActivityTs = Date.now();
-
-      function computeSignature(payload) {
-        const raw = `${payload.userId}|${payload.role}|${payload.issuedAt}|${payload.expiresAt}|${payload.nonce}|${RUNTIME_SECRET}`;
-        let h1 = 0x811c9dc5;
-        let h2 = 0x1b873593;
-        for (let i = 0; i < raw.length; i++) {
-          const ch = raw.charCodeAt(i);
-          h1 ^= ch;
-          h1 = Math.imul(h1, 0x01000193);
-          h2 ^= ch + i;
-          h2 = Math.imul(h2, 0x85ebca6b);
-        }
-        return (h1 >>> 0).toString(16).padStart(8, "0") + (h2 >>> 0).toString(16).padStart(8, "0");
-      }
-
-      function stripSensitiveHash() {
-        const blocked = ["#admin", "#panel", "#dashboard", "#login", "#offers-admin"];
-        if (blocked.includes(location.hash.toLowerCase())) {
-          safeReplaceState(window.location.pathname + window.location.search);
-        }
-      }
-      stripSensitiveHash();
-
-      // Live IST Clock
-      function updateISTClock() {
-        const el = document.getElementById("live-ist-clock");
-        if (!el) return;
-        try {
-          el.textContent = new Date().toLocaleTimeString("en-US", {
-            timeZone: "Asia/Kolkata",
-            hour12: true,
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit"
-          }).toLowerCase();
-        } catch {
-          el.textContent = "11:21:00 am";
-        }
-      }
-      updateISTClock();
-      setInterval(updateISTClock, 1000);
-
-      // Default Storefront Data
-      const DEFAULT_PLANS = [
-        { id: "pln_p1", name: "Starter", tier: "Premium · India", price: 600, ram: 12, cpu: 2, nvme: 120, network: "1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_p2", name: "Standard", tier: "Premium · India", price: 800, ram: 16, cpu: 4, nvme: 160, network: "1 Gbps", badge: "POPULAR", featured: true, active: true },
-        { id: "pln_p3", name: "Advanced", tier: "Premium · India", price: 1000, ram: 24, cpu: 4, nvme: 250, network: "1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_p4", name: "Performance", tier: "Premium · India", price: 1200, ram: 32, cpu: 4, nvme: 320, network: "1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_p5", name: "Enterprise", tier: "Premium · India", price: 1400, ram: 48, cpu: 6, nvme: 480, network: "1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_p6", name: "Ultimate", tier: "Premium · India", price: 1600, ram: 64, cpu: 8, nvme: 640, network: "1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_b1", name: "Starter", tier: "Budget · India, USA, Singapore", price: 400, ram: 12, cpu: 2, nvme: 120, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_b2", name: "Standard", tier: "Budget · India, USA, Singapore", price: 550, ram: 16, cpu: 4, nvme: 160, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_b3", name: "Advanced", tier: "Budget · India, USA, Singapore", price: 720, ram: 24, cpu: 4, nvme: 250, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_b4", name: "Performance", tier: "Budget · India, USA, Singapore", price: 800, ram: 32, cpu: 4, nvme: 320, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_b5", name: "Enterprise", tier: "Budget · India, USA, Singapore", price: 1000, ram: 48, cpu: 6, nvme: 480, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true },
-        { id: "pln_b6", name: "Ultimate", tier: "Budget · India, USA, Singapore", price: 1200, ram: 64, cpu: 8, nvme: 640, network: "200 Mbps – 1 Gbps", badge: "", featured: false, active: true }
-      ];
-
-      const TIER_NOTES = {
-        "Premium · India": "Premium: 1 Gbps network in India.",
-        "Budget · India, USA, Singapore": "Budget: 200 Mbps to 1 Gbps network in India, the USA and Singapore."
-      };
-
-      const DEFAULT_OFFERS = [
-        {
-          id: "off_gavio20",
-          title: "India 1 Gbps Launch Offer",
-          code: "GAVIO20",
-          badge: "20% OFF",
-          tier: "Premium · India",
-          desc: "Get 20% off your first billing cycle on any Premium India NVMe VPS plan.",
-          expiry: "New deployments",
-          active: true
-        },
-        {
-          id: "off_deploy15",
-          title: "Multi-Region Starter Discount",
-          code: "DEPLOY15",
-          badge: "₹150 OFF",
-          tier: "Budget · India, USA, Singapore",
-          desc: "Instant ₹150 discount on Budget NVMe servers in India, Singapore, or the United States.",
-          expiry: "Limited slots",
-          active: true
-        },
-        {
-          id: "off_nvme10",
-          title: "Quarterly Billing Bonus",
-          code: "QUARTER10",
-          badge: "10% OFF",
-          tier: "All VPS Tiers",
-          desc: "Flat 10% recurring discount when paying quarterly across Premium or Budget plans.",
-          expiry: "3-month cycles",
-          active: true
-        }
-      ];
-
-      const DEMO_TICKETS = [
-        {
-          id: "GC-10482",
-          userId: "usr_demo_client",
-          username: "arjun_dev",
-          userEmail: "arjun@example.in",
-          category: "Sales / VPS Order",
-          priority: "High",
-          plan: "Standard — Premium · India (₹800/mo)",
-          subject: "Deploy Standard 16GB NVMe VPS in Mumbai",
-          status: "Open",
-          createdAt: new Date(Date.now() - 1000 * 60 * 42).toISOString(),
-          messages: [
-            {
-              sender: "arjun_dev",
-              role: "client",
-              text: "Hi team, I'd like to order the Standard Premium India VPS (16 GB RAM / 160 GB NVMe) with Ubuntu 24.04 LTS.",
-              timestamp: new Date(Date.now() - 1000 * 60 * 42).toISOString()
-            }
-          ]
-        }
-      ];
-
-      function readJSON(key, fallback) {
-        try {
-          const raw = safeLocalGet(key);
-          return raw ? JSON.parse(raw) : fallback;
-        } catch {
-          return fallback;
-        }
-      }
-
-      function writeJSON(key, val) {
-        try {
-          safeLocalSet(key, JSON.stringify(val));
-        } catch {}
-      }
-
-      function initState() {
-        let users = readJSON(KEYS.USERS, null);
-        if (!Array.isArray(users) || users.length === 0) {
-          users = [
-            {
-              id: "usr_admin",
-              fullName: "Admin",
-              username: "admin",
-              email: "admin@gaviocloud.com",
-              discord: "GavioAdmin",
-              region: "India",
-              password: "admin123",
-              role: "admin",
-              createdAt: new Date().toISOString()
-            },
-            {
-              id: "usr_demo_client",
-              fullName: "Arjun Mehta",
-              username: "arjun_dev",
-              email: "arjun@example.in",
-              discord: "@arjun_dev",
-              region: "India",
-              password: "user123",
-              role: "client",
-              createdAt: new Date().toISOString()
-            }
-          ];
-          writeJSON(KEYS.USERS, users);
-        }
-
-        if (!Array.isArray(readJSON(KEYS.PLANS, null))) writeJSON(KEYS.PLANS, DEFAULT_PLANS);
-        if (!Array.isArray(readJSON(KEYS.OFFERS, null))) writeJSON(KEYS.OFFERS, DEFAULT_OFFERS);
-        if (!Array.isArray(readJSON(KEYS.TICKETS, null))) writeJSON(KEYS.TICKETS, DEMO_TICKETS);
-        if (!Array.isArray(readJSON(KEYS.SERVICES, null))) writeJSON(KEYS.SERVICES, []);
-        if (!safeLocalGet(KEYS.ANNOUNCEMENT)) {
-          writeJSON(KEYS.ANNOUNCEMENT, { id: 1, text: "", link: "", active: false });
-        }
-      }
-      initState();
-
-      const getUsers = () => readJSON(KEYS.USERS, []);
-      const saveUsers = u => writeJSON(KEYS.USERS, u);
-      const getPlans = () => readJSON(KEYS.PLANS, DEFAULT_PLANS);
-      const savePlans = p => { writeJSON(KEYS.PLANS, p); renderStorefront(); };
-      const getOffers = () => readJSON(KEYS.OFFERS, DEFAULT_OFFERS);
-      const saveOffers = o => { writeJSON(KEYS.OFFERS, o); renderOffersSection(); };
-      const getTickets = () => readJSON(KEYS.TICKETS, []);
-      const saveTickets = t => writeJSON(KEYS.TICKETS, t);
-      const getServices = () => readJSON(KEYS.SERVICES, []);
-      const saveServices = s => writeJSON(KEYS.SERVICES, s);
-
-      function clearSessionStorage() {
-        activeSessionEnvelope = null;
-        safeLocalRemove(KEYS.SESSION);
-        safeSessionRemove(KEYS.SESSION);
-      }
-
-      function getSession() {
-        try {
-          if (Date.now() - lastActivityTs > IDLE_TIMEOUT_MS && activeSessionEnvelope) {
-            clearSessionStorage();
-            return null;
-          }
-
-          let env = activeSessionEnvelope;
-          if (!env) {
-            const raw = safeSessionGet(KEYS.SESSION);
-            if (!raw) return null;
-            env = JSON.parse(raw);
-          }
-
-          if (!env || !env.session_token || !env.userId || Date.now() > Number(env.expiresAt)) {
-            clearSessionStorage();
-            return null;
-          }
-
-          if (env.session_token !== computeSignature(env)) {
-            clearSessionStorage();
-            return null;
-          }
-
-          const fresh = getUsers().find(u => u.id === env.userId);
-          if (!fresh || fresh.role !== env.role) {
-            clearSessionStorage();
-            return null;
-          }
-
-          activeSessionEnvelope = env;
-          return fresh;
-        } catch {
-          clearSessionStorage();
-          return null;
-        }
-      }
-
-      function verifyAdminSession() {
-        const user = getSession();
-        return user && user.role === "admin" ? user : null;
-      }
-
-      function setSession(user, remember = true) {
-        clearSessionStorage();
-        if (user) {
-          const now = Date.now();
-          lastActivityTs = now;
-          const payload = {
-            userId: user.id,
-            role: user.role,
-            issuedAt: now,
-            expiresAt: now + (remember ? SESSION_MAX_TTL_MS : IDLE_TIMEOUT_MS),
-            nonce: Math.random().toString(36).slice(2) + now.toString(36)
-          };
-          payload.session_token = computeSignature(payload);
-          activeSessionEnvelope = payload;
-          safeSessionSet(KEYS.SESSION, JSON.stringify(payload));
-        }
-        updateNavbarAuth();
-      }
-
-      ["mousemove", "keydown", "click", "scroll", "touchstart"].forEach(evt => {
-        window.addEventListener(evt, () => {
-          if (activeSessionEnvelope) {
-            if (Date.now() - lastActivityTs > IDLE_TIMEOUT_MS) {
-              clearSessionStorage();
-              updateNavbarAuth();
-              if (portalModal.classList.contains("is-open")) {
-                renderAuthView();
-                showToast("Session locked due to inactivity.", "error");
-              }
-            } else {
-              lastActivityTs = Date.now();
-            }
-          }
-        }, { passive: true });
-      });
-
-      setInterval(() => {
-        if (!activeSessionEnvelope) return;
-        const remainingMs = IDLE_TIMEOUT_MS - (Date.now() - lastActivityTs);
-        const timerEl = document.getElementById("session-timer-label");
-        if (timerEl && remainingMs > 0) {
-          timerEl.textContent = `Session · ${Math.max(1, Math.ceil(remainingMs / 60000))}m`;
-        }
-      }, 15000);
-
-      function escapeHtml(str) {
-        return String(str ?? "")
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#039;");
-      }
-
-      // Toast Notifications
-      const portalToast = document.getElementById("portal-toast");
-      const globalToast = document.getElementById("global-toast");
-      let modalToastTimer = null;
-      let globalToastTimer = null;
-
-      function showToast(msg, type = "success") {
-        if (portalToast) {
-          portalToast.textContent = msg;
-          portalToast.className = type === "error"
-            ? "px-6 py-2.5 text-xs font-medium border-b bg-red-500/10 border-red-500/25 text-red-400"
-            : "px-6 py-2.5 text-xs font-medium border-b bg-emerald-500/10 border-emerald-500/25 text-emerald-400";
-          portalToast.classList.remove("hidden");
-          clearTimeout(modalToastTimer);
-          modalToastTimer = setTimeout(() => portalToast.classList.add("hidden"), 3600);
-        }
-
-        const toastText = document.getElementById("global-toast-text");
-        const toastDot = document.getElementById("global-toast-dot");
-        if (toastText && toastDot && globalToast) {
-          toastText.textContent = msg;
-          toastDot.className = type === "error"
-            ? "w-2 h-2 rounded-full bg-red-500 shrink-0"
-            : "w-2 h-2 rounded-full bg-emerald-500 shrink-0";
-          globalToast.classList.add("is-visible");
-          clearTimeout(globalToastTimer);
-          globalToastTimer = setTimeout(() => globalToast.classList.remove("is-visible"), 3200);
-        }
-      }
-
-      // ---------------------------------------------------------------------
-      // STOREFRONT RENDERING
-      // ---------------------------------------------------------------------
-      let selectedCategory = "Premium · India";
-
-      function renderStorefront() {
-        const allPlans = getPlans().filter(p => p.active !== false);
-        const categories = [...new Set(allPlans.map(p => p.tier))];
-        if (categories.length > 0 && !categories.includes(selectedCategory)) {
-          selectedCategory = categories[0];
-        }
-
-        if (allPlans.length > 0) {
-          const minPrice = Math.min(...allPlans.map(p => Number(p.price)));
-          const heroPriceEl = document.getElementById("hero-min-price");
-          if (heroPriceEl) heroPriceEl.textContent = "₹" + minPrice.toLocaleString("en-IN") + "/month";
-        }
-
-        const tabsEl = document.getElementById("pricing-tabs");
-        if (tabsEl) {
-          tabsEl.innerHTML = categories.map(cat => {
-            const isActive = cat === selectedCategory;
-            return `
-              <button type="button" data-cat-tab="${escapeHtml(cat)}" class="px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-medium transition ${isActive ? 'bg-blue-600 text-white' : 'text-zinc-400 hover:text-white'}">
-                ${escapeHtml(cat)}
-              </button>
-            `;
-          }).join("");
-        }
-
-        const tierDescEl = document.getElementById("tier-description");
-        if (tierDescEl) {
-          tierDescEl.textContent = TIER_NOTES[selectedCategory] || `${selectedCategory}: NVMe storage, DDoS protection, and full root access.`;
-        }
-
-        const gridEl = document.getElementById("plans-grid");
-        if (!gridEl) return;
-
-        const visiblePlans = allPlans.filter(p => p.tier === selectedCategory);
-        if (visiblePlans.length === 0) {
-          gridEl.innerHTML = `<div class="col-span-full p-8 text-center text-sm text-zinc-400 border border-dashed border-zinc-800 rounded-xl">No plans available in this tier.</div>`;
-          return;
-        }
-
-        gridEl.innerHTML = visiblePlans.map(p => {
-          const planTitle = `${p.name} — ${p.tier} (₹${Number(p.price).toLocaleString("en-IN")}/mo)`;
-          return `
-            <div class="card rounded-xl p-6 flex flex-col justify-between ${p.featured ? 'border-blue-600/60' : ''}">
-              <div>
-                <div class="flex items-center justify-between gap-2">
-                  <h3 class="text-base font-semibold text-white">${escapeHtml(p.name)}</h3>
-                  ${p.badge ? `<span class="font-mono text-[10px] font-medium uppercase tracking-wider px-2 py-0.5 rounded bg-blue-600/15 text-blue-400 border border-blue-500/30">${escapeHtml(p.badge)}</span>` : ''}
-                </div>
-
-                <div class="mt-3 pb-4 border-b border-zinc-800 flex items-baseline gap-1">
-                  <span class="text-3xl font-bold tracking-tight text-white">₹${Number(p.price).toLocaleString("en-IN")}</span>
-                  <span class="text-xs text-zinc-500">/ month</span>
-                </div>
-
-                <ul class="mt-4 space-y-2.5 text-sm text-zinc-300">
-                  <li class="flex justify-between">
-                    <span class="text-zinc-400">RAM</span>
-                    <span class="font-mono text-zinc-100">${p.ram} GB</span>
-                  </li>
-                  <li class="flex justify-between">
-                    <span class="text-zinc-400">CPU</span>
-                    <span class="font-mono text-zinc-100">${p.cpu} Cores</span>
-                  </li>
-                  <li class="flex justify-between">
-                    <span class="text-zinc-400">Storage</span>
-                    <span class="font-mono text-zinc-100">${p.nvme} GB NVMe</span>
-                  </li>
-                  <li class="flex justify-between">
-                    <span class="text-zinc-400">Network</span>
-                    <span class="font-mono text-zinc-100">${escapeHtml(p.network || "1 Gbps")}</span>
-                  </li>
-                  <li class="flex justify-between">
-                    <span class="text-zinc-400">Protection</span>
-                    <span class="font-mono text-zinc-100">DDoS + Root</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="mt-6 pt-4 border-t border-zinc-800 grid grid-cols-2 gap-2">
-                <button type="button" data-order-plan="${escapeHtml(planTitle)}" class="${p.featured ? 'btn-primary' : 'btn-secondary'} py-2 px-3 rounded-md text-xs font-medium text-center">
-                  Order Ticket
-                </button>
-                <a href="${DISCORD_URL}" target="_blank" rel="noreferrer" class="btn-secondary py-2 px-3 rounded-md text-xs font-medium text-center">
-                  Discord
-                </a>
-              </div>
-            </div>
-          `;
-        }).join("");
-      }
-
-      function renderOffersSection() {
-        const activeOffers = getOffers().filter(o => o.active !== false);
-        const navBadge = document.getElementById("nav-offers-badge");
-        if (navBadge) navBadge.textContent = String(activeOffers.length);
-
-        const gridEl = document.getElementById("offers-grid");
-        if (!gridEl) return;
-
-        if (activeOffers.length === 0) {
-          gridEl.innerHTML = `<div class="col-span-full p-8 rounded-xl bg-canvas border border-dashed border-zinc-800 text-center text-sm text-zinc-400">No active promo codes right now.</div>`;
-          return;
-        }
-
-        gridEl.innerHTML = activeOffers.map(o => {
-          const claimTitle = `Promo ${o.code} (${o.badge}) — ${o.tier}`;
-          return `
-            <div class="card rounded-xl p-6 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center justify-between gap-2 mb-3">
-                  <span class="font-mono text-[11px] font-medium px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    ${escapeHtml(o.badge)}
-                  </span>
-                  <span class="font-mono text-[11px] text-zinc-500">${escapeHtml(o.tier)}</span>
-                </div>
-
-                <h3 class="text-base font-semibold text-white">${escapeHtml(o.title)}</h3>
-                <p class="text-sm text-zinc-400 mt-1.5 leading-relaxed">${escapeHtml(o.desc)}</p>
-
-                <div class="mt-4 px-3 py-2 rounded-md bg-canvas border border-zinc-800 flex items-center justify-between gap-2">
-                  <span class="font-mono text-sm font-semibold text-white">${escapeHtml(o.code)}</span>
-                  <button type="button" data-copy-val="${escapeHtml(o.code)}" data-copy-label="Promo code copied" class="text-xs font-mono text-blue-400 hover:text-blue-300">
-                    Copy
-                  </button>
-                </div>
-              </div>
-
-              <div class="mt-5 pt-4 border-t border-zinc-800 flex items-center justify-between gap-2">
-                <span class="font-mono text-[11px] text-zinc-500">${escapeHtml(o.expiry)}</span>
-                <button type="button" data-claim-offer="${escapeHtml(claimTitle)}" data-offer-code="${escapeHtml(o.code)}" class="btn-primary px-3.5 py-1.5 rounded-md text-xs font-medium">
-                  Claim Offer
-                </button>
-              </div>
-            </div>
-          `;
-        }).join("");
-      }
-
-      const FEATURES = [
-        ["NVMe storage", "120 GB to 640 GB of enterprise NVMe storage for fast disk I/O."],
-        ["DDoS protection", "Always-on network mitigation included on every plan at no extra cost."],
-        ["Full root access", "Complete SSH root privileges to install and configure your stack."],
-        ["Three regions", "Deploy in India, Singapore, or the United States."],
-        ["Choice of OS", "Ubuntu, Debian, AlmaLinux, or Rocky Linux — reinstalled on request."],
-        ["Direct support", "Get help directly from our engineers via Client Panel tickets or Discord."]
-      ];
-
-      const featuresGridEl = document.getElementById("features-grid");
-      if (featuresGridEl) {
-        featuresGridEl.innerHTML = FEATURES.map((f, i) => `
-          <div class="card rounded-xl p-6">
-            <div class="font-mono text-xs text-zinc-500 mb-2">0${i + 1}</div>
-            <h3 class="text-base font-semibold text-white">${f[0]}</h3>
-            <p class="text-sm text-zinc-400 mt-1.5 leading-relaxed">${f[1]}</p>
-          </div>
-        `).join("");
-      }
-
-      const FAQS = [
-        ["How do I order?", "Click Order Ticket on any plan to sign in and submit a deployment ticket, or message us on Discord with your chosen plan and location."],
-        ["Is DDoS protection included?", "Yes, every plan includes always-on DDoS protection."],
-        ["Do I get full root access?", "Yes. You receive full root SSH credentials once your server is provisioned."],
-        ["Which operating systems are supported?", "Ubuntu, Debian, AlmaLinux, and Rocky Linux. We can reinstall your OS anytime on request."],
-        ["How do I pay?", "We send payment details in your ticket or Discord chat once your order is confirmed."],
-        ["What is the difference between Premium and Budget?", "Premium runs on a 1 Gbps network in India. Budget offers lower monthly pricing across India, Singapore, and the USA."]
-      ];
-
-      const faqEl = document.getElementById("fq");
-      if (faqEl) {
-        faqEl.innerHTML = FAQS.map((q, idx) => `
-          <div class="faq-item ${idx === 0 ? 'is-open' : ''}">
-            <button type="button" data-faq-toggle class="w-full py-4 flex items-center justify-between text-left font-medium text-sm sm:text-base text-white hover:text-zinc-300 transition">
-              <span>${q[0]}</span>
-              <span class="faq-plus font-mono text-zinc-400 ml-4 inline-block transition-transform">+</span>
-            </button>
-            <div class="faq-body">
-              <p class="pb-4 text-sm text-zinc-400 leading-relaxed">${q[1]}</p>
-            </div>
-          </div>
-        `).join("");
-      }
-
-      renderStorefront();
-      renderOffersSection();
-
-      const pingBtn = document.getElementById("ping-nodes-btn");
-      if (pingBtn) {
-        pingBtn.addEventListener("click", () => {
-          const pIn = Math.floor(11 + Math.random() * 6);
-          const pSg = Math.floor(42 + Math.random() * 8);
-          const pUs = Math.floor(162 + Math.random() * 14);
-          document.getElementById("ping-in").textContent = `${pIn} ms`;
-          document.getElementById("ping-sg").textContent = `${pSg} ms`;
-          document.getElementById("ping-us").textContent = `${pUs} ms`;
-          showToast(`Latency updated: IN ${pIn}ms · SG ${pSg}ms · US ${pUs}ms`, "success");
-        });
-      }
-
-      // Announcement Banner
-      function renderAnnouncementBanner() {
-        const ann = readJSON(KEYS.ANNOUNCEMENT, { active: false });
-        const bar = document.getElementById("announcement-bar");
-        const textEl = document.getElementById("announcement-text");
-        const linkEl = document.getElementById("announcement-link");
-        if (!bar || !textEl || !linkEl) return;
-
-        if (!ann || !ann.active || !String(ann.text || "").trim()) {
-          bar.classList.add("hidden");
-          return;
-        }
-
-        textEl.textContent = ann.text;
-        if (ann.link && /^https?:\/\//i.test(ann.link.trim())) {
-          linkEl.href = ann.link.trim();
-          linkEl.classList.remove("hidden");
-        } else {
-          linkEl.classList.add("hidden");
-        }
-        bar.classList.remove("hidden");
-      }
-
-      document.getElementById("announcement-close").addEventListener("click", () => {
-        document.getElementById("announcement-bar").classList.add("hidden");
-      });
-      renderAnnouncementBanner();
-
-      // ---------------------------------------------------------------------
-      // PORTAL, AUTH, TICKETS & ADMIN MANAGEMENT
-      // ---------------------------------------------------------------------
-      const portalModal = document.getElementById("portal-modal");
-      const legalModal = document.getElementById("legal-modal");
-      const statusModal = document.getElementById("status-modal");
-      let activeTicketId = null;
-      let pendingOrderPlan = "";
-
-      function updateNavbarAuth() {
-        const user = getSession();
-        const label = document.getElementById("nav-auth-label");
-        if (!label) return;
-        if (user) {
-          const display = user.fullName || user.username;
-          label.textContent = user.role === "admin" ? `Admin (${display})` : display;
-        } else {
-          label.textContent = "Client Panel";
-        }
-      }
-      updateNavbarAuth();
-
-      function openPortal(initialTab = "tickets") {
-        closeLegal(false);
-        closeStatus(false);
-        stripSensitiveHash();
-        portalModal.classList.add("is-open");
-        document.body.style.overflow = "hidden";
-        portalToast.classList.add("hidden");
-
-        const user = getSession();
-        if (user) {
-          const safeTab = (initialTab.startsWith("admin-") && user.role !== "admin") ? "tickets" : initialTab;
-          renderDashboard(user, safeTab);
-        } else {
-          renderAuthView();
-          setTimeout(() => {
-            const input = document.getElementById("login-identifier");
-            if (input) input.focus();
-          }, 50);
-        }
-      }
-
-      function closePortal(clearHash = true) {
-        portalModal.classList.remove("is-open");
-        document.body.style.overflow = "";
-        activeTicketId = null;
-        if (clearHash) stripSensitiveHash();
-      }
-
-      function orderPlan(planTitle) {
-        pendingOrderPlan = planTitle;
-        openPortal("new");
-        if (!getSession()) {
-          showToast(`Sign in or create an account to order ${planTitle}.`, "success");
-        }
-      }
-
-      function claimOffer(offerTitle, promoCode) {
-        pendingOrderPlan = offerTitle;
-        copyText(promoCode, "Promo code copied");
-        openPortal("new");
-        if (!getSession()) {
-          showToast(`Code ${promoCode} copied. Sign in to submit your order.`, "success");
-        }
-      }
-
-      function switchAuthTab(mode) {
-        const loginForm = document.getElementById("login-form");
-        const regForm = document.getElementById("register-form");
-        const tabLogin = document.getElementById("tab-login");
-        const tabReg = document.getElementById("tab-register");
-
-        if (mode === "login") {
-          loginForm.classList.remove("hidden");
-          regForm.classList.add("hidden");
-          tabLogin.className = "py-2 rounded-md text-xs sm:text-sm font-medium transition bg-blue-600 text-white";
-          tabReg.className = "py-2 rounded-md text-xs sm:text-sm font-medium transition text-zinc-400 hover:text-white";
-        } else {
-          loginForm.classList.add("hidden");
-          regForm.classList.remove("hidden");
-          tabReg.className = "py-2 rounded-md text-xs sm:text-sm font-medium transition bg-blue-600 text-white";
-          tabLogin.className = "py-2 rounded-md text-xs sm:text-sm font-medium transition text-zinc-400 hover:text-white";
-        }
-      }
-
-      function renderAuthView() {
-        document.getElementById("auth-view").classList.remove("hidden");
-        document.getElementById("dashboard-view").classList.add("hidden");
-        document.getElementById("portal-logout-btn").classList.add("hidden");
-        document.getElementById("portal-title").textContent = "Client Panel";
-        document.getElementById("portal-subtitle").textContent = "Sign in or create an account to manage tickets & servers";
-      }
-
-      document.getElementById("login-form").addEventListener("submit", e => {
-        e.preventDefault();
-        const identifier = document.getElementById("login-identifier").value.trim().toLowerCase();
-        const password = document.getElementById("login-password").value;
-        const remember = document.getElementById("login-remember").checked;
-
-        const user = getUsers().find(u =>
-          (String(u.username || "").trim().toLowerCase() === identifier ||
-           String(u.email || "").trim().toLowerCase() === identifier) &&
-          String(u.password) === String(password)
-        );
-
-        if (!user) {
-          showToast("Invalid username/email or password.", "error");
-          return;
-        }
-
-        setSession(user, remember);
-        document.getElementById("login-form").reset();
-        showToast(`Signed in as ${user.fullName || user.username}.`, "success");
-        renderDashboard(user, pendingOrderPlan ? "new" : "tickets");
-      });
-
-      document.getElementById("register-form").addEventListener("submit", e => {
-        e.preventDefault();
-        const username = document.getElementById("reg-username").value.trim();
-        const email = document.getElementById("reg-email").value.trim();
-        const discord = document.getElementById("reg-discord").value.trim();
-        const password = document.getElementById("reg-password").value;
-
-        const users = getUsers();
-        if (users.some(u => u.username.toLowerCase() === username.toLowerCase())) {
-          showToast("That username is already taken.", "error");
-          return;
-        }
-        if (users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
-          showToast("That email is already registered.", "error");
-          return;
-        }
-
-        const newUser = {
-          id: "usr_" + Date.now(),
-          fullName: username,
-          username,
-          email,
-          discord,
-          region: "India",
-          password,
-          role: "client",
-          createdAt: new Date().toISOString()
-        };
-
-        users.push(newUser);
-        saveUsers(users);
-        setSession(newUser, true);
-        document.getElementById("register-form").reset();
-        showToast("Account created.", "success");
-        renderDashboard(newUser, pendingOrderPlan ? "new" : "tickets");
-      });
-
-      document.getElementById("portal-logout-btn").addEventListener("click", () => {
-        setSession(null);
-        pendingOrderPlan = "";
-        showToast("Signed out.", "success");
-        renderAuthView();
-      });
-
-      function renderDashboard(user, initialTab = "tickets") {
-        document.getElementById("auth-view").classList.add("hidden");
-        document.getElementById("dashboard-view").classList.remove("hidden");
-        document.getElementById("portal-logout-btn").classList.remove("hidden");
-
-        const isAdmin = verifyAdminSession() !== null;
-        document.getElementById("portal-title").textContent = isAdmin ? "Admin Console" : "Client Panel";
-        document.getElementById("portal-subtitle").textContent = isAdmin
-          ? "Manage tickets, plans, offers, and site announcements"
-          : "Manage your support tickets, services, and account profile";
-
-        const displayName = user.fullName || user.username;
-        document.getElementById("user-badge").textContent = isAdmin
-          ? `ADMIN · ${displayName}`
-          : `CLIENT · ${displayName}`;
-
-        document.getElementById("dash-tab-admin-plans").classList.toggle("hidden", !isAdmin);
-        document.getElementById("dash-tab-admin-offers").classList.toggle("hidden", !isAdmin);
-        document.getElementById("dash-tab-admin-ann").classList.toggle("hidden", !isAdmin);
-
-        switchDashTab(initialTab);
-      }
-
-      function switchDashTab(tab) {
-        const user = getSession();
-        if (!user) {
-          renderAuthView();
-          return;
-        }
-
-        if (tab.startsWith("admin-") && !verifyAdminSession()) {
-          showToast("Admin access required.", "error");
-          tab = "tickets";
-        }
-
-        document.querySelectorAll(".dash-tab").forEach(btn => {
-          btn.className = "dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition text-zinc-400 hover:text-white bg-canvas border border-zinc-800";
-        });
-
-        const activeBtn = document.getElementById(`dash-tab-${tab}`);
-        if (activeBtn) {
-          activeBtn.className = "dash-tab px-3 py-1.5 rounded-md text-xs sm:text-sm font-medium transition bg-blue-600 text-white border border-blue-600";
-        }
-
-        ["tickets", "new", "services", "admin-plans", "admin-offers", "admin-ann", "profile"].forEach(id => {
-          const el = document.getElementById(`subview-${id}`);
-          if (el) el.classList.add("hidden");
-        });
-
-        const target = document.getElementById(`subview-${tab}`);
-        if (target) target.classList.remove("hidden");
-
-        if (tab === "tickets") {
-          backToTicketList();
-        } else if (tab === "new") {
-          if (pendingOrderPlan) {
-            document.getElementById("ticket-category").value = "Sales / VPS Order";
-            document.getElementById("ticket-plan").value = pendingOrderPlan;
-            document.getElementById("ticket-subject").value = `VPS Order: ${pendingOrderPlan}`;
-            pendingOrderPlan = "";
-          }
-        } else if (tab === "services") {
-          renderServicesList();
-        } else if (tab === "profile") {
-          renderProfileView();
-        } else if (tab === "admin-plans" && verifyAdminSession()) {
-          renderAdminPlansList();
-        } else if (tab === "admin-offers" && verifyAdminSession()) {
-          renderAdminOffersList();
-        } else if (tab === "admin-ann" && verifyAdminSession()) {
-          const ann = readJSON(KEYS.ANNOUNCEMENT, {});
-          document.getElementById("admin-ann-text").value = ann.text || "";
-          document.getElementById("admin-ann-link").value = ann.link || "";
-          document.getElementById("admin-ann-active").checked = !!ann.active;
-        }
-      }
-
-      // Tickets
-      document.getElementById("new-ticket-form").addEventListener("submit", e => {
-        e.preventDefault();
-        const user = getSession();
-        if (!user) return;
-
-        const tickets = getTickets();
-        const newTicket = {
-          id: "GC-" + Math.floor(10000 + Math.random() * 90000),
-          userId: user.id,
-          username: user.username,
-          userEmail: user.email,
-          category: document.getElementById("ticket-category").value,
-          priority: document.getElementById("ticket-priority").value,
-          plan: document.getElementById("ticket-plan").value.trim(),
-          subject: document.getElementById("ticket-subject").value.trim(),
-          status: "Open",
-          createdAt: new Date().toISOString(),
-          messages: [{
-            sender: user.username,
-            role: user.role,
-            text: document.getElementById("ticket-message").value.trim(),
-            timestamp: new Date().toISOString()
-          }]
-        };
-
-        tickets.unshift(newTicket);
-        saveTickets(tickets);
-        document.getElementById("new-ticket-form").reset();
-        showToast(`Ticket ${newTicket.id} created.`, "success");
-        switchDashTab("tickets");
-        openTicketDetail(newTicket.id);
-      });
-
-      function statusPill(status) {
-        if (status === "Open") return `<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">Open</span>`;
-        if (status === "Answered") return `<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/25">Answered</span>`;
-        return `<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">Closed</span>`;
-      }
-
-      function renderTicketsList() {
-        const user = getSession();
-        if (!user) return;
-
-        const isAdmin = user.role === "admin";
-        const filterStatus = document.getElementById("ticket-filter-status").value;
-        let list = getTickets();
-
-        if (!isAdmin) list = list.filter(t => t.userId === user.id);
-        if (filterStatus !== "ALL") list = list.filter(t => t.status === filterStatus);
-
-        document.getElementById("tickets-heading").textContent = isAdmin
-          ? `All Client Tickets (${list.length})`
-          : `Your Tickets (${list.length})`;
-
-        const container = document.getElementById("tickets-container");
-        if (list.length === 0) {
-          container.innerHTML = `
-            <div class="p-8 rounded-lg bg-canvas border border-dashed border-zinc-800 text-center space-y-2.5">
-              <p class="text-sm font-medium text-white">No tickets found</p>
-              <p class="text-xs text-zinc-400">Open a ticket to order a VPS or contact support.</p>
-              <button type="button" data-dash-tab="new" class="btn-primary px-4 py-1.5 rounded-md text-xs font-medium mt-1">New Ticket</button>
-            </div>
-          `;
-          return;
-        }
-
-        container.innerHTML = list.map(t => {
-          const dt = new Date(t.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
-          return `
-            <div role="button" tabindex="0" data-open-ticket="${escapeHtml(t.id)}" class="p-4 rounded-lg bg-canvas hover:bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div class="space-y-1">
-                <div class="flex flex-wrap items-center gap-2 text-xs">
-                  <span class="font-mono text-blue-400 font-medium">${escapeHtml(t.id)}</span>
-                  <span class="text-zinc-600">·</span>
-                  <span class="text-zinc-400">${escapeHtml(t.category)}</span>
-                  ${isAdmin ? `<span class="font-mono text-zinc-400">(@${escapeHtml(t.username)})</span>` : ''}
-                </div>
-                <div class="font-medium text-sm text-white">${escapeHtml(t.subject)}</div>
-                ${t.plan ? `<div class="font-mono text-xs text-zinc-500">Plan: ${escapeHtml(t.plan)}</div>` : ''}
-              </div>
-              <div class="flex sm:flex-col items-center sm:items-end justify-between gap-1.5 shrink-0">
-                ${statusPill(t.status)}
-                <span class="font-mono text-[11px] text-zinc-500">${dt}</span>
-              </div>
-            </div>
-          `;
-        }).join("");
-      }
-
-      document.getElementById("ticket-filter-status").addEventListener("change", renderTicketsList);
-
-      function backToTicketList() {
-        activeTicketId = null;
-        document.getElementById("tickets-list-wrapper").classList.remove("hidden");
-        document.getElementById("ticket-detail-wrapper").classList.add("hidden");
-        renderTicketsList();
-      }
-      document.getElementById("back-to-tickets-btn").addEventListener("click", backToTicketList);
-
-      function openTicketDetail(ticketId) {
-        const user = getSession();
-        if (!user) return;
-
-        const ticket = getTickets().find(t => t.id === ticketId);
-        if (!ticket) return;
-
-        activeTicketId = ticketId;
-        document.getElementById("tickets-list-wrapper").classList.add("hidden");
-        document.getElementById("ticket-detail-wrapper").classList.remove("hidden");
-
-        document.getElementById("toggle-ticket-closed-btn").textContent = ticket.status === "Closed" ? "Reopen Ticket" : "Close Ticket";
-
-        const adminControls = document.getElementById("admin-ticket-controls");
-        if (user.role === "admin") {
-          adminControls.classList.remove("hidden");
-          document.getElementById("admin-status-select").value = ticket.status;
-        } else {
-          adminControls.classList.add("hidden");
-        }
-
-        document.getElementById("ticket-detail-header").innerHTML = `
-          <div class="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <div class="font-mono text-xs text-zinc-400 mb-1">
-                <span class="text-blue-400 font-medium">${escapeHtml(ticket.id)}</span> · ${escapeHtml(ticket.category)} · ${escapeHtml(ticket.priority)}
-              </div>
-              <h4 class="text-base font-semibold text-white">${escapeHtml(ticket.subject)}</h4>
-              ${ticket.plan ? `<p class="font-mono text-xs text-zinc-400 mt-1">Plan: ${escapeHtml(ticket.plan)}</p>` : ''}
-            </div>
-            ${statusPill(ticket.status)}
-          </div>
-        `;
-
-        const msgEl = document.getElementById("ticket-messages");
-        msgEl.innerHTML = ticket.messages.map(m => {
-          const isStaff = m.role === "admin";
-          const time = new Date(m.timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-          return `
-            <div class="p-3.5 rounded-lg border ${isStaff ? 'bg-blue-950/25 border-blue-800/40 ml-4' : 'bg-canvas border-zinc-800 mr-4'}">
-              <div class="flex items-center justify-between gap-2 mb-1.5">
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-semibold ${isStaff ? 'text-blue-400' : 'text-white'}">${escapeHtml(m.sender)}</span>
-                  ${isStaff ? '<span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-blue-600 text-white">STAFF</span>' : ''}
-                </div>
-                <span class="font-mono text-[11px] text-zinc-500">${time}</span>
-              </div>
-              <p class="text-sm text-zinc-200 whitespace-pre-wrap leading-relaxed">${escapeHtml(m.text)}</p>
-            </div>
-          `;
-        }).join("");
-        msgEl.scrollTop = msgEl.scrollHeight;
-      }
-
-      document.getElementById("ticket-reply-form").addEventListener("submit", e => {
-        e.preventDefault();
-        const user = getSession();
-        if (!user || !activeTicketId) return;
-
-        const input = document.getElementById("ticket-reply-input");
-        const text = input.value.trim();
-        if (!text) return;
-
-        const tickets = getTickets();
-        const idx = tickets.findIndex(t => t.id === activeTicketId);
-        if (idx === -1) return;
-
-        tickets[idx].messages.push({
-          sender: user.username,
-          role: user.role,
-          text,
-          timestamp: new Date().toISOString()
-        });
-
-        if (user.role === "admin") tickets[idx].status = "Answered";
-        else if (tickets[idx].status === "Closed") tickets[idx].status = "Open";
-
-        saveTickets(tickets);
-        input.value = "";
-        showToast("Reply sent.", "success");
-        openTicketDetail(activeTicketId);
-      });
-
-      function updateTicketStatus(status) {
-        if (!activeTicketId) return;
-        const tickets = getTickets();
-        const idx = tickets.findIndex(t => t.id === activeTicketId);
-        if (idx === -1) return;
-        tickets[idx].status = status;
-        saveTickets(tickets);
-        showToast(`Status updated to ${status}.`, "success");
-        openTicketDetail(activeTicketId);
-      }
-
-      document.getElementById("admin-status-select").addEventListener("change", e => updateTicketStatus(e.target.value));
-      document.getElementById("toggle-ticket-closed-btn").addEventListener("click", () => {
-        if (!activeTicketId) return;
-        const ticket = getTickets().find(t => t.id === activeTicketId);
-        if (ticket) updateTicketStatus(ticket.status === "Closed" ? "Open" : "Closed");
-      });
-
-      document.getElementById("provision-vps-btn").addEventListener("click", () => {
-        const user = verifyAdminSession();
-        if (!user || !activeTicketId) return;
-
-        const ticket = getTickets().find(t => t.id === activeTicketId);
-        if (!ticket) return;
-
-        const services = getServices();
-        const randomIp = `103.${Math.floor(20 + Math.random() * 200)}.${Math.floor(10 + Math.random() * 220)}.${Math.floor(10 + Math.random() * 230)}`;
-        const rootPass = "Gv#" + Math.random().toString(36).slice(2, 10) + "9!";
-        const newSvc = {
-          id: "VPS-" + Math.floor(1000 + Math.random() * 9000),
-          userId: ticket.userId,
-          username: ticket.username,
-          planName: ticket.plan || ticket.subject,
-          ip: randomIp,
-          rootPass,
-          os: "Ubuntu 24.04 LTS",
-          status: "Active",
-          createdAt: new Date().toISOString()
-        };
-
-        services.unshift(newSvc);
-        saveServices(services);
-
-        const tickets = getTickets();
-        const idx = tickets.findIndex(t => t.id === activeTicketId);
-        if (idx !== -1) {
-          tickets[idx].messages.push({
-            sender: user.username,
-            role: "admin",
-            text: `Server ${newSvc.id} provisioned.\nIPv4: ${newSvc.ip}\nRoot Password: ${newSvc.rootPass}\nOS: ${newSvc.os}`,
-            timestamp: new Date().toISOString()
-          });
-          tickets[idx].status = "Answered";
-          saveTickets(tickets);
-        }
-
-        showToast(`Provisioned ${newSvc.id} (${newSvc.ip}) to @${ticket.username}.`, "success");
-        openTicketDetail(activeTicketId);
-      });
-
-      // Services
-      function copyText(text, label = "Copied") {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        ta.style.position = "fixed";
-        ta.style.opacity = "0";
-        document.body.appendChild(ta);
-        ta.select();
-        try {
-          document.execCommand("copy");
-          showToast(`${label}: ${text}`, "success");
-        } catch {
-          showToast("Copy failed.", "error");
-        }
-        document.body.removeChild(ta);
-      }
-
-      function renderServicesList() {
-        const user = getSession();
-        if (!user) return;
-
-        const isAdmin = user.role === "admin";
-        const allServices = getServices();
-        const list = isAdmin ? allServices : allServices.filter(s => s.userId === user.id);
-
-        document.getElementById("services-heading").textContent = isAdmin
-          ? `All Provisioned Services (${list.length})`
-          : `Your Active VPS Services (${list.length})`;
-
-        const container = document.getElementById("services-container");
-        if (list.length === 0) {
-          container.innerHTML = `<div class="p-8 rounded-lg bg-canvas border border-dashed border-zinc-800 text-center text-sm text-zinc-400">No active VPS instances yet.</div>`;
-          return;
-        }
-
-        container.innerHTML = list.map(s => `
-          <div class="p-4 rounded-lg bg-canvas border border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div class="space-y-1">
-              <div class="flex items-center gap-2 text-xs font-mono">
-                <span class="text-blue-400 font-medium">${escapeHtml(s.id)}</span>
-                <span class="text-emerald-400">● ${escapeHtml(s.status)}</span>
-                ${isAdmin ? `<span class="text-zinc-500">(@${escapeHtml(s.username)})</span>` : ''}
-              </div>
-              <div class="font-medium text-sm text-white">${escapeHtml(s.planName)}</div>
-              <div class="font-mono text-xs text-zinc-400 flex flex-wrap gap-x-3 gap-y-1">
-                <span>IPv4: <span class="text-zinc-200">${escapeHtml(s.ip)}</span></span>
-                ${s.rootPass ? `<span>Pass: <span class="text-zinc-200">${escapeHtml(s.rootPass)}</span></span>` : ''}
-                <span>OS: ${escapeHtml(s.os)}</span>
-              </div>
-            </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <button type="button" data-copy-val="${escapeHtml(s.ip)}" data-copy-label="IPv4 copied" class="btn-secondary px-2.5 py-1.5 rounded-md text-xs font-mono">Copy IP</button>
-              ${s.rootPass ? `<button type="button" data-copy-val="${escapeHtml(s.rootPass)}" data-copy-label="Password copied" class="btn-secondary px-2.5 py-1.5 rounded-md text-xs font-mono">Copy Pass</button>` : ''}
-            </div>
-          </div>
-        `).join("");
-      }
-
-      // Profile & Password
-      function renderProfileView() {
-        const sessionUser = getSession();
-        if (!sessionUser) return;
-        const freshUser = getUsers().find(u => u.id === sessionUser.id) || sessionUser;
-        document.getElementById("profile-meta-badge").textContent = `Role: ${freshUser.role.toUpperCase()}`;
-        document.getElementById("prof-fullname").value = freshUser.fullName || "";
-        document.getElementById("prof-username").value = freshUser.username || "";
-        document.getElementById("prof-email").value = freshUser.email || "";
-        document.getElementById("prof-discord").value = freshUser.discord || "";
-        document.getElementById("prof-region").value = freshUser.region || "India";
-      }
-
-      document.getElementById("profile-details-form").addEventListener("submit", e => {
-        e.preventDefault();
-        const sessionUser = getSession();
-        if (!sessionUser) return;
-
-        const fullName = document.getElementById("prof-fullname").value.trim();
-        const username = document.getElementById("prof-username").value.trim();
-        const email = document.getElementById("prof-email").value.trim();
-        const discord = document.getElementById("prof-discord").value.trim();
-        const region = document.getElementById("prof-region").value;
-
-        const users = getUsers();
-        if (users.some(u => u.id !== sessionUser.id && u.username.toLowerCase() === username.toLowerCase())) {
-          showToast("Username already taken.", "error");
-          return;
-        }
-        if (users.some(u => u.id !== sessionUser.id && u.email.toLowerCase() === email.toLowerCase())) {
-          showToast("Email already in use.", "error");
-          return;
-        }
-
-        const idx = users.findIndex(u => u.id === sessionUser.id);
-        if (idx === -1) return;
-
-        users[idx] = { ...users[idx], fullName, username, email, discord, region };
-        saveUsers(users);
-        setSession(users[idx], true);
-        renderDashboard(users[idx], "profile");
-        showToast("Profile updated.", "success");
-      });
-
-      document.getElementById("profile-password-form").addEventListener("submit", e => {
-        e.preventDefault();
-        const sessionUser = getSession();
-        if (!sessionUser) return;
-
-        const currPass = document.getElementById("prof-curr-pass").value;
-        const newPass = document.getElementById("prof-new-pass").value;
-        const confirmPass = document.getElementById("prof-confirm-pass").value;
-
-        const users = getUsers();
-        const idx = users.findIndex(u => u.id === sessionUser.id);
-        if (idx === -1) return;
-
-        if (String(users[idx].password) !== String(currPass)) {
-          showToast("Current password is incorrect.", "error");
-          return;
-        }
-        if (newPass.length < 4) {
-          showToast("New password must be at least 4 characters.", "error");
-          return;
-        }
-        if (newPass !== confirmPass) {
-          showToast("New passwords do not match.", "error");
-          return;
-        }
-
-        users[idx] = { ...users[idx], password: newPass };
-        saveUsers(users);
-        setSession(users[idx], true);
-        document.getElementById("profile-password-form").reset();
-        showToast("Password updated.", "success");
-      });
-
-      // Admin Plans CRUD
-      function renderAdminPlansList() {
-        const plans = getPlans();
-        document.getElementById("admin-plans-count").textContent = plans.length;
-        document.getElementById("admin-plans-list").innerHTML = plans.map(p => `
-          <div class="p-3.5 rounded-lg bg-canvas border border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div class="space-y-1">
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="font-medium text-sm text-white">${escapeHtml(p.name)}</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-zinc-300">${escapeHtml(p.tier)}</span>
-              </div>
-              <div class="font-mono text-xs text-zinc-400">
-                ₹${Number(p.price).toLocaleString("en-IN")}/mo · ${p.ram} GB RAM · ${p.cpu} vCPU · ${p.nvme} GB NVMe · ${escapeHtml(p.network || "1 Gbps")}
-              </div>
-            </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <button type="button" data-edit-plan="${escapeHtml(p.id)}" class="btn-secondary px-3 py-1.5 rounded-md text-xs font-medium">Edit</button>
-              <button type="button" data-delete-plan="${escapeHtml(p.id)}" class="px-3 py-1.5 rounded-md text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/25 hover:bg-red-500/20">Delete</button>
-            </div>
-          </div>
-        `).join("");
-      }
-
-      document.getElementById("admin-plan-form").addEventListener("submit", e => {
-        e.preventDefault();
-        if (!verifyAdminSession()) return;
-
-        const editId = document.getElementById("plan-edit-id").value;
-        const name = document.getElementById("plan-name").value.trim();
-        const tier = document.getElementById("plan-tier").value.trim();
-        const price = Number(document.getElementById("plan-price").value);
-        const ram = Number(document.getElementById("plan-ram").value);
-        const cpu = Number(document.getElementById("plan-cpu").value);
-        const nvme = Number(document.getElementById("plan-nvme").value);
-        const network = document.getElementById("plan-network").value.trim();
-        const badge = document.getElementById("plan-badge").value.trim();
-        const featured = document.getElementById("plan-featured").checked;
-        const active = document.getElementById("plan-active").checked;
-
-        let plans = getPlans();
-        if (editId) {
-          const idx = plans.findIndex(item => item.id === editId);
-          if (idx !== -1) plans[idx] = { ...plans[idx], name, tier, price, ram, cpu, nvme, network, badge, featured, active };
-          showToast(`Updated "${name}".`, "success");
-        } else {
-          plans.push({ id: "pln_" + Date.now(), name, tier, price, ram, cpu, nvme, network, badge, featured, active });
-          selectedCategory = tier;
-          showToast(`Created "${name}".`, "success");
-        }
-
-        savePlans(plans);
-        cancelEditPlan();
-        renderAdminPlansList();
-      });
-
-      function editPlan(planId) {
-        const plan = getPlans().find(p => p.id === planId);
-        if (!plan) return;
-        document.getElementById("plan-edit-id").value = plan.id;
-        document.getElementById("plan-name").value = plan.name;
-        document.getElementById("plan-tier").value = plan.tier;
-        document.getElementById("plan-price").value = plan.price;
-        document.getElementById("plan-ram").value = plan.ram;
-        document.getElementById("plan-cpu").value = plan.cpu;
-        document.getElementById("plan-nvme").value = plan.nvme;
-        document.getElementById("plan-network").value = plan.network || "1 Gbps";
-        document.getElementById("plan-badge").value = plan.badge || "";
-        document.getElementById("plan-featured").checked = !!plan.featured;
-        document.getElementById("plan-active").checked = plan.active !== false;
-        document.getElementById("plan-form-title").textContent = `Editing: ${plan.name}`;
-        document.getElementById("plan-submit-btn").textContent = "Update Plan";
-        document.getElementById("cancel-edit-plan-btn").classList.remove("hidden");
-      }
-
-      function cancelEditPlan() {
-        document.getElementById("admin-plan-form").reset();
-        document.getElementById("plan-edit-id").value = "";
-        document.getElementById("plan-network").value = "1 Gbps";
-        document.getElementById("plan-active").checked = true;
-        document.getElementById("plan-form-title").textContent = "+ Create New Plan";
-        document.getElementById("plan-submit-btn").textContent = "Save Plan";
-        document.getElementById("cancel-edit-plan-btn").classList.add("hidden");
-      }
-      document.getElementById("cancel-edit-plan-btn").addEventListener("click", cancelEditPlan);
-      document.getElementById("reset-plans-btn").addEventListener("click", () => {
-        if (!verifyAdminSession()) return;
-        savePlans(DEFAULT_PLANS);
-        renderAdminPlansList();
-        showToast("Default plans restored.", "success");
-      });
-
-      // Admin Offers CRUD
-      function renderAdminOffersList() {
-        const offers = getOffers();
-        document.getElementById("admin-offers-count").textContent = offers.length;
-        document.getElementById("admin-offers-list").innerHTML = offers.map(o => `
-          <div class="p-3.5 rounded-lg bg-canvas border border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div class="space-y-1">
-              <div class="flex flex-wrap items-center gap-2">
-                <span class="font-medium text-sm text-white">${escapeHtml(o.title)}</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-800 text-blue-400">${escapeHtml(o.code)}</span>
-                <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">${escapeHtml(o.badge)}</span>
-              </div>
-              <div class="text-xs text-zinc-400">${escapeHtml(o.desc)}</div>
-            </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <button type="button" data-toggle-offer="${escapeHtml(o.id)}" class="btn-secondary px-2.5 py-1.5 rounded-md text-xs font-medium">${o.active === false ? "Activate" : "Pause"}</button>
-              <button type="button" data-edit-offer="${escapeHtml(o.id)}" class="btn-secondary px-2.5 py-1.5 rounded-md text-xs font-medium">Edit</button>
-              <button type="button" data-delete-offer="${escapeHtml(o.id)}" class="px-2.5 py-1.5 rounded-md text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/25 hover:bg-red-500/20">Delete</button>
-            </div>
-          </div>
-        `).join("");
-      }
-
-      document.getElementById("admin-offer-form").addEventListener("submit", e => {
-        e.preventDefault();
-        if (!verifyAdminSession()) return;
-
-        const editId = document.getElementById("offer-edit-id").value;
-        const title = document.getElementById("offer-title").value.trim();
-        const code = document.getElementById("offer-code").value.trim().toUpperCase();
-        const badge = document.getElementById("offer-badge").value.trim();
-        const tier = document.getElementById("offer-tier").value.trim();
-        const expiry = document.getElementById("offer-expiry").value.trim();
-        const desc = document.getElementById("offer-desc").value.trim();
-        const active = document.getElementById("offer-active").checked;
-
-        let offers = getOffers();
-        if (editId) {
-          const idx = offers.findIndex(item => item.id === editId);
-          if (idx !== -1) offers[idx] = { ...offers[idx], title, code, badge, tier, expiry, desc, active };
-          showToast(`Updated "${title}".`, "success");
-        } else {
-          offers.unshift({ id: "off_" + Date.now(), title, code, badge, tier, expiry, desc, active });
-          showToast(`Published "${title}".`, "success");
-        }
-
-        saveOffers(offers);
-        cancelEditOffer();
-        renderAdminOffersList();
-      });
-
-      function editOffer(offerId) {
-        const offer = getOffers().find(o => o.id === offerId);
-        if (!offer) return;
-        document.getElementById("offer-edit-id").value = offer.id;
-        document.getElementById("offer-title").value = offer.title;
-        document.getElementById("offer-code").value = offer.code;
-        document.getElementById("offer-badge").value = offer.badge;
-        document.getElementById("offer-tier").value = offer.tier;
-        document.getElementById("offer-expiry").value = offer.expiry;
-        document.getElementById("offer-desc").value = offer.desc;
-        document.getElementById("offer-active").checked = offer.active !== false;
-        document.getElementById("offer-form-title").textContent = `Editing: ${offer.title}`;
-        document.getElementById("offer-submit-btn").textContent = "Update Offer";
-        document.getElementById("cancel-edit-offer-btn").classList.remove("hidden");
-      }
-
-      function cancelEditOffer() {
-        document.getElementById("admin-offer-form").reset();
-        document.getElementById("offer-edit-id").value = "";
-        document.getElementById("offer-active").checked = true;
-        document.getElementById("offer-form-title").textContent = "+ Create New Offer";
-        document.getElementById("offer-submit-btn").textContent = "Publish Offer";
-        document.getElementById("cancel-edit-offer-btn").classList.add("hidden");
-      }
-      document.getElementById("cancel-edit-offer-btn").addEventListener("click", cancelEditOffer);
-      document.getElementById("reset-offers-btn").addEventListener("click", () => {
-        if (!verifyAdminSession()) return;
-        saveOffers(DEFAULT_OFFERS);
-        renderAdminOffersList();
-        showToast("Default offers restored.", "success");
-      });
-
-      // Announcement Controls
-      document.getElementById("admin-announcement-form").addEventListener("submit", e => {
-        e.preventDefault();
-        if (!verifyAdminSession()) return;
-        const text = document.getElementById("admin-ann-text").value.trim();
-        const link = document.getElementById("admin-ann-link").value.trim();
-        const active = document.getElementById("admin-ann-active").checked;
-        if (active && !text) {
-          showToast("Write a message first.", "error");
-          return;
-        }
-        writeJSON(KEYS.ANNOUNCEMENT, { id: Date.now(), text, link, active });
-        renderAnnouncementBanner();
-        showToast(active ? "Announcement published." : "Announcement saved.", "success");
-      });
-
-      document.getElementById("disable-ann-btn").addEventListener("click", () => {
-        if (!verifyAdminSession()) return;
-        const current = readJSON(KEYS.ANNOUNCEMENT, {});
-        current.active = false;
-        writeJSON(KEYS.ANNOUNCEMENT, current);
-        document.getElementById("admin-ann-active").checked = false;
-        renderAnnouncementBanner();
-        showToast("Announcement turned off.", "success");
-      });
-
-      // Legal & Status Modals
-      const LEGAL_CONTENT = {
-        terms: {
-          title: "Terms of Service",
-          html: `
-            <p class="font-mono text-xs text-zinc-400">Last updated: 15 November 2026</p>
-            <h4 class="font-semibold text-white pt-2">Agreement</h4>
-            <p>By ordering a service from Gavio Cloud you agree to these terms.</p>
-            <h4 class="font-semibold text-white pt-2">Services</h4>
-            <p>We provide virtual private servers with the resources listed on our plans. An active service keeps its allocated resources for the paid billing cycle.</p>
-            <h4 class="font-semibold text-white pt-2">Acceptable Use</h4>
-            <p>No illegal activity, spam, phishing, malware, DDoS attacks, or port scanning. Abusive resource usage is prohibited.</p>
-            <h4 class="font-semibold text-white pt-2">Backups &amp; Liability</h4>
-            <p>You are responsible for maintaining your own backups. Liability is limited to the amount paid for the affected service in the past month.</p>
-          `
-        },
-        privacy: {
-          title: "Privacy Policy",
-          html: `
-            <p class="font-mono text-xs text-zinc-400">Last updated: 15 November 2026</p>
-            <h4 class="font-semibold text-white pt-2">Data We Collect</h4>
-            <p>Account contact details (username, email, Discord handle), billing records, and technical metadata required to provision and secure your VPS.</p>
-            <h4 class="font-semibold text-white pt-2">Data Usage</h4>
-            <p>We never sell your data. Your server contents remain private and are accessed only at your explicit support request or when legally required.</p>
-          `
-        },
-        refund: {
-          title: "Refund Policy",
-          html: `
-            <p class="font-mono text-xs text-zinc-400">Last updated: 15 November 2026</p>
-            <h4 class="font-semibold text-white pt-2">48-Hour Refund Window</h4>
-            <p>First-time orders are eligible for a full refund within 48 hours of activation if we fail to provision within 24 hours or if verified node hardware issues occur.</p>
-            <h4 class="font-semibold text-white pt-2">Exclusions</h4>
-            <p>Requests made after 48 hours, monthly renewals, upgrades, and services suspended for Terms of Service violations are non-refundable.</p>
-            <h4 class="font-semibold text-white pt-2">How to Request</h4>
-            <p>Open a Billing ticket in the Client Panel or contact us on Discord with your Service ID within 48 hours.</p>
-          `
-        }
-      };
-
-      function openLegal(key) {
-        const doc = LEGAL_CONTENT[key];
-        if (!doc) return;
-        closePortal(false);
-        closeStatus(false);
-        document.getElementById("legal-title").textContent = doc.title;
-        document.getElementById("legal-body").innerHTML = doc.html;
-        legalModal.classList.add("is-open");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeLegal(clearHash = true) {
-        legalModal.classList.remove("is-open");
-        document.body.style.overflow = "";
-        if (clearHash && ["#terms", "#privacy", "#refund"].includes(location.hash)) {
-          safeReplaceState(window.location.pathname + window.location.search);
-        }
-      }
-
-      function openStatusModal() {
-        closePortal(false);
-        closeLegal(false);
-        const nodes = [
-          { name: "IN-MUM1 · Mumbai NVMe Compute", uptime: "99.99%", load: "34%" },
-          { name: "SG-SIN1 · Singapore Compute", uptime: "99.97%", load: "29%" },
-          { name: "US-IAD1 · Virginia Compute", uptime: "99.99%", load: "26%" },
-          { name: "Client Panel & Support Desk", uptime: "100.00%", load: "12%" }
-        ];
-        document.getElementById("status-body").innerHTML = nodes.map(n => `
-          <div class="p-4 rounded-lg bg-canvas border border-zinc-800 flex items-center justify-between gap-3">
-            <div>
-              <div class="font-medium text-sm text-white">${escapeHtml(n.name)}</div>
-              <div class="font-mono text-xs text-zinc-500 mt-0.5">Load ${escapeHtml(n.load)} · ${escapeHtml(n.uptime)} uptime</div>
-            </div>
-            <span class="font-mono text-xs px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Operational</span>
-          </div>
-        `).join("");
-        statusModal.classList.add("is-open");
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeStatus(clearHash = true) {
-        statusModal.classList.remove("is-open");
-        document.body.style.overflow = "";
-        if (clearHash && location.hash === "#status") {
-          safeReplaceState(window.location.pathname + window.location.search);
-        }
-      }
-
-      // Global Delegated Clicks
-      document.addEventListener("click", e => {
-        const portalBtn = e.target.closest("[data-open-portal]");
-        if (portalBtn) {
-          e.preventDefault();
-          openPortal(portalBtn.getAttribute("data-open-portal") || "tickets");
-          return;
-        }
-
-        const statusBtn = e.target.closest("[data-open-status]");
-        if (statusBtn) {
-          e.preventDefault();
-          openStatusModal();
-          return;
-        }
-
-        const orderBtn = e.target.closest("[data-order-plan]");
-        if (orderBtn) {
-          e.preventDefault();
-          orderPlan(orderBtn.getAttribute("data-order-plan"));
-          return;
-        }
-
-        const claimOfferBtn = e.target.closest("[data-claim-offer]");
-        if (claimOfferBtn) {
-          e.preventDefault();
-          claimOffer(claimOfferBtn.getAttribute("data-claim-offer"), claimOfferBtn.getAttribute("data-offer-code") || "");
-          return;
-        }
-
-        const catBtn = e.target.closest("[data-cat-tab]");
-        if (catBtn) {
-          selectedCategory = catBtn.getAttribute("data-cat-tab");
-          renderStorefront();
-          return;
-        }
-
-        const authModeBtn = e.target.closest("[data-auth-mode]");
-        if (authModeBtn) {
-          switchAuthTab(authModeBtn.getAttribute("data-auth-mode"));
-          return;
-        }
-
-        const togglePassBtn = e.target.closest("[data-toggle-pass]");
-        if (togglePassBtn) {
-          const input = document.getElementById(togglePassBtn.getAttribute("data-toggle-pass"));
-          if (input) input.type = input.type === "password" ? "text" : "password";
-          return;
-        }
-
-        const dashTabBtn = e.target.closest("[data-dash-tab]");
-        if (dashTabBtn) {
-          switchDashTab(dashTabBtn.getAttribute("data-dash-tab"));
-          return;
-        }
-
-        const ticketRow = e.target.closest("[data-open-ticket]");
-        if (ticketRow) {
-          openTicketDetail(ticketRow.getAttribute("data-open-ticket"));
-          return;
-        }
-
-        const copyBtn = e.target.closest("[data-copy-val]");
-        if (copyBtn) {
-          copyText(copyBtn.getAttribute("data-copy-val"), copyBtn.getAttribute("data-copy-label") || "Copied");
-          return;
-        }
-
-        const editPlanBtn = e.target.closest("[data-edit-plan]");
-        if (editPlanBtn) {
-          editPlan(editPlanBtn.getAttribute("data-edit-plan"));
-          return;
-        }
-
-        const deletePlanBtn = e.target.closest("[data-delete-plan]");
-        if (deletePlanBtn) {
-          if (!verifyAdminSession()) return;
-          const id = deletePlanBtn.getAttribute("data-delete-plan");
-          savePlans(getPlans().filter(p => p.id !== id));
-          renderAdminPlansList();
-          showToast("Plan deleted.", "success");
-          return;
-        }
-
-        const toggleOfferBtn = e.target.closest("[data-toggle-offer]");
-        if (toggleOfferBtn) {
-          if (!verifyAdminSession()) return;
-          const id = toggleOfferBtn.getAttribute("data-toggle-offer");
-          const offers = getOffers();
-          const idx = offers.findIndex(o => o.id === id);
-          if (idx !== -1) {
-            offers[idx].active = offers[idx].active === false;
-            saveOffers(offers);
-            renderAdminOffersList();
-            showToast(offers[idx].active ? "Offer activated." : "Offer paused.", "success");
-          }
-          return;
-        }
-
-        const editOfferBtn = e.target.closest("[data-edit-offer]");
-        if (editOfferBtn) {
-          editOffer(editOfferBtn.getAttribute("data-edit-offer"));
-          return;
-        }
-
-        const deleteOfferBtn = e.target.closest("[data-delete-offer]");
-        if (deleteOfferBtn) {
-          if (!verifyAdminSession()) return;
-          const id = deleteOfferBtn.getAttribute("data-delete-offer");
-          saveOffers(getOffers().filter(o => o.id !== id));
-          renderAdminOffersList();
-          showToast("Offer deleted.", "success");
-          return;
-        }
-
-        const legalBtn = e.target.closest("[data-open-legal]");
-        if (legalBtn) {
-          e.preventDefault();
-          openLegal(legalBtn.getAttribute("data-open-legal"));
-          return;
-        }
-
-        const faqToggle = e.target.closest("[data-faq-toggle]");
-        if (faqToggle) {
-          const item = faqToggle.closest(".faq-item");
-          if (item) item.classList.toggle("is-open");
-          return;
-        }
-      });
-
-      document.addEventListener("keydown", e => {
-        if (e.key === "Escape") {
-          if (portalModal.classList.contains("is-open")) closePortal();
-          if (legalModal.classList.contains("is-open")) closeLegal();
-          if (statusModal.classList.contains("is-open")) closeStatus();
-        }
-      });
-
-      document.getElementById("portal-close-btn").addEventListener("click", () => closePortal());
-      portalModal.addEventListener("click", e => { if (e.target === portalModal) closePortal(); });
-      document.getElementById("legal-close-btn").addEventListener("click", () => closeLegal());
-      legalModal.addEventListener("click", e => { if (e.target === legalModal) closeLegal(); });
-      document.getElementById("status-close-btn").addEventListener("click", () => closeStatus());
-      statusModal.addEventListener("click", e => { if (e.target === statusModal) closeStatus(); });
-
-      // Mobile Menu
-      const mobileNav = document.getElementById("mobile-nav");
-      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-      mobileMenuBtn.addEventListener("click", () => {
-        const isHidden = mobileNav.classList.toggle("hidden");
-        mobileMenuBtn.setAttribute("aria-expanded", String(!isHidden));
-      });
-      document.querySelectorAll(".mobile-link").forEach(a => {
-        a.addEventListener("click", () => {
-          mobileNav.classList.add("hidden");
-          mobileMenuBtn.setAttribute("aria-expanded", "false");
-        });
-      });
-    })();
-  </script>
+ </div></section>
+
+ <section id="faq"><div class="w" style="max-width:760px">
+  <div style="margin-bottom:30px"><div class="eyebrow">Support &amp; billing</div><h2>Frequently asked questions</h2></div>
+  <div id="faqs"></div>
+ </div></section>
+
+ <section style="border:0"><div class="w">
+  <div class="card band">
+   <div><h2 style="font-size:24px">Ready to deploy your server?</h2><p class="mut" style="margin-top:6px">Open a ticket in the Client Panel or message us on Discord.</p></div>
+   <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn p" data-a="portal" data-v="new">Order in Client Panel</button><a class="btn" href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noopener">Discord</a></div>
+  </div>
+ </div></section>
+</main>
+
+<footer><div class="w">
+ <div class="fg">
+  <div><div class="logo" style="color:var(--text);margin-bottom:10px"><i>GC</i><span>Gavio<em>Cloud</em></span></div><p style="max-width:260px">NVMe VPS hosting in India, the USA and Singapore with DDoS protection and full root access.</p></div>
+  <div><h4>Products</h4><ul><li><a href="#plans">VPS pricing</a></li><li><a href="#offers">Offers</a></li><li><a href="#locations">Locations</a></li></ul></div>
+  <div><h4>Support</h4><ul><li><button data-a="portal" data-v="tickets">Client Panel</button></li><li><button data-a="info" data-v="status">System status</button></li><li><a href="#faq">FAQ</a></li><li><a href="https://discord.gg/u6jWENUZtV" target="_blank" rel="noopener">Discord</a></li></ul></div>
+  <div><h4>Legal</h4><ul><li><button data-a="info" data-v="terms">Terms of Service</button></li><li><button data-a="info" data-v="privacy">Privacy Policy</button></li><li><button data-a="info" data-v="refund">Refund Policy</button></li></ul></div>
+ </div>
+ <div class="copy"><span>© 2026 Gavio Cloud. All rights reserved.</span><span class="mono">IN-MUM1 · SG-SIN1 · US-IAD1</span></div>
+</div></footer>
+
+<div class="modal" id="m" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="mbox" id="mbox">
+ <div class="mh"><b id="mt">Client Panel</b><div><button class="btn sm d" id="lo" data-a="logout" hidden>Sign out</button><button class="x" data-a="close" aria-label="Close">✕</button></div></div>
+ <div class="mbody" id="mb"></div>
+</div></div>
+<div id="toast" role="status"></div>
+
+<script>
+(()=>{
+"use strict";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const inr=n=>"₹"+Number(n).toLocaleString("en-IN");
+const DISCORD="https://discord.gg/u6jWENUZtV";
+
+/* ---------- storage (falls back to memory if blocked) ---------- */
+const mem={};
+const store={
+ get(k){try{const v=localStorage.getItem(k);if(v!==null)return v}catch{}return mem[k]??null},
+ set(k,v){mem[k]=v;try{localStorage.setItem(k,v)}catch{}}
+};
+const sess={
+ get(k){try{const v=sessionStorage.getItem(k);if(v!==null)return v}catch{}return mem["s_"+k]??null},
+ set(k,v){mem["s_"+k]=v;try{sessionStorage.setItem(k,v)}catch{}},
+ del(k){delete mem["s_"+k];try{sessionStorage.removeItem(k)}catch{}}
+};
+const K={u:"gc5_users",p:"gc5_plans",o:"gc5_offers",t:"gc5_tickets",s:"gc5_services",a:"gc5_ann"};
+const load=(k,d)=>{try{const r=store.get(k);return r?JSON.parse(r):d}catch{return d}};
+const save=(k,v)=>store.set(k,JSON.stringify(v));
+
+/* ---------- defaults ---------- */
+const SPEC=[["Starter",12,2,120],["Standard",16,4,160],["Advanced",24,4,250],["Performance",32,4,320],["Enterprise",48,6,480],["Ultimate",64,8,640]];
+const PREM="Premium · India",BUD="Budget · India, USA, Singapore";
+const mk=(tier,prices,net,pre)=>SPEC.map((s,i)=>({id:pre+i,name:s[0],tier,price:prices[i],ram:s[1],cpu:s[2],nvme:s[3],network:net,badge:(pre==="p"&&i===1)?"POPULAR":"",featured:pre==="p"&&i===1,active:true}));
+const DEF_PLANS=()=>[...mk(PREM,[600,800,1000,1200,1400,1600],"1 Gbps","p"),...mk(BUD,[400,550,720,800,1000,1200],"200 Mbps – 1 Gbps","b")];
+const NOTES={[PREM]:"Premium: 1 Gbps network in India.",[BUD]:"Budget: 200 Mbps to 1 Gbps in India, Singapore and the USA."};
+const DEF_OFFERS=()=>[
+ {id:"o1",title:"India 1 Gbps Launch Offer",code:"GAVIO20",badge:"20% OFF",tier:PREM,desc:"20% off your first billing cycle on any Premium India plan.",expiry:"New deployments",active:true},
+ {id:"o2",title:"Multi-Region Starter Discount",code:"DEPLOY15",badge:"₹150 OFF",tier:BUD,desc:"₹150 off Budget servers in India, Singapore or the United States.",expiry:"Limited slots",active:true},
+ {id:"o3",title:"Quarterly Billing Bonus",code:"QUARTER10",badge:"10% OFF",tier:"All tiers",desc:"10% off when you pay quarterly on any Premium or Budget plan.",expiry:"3-month cycles",active:true}];
+const FEAT=[["NVMe storage","120 GB to 640 GB of enterprise NVMe for fast disk I/O.","▤"],["DDoS protection","Always-on network mitigation on every plan at no extra cost.","◈"],["Full root access","Complete SSH root privileges to run your own stack.","›_"],["Three regions","Deploy close to users in India, Singapore or the USA.","◎"],["Choice of OS","Ubuntu, Debian, AlmaLinux or Rocky Linux, reinstalled on request.","▣"],["Direct support","Talk to the people who run the servers, by ticket or Discord.","✉"]];
+const FAQ=[["How do I order?","Click Order Ticket on any plan, sign in and submit a ticket, or message us on Discord with your plan and location."],["Is DDoS protection included?","Yes, every plan includes always-on DDoS protection."],["Do I get full root access?","Yes. You receive root SSH credentials once your server is provisioned."],["Which operating systems are supported?","Ubuntu, Debian, AlmaLinux and Rocky Linux. We can reinstall on request."],["How do I pay?","We send payment details in your ticket or Discord chat once your order is confirmed."],["What is the difference between Premium and Budget?","Premium runs on a 1 Gbps network in India. Budget is cheaper and available in India, Singapore and the USA."]];
+const INFO={
+ terms:["Terms of Service","<p class='mut mono'>Last updated: 15 November 2026</p><h4>Agreement</h4><p>By ordering a service from Gavio Cloud you agree to these terms.</p><h4>Services</h4><p>We provide virtual private servers with the resources listed on each plan. An active service keeps its allocated resources for the paid billing cycle.</p><h4>Acceptable use</h4><p>No illegal activity, spam, phishing, malware, DDoS attacks or port scanning. Abusive resource usage is prohibited.</p><h4>Backups &amp; liability</h4><p>You are responsible for your own backups. Liability is limited to the amount paid for the affected service in the past month.</p>"],
+ privacy:["Privacy Policy","<p class='mut mono'>Last updated: 15 November 2026</p><h4>Data we collect</h4><p>Account contact details (username, email, Discord handle), billing records and technical data needed to provision and secure your VPS.</p><h4>How we use it</h4><p>We never sell your data. Your server contents stay private and are accessed only at your request or when legally required.</p>"],
+ refund:["Refund Policy","<p class='mut mono'>Last updated: 15 November 2026</p><h4>48-hour window</h4><p>First-time orders qualify for a full refund within 48 hours of activation if we fail to provision within 24 hours or a verified node hardware issue occurs.</p><h4>Exclusions</h4><p>Requests after 48 hours, renewals, upgrades and services suspended for Terms violations are non-refundable.</p><h4>How to request</h4><p>Open a Billing ticket or contact us on Discord with your Service ID within 48 hours.</p>"]
+};
+
+/* ---------- auth ---------- */
+async function hash(id,pw){
+ const d=id+":"+pw+":gavio-cloud";
+ try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(d));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+ catch{return"x"+btoa(unescape(encodeURIComponent(d)))}
+}
+const getUsers=()=>load(K.u,[]);
+const IDLE=15*60*1000;
+let last=Date.now();
+function logout(){sess.del("gc5_sess");navLabel()}
+function cur(){
+ const raw=sess.get("gc5_sess");if(!raw)return null;
+ if(Date.now()-last>IDLE){logout();return null}
+ let id;try{id=JSON.parse(raw).id}catch{logout();return null}
+ const u=getUsers().find(x=>x.id===id);
+ if(!u){logout();return null}
+ return u;
+}
+const isAdmin=()=>{const u=cur();return !!u&&u.role==="admin"};
+function login(u){sess.set("gc5_sess",JSON.stringify({id:u.id}));last=Date.now();navLabel()}
+function navLabel(){const u=cur();$("navauth").textContent=u?(u.role==="admin"?"Admin · ":"")+(u.fullName||u.username):"Client Panel"}
+["click","keydown","touchstart","scroll"].forEach(e=>addEventListener(e,()=>{if(sess.get("gc5_sess")){if(Date.now()-last>IDLE){logout();if($("m").classList.contains("open")&&view==="portal"){render();toast("Locked after 15 minutes of inactivity.","err")}}else last=Date.now()}},{passive:true}));
+
+async function init(){
+ let users=getUsers();
+ if(!users.some(u=>u.role==="admin")){
+  users.unshift({id:"usr_admin",fullName:"Admin",username:"admin",email:"admin@gaviocloud.com",discord:"",region:"India",pw:await hash("usr_admin","admin123"),role:"admin",createdAt:new Date().toISOString()});
+  save(K.u,users);
+ }
+ if(!Array.isArray(load(K.p,null)))save(K.p,DEF_PLANS());
+ if(!Array.isArray(load(K.o,null)))save(K.o,DEF_OFFERS());
+ if(!Array.isArray(load(K.t,null)))save(K.t,[]);
+ if(!Array.isArray(load(K.s,null)))save(K.s,[]);
+}
+
+/* ---------- toast ---------- */
+let tt;
+function toast(msg,type){const t=$("toast");t.textContent=msg;t.className="show"+(type==="err"?" err":"");clearTimeout(tt);tt=setTimeout(()=>t.className="",3200)}
+function copy(text,label){
+ const done=()=>toast((label||"Copied")+": "+text);
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(done,()=>toast("Copy failed","err"));return}
+ const a=document.createElement("textarea");a.value=text;a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();
+ try{document.execCommand("copy");done()}catch{toast("Copy failed","err")}a.remove();
+}
+
+/* ---------- storefront ---------- */
+let cat=PREM;
+function renderStore(){
+ const plans=load(K.p,[]).filter(p=>p.active!==false);
+ const cats=[...new Set(plans.map(p=>p.tier))];
+ if(cats.length&&!cats.includes(cat))cat=cats[0];
+ if(plans.length)$("minp").textContent=inr(Math.min(...plans.map(p=>+p.price)))+"/month";
+ $("tabs").innerHTML=cats.map(c=>`<button class="${c===cat?"on":""}" data-a="cat" data-v="${esc(c)}">${esc(c)}</button>`).join("");
+ $("tnote").textContent=NOTES[cat]||(cat?cat+": NVMe storage, DDoS protection and full root access.":"");
+ const list=plans.filter(p=>p.tier===cat);
+ $("plans-grid").innerHTML=list.length?list.map(p=>{
+  const title=`${p.name} — ${p.tier} (${inr(p.price)}/mo)`;
+  return `<div class="card plan ${p.featured?"feat":""}"><div>
+   <div style="display:flex;justify-content:space-between;align-items:center"><h3>${esc(p.name)}</h3>${p.badge?`<span class="tag b">${esc(p.badge)}</span>`:""}</div>
+   <div class="price">${inr(p.price)} <small>/ month</small></div>
+   <ul class="spec"><li><span>Memory</span><span>${p.ram} GB RAM</span></li><li><span>Processor</span><span>${p.cpu} vCPU</span></li><li><span>Storage</span><span>${p.nvme} GB NVMe</span></li><li><span>Network</span><span>${esc(p.network||"1 Gbps")}</span></li><li><span>Security</span><span style="color:var(--ok)">DDoS + root</span></li></ul></div>
+   <div class="pb"><button class="btn ${p.featured?"p":""}" data-a="order" data-v="${esc(title)}">Order ticket</button><a class="btn" href="${DISCORD}" target="_blank" rel="noopener">Discord</a></div></div>`}).join(""):`<div class="card mut" style="grid-column:1/-1;text-align:center">No plans available in this tier.</div>`;
+}
+function renderOffers(){
+ const o=load(K.o,[]).filter(x=>x.active!==false);
+ $("offers-grid").innerHTML=o.length?o.map(x=>`<div class="card"><div style="display:flex;justify-content:space-between;gap:8px;margin-bottom:12px"><span class="tag ok">${esc(x.badge)}</span><span class="tag">${esc(x.tier)}</span></div>
+  <h3 style="font-size:17px">${esc(x.title)}</h3><p class="mut" style="font-size:14px;margin-top:6px">${esc(x.desc)}</p>
+  <div class="code"><span>${esc(x.code)}</span><button data-a="copy" data-v="${esc(x.code)}">Copy</button></div>
+  <div style="display:flex;justify-content:space-between;align-items:center"><span class="mono mut" style="font-size:11px">${esc(x.expiry)}</span><button class="btn p sm" data-a="claim" data-v="${esc(`Promo ${x.code} (${x.badge}) — ${x.tier}`)}" data-c="${esc(x.code)}">Claim offer</button></div></div>`).join(""):`<div class="card mut" style="grid-column:1/-1;text-align:center">No active promo codes right now.</div>`;
+}
+function renderAnn(){
+ const a=load(K.a,{active:false}),bar=$("ann");
+ if(!a.active||!String(a.text||"").trim()||sess.get("gc5_annx")===String(a.id)){bar.hidden=true;return}
+ $("annt").textContent=a.text;
+ const l=$("annl");
+ if(a.link&&/^https?:\/\//i.test(a.link)){l.href=a.link;l.hidden=false}else l.hidden=true;
+ bar.hidden=false;
+}
+$("feat").innerHTML=FEAT.map(f=>`<div class="card"><div class="ico">${f[2]}</div><h3 style="font-size:17px">${f[0]}</h3><p class="mut" style="font-size:14px;margin-top:6px">${f[1]}</p></div>`).join("");
+$("faqs").innerHTML=FAQ.map((q,i)=>`<div class="faq ${i===0?"open":""}"><button data-a="faq">${q[0]}</button><p>${q[1]}</p></div>`).join("");
+
+/* ---------- modal / portal ---------- */
+let view="portal",tab="tickets",authMode="login",tid=null,pending="",filt="ALL",editPlan=null,editOffer=null,infoKey="";
+const modal=$("m");
+function openModal(){modal.classList.add("open");document.body.style.overflow="hidden"}
+function closeModal(){modal.classList.remove("open");document.body.style.overflow="";tid=null}
+function openPortal(t){
+ view="portal";tab=t||"tickets";
+ if(tab.startsWith("admin-")&&!isAdmin())tab="tickets";
+ render();openModal();
+ setTimeout(()=>{const i=$("mb").querySelector("input,textarea");if(i&&!cur())i.focus()},40);
+}
+function openInfo(k){view="info";infoKey=k;render();openModal()}
+function setTab(t){if(t.startsWith("admin-")&&!isAdmin()){toast("Admin access required.","err");t="tickets"}tab=t;tid=null;render()}
+
+function render(){
+ const u=cur(),box=$("mbox");
+ $("lo").hidden=!(view==="portal"&&u);
+ box.className="mbox"+((view==="info"||(view==="portal"&&!u))?" mnarrow":"");
+ if(view==="info"){
+  if(infoKey==="status"){$("mt").textContent="System status";
+   $("mb").innerHTML=`<p class="tag ok" style="margin-bottom:16px">ALL SYSTEMS OPERATIONAL · 99.98% UPTIME</p>`+[["IN-MUM1 · Mumbai compute","99.99%"],["SG-SIN1 · Singapore compute","99.97%"],["US-IAD1 · Virginia compute","99.99%"],["Client Panel & support desk","100.00%"]].map(n=>`<div class="item"><div><b style="font-weight:500">${n[0]}</b><div class="mono mut" style="font-size:12px">${n[1]} uptime</div></div><span class="tag ok">Operational</span></div>`).join("")}
+  else{const d=INFO[infoKey];$("mt").textContent=d[0];$("mb").innerHTML=`<div class="info">${d[1]}</div><style>.info h4{margin:18px 0 4px;font-size:14px}.info p{color:var(--mut);font-size:14px}</style>`}
+  return;
+ }
+ if(!u){$("mt").textContent="Client Panel";$("mb").innerHTML=authHTML();return}
+ $("mt").textContent=u.role==="admin"?"Admin Console":"Client Panel";
+ const ad=u.role==="admin";
+ const tabs=[["tickets","Tickets"],["new","+ New ticket"],["services","Services"],...(ad?[["admin-plans","Plans"],["admin-offers","Offers"],["admin-ann","Announcement"]]:[]),["profile","Profile"]];
+ const body={tickets:ticketsHTML,new:newHTML,services:servicesHTML,"admin-plans":plansAdminHTML,"admin-offers":offersAdminHTML,"admin-ann":annAdminHTML,profile:profileHTML}[tab]||ticketsHTML;
+ $("mb").innerHTML=`<div class="dt">${tabs.map(t=>`<button class="${t[0]===tab?"on":""}" data-a="tab" data-v="${t[0]}">${t[1]}</button>`).join("")}</div>`+body(u);
+}
+const tabBtn=(m,l)=>`<button class="${authMode===m?"btn p":"btn"}" style="flex:1" data-a="auth" data-v="${m}">${l}</button>`;
+function authHTML(){
+ return `<div style="display:flex;gap:8px;margin-bottom:20px">${tabBtn("login","Sign in")}${tabBtn("register","Create account")}</div>`+(authMode==="login"?
+ `<form data-f="login"><div class="f"><label>Username or email</label><input name="id" required autocomplete="username"></div>
+  <div class="f"><label>Password</label><input name="pw" type="password" required autocomplete="current-password"></div>
+  <button class="btn p" style="width:100%" type="submit">Sign in</button><p class="mono mut" style="font-size:11px;margin-top:10px">Locks after 15 minutes of inactivity</p></form>`:
+ `<form data-f="register"><div class="f"><label>Username</label><input name="username" required minlength="3" maxlength="30" autocomplete="username"></div>
+  <div class="f"><label>Email</label><input name="email" type="email" required autocomplete="email"></div>
+  <div class="f"><label>Discord username (optional)</label><input name="discord" placeholder="@username"></div>
+  <div class="f"><label>Password (min. 6 characters)</label><input name="pw" type="password" required minlength="6" autocomplete="new-password"></div>
+  <button class="btn p" style="width:100%" type="submit">Create account</button></form>`);
+}
+const pill=s=>s==="Open"?'<span class="tag ok">Open</span>':s==="Answered"?'<span class="tag b">Answered</span>':'<span class="tag">Closed</span>';
+const fdate=d=>new Date(d).toLocaleString("en-IN",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+
+function ticketsHTML(u){
+ const ad=u.role==="admin",all=load(K.t,[]);
+ if(tid){
+  const t=all.find(x=>x.id===tid);
+  if(!t||(!ad&&t.userId!==u.id)){tid=null;return ticketsHTML(u)}
+  return `<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;margin-bottom:16px"><button class="btn sm" data-a="back">← Back</button>
+   <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-a="status" data-v="${t.status==="Closed"?"Open":"Closed"}">${t.status==="Closed"?"Reopen ticket":"Close ticket"}</button>
+   ${ad?`<button class="btn sm" data-a="provision">+ Provision VPS</button><select data-chg="status" style="width:auto;padding:4px 8px;font-size:12px">${["Open","Answered","Closed"].map(s=>`<option ${s===t.status?"selected":""}>${s}</option>`).join("")}</select>`:""}</div></div>
+   <div class="item" style="display:block"><div class="mono mut" style="font-size:12px">${esc(t.id)} · ${esc(t.category)} · ${esc(t.priority)} · ${pill(t.status)}</div><h3 style="font-size:17px;margin-top:6px">${esc(t.subject)}</h3>${t.plan?`<div class="mono mut" style="font-size:12px;margin-top:4px">Plan: ${esc(t.plan)}</div>`:""}</div>
+   <div style="max-height:300px;overflow-y:auto;margin-bottom:12px" id="thread">${t.messages.map(m=>`<div class="msg ${m.role==="admin"?"st":""}"><small>${esc(m.sender)}${m.role==="admin"?" · STAFF":""} · ${fdate(m.timestamp)}</small>${esc(m.text)}</div>`).join("")}</div>
+   <form data-f="reply"><textarea name="text" rows="3" required placeholder="Write a reply…" style="margin-bottom:10px"></textarea><button class="btn p" type="submit">Send reply</button></form>`;
+ }
+ let list=ad?all:all.filter(t=>t.userId===u.id);
+ if(filt!=="ALL")list=list.filter(t=>t.status===filt);
+ return `<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:14px"><b>${ad?"All tickets":"Your tickets"} (${list.length})</b>
+  <select data-chg="filter" style="width:auto">${["ALL","Open","Answered","Closed"].map(s=>`<option value="${s}" ${s===filt?"selected":""}>${s==="ALL"?"All statuses":s}</option>`).join("")}</select></div>`+
+  (list.length?list.map(t=>`<div class="item click" role="button" tabindex="0" data-a="open" data-v="${esc(t.id)}"><div><div class="mono" style="font-size:12px"><span style="color:#7da2ff">${esc(t.id)}</span> · <span class="mut">${esc(t.category)}${ad?" · @"+esc(t.username):""}</span></div><div style="font-weight:500">${esc(t.subject)}</div></div><div style="text-align:right">${pill(t.status)}<div class="mono mut" style="font-size:11px;margin-top:4px">${fdate(t.createdAt)}</div></div></div>`).join(""):
+  `<div class="item" style="justify-content:center;flex-direction:column;text-align:center;padding:30px"><b>No tickets found</b><span class="mut" style="font-size:13px">Open a ticket to order a VPS or contact support.</span><button class="btn p sm" data-a="tab" data-v="new" style="margin-top:8px">New ticket</button></div>`);
+}
+function newHTML(){
+ const plan=pending;pending="";
+ return `<h3 style="font-size:18px">Open a support or order ticket</h3><p class="mut" style="font-size:13px;margin:4px 0 18px">Order a VPS, apply a promo code or ask for help.</p>
+ <form data-f="ticket" style="max-width:640px"><div class="row f"><div><label>Department</label><select name="category"><option>Sales / VPS Order</option><option>Technical Support</option><option>Billing</option><option>Reinstall OS</option></select></div>
+ <div><label>Priority</label><select name="priority"><option>Normal</option><option>High</option><option>Urgent</option></select></div></div>
+ <div class="f"><label>Plan / promo code (optional)</label><input name="plan" value="${esc(plan)}" placeholder="e.g. Standard — Premium · India"></div>
+ <div class="f"><label>Subject *</label><input name="subject" required maxlength="140" value="${plan?esc("VPS Order: "+plan):""}"></div>
+ <div class="f"><label>Message *</label><textarea name="message" rows="4" required placeholder="Preferred OS (Ubuntu, Debian, AlmaLinux, Rocky) and location (India, USA, Singapore)…"></textarea></div>
+ <button class="btn p" type="submit">Submit ticket</button> <button class="btn" type="button" data-a="tab" data-v="tickets">Cancel</button></form>`;
+}
+function servicesHTML(u){
+ const ad=u.role==="admin",all=load(K.s,[]),list=ad?all:all.filter(s=>s.userId===u.id);
+ return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><b>${ad?"All services":"Your VPS services"} (${list.length})</b><button class="btn p sm" data-a="tab" data-v="new">+ Order new VPS</button></div>`+
+ (list.length?list.map(s=>`<div class="item"><div><div class="mono" style="font-size:12px"><span style="color:#7da2ff">${esc(s.id)}</span> <span style="color:var(--ok)">● ${esc(s.status)}</span>${ad?` <span class="mut">@${esc(s.username)}</span>`:""}</div><div style="font-weight:500">${esc(s.planName)}</div><div class="mono mut" style="font-size:12px">IPv4 ${esc(s.ip)} · ${esc(s.os)}</div></div>
+ <div style="display:flex;gap:6px"><button class="btn sm" data-a="copy" data-v="${esc(s.ip)}" data-l="IPv4 copied">Copy IP</button><button class="btn sm" data-a="copy" data-v="${esc(s.rootPass)}" data-l="Password copied">Copy password</button></div></div>`).join(""):
+ `<div class="item mut" style="justify-content:center;padding:30px">No active VPS instances yet.</div>`);
+}
+function plansAdminHTML(){
+ const plans=load(K.p,[]),e=plans.find(p=>p.id===editPlan)||{network:"1 Gbps",active:true};
+ return `<div style="display:flex;justify-content:space-between;margin-bottom:14px"><div><h3 style="font-size:18px">Manage plans</h3><p class="mut" style="font-size:13px">Shown in the pricing section.</p></div><button class="btn sm" data-a="resetplans">Reset defaults</button></div>
+ <form data-f="plan" class="card" style="margin-bottom:18px;padding:16px"><b class="mono" style="font-size:12px;color:#7da2ff">${e.id?"EDITING: "+esc(e.name):"+ NEW PLAN"}</b>
+ <div class="row" style="margin:12px 0"><div><label>Name *</label><input name="name" required value="${esc(e.name||"")}"></div><div><label>Tier *</label><input name="tier" required list="tl" value="${esc(e.tier||"")}"><datalist id="tl"><option value="${PREM}"><option value="${BUD}"></datalist></div><div><label>Price ₹/mo *</label><input name="price" type="number" min="1" required value="${e.price||""}"></div></div>
+ <div class="row" style="margin-bottom:12px"><div><label>RAM GB *</label><input name="ram" type="number" min="1" required value="${e.ram||""}"></div><div><label>vCPU *</label><input name="cpu" type="number" min="1" required value="${e.cpu||""}"></div><div><label>NVMe GB *</label><input name="nvme" type="number" min="10" required value="${e.nvme||""}"></div><div><label>Network *</label><input name="network" required value="${esc(e.network||"1 Gbps")}"></div></div>
+ <div class="row" style="margin-bottom:12px;align-items:end"><div><label>Badge</label><input name="badge" placeholder="POPULAR" value="${esc(e.badge||"")}"></div>
+ <label style="display:flex;gap:8px;align-items:center;margin:0"><input type="checkbox" name="featured" ${e.featured?"checked":""}> Highlight</label><label style="display:flex;gap:8px;align-items:center;margin:0"><input type="checkbox" name="active" ${e.active!==false?"checked":""}> Visible</label></div>
+ <button class="btn p" type="submit">${e.id?"Update plan":"Save plan"}</button> ${e.id?'<button class="btn" type="button" data-a="cancelplan">Cancel</button>':""}</form>
+ <div class="mono mut" style="font-size:12px;margin-bottom:8px">Configured plans (${plans.length})</div>`+
+ plans.map(p=>`<div class="item"><div><b style="font-weight:500">${esc(p.name)}</b> <span class="tag">${esc(p.tier)}</span>${p.active===false?' <span class="tag">hidden</span>':""}<div class="mono mut" style="font-size:12px">${inr(p.price)}/mo · ${p.ram} GB · ${p.cpu} vCPU · ${p.nvme} GB NVMe · ${esc(p.network)}</div></div><div style="display:flex;gap:6px"><button class="btn sm" data-a="editplan" data-v="${esc(p.id)}">Edit</button><button class="btn sm d" data-a="delplan" data-v="${esc(p.id)}">Delete</button></div></div>`).join("");
+}
+function offersAdminHTML(){
+ const offers=load(K.o,[]),e=offers.find(o=>o.id===editOffer)||{active:true};
+ return `<div style="display:flex;justify-content:space-between;margin-bottom:14px"><div><h3 style="font-size:18px">Manage offers</h3><p class="mut" style="font-size:13px">Promo codes shown on the site.</p></div><button class="btn sm" data-a="resetoffers">Reset defaults</button></div>
+ <form data-f="offer" class="card" style="margin-bottom:18px;padding:16px"><b class="mono" style="font-size:12px;color:#7da2ff">${e.id?"EDITING: "+esc(e.title):"+ NEW OFFER"}</b>
+ <div class="row" style="margin:12px 0"><div><label>Title *</label><input name="title" required value="${esc(e.title||"")}"></div><div><label>Promo code *</label><input name="code" required class="mono" style="text-transform:uppercase" value="${esc(e.code||"")}"></div><div><label>Discount tag *</label><input name="badge" required placeholder="20% OFF" value="${esc(e.badge||"")}"></div></div>
+ <div class="row" style="margin-bottom:12px"><div><label>Applicable tier *</label><input name="tier" required list="tl2" value="${esc(e.tier||"")}"><datalist id="tl2"><option value="${PREM}"><option value="${BUD}"><option value="All tiers"></datalist></div><div><label>Validity note *</label><input name="expiry" required value="${esc(e.expiry||"")}"></div></div>
+ <div class="f"><label>Description *</label><textarea name="desc" rows="2" required>${esc(e.desc||"")}</textarea></div>
+ <label style="display:flex;gap:8px;align-items:center;margin-bottom:12px"><input type="checkbox" name="active" ${e.active!==false?"checked":""}> Active on site</label>
+ <button class="btn p" type="submit">${e.id?"Update offer":"Publish offer"}</button> ${e.id?'<button class="btn" type="button" data-a="canceloffer">Cancel</button>':""}</form>
+ <div class="mono mut" style="font-size:12px;margin-bottom:8px">Configured offers (${offers.length})</div>`+
+ offers.map(o=>`<div class="item"><div><b style="font-weight:500">${esc(o.title)}</b> <span class="tag b">${esc(o.code)}</span> <span class="tag ok">${esc(o.badge)}</span>${o.active===false?' <span class="tag">paused</span>':""}<div class="mut" style="font-size:13px">${esc(o.desc)}</div></div><div style="display:flex;gap:6px"><button class="btn sm" data-a="tgoffer" data-v="${esc(o.id)}">${o.active===false?"Activate":"Pause"}</button><button class="btn sm" data-a="editoffer" data-v="${esc(o.id)}">Edit</button><button class="btn sm d" data-a="deloffer" data-v="${esc(o.id)}">Delete</button></div></div>`).join("");
+}
+function annAdminHTML(){
+ const a=load(K.a,{});
+ return `<h3 style="font-size:18px">Site announcement</h3><p class="mut" style="font-size:13px;margin:4px 0 16px">Shown at the top of the site when enabled.</p>
+ <form data-f="ann" style="max-width:640px"><div class="f"><label>Message (300 characters max)</label><textarea name="text" rows="3" maxlength="300">${esc(a.text||"")}</textarea></div>
+ <div class="f"><label>Link (optional, https://…)</label><input name="link" type="url" value="${esc(a.link||"")}"></div>
+ <label style="display:flex;gap:8px;align-items:center;margin-bottom:14px"><input type="checkbox" name="active" ${a.active?"checked":""}> Show on the site</label>
+ <button class="btn p" type="submit">Publish</button> <button class="btn" type="button" data-a="annoff">Turn off</button></form>`;
+}
+function profileHTML(u){
+ return `<div class="row" style="align-items:start"><form data-f="profile" class="card" style="padding:18px"><b class="mono mut" style="font-size:12px">ACCOUNT · ${u.role.toUpperCase()}</b>
+ <div class="f" style="margin-top:12px"><label>Display name</label><input name="fullName" value="${esc(u.fullName||"")}"></div>
+ <div class="f"><label>Username *</label><input name="username" required minlength="3" value="${esc(u.username)}"></div>
+ <div class="f"><label>Email *</label><input name="email" type="email" required value="${esc(u.email)}"></div>
+ <div class="f"><label>Discord</label><input name="discord" value="${esc(u.discord||"")}"></div>
+ <div class="f"><label>Preferred region</label><select name="region">${["India","Singapore","United States"].map(r=>`<option ${r===(u.region||"India")?"selected":""}>${r}</option>`).join("")}</select></div>
+ <button class="btn p" type="submit">Save profile</button></form>
+ <form data-f="password" class="card" style="padding:18px"><b class="mono mut" style="font-size:12px">CHANGE PASSWORD</b>
+ <div class="f" style="margin-top:12px"><label>Current password *</label><input name="cur" type="password" required autocomplete="current-password"></div>
+ <div class="f"><label>New password * (min. 6)</label><input name="n1" type="password" required minlength="6" autocomplete="new-password"></div>
+ <div class="f"><label>Confirm new password *</label><input name="n2" type="password" required minlength="6" autocomplete="new-password"></div>
+ <button class="btn" type="submit">Update password</button></form></div>`;
+}
+
+/* ---------- form submits ---------- */
+$("mb").addEventListener("submit",async e=>{
+ e.preventDefault();
+ const f=e.target.closest("form[data-f]");if(!f)return;
+ const k=f.dataset.f,d=Object.fromEntries(new FormData(f)),u=cur();
+ const chk=n=>f.elements[n]&&f.elements[n].checked;
+ if(k==="login"){
+  const id=d.id.trim().toLowerCase();
+  const u2=getUsers().find(x=>x.username.toLowerCase()===id||x.email.toLowerCase()===id);
+  if(!u2||u2.pw!==await hash(u2.id,d.pw)){toast("Invalid username/email or password.","err");return}
+  login(u2);toast("Signed in as "+(u2.fullName||u2.username));tab=pending?"new":"tickets";render();return;
+ }
+ if(k==="register"){
+  const users=getUsers(),un=d.username.trim(),em=d.email.trim();
+  if(users.some(x=>x.username.toLowerCase()===un.toLowerCase())){toast("That username is taken.","err");return}
+  if(users.some(x=>x.email.toLowerCase()===em.toLowerCase())){toast("That email is already registered.","err");return}
+  const id="usr_"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  const nu={id,fullName:un,username:un,email:em,discord:d.discord.trim(),region:"India",pw:await hash(id,d.pw),role:"client",createdAt:new Date().toISOString()};
+  users.push(nu);save(K.u,users);login(nu);toast("Account created.");tab=pending?"new":"tickets";render();return;
+ }
+ if(!u){render();return}
+ if(k==="ticket"){
+  const all=load(K.t,[]);let id;do{id="GC-"+Math.floor(10000+Math.random()*90000)}while(all.some(t=>t.id===id));
+  all.unshift({id,userId:u.id,username:u.username,userEmail:u.email,category:d.category,priority:d.priority,plan:d.plan.trim(),subject:d.subject.trim(),status:"Open",createdAt:new Date().toISOString(),messages:[{sender:u.username,role:u.role,text:d.message.trim(),timestamp:new Date().toISOString()}]});
+  save(K.t,all);toast("Ticket "+id+" created.");tab="tickets";tid=id;render();return;
+ }
+ if(k==="reply"){
+  const all=load(K.t,[]),t=all.find(x=>x.id===tid);if(!t||(u.role!=="admin"&&t.userId!==u.id))return;
+  const text=d.text.trim();if(!text)return;
+  t.messages.push({sender:u.username,role:u.role,text,timestamp:new Date().toISOString()});
+  if(u.role==="admin")t.status="Answered";else if(t.status==="Closed"||t.status==="Answered")t.status="Open";
+  save(K.t,all);toast("Reply sent.");render();const th=$("thread");if(th)th.scrollTop=th.scrollHeight;return;
+ }
+ if(k==="profile"){
+  const users=getUsers(),un=d.username.trim(),em=d.email.trim();
+  if(users.some(x=>x.id!==u.id&&x.username.toLowerCase()===un.toLowerCase())){toast("Username already taken.","err");return}
+  if(users.some(x=>x.id!==u.id&&x.email.toLowerCase()===em.toLowerCase())){toast("Email already in use.","err");return}
+  const i=users.findIndex(x=>x.id===u.id);users[i]={...users[i],fullName:d.fullName.trim(),username:un,email:em,discord:d.discord.trim(),region:d.region};
+  save(K.u,users);navLabel();toast("Profile updated.");render();return;
+ }
+ if(k==="password"){
+  if(u.pw!==await hash(u.id,d.cur)){toast("Current password is incorrect.","err");return}
+  if(d.n1!==d.n2){toast("New passwords do not match.","err");return}
+  const users=getUsers(),i=users.findIndex(x=>x.id===u.id);users[i].pw=await hash(u.id,d.n1);
+  save(K.u,users);f.reset();toast("Password updated.");return;
+ }
+ if(u.role!=="admin"){toast("Admin access required.","err");return}
+ if(k==="plan"){
+  const p={name:d.name.trim(),tier:d.tier.trim(),price:+d.price,ram:+d.ram,cpu:+d.cpu,nvme:+d.nvme,network:d.network.trim(),badge:d.badge.trim(),featured:chk("featured"),active:chk("active")};
+  const plans=load(K.p,[]);
+  if(editPlan){const i=plans.findIndex(x=>x.id===editPlan);if(i>-1)plans[i]={...plans[i],...p};toast('Updated "'+p.name+'".')}
+  else{plans.push({id:"pln_"+Date.now(),...p});cat=p.tier;toast('Created "'+p.name+'".')}
+  save(K.p,plans);editPlan=null;renderStore();render();return;
+ }
+ if(k==="offer"){
+  const o={title:d.title.trim(),code:d.code.trim().toUpperCase(),badge:d.badge.trim(),tier:d.tier.trim(),expiry:d.expiry.trim(),desc:d.desc.trim(),active:chk("active")};
+  const offers=load(K.o,[]);
+  if(editOffer){const i=offers.findIndex(x=>x.id===editOffer);if(i>-1)offers[i]={...offers[i],...o};toast('Updated "'+o.title+'".')}
+  else{offers.unshift({id:"off_"+Date.now(),...o});toast('Published "'+o.title+'".')}
+  save(K.o,offers);editOffer=null;renderOffers();render();return;
+ }
+ if(k==="ann"){
+  const active=chk("active"),text=d.text.trim();
+  if(active&&!text){toast("Write a message first.","err");return}
+  save(K.a,{id:Date.now(),text,link:d.link.trim(),active});sess.del("gc5_annx");renderAnn();toast(active?"Announcement published.":"Announcement saved.");
+ }
+});
+$("mb").addEventListener("change",e=>{
+ const c=e.target.dataset.chg;if(!c)return;
+ if(c==="filter"){filt=e.target.value;render()}
+ if(c==="status")setStatus(e.target.value);
+});
+function setStatus(s){
+ const u=cur();if(!u||!tid)return;
+ const all=load(K.t,[]),t=all.find(x=>x.id===tid);if(!t||(u.role!=="admin"&&t.userId!==u.id))return;
+ t.status=s;save(K.t,all);toast("Status updated to "+s+".");render();
+}
+
+/* ---------- global clicks ---------- */
+let hreg="Mumbai, India (IN-MUM1)",hos="Ubuntu 24.04 LTS";
+function sel(box,btn){$(box).querySelectorAll("button").forEach(b=>b.classList.toggle("on",b===btn))}
+function order(title){pending=title;openPortal("new");if(!cur())toast("Sign in or create an account to place your order.")}
+document.addEventListener("click",e=>{
+ const b=e.target.closest("[data-a]");
+ if(b){
+  const a=b.dataset.a,v=b.dataset.v;
+  const adm=()=>{if(!isAdmin()){toast("Admin access required.","err");return false}return true};
+  switch(a){
+   case"portal":openPortal(v);break;
+   case"info":openInfo(v);break;
+   case"close":closeModal();break;
+   case"menu":{const n=$("nav").classList.toggle("open");$("menu").setAttribute("aria-expanded",n)}break;
+   case"order":order(v);break;
+   case"claim":copy(b.dataset.c,"Promo code copied");order(v);break;
+   case"cat":cat=v;renderStore();break;
+   case"copy":copy(v,b.dataset.l||"Copied");break;
+   case"faq":b.parentElement.classList.toggle("open");break;
+   case"annx":{const x=load(K.a,{});sess.set("gc5_annx",String(x.id));$("ann").hidden=true}break;
+   case"ping":{const p=[11+Math.floor(Math.random()*6),42+Math.floor(Math.random()*8),162+Math.floor(Math.random()*14)];$("pin").textContent=p[0]+" ms";$("psg").textContent=p[1]+" ms";$("pus").textContent=p[2]+" ms";toast(`Latency: IN ${p[0]}ms · SG ${p[1]}ms · US ${p[2]}ms`)}break;
+   case"hreg":hreg=v;sel("hreg",b);$("sreg").textContent=v;$("sping").textContent=b.dataset.p;break;
+   case"hos":hos=v;sel("hos",b);$("sos").textContent=v;break;
+   case"hdeploy":order(`Custom VPS — ${hreg} · ${hos}`);break;
+   case"logout":logout();pending="";toast("Signed out.");render();break;
+   case"auth":authMode=v;render();break;
+   case"tab":setTab(v);break;
+   case"open":tid=v;render();break;
+   case"back":tid=null;render();break;
+   case"status":setStatus(v);break;
+   case"provision":{
+    if(!adm()||!tid)break;
+    const all=load(K.t,[]),t=all.find(x=>x.id===tid);if(!t)break;
+    const ip=(prompt("IPv4 address for this server:")||"").trim();
+    if(!/^(\d{1,3}\.){3}\d{1,3}$/.test(ip)){if(ip)toast("Enter a valid IPv4 address.","err");break}
+    const os=(prompt("Operating system:","Ubuntu 24.04 LTS")||"").trim()||"Ubuntu 24.04 LTS";
+    const ch="abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789",r=new Uint32Array(16);crypto.getRandomValues(r);
+    const pass=[...r].map(n=>ch[n%ch.length]).join("");
+    const svcs=load(K.s,[]),svc={id:"VPS-"+Math.floor(1000+Math.random()*9000),userId:t.userId,username:t.username,planName:t.plan||t.subject,ip,rootPass:pass,os,status:"Active",createdAt:new Date().toISOString()};
+    svcs.unshift(svc);save(K.s,svcs);
+    t.messages.push({sender:cur().username,role:"admin",text:`Server ${svc.id} is ready.\nIPv4: ${ip}\nUsername: root\nPassword: ${pass}\nOS: ${os}`,timestamp:new Date().toISOString()});
+    t.status="Answered";save(K.t,all);toast("Provisioned "+svc.id+" for @"+t.username+".");render();break}
+   case"editplan":if(adm()){editPlan=v;render()}break;
+   case"cancelplan":editPlan=null;render();break;
+   case"delplan":if(adm()&&confirm("Delete this plan?")){save(K.p,load(K.p,[]).filter(p=>p.id!==v));if(editPlan===v)editPlan=null;renderStore();render();toast("Plan deleted.")}break;
+   case"resetplans":if(adm()&&confirm("Restore the default plans?")){save(K.p,DEF_PLANS());editPlan=null;renderStore();render();toast("Default plans restored.")}break;
+   case"editoffer":if(adm()){editOffer=v;render()}break;
+   case"canceloffer":editOffer=null;render();break;
+   case"deloffer":if(adm()&&confirm("Delete this offer?")){save(K.o,load(K.o,[]).filter(o=>o.id!==v));if(editOffer===v)editOffer=null;renderOffers();render();toast("Offer deleted.")}break;
+   case"tgoffer":if(adm()){const os=load(K.o,[]),o=os.find(x=>x.id===v);if(o){o.active=o.active===false;save(K.o,os);renderOffers();render();toast(o.active?"Offer activated.":"Offer paused.")}}break;
+   case"resetoffers":if(adm()&&confirm("Restore the default offers?")){save(K.o,DEF_OFFERS());editOffer=null;renderOffers();render();toast("Default offers restored.")}break;
+   case"annoff":if(adm()){const x=load(K.a,{});x.active=false;save(K.a,x);renderAnn();render();toast("Announcement turned off.")}break;
+  }
+  return;
+ }
+ if(e.target===modal)closeModal();
+ if(!e.target.closest("#nav,#menu"))$("nav").classList.remove("open");
+ if(e.target.closest("#nav a"))$("nav").classList.remove("open");
+});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeModal();
+ if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches("[data-a=open]")){e.preventDefault();tid=e.target.dataset.v;render()}
+});
+
+/* ---------- clock + boot ---------- */
+function clock(){try{$("clk").textContent=new Date().toLocaleTimeString("en-US",{timeZone:"Asia/Kolkata",hour12:true,hour:"2-digit",minute:"2-digit",second:"2-digit"}).toLowerCase()}catch{}}
+clock();setInterval(clock,1000);
+init().then(()=>{renderStore();renderOffers();renderAnn();navLabel()}).catch(()=>{renderStore();renderOffers()});
+})();
+</script>
 </body>
 </html>
